@@ -314,7 +314,7 @@ void Referee_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    Up_Down_Motor_Control();
+    Up_Down_Motor_Control_Updata();
     osDelay(1);
   }
   /* USER CODE END Referee_Task */

@@ -20,12 +20,8 @@
 #define RELAY_ON GPIO_PIN_RESET // 继电器吸合（低电平）
 #define RELAY_OFF GPIO_PIN_SET  // 继电器断开（高电平）
 
-ARM_CONNECT_STATUS arm_connect_status;
-BOOM_ARM_Stats boom_arm_status;         // 机械臂气泵状态
-BOOM_STORAGE_Stats boom_storage_status; // 储矿气泵状态
-#define MOVE_SENSITIVITY 10.0f          // 移动灵敏度，
-#define PITCH_SENSITIVITY 0.008f        // pitch轴灵敏度
-#define YAW_SENSITIVITY 0.005f          // yaw轴灵敏度
+BOOM_ARM_Stats boom_arm_status; // 机械臂气泵状态
+LIFT_State lift_state;          // 伸降杆状态
 
 /**
  * @brief  控制电机正转
@@ -69,32 +65,45 @@ void Motor_Stop(void)
     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
 }
+void Up_Down_Motor_Control_Updata(void)
+{
+    switch (lift_state)
+    {
+    case 0:
+        Motor_Forward();
+        break;
+    case 1:
+        Motor_Reverse();
+        break;
+    case 2:
+    default: // 兜底，确保任何情况都有处理
+        Motor_Stop();
+        break;
+    }
+}
 void Up_Down_Motor_Control(void)
 {
-    
-    switch(SBUS_CH.CH7)
+
+    switch (SBUS_CH.CH7)
     {
-        case HIGH_VALUE:
-            Motor_Forward();
-            break;
-        case LOW_VALUE:
-            Motor_Reverse();
-            break;
-        case MID_VALUE:
-        default:  // 兜底，确保任何情况都有处理
-            Motor_Stop();
-            break;
+    case HIGH_VALUE:
+        lift_state = LIFT_UP;
+        break;
+    case LOW_VALUE:
+        lift_state = LIFT_DOWN;
+         break;
+    case MID_VALUE:
+    default: // 兜底，确保任何情况都有处理
+        lift_state = LIFT_STOP;
+        break;
     }
-
 }
-
 
 void remote_control_init()
 {
     GPIO_init();
-    PWM_control_init();
-    boom_storage_status = STORAGE_OFF; // 气泵
-    boom_arm_status = ARM_BOOM_OFF;    // 机械臂
+
+    boom_arm_status = ARM_BOOM_OFF; // 机械臂
 }
 
 void GPIO_init() // 电子开关初始化
@@ -116,49 +125,4 @@ void GPIO_init() // 电子开关初始化
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET); // PC10 气泵
 
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_RESET); // PC11，右储矿
-
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
-}
-
-void PWM_control_init() // 舵机云台初始化
-{
-}
-
-void VT13toRCdata()
-{
-}
-void key_mouse_control() // 键盘鼠标模式+自定义控制器
-{
-}
-void ARM_CONNECT_STATUS_UPDATA()
-{
-}
-//////////遥控器控制////////////////
-void RC_Control(void)
-{
-}
-///////////////////////////启动函数///////////////////////////
-void start()
-{
-
-    // }
-}
-
-void YAWFLOW_POS()
-{
-}
-
-//////////////////////全部失能，防止疯车//////////////////////////////
-void disable_all()
-{
-}
-
-void enable_all()
-{
-}
-
-void switch_servos()
-{
 }
