@@ -17,14 +17,7 @@
 #define RELAY_OFF     GPIO_PIN_SET    // 继电器断开（高电平）
 
 
-int b = 1350;
-int c = 0;
-RC_ctrl_t RC_data;
-// 云台跟随陀螺仪pid
-float AHRS_yaw_set = 0;
-pid_t yaw_pid;
-float delta_angle;
-int16_t wait_time[SIZE_OF_WAIT] = {0}; // 键盘消抖用时间
+
 ARM_CONNECT_STATUS arm_connect_status;
 BOOM_ARM_Stats boom_arm_status;         // 机械臂气泵状态
 BOOM_STORAGE_Stats boom_storage_status; // 储矿气泵状态

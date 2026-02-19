@@ -114,6 +114,7 @@ User/Hardware/dm4310_drv.c \
 User/Hardware/Robstride04.c \
 User/Hardware/arm.c \
 User/Hardware/IMU_updata.c \
+User/Hardware/Sbus.c \
 User/Hardware/LED.c \
 User/Hardware/buzzer.c \
 User/Hardware/Unitree/crc_ccitt.c \

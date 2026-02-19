@@ -15,6 +15,7 @@
 #include "fifo.h"
 #include "UART_data_txrx.h"
 #include "gom_protocol.h"
+#include "Sbus.h"
 uint32_t Flag_T13 = 0;
 
 // DMA控制变量
@@ -101,10 +102,10 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
   if (huart == &huart5) // 遥控器
   {
-    // // DT7_decode_data(UART5_data.rev_data);
-    // update_sbus(UART5_data.rev_data, &SBUS_CH);
-    // HAL_UARTEx_ReceiveToIdle_DMA(huart, UART5_data.rev_data, UART_BUFFER_SIZE);
-    // __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
+    // DT7_decode_data(UART5_data.rev_data);
+    update_sbus(UART5_data.rev_data, &SBUS_CH);
+    HAL_UARTEx_ReceiveToIdle_DMA(huart, UART5_data.rev_data, UART_BUFFER_SIZE);
+    __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
   else if (huart == &huart7) // 电管裁判系统
   {

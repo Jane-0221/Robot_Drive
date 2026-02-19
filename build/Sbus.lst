@@ -1,0 +1,617 @@
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 6
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"Sbus.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "User/Hardware/Sbus.c"
+  19              		.global	SBUS_CH
+  20              		.section	.bss.SBUS_CH,"aw",%nobits
+  21              		.align	2
+  24              	SBUS_CH:
+  25 0000 00000000 		.space	34
+  25      00000000 
+  25      00000000 
+  25      00000000 
+  25      00000000 
+  26              		.section	.text.update_sbus,"ax",%progbits
+  27              		.align	1
+  28              		.global	update_sbus
+  29              		.syntax unified
+  30              		.thumb
+  31              		.thumb_func
+  33              	update_sbus:
+  34              	.LFB0:
+   1:User/Hardware/Sbus.c **** #include "Sbus.h"
+   2:User/Hardware/Sbus.c **** SBUS_CH_Struct SBUS_CH;
+   3:User/Hardware/Sbus.c **** 
+   4:User/Hardware/Sbus.c **** void update_sbus(volatile const uint8_t *sbus_buf,SBUS_CH_Struct *SBUS_CH)
+   5:User/Hardware/Sbus.c **** {
+  35              		.loc 1 5 1
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 8
+  38              		@ frame_needed = 1, uses_anonymous_args = 0
+  39              		@ link register save eliminated.
+  40 0000 80B4     		push	{r7}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 4
+  43              		.cfi_offset 7, -4
+  44 0002 83B0     		sub	sp, sp, #12
+  45              	.LCFI1:
+  46              		.cfi_def_cfa_offset 16
+  47 0004 00AF     		add	r7, sp, #0
+  48              	.LCFI2:
+  49              		.cfi_def_cfa_register 7
+  50 0006 7860     		str	r0, [r7, #4]
+  51 0008 3960     		str	r1, [r7]
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 2
+
+
+   6:User/Hardware/Sbus.c **** 
+   7:User/Hardware/Sbus.c **** 
+   8:User/Hardware/Sbus.c ****         SBUS_CH->ConnectState = 1;       
+  52              		.loc 1 8 31
+  53 000a 3B68     		ldr	r3, [r7]
+  54 000c 0122     		movs	r2, #1
+  55 000e 83F82020 		strb	r2, [r3, #32]
+   9:User/Hardware/Sbus.c ****         SBUS_CH->CH1 =  (((uint16_t)sbus_buf[1] >> 0 | ((uint16_t)sbus_buf[2] << 8 )) & 0x07FF);//2
+  56              		.loc 1 9 45
+  57 0012 7B68     		ldr	r3, [r7, #4]
+  58 0014 0133     		adds	r3, r3, #1
+  59 0016 1B78     		ldrb	r3, [r3]
+  60 0018 DBB2     		uxtb	r3, r3
+  61 001a 1AB2     		sxth	r2, r3
+  62              		.loc 1 9 75
+  63 001c 7B68     		ldr	r3, [r7, #4]
+  64 001e 0233     		adds	r3, r3, #2
+  65 0020 1B78     		ldrb	r3, [r3]
+  66 0022 DBB2     		uxtb	r3, r3
+  67              		.loc 1 9 54
+  68 0024 1BB2     		sxth	r3, r3
+  69 0026 1B02     		lsls	r3, r3, #8
+  70 0028 1BB2     		sxth	r3, r3
+  71 002a 1343     		orrs	r3, r3, r2
+  72 002c 1BB2     		sxth	r3, r3
+  73              		.loc 1 9 87
+  74 002e 9BB2     		uxth	r3, r3
+  75 0030 C3F30A03 		ubfx	r3, r3, #0, #11
+  76 0034 9AB2     		uxth	r2, r3
+  77              		.loc 1 9 22
+  78 0036 3B68     		ldr	r3, [r7]
+  79 0038 1A80     		strh	r2, [r3]	@ movhi
+  10:User/Hardware/Sbus.c ****         SBUS_CH->CH2 =  (((uint16_t)sbus_buf[2] >> 3 | ((uint16_t)sbus_buf[3] << 5 )) & 0x07FF);//2
+  80              		.loc 1 10 45
+  81 003a 7B68     		ldr	r3, [r7, #4]
+  82 003c 0233     		adds	r3, r3, #2
+  83 003e 1B78     		ldrb	r3, [r3]
+  84 0040 DBB2     		uxtb	r3, r3
+  85              		.loc 1 10 54
+  86 0042 DB08     		lsrs	r3, r3, #3
+  87 0044 DBB2     		uxtb	r3, r3
+  88 0046 1AB2     		sxth	r2, r3
+  89              		.loc 1 10 75
+  90 0048 7B68     		ldr	r3, [r7, #4]
+  91 004a 0333     		adds	r3, r3, #3
+  92 004c 1B78     		ldrb	r3, [r3]
+  93 004e DBB2     		uxtb	r3, r3
+  94              		.loc 1 10 54
+  95 0050 1BB2     		sxth	r3, r3
+  96 0052 5B01     		lsls	r3, r3, #5
+  97 0054 1BB2     		sxth	r3, r3
+  98 0056 1343     		orrs	r3, r3, r2
+  99 0058 1BB2     		sxth	r3, r3
+ 100              		.loc 1 10 87
+ 101 005a 9BB2     		uxth	r3, r3
+ 102 005c C3F30A03 		ubfx	r3, r3, #0, #11
+ 103 0060 9AB2     		uxth	r2, r3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 3
+
+
+ 104              		.loc 1 10 22
+ 105 0062 3B68     		ldr	r3, [r7]
+ 106 0064 5A80     		strh	r2, [r3, #2]	@ movhi
+  11:User/Hardware/Sbus.c ****         SBUS_CH->CH3 =  (((uint16_t)sbus_buf[3] >> 6 | ((uint16_t)sbus_buf[4] << 2 ) | (int16_t)sbu
+ 107              		.loc 1 11 45
+ 108 0066 7B68     		ldr	r3, [r7, #4]
+ 109 0068 0333     		adds	r3, r3, #3
+ 110 006a 1B78     		ldrb	r3, [r3]
+ 111 006c DBB2     		uxtb	r3, r3
+ 112              		.loc 1 11 54
+ 113 006e 9B09     		lsrs	r3, r3, #6
+ 114 0070 DBB2     		uxtb	r3, r3
+ 115 0072 1AB2     		sxth	r2, r3
+ 116              		.loc 1 11 75
+ 117 0074 7B68     		ldr	r3, [r7, #4]
+ 118 0076 0433     		adds	r3, r3, #4
+ 119 0078 1B78     		ldrb	r3, [r3]
+ 120 007a DBB2     		uxtb	r3, r3
+ 121              		.loc 1 11 54
+ 122 007c 1BB2     		sxth	r3, r3
+ 123 007e 9B00     		lsls	r3, r3, #2
+ 124 0080 1BB2     		sxth	r3, r3
+ 125 0082 1343     		orrs	r3, r3, r2
+ 126 0084 1AB2     		sxth	r2, r3
+ 127              		.loc 1 11 105
+ 128 0086 7B68     		ldr	r3, [r7, #4]
+ 129 0088 0533     		adds	r3, r3, #5
+ 130 008a 1B78     		ldrb	r3, [r3]
+ 131 008c DBB2     		uxtb	r3, r3
+ 132              		.loc 1 11 86
+ 133 008e 1BB2     		sxth	r3, r3
+ 134 0090 9B02     		lsls	r3, r3, #10
+ 135 0092 1BB2     		sxth	r3, r3
+ 136 0094 1343     		orrs	r3, r3, r2
+ 137 0096 1BB2     		sxth	r3, r3
+ 138              		.loc 1 11 117
+ 139 0098 9BB2     		uxth	r3, r3
+ 140 009a C3F30A03 		ubfx	r3, r3, #0, #11
+ 141 009e 9AB2     		uxth	r2, r3
+ 142              		.loc 1 11 22
+ 143 00a0 3B68     		ldr	r3, [r7]
+ 144 00a2 9A80     		strh	r2, [r3, #4]	@ movhi
+  12:User/Hardware/Sbus.c ****         SBUS_CH->CH4 =  (((uint16_t)sbus_buf[5] >> 1 | ((uint16_t)sbus_buf[6] << 7 )) & 0x07FF);//2
+ 145              		.loc 1 12 45
+ 146 00a4 7B68     		ldr	r3, [r7, #4]
+ 147 00a6 0533     		adds	r3, r3, #5
+ 148 00a8 1B78     		ldrb	r3, [r3]
+ 149 00aa DBB2     		uxtb	r3, r3
+ 150              		.loc 1 12 54
+ 151 00ac 5B08     		lsrs	r3, r3, #1
+ 152 00ae DBB2     		uxtb	r3, r3
+ 153 00b0 1AB2     		sxth	r2, r3
+ 154              		.loc 1 12 75
+ 155 00b2 7B68     		ldr	r3, [r7, #4]
+ 156 00b4 0633     		adds	r3, r3, #6
+ 157 00b6 1B78     		ldrb	r3, [r3]
+ 158 00b8 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 4
+
+
+ 159              		.loc 1 12 54
+ 160 00ba 1BB2     		sxth	r3, r3
+ 161 00bc DB01     		lsls	r3, r3, #7
+ 162 00be 1BB2     		sxth	r3, r3
+ 163 00c0 1343     		orrs	r3, r3, r2
+ 164 00c2 1BB2     		sxth	r3, r3
+ 165              		.loc 1 12 87
+ 166 00c4 9BB2     		uxth	r3, r3
+ 167 00c6 C3F30A03 		ubfx	r3, r3, #0, #11
+ 168 00ca 9AB2     		uxth	r2, r3
+ 169              		.loc 1 12 22
+ 170 00cc 3B68     		ldr	r3, [r7]
+ 171 00ce DA80     		strh	r2, [r3, #6]	@ movhi
+  13:User/Hardware/Sbus.c ****         SBUS_CH->CH5 =  (((int16_t)sbus_buf[6] >> 4 | ((int16_t)sbus_buf[7] << 4 )) & 0x07FF);//240
+ 172              		.loc 1 13 44
+ 173 00d0 7B68     		ldr	r3, [r7, #4]
+ 174 00d2 0633     		adds	r3, r3, #6
+ 175 00d4 1B78     		ldrb	r3, [r3]
+ 176 00d6 DBB2     		uxtb	r3, r3
+ 177              		.loc 1 13 53
+ 178 00d8 1B09     		lsrs	r3, r3, #4
+ 179 00da DBB2     		uxtb	r3, r3
+ 180 00dc 1AB2     		sxth	r2, r3
+ 181              		.loc 1 13 73
+ 182 00de 7B68     		ldr	r3, [r7, #4]
+ 183 00e0 0733     		adds	r3, r3, #7
+ 184 00e2 1B78     		ldrb	r3, [r3]
+ 185 00e4 DBB2     		uxtb	r3, r3
+ 186              		.loc 1 13 53
+ 187 00e6 1BB2     		sxth	r3, r3
+ 188 00e8 1B01     		lsls	r3, r3, #4
+ 189 00ea 1BB2     		sxth	r3, r3
+ 190 00ec 1343     		orrs	r3, r3, r2
+ 191 00ee 1BB2     		sxth	r3, r3
+ 192              		.loc 1 13 85
+ 193 00f0 9BB2     		uxth	r3, r3
+ 194 00f2 C3F30A03 		ubfx	r3, r3, #0, #11
+ 195 00f6 9AB2     		uxth	r2, r3
+ 196              		.loc 1 13 22
+ 197 00f8 3B68     		ldr	r3, [r7]
+ 198 00fa 1A81     		strh	r2, [r3, #8]	@ movhi
+  14:User/Hardware/Sbus.c ****         SBUS_CH->CH6 =  (((int16_t)sbus_buf[7] >> 7 | ((int16_t)sbus_buf[8] << 1 ) | (int16_t)sbus_
+ 199              		.loc 1 14 44
+ 200 00fc 7B68     		ldr	r3, [r7, #4]
+ 201 00fe 0733     		adds	r3, r3, #7
+ 202 0100 1B78     		ldrb	r3, [r3]
+ 203 0102 DBB2     		uxtb	r3, r3
+ 204              		.loc 1 14 53
+ 205 0104 DB09     		lsrs	r3, r3, #7
+ 206 0106 DBB2     		uxtb	r3, r3
+ 207 0108 1AB2     		sxth	r2, r3
+ 208              		.loc 1 14 73
+ 209 010a 7B68     		ldr	r3, [r7, #4]
+ 210 010c 0833     		adds	r3, r3, #8
+ 211 010e 1B78     		ldrb	r3, [r3]
+ 212 0110 DBB2     		uxtb	r3, r3
+ 213              		.loc 1 14 53
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 5
+
+
+ 214 0112 1BB2     		sxth	r3, r3
+ 215 0114 5B00     		lsls	r3, r3, #1
+ 216 0116 1BB2     		sxth	r3, r3
+ 217 0118 1343     		orrs	r3, r3, r2
+ 218 011a 1AB2     		sxth	r2, r3
+ 219              		.loc 1 14 103
+ 220 011c 7B68     		ldr	r3, [r7, #4]
+ 221 011e 0933     		adds	r3, r3, #9
+ 222 0120 1B78     		ldrb	r3, [r3]
+ 223 0122 DBB2     		uxtb	r3, r3
+ 224              		.loc 1 14 84
+ 225 0124 1BB2     		sxth	r3, r3
+ 226 0126 5B02     		lsls	r3, r3, #9
+ 227 0128 1BB2     		sxth	r3, r3
+ 228 012a 1343     		orrs	r3, r3, r2
+ 229 012c 1BB2     		sxth	r3, r3
+ 230              		.loc 1 14 114
+ 231 012e 9BB2     		uxth	r3, r3
+ 232 0130 C3F30A03 		ubfx	r3, r3, #0, #11
+ 233 0134 9AB2     		uxth	r2, r3
+ 234              		.loc 1 14 22
+ 235 0136 3B68     		ldr	r3, [r7]
+ 236 0138 5A81     		strh	r2, [r3, #10]	@ movhi
+  15:User/Hardware/Sbus.c ****         SBUS_CH->CH7 =  (((int16_t)sbus_buf[9] >> 2 | ((int16_t)sbus_buf[10] << 6 )) & 0x07FF);//24
+ 237              		.loc 1 15 44
+ 238 013a 7B68     		ldr	r3, [r7, #4]
+ 239 013c 0933     		adds	r3, r3, #9
+ 240 013e 1B78     		ldrb	r3, [r3]
+ 241 0140 DBB2     		uxtb	r3, r3
+ 242              		.loc 1 15 53
+ 243 0142 9B08     		lsrs	r3, r3, #2
+ 244 0144 DBB2     		uxtb	r3, r3
+ 245 0146 1AB2     		sxth	r2, r3
+ 246              		.loc 1 15 73
+ 247 0148 7B68     		ldr	r3, [r7, #4]
+ 248 014a 0A33     		adds	r3, r3, #10
+ 249 014c 1B78     		ldrb	r3, [r3]
+ 250 014e DBB2     		uxtb	r3, r3
+ 251              		.loc 1 15 53
+ 252 0150 1BB2     		sxth	r3, r3
+ 253 0152 9B01     		lsls	r3, r3, #6
+ 254 0154 1BB2     		sxth	r3, r3
+ 255 0156 1343     		orrs	r3, r3, r2
+ 256 0158 1BB2     		sxth	r3, r3
+ 257              		.loc 1 15 86
+ 258 015a 9BB2     		uxth	r3, r3
+ 259 015c C3F30A03 		ubfx	r3, r3, #0, #11
+ 260 0160 9AB2     		uxth	r2, r3
+ 261              		.loc 1 15 22
+ 262 0162 3B68     		ldr	r3, [r7]
+ 263 0164 9A81     		strh	r2, [r3, #12]	@ movhi
+  16:User/Hardware/Sbus.c ****         SBUS_CH->CH8 =  (((int16_t)sbus_buf[10] >> 5 | ((int16_t)sbus_buf[11] << 3 )) & 0x07FF);//2
+ 264              		.loc 1 16 44
+ 265 0166 7B68     		ldr	r3, [r7, #4]
+ 266 0168 0A33     		adds	r3, r3, #10
+ 267 016a 1B78     		ldrb	r3, [r3]
+ 268 016c DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 6
+
+
+ 269              		.loc 1 16 54
+ 270 016e 5B09     		lsrs	r3, r3, #5
+ 271 0170 DBB2     		uxtb	r3, r3
+ 272 0172 1AB2     		sxth	r2, r3
+ 273              		.loc 1 16 74
+ 274 0174 7B68     		ldr	r3, [r7, #4]
+ 275 0176 0B33     		adds	r3, r3, #11
+ 276 0178 1B78     		ldrb	r3, [r3]
+ 277 017a DBB2     		uxtb	r3, r3
+ 278              		.loc 1 16 54
+ 279 017c 1BB2     		sxth	r3, r3
+ 280 017e DB00     		lsls	r3, r3, #3
+ 281 0180 1BB2     		sxth	r3, r3
+ 282 0182 1343     		orrs	r3, r3, r2
+ 283 0184 1BB2     		sxth	r3, r3
+ 284              		.loc 1 16 87
+ 285 0186 9BB2     		uxth	r3, r3
+ 286 0188 C3F30A03 		ubfx	r3, r3, #0, #11
+ 287 018c 9AB2     		uxth	r2, r3
+ 288              		.loc 1 16 22
+ 289 018e 3B68     		ldr	r3, [r7]
+ 290 0190 DA81     		strh	r2, [r3, #14]	@ movhi
+  17:User/Hardware/Sbus.c ****         SBUS_CH->CH9 =  (((int16_t)sbus_buf[12] << 0 | ((int16_t)sbus_buf[13] << 8 )) & 0x07FF);//2
+ 291              		.loc 1 17 44
+ 292 0192 7B68     		ldr	r3, [r7, #4]
+ 293 0194 0C33     		adds	r3, r3, #12
+ 294 0196 1B78     		ldrb	r3, [r3]
+ 295 0198 DBB2     		uxtb	r3, r3
+ 296 019a 1AB2     		sxth	r2, r3
+ 297              		.loc 1 17 74
+ 298 019c 7B68     		ldr	r3, [r7, #4]
+ 299 019e 0D33     		adds	r3, r3, #13
+ 300 01a0 1B78     		ldrb	r3, [r3]
+ 301 01a2 DBB2     		uxtb	r3, r3
+ 302              		.loc 1 17 54
+ 303 01a4 1BB2     		sxth	r3, r3
+ 304 01a6 1B02     		lsls	r3, r3, #8
+ 305 01a8 1BB2     		sxth	r3, r3
+ 306 01aa 1343     		orrs	r3, r3, r2
+ 307 01ac 1BB2     		sxth	r3, r3
+ 308              		.loc 1 17 87
+ 309 01ae 9BB2     		uxth	r3, r3
+ 310 01b0 C3F30A03 		ubfx	r3, r3, #0, #11
+ 311 01b4 9AB2     		uxth	r2, r3
+ 312              		.loc 1 17 22
+ 313 01b6 3B68     		ldr	r3, [r7]
+ 314 01b8 1A82     		strh	r2, [r3, #16]	@ movhi
+  18:User/Hardware/Sbus.c ****         SBUS_CH->CH10 = (((int16_t)sbus_buf[13] >> 3 | ((int16_t)sbus_buf[14] << 5 )) & 0x07FF);//2
+ 315              		.loc 1 18 44
+ 316 01ba 7B68     		ldr	r3, [r7, #4]
+ 317 01bc 0D33     		adds	r3, r3, #13
+ 318 01be 1B78     		ldrb	r3, [r3]
+ 319 01c0 DBB2     		uxtb	r3, r3
+ 320              		.loc 1 18 54
+ 321 01c2 DB08     		lsrs	r3, r3, #3
+ 322 01c4 DBB2     		uxtb	r3, r3
+ 323 01c6 1AB2     		sxth	r2, r3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 7
+
+
+ 324              		.loc 1 18 74
+ 325 01c8 7B68     		ldr	r3, [r7, #4]
+ 326 01ca 0E33     		adds	r3, r3, #14
+ 327 01cc 1B78     		ldrb	r3, [r3]
+ 328 01ce DBB2     		uxtb	r3, r3
+ 329              		.loc 1 18 54
+ 330 01d0 1BB2     		sxth	r3, r3
+ 331 01d2 5B01     		lsls	r3, r3, #5
+ 332 01d4 1BB2     		sxth	r3, r3
+ 333 01d6 1343     		orrs	r3, r3, r2
+ 334 01d8 1BB2     		sxth	r3, r3
+ 335              		.loc 1 18 87
+ 336 01da 9BB2     		uxth	r3, r3
+ 337 01dc C3F30A03 		ubfx	r3, r3, #0, #11
+ 338 01e0 9AB2     		uxth	r2, r3
+ 339              		.loc 1 18 23
+ 340 01e2 3B68     		ldr	r3, [r7]
+ 341 01e4 5A82     		strh	r2, [r3, #18]	@ movhi
+  19:User/Hardware/Sbus.c ****         SBUS_CH->CH11 = (((int16_t)sbus_buf[14] >> 6 | ((int16_t)sbus_buf[15] << 2 ) | (int16_t)sbu
+ 342              		.loc 1 19 44
+ 343 01e6 7B68     		ldr	r3, [r7, #4]
+ 344 01e8 0E33     		adds	r3, r3, #14
+ 345 01ea 1B78     		ldrb	r3, [r3]
+ 346 01ec DBB2     		uxtb	r3, r3
+ 347              		.loc 1 19 54
+ 348 01ee 9B09     		lsrs	r3, r3, #6
+ 349 01f0 DBB2     		uxtb	r3, r3
+ 350 01f2 1AB2     		sxth	r2, r3
+ 351              		.loc 1 19 74
+ 352 01f4 7B68     		ldr	r3, [r7, #4]
+ 353 01f6 0F33     		adds	r3, r3, #15
+ 354 01f8 1B78     		ldrb	r3, [r3]
+ 355 01fa DBB2     		uxtb	r3, r3
+ 356              		.loc 1 19 54
+ 357 01fc 1BB2     		sxth	r3, r3
+ 358 01fe 9B00     		lsls	r3, r3, #2
+ 359 0200 1BB2     		sxth	r3, r3
+ 360 0202 1343     		orrs	r3, r3, r2
+ 361 0204 1AB2     		sxth	r2, r3
+ 362              		.loc 1 19 105
+ 363 0206 7B68     		ldr	r3, [r7, #4]
+ 364 0208 1033     		adds	r3, r3, #16
+ 365 020a 1B78     		ldrb	r3, [r3]
+ 366 020c DBB2     		uxtb	r3, r3
+ 367              		.loc 1 19 86
+ 368 020e 1BB2     		sxth	r3, r3
+ 369 0210 9B02     		lsls	r3, r3, #10
+ 370 0212 1BB2     		sxth	r3, r3
+ 371 0214 1343     		orrs	r3, r3, r2
+ 372 0216 1BB2     		sxth	r3, r3
+ 373              		.loc 1 19 118
+ 374 0218 9BB2     		uxth	r3, r3
+ 375 021a C3F30A03 		ubfx	r3, r3, #0, #11
+ 376 021e 9AB2     		uxth	r2, r3
+ 377              		.loc 1 19 23
+ 378 0220 3B68     		ldr	r3, [r7]
+ 379 0222 9A82     		strh	r2, [r3, #20]	@ movhi
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 8
+
+
+  20:User/Hardware/Sbus.c ****         SBUS_CH->CH12 = (((int16_t)sbus_buf[16] >> 1 | ((int16_t)sbus_buf[17] << 7 )) & 0x07FF);
+ 380              		.loc 1 20 44
+ 381 0224 7B68     		ldr	r3, [r7, #4]
+ 382 0226 1033     		adds	r3, r3, #16
+ 383 0228 1B78     		ldrb	r3, [r3]
+ 384 022a DBB2     		uxtb	r3, r3
+ 385              		.loc 1 20 54
+ 386 022c 5B08     		lsrs	r3, r3, #1
+ 387 022e DBB2     		uxtb	r3, r3
+ 388 0230 1AB2     		sxth	r2, r3
+ 389              		.loc 1 20 74
+ 390 0232 7B68     		ldr	r3, [r7, #4]
+ 391 0234 1133     		adds	r3, r3, #17
+ 392 0236 1B78     		ldrb	r3, [r3]
+ 393 0238 DBB2     		uxtb	r3, r3
+ 394              		.loc 1 20 54
+ 395 023a 1BB2     		sxth	r3, r3
+ 396 023c DB01     		lsls	r3, r3, #7
+ 397 023e 1BB2     		sxth	r3, r3
+ 398 0240 1343     		orrs	r3, r3, r2
+ 399 0242 1BB2     		sxth	r3, r3
+ 400              		.loc 1 20 87
+ 401 0244 9BB2     		uxth	r3, r3
+ 402 0246 C3F30A03 		ubfx	r3, r3, #0, #11
+ 403 024a 9AB2     		uxth	r2, r3
+ 404              		.loc 1 20 23
+ 405 024c 3B68     		ldr	r3, [r7]
+ 406 024e DA82     		strh	r2, [r3, #22]	@ movhi
+  21:User/Hardware/Sbus.c ****         SBUS_CH->CH13 = (((int16_t)sbus_buf[17] >> 4 | ((int16_t)sbus_buf[18] << 4 )) & 0x07FF);
+ 407              		.loc 1 21 44
+ 408 0250 7B68     		ldr	r3, [r7, #4]
+ 409 0252 1133     		adds	r3, r3, #17
+ 410 0254 1B78     		ldrb	r3, [r3]
+ 411 0256 DBB2     		uxtb	r3, r3
+ 412              		.loc 1 21 54
+ 413 0258 1B09     		lsrs	r3, r3, #4
+ 414 025a DBB2     		uxtb	r3, r3
+ 415 025c 1AB2     		sxth	r2, r3
+ 416              		.loc 1 21 74
+ 417 025e 7B68     		ldr	r3, [r7, #4]
+ 418 0260 1233     		adds	r3, r3, #18
+ 419 0262 1B78     		ldrb	r3, [r3]
+ 420 0264 DBB2     		uxtb	r3, r3
+ 421              		.loc 1 21 54
+ 422 0266 1BB2     		sxth	r3, r3
+ 423 0268 1B01     		lsls	r3, r3, #4
+ 424 026a 1BB2     		sxth	r3, r3
+ 425 026c 1343     		orrs	r3, r3, r2
+ 426 026e 1BB2     		sxth	r3, r3
+ 427              		.loc 1 21 87
+ 428 0270 9BB2     		uxth	r3, r3
+ 429 0272 C3F30A03 		ubfx	r3, r3, #0, #11
+ 430 0276 9AB2     		uxth	r2, r3
+ 431              		.loc 1 21 23
+ 432 0278 3B68     		ldr	r3, [r7]
+ 433 027a 1A83     		strh	r2, [r3, #24]	@ movhi
+  22:User/Hardware/Sbus.c ****         SBUS_CH->CH14 = (((int16_t)sbus_buf[18] >> 7 | ((int16_t)sbus_buf[19] << 1 ) | (int16_t)sbu
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 9
+
+
+ 434              		.loc 1 22 44
+ 435 027c 7B68     		ldr	r3, [r7, #4]
+ 436 027e 1233     		adds	r3, r3, #18
+ 437 0280 1B78     		ldrb	r3, [r3]
+ 438 0282 DBB2     		uxtb	r3, r3
+ 439              		.loc 1 22 54
+ 440 0284 DB09     		lsrs	r3, r3, #7
+ 441 0286 DBB2     		uxtb	r3, r3
+ 442 0288 1AB2     		sxth	r2, r3
+ 443              		.loc 1 22 74
+ 444 028a 7B68     		ldr	r3, [r7, #4]
+ 445 028c 1333     		adds	r3, r3, #19
+ 446 028e 1B78     		ldrb	r3, [r3]
+ 447 0290 DBB2     		uxtb	r3, r3
+ 448              		.loc 1 22 54
+ 449 0292 1BB2     		sxth	r3, r3
+ 450 0294 5B00     		lsls	r3, r3, #1
+ 451 0296 1BB2     		sxth	r3, r3
+ 452 0298 1343     		orrs	r3, r3, r2
+ 453 029a 1AB2     		sxth	r2, r3
+ 454              		.loc 1 22 105
+ 455 029c 7B68     		ldr	r3, [r7, #4]
+ 456 029e 1433     		adds	r3, r3, #20
+ 457 02a0 1B78     		ldrb	r3, [r3]
+ 458 02a2 DBB2     		uxtb	r3, r3
+ 459              		.loc 1 22 86
+ 460 02a4 1BB2     		sxth	r3, r3
+ 461 02a6 5B02     		lsls	r3, r3, #9
+ 462 02a8 1BB2     		sxth	r3, r3
+ 463 02aa 1343     		orrs	r3, r3, r2
+ 464 02ac 1BB2     		sxth	r3, r3
+ 465              		.loc 1 22 117
+ 466 02ae 9BB2     		uxth	r3, r3
+ 467 02b0 C3F30A03 		ubfx	r3, r3, #0, #11
+ 468 02b4 9AB2     		uxth	r2, r3
+ 469              		.loc 1 22 23
+ 470 02b6 3B68     		ldr	r3, [r7]
+ 471 02b8 5A83     		strh	r2, [r3, #26]	@ movhi
+  23:User/Hardware/Sbus.c ****         SBUS_CH->CH15 = (((int16_t)sbus_buf[20] >> 2 | ((int16_t)sbus_buf[21] << 6 )) & 0x07FF);
+ 472              		.loc 1 23 44
+ 473 02ba 7B68     		ldr	r3, [r7, #4]
+ 474 02bc 1433     		adds	r3, r3, #20
+ 475 02be 1B78     		ldrb	r3, [r3]
+ 476 02c0 DBB2     		uxtb	r3, r3
+ 477              		.loc 1 23 54
+ 478 02c2 9B08     		lsrs	r3, r3, #2
+ 479 02c4 DBB2     		uxtb	r3, r3
+ 480 02c6 1AB2     		sxth	r2, r3
+ 481              		.loc 1 23 74
+ 482 02c8 7B68     		ldr	r3, [r7, #4]
+ 483 02ca 1533     		adds	r3, r3, #21
+ 484 02cc 1B78     		ldrb	r3, [r3]
+ 485 02ce DBB2     		uxtb	r3, r3
+ 486              		.loc 1 23 54
+ 487 02d0 1BB2     		sxth	r3, r3
+ 488 02d2 9B01     		lsls	r3, r3, #6
+ 489 02d4 1BB2     		sxth	r3, r3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 10
+
+
+ 490 02d6 1343     		orrs	r3, r3, r2
+ 491 02d8 1BB2     		sxth	r3, r3
+ 492              		.loc 1 23 87
+ 493 02da 9BB2     		uxth	r3, r3
+ 494 02dc C3F30A03 		ubfx	r3, r3, #0, #11
+ 495 02e0 9AB2     		uxth	r2, r3
+ 496              		.loc 1 23 23
+ 497 02e2 3B68     		ldr	r3, [r7]
+ 498 02e4 9A83     		strh	r2, [r3, #28]	@ movhi
+  24:User/Hardware/Sbus.c ****         SBUS_CH->CH16 = (((int16_t)sbus_buf[21] >> 5 | ((int16_t)sbus_buf[22] << 3 )) & 0x07FF);
+ 499              		.loc 1 24 44
+ 500 02e6 7B68     		ldr	r3, [r7, #4]
+ 501 02e8 1533     		adds	r3, r3, #21
+ 502 02ea 1B78     		ldrb	r3, [r3]
+ 503 02ec DBB2     		uxtb	r3, r3
+ 504              		.loc 1 24 54
+ 505 02ee 5B09     		lsrs	r3, r3, #5
+ 506 02f0 DBB2     		uxtb	r3, r3
+ 507 02f2 1AB2     		sxth	r2, r3
+ 508              		.loc 1 24 74
+ 509 02f4 7B68     		ldr	r3, [r7, #4]
+ 510 02f6 1633     		adds	r3, r3, #22
+ 511 02f8 1B78     		ldrb	r3, [r3]
+ 512 02fa DBB2     		uxtb	r3, r3
+ 513              		.loc 1 24 54
+ 514 02fc 1BB2     		sxth	r3, r3
+ 515 02fe DB00     		lsls	r3, r3, #3
+ 516 0300 1BB2     		sxth	r3, r3
+ 517 0302 1343     		orrs	r3, r3, r2
+ 518 0304 1BB2     		sxth	r3, r3
+ 519              		.loc 1 24 87
+ 520 0306 9BB2     		uxth	r3, r3
+ 521 0308 C3F30A03 		ubfx	r3, r3, #0, #11
+ 522 030c 9AB2     		uxth	r2, r3
+ 523              		.loc 1 24 23
+ 524 030e 3B68     		ldr	r3, [r7]
+ 525 0310 DA83     		strh	r2, [r3, #30]	@ movhi
+  25:User/Hardware/Sbus.c **** 
+  26:User/Hardware/Sbus.c **** }...
+ 526              		.loc 1 26 1
+ 527 0312 00BF     		nop
+ 528 0314 0C37     		adds	r7, r7, #12
+ 529              	.LCFI3:
+ 530              		.cfi_def_cfa_offset 4
+ 531 0316 BD46     		mov	sp, r7
+ 532              	.LCFI4:
+ 533              		.cfi_def_cfa_register 13
+ 534              		@ sp needed
+ 535 0318 5DF8047B 		ldr	r7, [sp], #4
+ 536              	.LCFI5:
+ 537              		.cfi_restore 7
+ 538              		.cfi_def_cfa_offset 0
+ 539 031c 7047     		bx	lr
+ 540              		.cfi_endproc
+ 541              	.LFE0:
+ 543              		.text
+ 544              	.Letext0:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 11
+
+
+ 545              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
+ 546              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
+ 547              		.file 4 "User/Hardware/Sbus.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Sbus.c
+C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s:24     .bss.SBUS_CH:00000000 SBUS_CH
+C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s:21     .bss.SBUS_CH:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s:27     .text.update_sbus:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cco8t37a.s:33     .text.update_sbus:00000000 update_sbus
+
+NO UNDEFINED SYMBOLS
