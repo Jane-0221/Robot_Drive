@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -31,42 +31,14 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 1
   32              		.section	.bss.boom_storage_status,"aw",%nobits
   35              	boom_storage_status:
   36 0000 00       		.space	1
-  37              		.global	total_angle
-  38              		.section	.bss.total_angle,"aw",%nobits
-  39              		.align	2
-  42              	total_angle:
-  43 0000 00000000 		.space	4
-  44              		.global	prev_angle
-  45              		.section	.bss.prev_angle,"aw",%nobits
-  46              		.align	2
-  49              	prev_angle:
-  50 0000 00000000 		.space	4
-  51              		.global	current_angle
-  52              		.section	.bss.current_angle,"aw",%nobits
-  53              		.align	2
-  56              	current_angle:
-  57 0000 00000000 		.space	4
-  58              		.global	angle_range
-  59              		.section	.data.angle_range,"aw"
-  60              		.align	2
-  63              	angle_range:
-  64 0000 0000B443 		.word	1135869952
-  65              		.global	sum_arm
-  66              		.section	.bss.sum_arm,"aw",%nobits
-  67              		.align	2
-  70              	sum_arm:
-  71 0000 00000000 		.space	4
-  72              		.section	.text.Motor_Forward,"ax",%progbits
-  73              		.align	1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 2
-
-
-  74              		.global	Motor_Forward
-  75              		.syntax unified
-  76              		.thumb
-  77              		.thumb_func
-  79              	Motor_Forward:
-  80              	.LFB144:
+  37              		.section	.text.Motor_Forward,"ax",%progbits
+  38              		.align	1
+  39              		.global	Motor_Forward
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  44              	Motor_Forward:
+  45              	.LFB144:
    1:User/Software/remote_control.c **** #include "remote_control.h"
    2:User/Software/remote_control.c **** #include "ramp_generator.h"
    3:User/Software/remote_control.c **** #include "IMU_updata.h"
@@ -74,899 +46,887 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 1
    5:User/Software/remote_control.c **** #include <tim.h>
    6:User/Software/remote_control.c **** #include "pid.h"
    7:User/Software/remote_control.c **** #include "UART_data_txrx.h"
-   8:User/Software/remote_control.c **** 
-   9:User/Software/remote_control.c **** 
-  10:User/Software/remote_control.c **** #define RELAY1_PIN    GPIO_PIN_0
-  11:User/Software/remote_control.c **** #define RELAY1_PORT   GPIOA
-  12:User/Software/remote_control.c **** #define RELAY2_PIN    GPIO_PIN_2
-  13:User/Software/remote_control.c **** #define RELAY2_PORT   GPIOA
-  14:User/Software/remote_control.c **** 
-  15:User/Software/remote_control.c **** // 继电器电平定义：低电平触发吸合，高电平断开
-  16:User/Software/remote_control.c **** #define RELAY_ON      GPIO_PIN_RESET  // 继电器吸合（低电平）
-  17:User/Software/remote_control.c **** #define RELAY_OFF     GPIO_PIN_SET    // 继电器断开（高电平）
-  18:User/Software/remote_control.c **** 
-  19:User/Software/remote_control.c **** 
-  20:User/Software/remote_control.c **** 
-  21:User/Software/remote_control.c **** ARM_CONNECT_STATUS arm_connect_status;
-  22:User/Software/remote_control.c **** BOOM_ARM_Stats boom_arm_status;         // 机械臂气泵状态
-  23:User/Software/remote_control.c **** BOOM_STORAGE_Stats boom_storage_status; // 储矿气泵状态
-  24:User/Software/remote_control.c **** #define MOVE_SENSITIVITY 10.0f          // 移动灵敏度，
-  25:User/Software/remote_control.c **** #define PITCH_SENSITIVITY 0.008f        // pitch轴灵敏度
-  26:User/Software/remote_control.c **** #define YAW_SENSITIVITY 0.005f          // yaw轴灵敏度
-  27:User/Software/remote_control.c ****                                         // DAMIAO角度读值
-  28:User/Software/remote_control.c **** float total_angle = 0.0;                // 总累积角度
-  29:User/Software/remote_control.c **** float prev_angle = 0.0;                 // 前一次读取的角度
-  30:User/Software/remote_control.c **** float current_angle = 0.0;
-  31:User/Software/remote_control.c **** float angle_range = 360.0; // 编码器量程
-  32:User/Software/remote_control.c **** int sum_arm = 0;
-  33:User/Software/remote_control.c **** 
-  34:User/Software/remote_control.c **** /**
-  35:User/Software/remote_control.c ****  * @brief  控制电机正转
-  36:User/Software/remote_control.c ****  * @note   IN1(PA0)=低电平（吸合）、IN2(PA1)=高电平（断开）
-  37:User/Software/remote_control.c ****  *         电机A端接24V+，B端接24V-，正向转动
-  38:User/Software/remote_control.c ****  * @param  无
-  39:User/Software/remote_control.c ****  * @retval 无
-  40:User/Software/remote_control.c ****  */
-  41:User/Software/remote_control.c **** void Motor_Forward(void)
-  42:User/Software/remote_control.c **** {
-  81              		.loc 1 42 1
-  82              		.cfi_startproc
-  83              		@ args = 0, pretend = 0, frame = 0
-  84              		@ frame_needed = 1, uses_anonymous_args = 0
-  85 0000 80B5     		push	{r7, lr}
-  86              	.LCFI0:
-  87              		.cfi_def_cfa_offset 8
-  88              		.cfi_offset 7, -8
-  89              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 3
+   8:User/Software/remote_control.c **** #include "Sbus.h"
+   9:User/Software/remote_control.c **** // 遥控器值
+  10:User/Software/remote_control.c **** #define LOW_VALUE 353
+  11:User/Software/remote_control.c **** #define MID_VALUE 1024
+  12:User/Software/remote_control.c **** #define HIGH_VALUE 1694
+  13:User/Software/remote_control.c **** #define RANGE 50
+  14:User/Software/remote_control.c **** // 升降继电器电平定义：低电平触发吸合，高电平断开控制引脚
+  15:User/Software/remote_control.c **** #define RELAY1_PIN GPIO_PIN_0
+  16:User/Software/remote_control.c **** #define RELAY1_PORT GPIOA
+  17:User/Software/remote_control.c **** #define RELAY2_PIN GPIO_PIN_2
+  18:User/Software/remote_control.c **** #define RELAY2_PORT GPIOA
+  19:User/Software/remote_control.c **** //
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 2
 
 
-  90 0002 00AF     		add	r7, sp, #0
-  91              	.LCFI1:
-  92              		.cfi_def_cfa_register 7
-  43:User/Software/remote_control.c ****     // 第一路继电器吸合（低电平）
-  44:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_ON);
-  93              		.loc 1 44 5
-  94 0004 0022     		movs	r2, #0
-  95 0006 0121     		movs	r1, #1
-  96 0008 0448     		ldr	r0, .L2
-  97 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
-  45:User/Software/remote_control.c ****     // 第二路继电器断开（高电平）
-  46:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
-  98              		.loc 1 46 5
-  99 000e 0122     		movs	r2, #1
- 100 0010 0421     		movs	r1, #4
- 101 0012 0248     		ldr	r0, .L2
- 102 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  47:User/Software/remote_control.c **** }
- 103              		.loc 1 47 1
- 104 0018 00BF     		nop
- 105 001a 80BD     		pop	{r7, pc}
- 106              	.L3:
- 107              		.align	2
- 108              	.L2:
- 109 001c 00000258 		.word	1476526080
- 110              		.cfi_endproc
- 111              	.LFE144:
- 113              		.section	.text.Motor_Reverse,"ax",%progbits
- 114              		.align	1
- 115              		.global	Motor_Reverse
- 116              		.syntax unified
- 117              		.thumb
- 118              		.thumb_func
- 120              	Motor_Reverse:
- 121              	.LFB145:
-  48:User/Software/remote_control.c **** 
-  49:User/Software/remote_control.c **** /**
-  50:User/Software/remote_control.c ****  * @brief  控制电机反转
-  51:User/Software/remote_control.c ****  * @note   IN1(PA0)=高电平（断开）、IN2(PA1)=低电平（吸合）
-  52:User/Software/remote_control.c ****  *         电机A端接24V-，B端接24V+，反向转动
-  53:User/Software/remote_control.c ****  * @param  无
-  54:User/Software/remote_control.c ****  * @retval 无
-  55:User/Software/remote_control.c ****  */
-  56:User/Software/remote_control.c **** void Motor_Reverse(void)
-  57:User/Software/remote_control.c **** {
- 122              		.loc 1 57 1
- 123              		.cfi_startproc
- 124              		@ args = 0, pretend = 0, frame = 0
- 125              		@ frame_needed = 1, uses_anonymous_args = 0
- 126 0000 80B5     		push	{r7, lr}
- 127              	.LCFI2:
- 128              		.cfi_def_cfa_offset 8
- 129              		.cfi_offset 7, -8
- 130              		.cfi_offset 14, -4
- 131 0002 00AF     		add	r7, sp, #0
- 132              	.LCFI3:
- 133              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 4
+  20:User/Software/remote_control.c **** #define RELAY_ON GPIO_PIN_RESET // 继电器吸合（低电平）
+  21:User/Software/remote_control.c **** #define RELAY_OFF GPIO_PIN_SET  // 继电器断开（高电平）
+  22:User/Software/remote_control.c **** 
+  23:User/Software/remote_control.c **** ARM_CONNECT_STATUS arm_connect_status;
+  24:User/Software/remote_control.c **** BOOM_ARM_Stats boom_arm_status;         // 机械臂气泵状态
+  25:User/Software/remote_control.c **** BOOM_STORAGE_Stats boom_storage_status; // 储矿气泵状态
+  26:User/Software/remote_control.c **** #define MOVE_SENSITIVITY 10.0f          // 移动灵敏度，
+  27:User/Software/remote_control.c **** #define PITCH_SENSITIVITY 0.008f        // pitch轴灵敏度
+  28:User/Software/remote_control.c **** #define YAW_SENSITIVITY 0.005f          // yaw轴灵敏度
+  29:User/Software/remote_control.c **** 
+  30:User/Software/remote_control.c **** /**
+  31:User/Software/remote_control.c ****  * @brief  控制电机正转
+  32:User/Software/remote_control.c ****  * @note   IN1(PA0)=低电平（吸合）、IN2(PA1)=高电平（断开）
+  33:User/Software/remote_control.c ****  *         电机A端接24V+，B端接24V-，正向转动
+  34:User/Software/remote_control.c ****  * @param  无
+  35:User/Software/remote_control.c ****  * @retval 无
+  36:User/Software/remote_control.c ****  */
+  37:User/Software/remote_control.c **** void Motor_Forward(void)
+  38:User/Software/remote_control.c **** {
+  46              		.loc 1 38 1
+  47              		.cfi_startproc
+  48              		@ args = 0, pretend = 0, frame = 0
+  49              		@ frame_needed = 1, uses_anonymous_args = 0
+  50 0000 80B5     		push	{r7, lr}
+  51              	.LCFI0:
+  52              		.cfi_def_cfa_offset 8
+  53              		.cfi_offset 7, -8
+  54              		.cfi_offset 14, -4
+  55 0002 00AF     		add	r7, sp, #0
+  56              	.LCFI1:
+  57              		.cfi_def_cfa_register 7
+  39:User/Software/remote_control.c ****     // 第一路继电器吸合（低电平）
+  40:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_ON);
+  58              		.loc 1 40 5
+  59 0004 0022     		movs	r2, #0
+  60 0006 0121     		movs	r1, #1
+  61 0008 0448     		ldr	r0, .L2
+  62 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  41:User/Software/remote_control.c ****     // 第二路继电器断开（高电平）
+  42:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
+  63              		.loc 1 42 5
+  64 000e 0122     		movs	r2, #1
+  65 0010 0421     		movs	r1, #4
+  66 0012 0248     		ldr	r0, .L2
+  67 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  43:User/Software/remote_control.c **** }
+  68              		.loc 1 43 1
+  69 0018 00BF     		nop
+  70 001a 80BD     		pop	{r7, pc}
+  71              	.L3:
+  72              		.align	2
+  73              	.L2:
+  74 001c 00000258 		.word	1476526080
+  75              		.cfi_endproc
+  76              	.LFE144:
+  78              		.section	.text.Motor_Reverse,"ax",%progbits
+  79              		.align	1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 3
 
 
-  58:User/Software/remote_control.c ****     // 第一路继电器断开（高电平）
-  59:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
- 134              		.loc 1 59 5
- 135 0004 0122     		movs	r2, #1
- 136 0006 0121     		movs	r1, #1
- 137 0008 0448     		ldr	r0, .L5
- 138 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
-  60:User/Software/remote_control.c ****     // 第二路继电器吸合（低电平）
-  61:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_ON);
- 139              		.loc 1 61 5
- 140 000e 0022     		movs	r2, #0
- 141 0010 0421     		movs	r1, #4
- 142 0012 0248     		ldr	r0, .L5
- 143 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  62:User/Software/remote_control.c **** }
- 144              		.loc 1 62 1
- 145 0018 00BF     		nop
- 146 001a 80BD     		pop	{r7, pc}
- 147              	.L6:
- 148              		.align	2
- 149              	.L5:
- 150 001c 00000258 		.word	1476526080
- 151              		.cfi_endproc
- 152              	.LFE145:
- 154              		.section	.text.Motor_Stop,"ax",%progbits
- 155              		.align	1
- 156              		.global	Motor_Stop
- 157              		.syntax unified
- 158              		.thumb
- 159              		.thumb_func
- 161              	Motor_Stop:
- 162              	.LFB146:
-  63:User/Software/remote_control.c **** 
-  64:User/Software/remote_control.c **** 
-  65:User/Software/remote_control.c **** /**
-  66:User/Software/remote_control.c ****  * @brief  控制电机停止
-  67:User/Software/remote_control.c ****  * @note   IN1和IN2都为高电平，两路继电器都断开，电机两端悬空，停止转动
-  68:User/Software/remote_control.c ****  * @param  无
-  69:User/Software/remote_control.c ****  * @retval 无
-  70:User/Software/remote_control.c ****  */
-  71:User/Software/remote_control.c **** void Motor_Stop(void)
-  72:User/Software/remote_control.c **** {
- 163              		.loc 1 72 1
- 164              		.cfi_startproc
- 165              		@ args = 0, pretend = 0, frame = 0
- 166              		@ frame_needed = 1, uses_anonymous_args = 0
- 167 0000 80B5     		push	{r7, lr}
- 168              	.LCFI4:
- 169              		.cfi_def_cfa_offset 8
- 170              		.cfi_offset 7, -8
- 171              		.cfi_offset 14, -4
- 172 0002 00AF     		add	r7, sp, #0
- 173              	.LCFI5:
- 174              		.cfi_def_cfa_register 7
-  73:User/Software/remote_control.c ****     // 两路继电器都断开（高电平）
-  74:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
- 175              		.loc 1 74 5
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 5
+  80              		.global	Motor_Reverse
+  81              		.syntax unified
+  82              		.thumb
+  83              		.thumb_func
+  85              	Motor_Reverse:
+  86              	.LFB145:
+  44:User/Software/remote_control.c **** 
+  45:User/Software/remote_control.c **** /**
+  46:User/Software/remote_control.c ****  * @brief  控制电机反转
+  47:User/Software/remote_control.c ****  * @note   IN1(PA0)=高电平（断开）、IN2(PA1)=低电平（吸合）
+  48:User/Software/remote_control.c ****  *         电机A端接24V-，B端接24V+，反向转动
+  49:User/Software/remote_control.c ****  * @param  无
+  50:User/Software/remote_control.c ****  * @retval 无
+  51:User/Software/remote_control.c ****  */
+  52:User/Software/remote_control.c **** void Motor_Reverse(void)
+  53:User/Software/remote_control.c **** {
+  87              		.loc 1 53 1
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 0
+  90              		@ frame_needed = 1, uses_anonymous_args = 0
+  91 0000 80B5     		push	{r7, lr}
+  92              	.LCFI2:
+  93              		.cfi_def_cfa_offset 8
+  94              		.cfi_offset 7, -8
+  95              		.cfi_offset 14, -4
+  96 0002 00AF     		add	r7, sp, #0
+  97              	.LCFI3:
+  98              		.cfi_def_cfa_register 7
+  54:User/Software/remote_control.c ****     // 第一路继电器断开（高电平）
+  55:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
+  99              		.loc 1 55 5
+ 100 0004 0122     		movs	r2, #1
+ 101 0006 0121     		movs	r1, #1
+ 102 0008 0448     		ldr	r0, .L5
+ 103 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  56:User/Software/remote_control.c ****     // 第二路继电器吸合（低电平）
+  57:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_ON);
+ 104              		.loc 1 57 5
+ 105 000e 0022     		movs	r2, #0
+ 106 0010 0421     		movs	r1, #4
+ 107 0012 0248     		ldr	r0, .L5
+ 108 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  58:User/Software/remote_control.c **** }
+ 109              		.loc 1 58 1
+ 110 0018 00BF     		nop
+ 111 001a 80BD     		pop	{r7, pc}
+ 112              	.L6:
+ 113              		.align	2
+ 114              	.L5:
+ 115 001c 00000258 		.word	1476526080
+ 116              		.cfi_endproc
+ 117              	.LFE145:
+ 119              		.section	.text.Motor_Stop,"ax",%progbits
+ 120              		.align	1
+ 121              		.global	Motor_Stop
+ 122              		.syntax unified
+ 123              		.thumb
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 4
 
 
- 176 0004 0122     		movs	r2, #1
- 177 0006 0121     		movs	r1, #1
- 178 0008 0448     		ldr	r0, .L8
- 179 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
-  75:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
- 180              		.loc 1 75 5
- 181 000e 0122     		movs	r2, #1
- 182 0010 0421     		movs	r1, #4
- 183 0012 0248     		ldr	r0, .L8
- 184 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
-  76:User/Software/remote_control.c **** }
- 185              		.loc 1 76 1
- 186 0018 00BF     		nop
- 187 001a 80BD     		pop	{r7, pc}
- 188              	.L9:
- 189              		.align	2
- 190              	.L8:
- 191 001c 00000258 		.word	1476526080
- 192              		.cfi_endproc
- 193              	.LFE146:
- 195              		.section	.text.Wait,"ax",%progbits
- 196              		.align	1
- 197              		.global	Wait
- 198              		.syntax unified
- 199              		.thumb
- 200              		.thumb_func
- 202              	Wait:
- 203              	.LFB147:
-  77:User/Software/remote_control.c **** 
-  78:User/Software/remote_control.c **** 
-  79:User/Software/remote_control.c **** 
-  80:User/Software/remote_control.c **** 
-  81:User/Software/remote_control.c **** 
-  82:User/Software/remote_control.c **** /**
-  83:User/Software/remote_control.c ****  * @brief 统一消抖
-  84:User/Software/remote_control.c ****  *
-  85:User/Software/remote_control.c ****  * @param key 按键宏
-  86:User/Software/remote_control.c ****  * @return uint8_t 0未到时间，1到时间
-  87:User/Software/remote_control.c ****  */
-  88:User/Software/remote_control.c **** uint8_t Wait(uint8_t key)
-  89:User/Software/remote_control.c **** {
- 204              		.loc 1 89 1
- 205              		.cfi_startproc
- 206              		@ args = 0, pretend = 0, frame = 8
- 207              		@ frame_needed = 1, uses_anonymous_args = 0
- 208              		@ link register save eliminated.
- 209 0000 80B4     		push	{r7}
- 210              	.LCFI6:
- 211              		.cfi_def_cfa_offset 4
- 212              		.cfi_offset 7, -4
- 213 0002 83B0     		sub	sp, sp, #12
- 214              	.LCFI7:
- 215              		.cfi_def_cfa_offset 16
- 216 0004 00AF     		add	r7, sp, #0
- 217              	.LCFI8:
- 218              		.cfi_def_cfa_register 7
- 219 0006 0346     		mov	r3, r0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 6
+ 124              		.thumb_func
+ 126              	Motor_Stop:
+ 127              	.LFB146:
+  59:User/Software/remote_control.c **** 
+  60:User/Software/remote_control.c **** /**
+  61:User/Software/remote_control.c ****  * @brief  控制电机停止
+  62:User/Software/remote_control.c ****  * @note   IN1和IN2都为高电平，两路继电器都断开，电机两端悬空，停止转动
+  63:User/Software/remote_control.c ****  * @param  无
+  64:User/Software/remote_control.c ****  * @retval 无
+  65:User/Software/remote_control.c ****  */
+  66:User/Software/remote_control.c **** void Motor_Stop(void)
+  67:User/Software/remote_control.c **** {
+ 128              		.loc 1 67 1
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 0
+ 131              		@ frame_needed = 1, uses_anonymous_args = 0
+ 132 0000 80B5     		push	{r7, lr}
+ 133              	.LCFI4:
+ 134              		.cfi_def_cfa_offset 8
+ 135              		.cfi_offset 7, -8
+ 136              		.cfi_offset 14, -4
+ 137 0002 00AF     		add	r7, sp, #0
+ 138              	.LCFI5:
+ 139              		.cfi_def_cfa_register 7
+  68:User/Software/remote_control.c ****     // 两路继电器都断开（高电平）
+  69:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
+ 140              		.loc 1 69 5
+ 141 0004 0122     		movs	r2, #1
+ 142 0006 0121     		movs	r1, #1
+ 143 0008 0448     		ldr	r0, .L8
+ 144 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  70:User/Software/remote_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
+ 145              		.loc 1 70 5
+ 146 000e 0122     		movs	r2, #1
+ 147 0010 0421     		movs	r1, #4
+ 148 0012 0248     		ldr	r0, .L8
+ 149 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  71:User/Software/remote_control.c **** }
+ 150              		.loc 1 71 1
+ 151 0018 00BF     		nop
+ 152 001a 80BD     		pop	{r7, pc}
+ 153              	.L9:
+ 154              		.align	2
+ 155              	.L8:
+ 156 001c 00000258 		.word	1476526080
+ 157              		.cfi_endproc
+ 158              	.LFE146:
+ 160              		.section	.text.Up_Down_Motor_Control,"ax",%progbits
+ 161              		.align	1
+ 162              		.global	Up_Down_Motor_Control
+ 163              		.syntax unified
+ 164              		.thumb
+ 165              		.thumb_func
+ 167              	Up_Down_Motor_Control:
+ 168              	.LFB147:
+  72:User/Software/remote_control.c **** void Up_Down_Motor_Control(void)
+  73:User/Software/remote_control.c **** {
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 5
 
 
- 220 0008 FB71     		strb	r3, [r7, #7]
-  90:User/Software/remote_control.c **** 
-  91:User/Software/remote_control.c **** }
- 221              		.loc 1 91 1
- 222 000a 00BF     		nop
- 223 000c 1846     		mov	r0, r3
- 224 000e 0C37     		adds	r7, r7, #12
- 225              	.LCFI9:
- 226              		.cfi_def_cfa_offset 4
- 227 0010 BD46     		mov	sp, r7
- 228              	.LCFI10:
- 229              		.cfi_def_cfa_register 13
- 230              		@ sp needed
- 231 0012 5DF8047B 		ldr	r7, [sp], #4
- 232              	.LCFI11:
- 233              		.cfi_restore 7
- 234              		.cfi_def_cfa_offset 0
- 235 0016 7047     		bx	lr
- 236              		.cfi_endproc
- 237              	.LFE147:
- 239              		.section	.text.remote_control_init,"ax",%progbits
- 240              		.align	1
- 241              		.global	remote_control_init
- 242              		.syntax unified
- 243              		.thumb
- 244              		.thumb_func
- 246              	remote_control_init:
- 247              	.LFB148:
-  92:User/Software/remote_control.c **** void remote_control_init()
-  93:User/Software/remote_control.c **** {
- 248              		.loc 1 93 1
- 249              		.cfi_startproc
- 250              		@ args = 0, pretend = 0, frame = 0
- 251              		@ frame_needed = 1, uses_anonymous_args = 0
- 252 0000 80B5     		push	{r7, lr}
- 253              	.LCFI12:
- 254              		.cfi_def_cfa_offset 8
- 255              		.cfi_offset 7, -8
- 256              		.cfi_offset 14, -4
- 257 0002 00AF     		add	r7, sp, #0
- 258              	.LCFI13:
- 259              		.cfi_def_cfa_register 7
-  94:User/Software/remote_control.c ****     GPIO_init();
- 260              		.loc 1 94 5
- 261 0004 FFF7FEFF 		bl	GPIO_init
-  95:User/Software/remote_control.c ****     PWM_control_init();
- 262              		.loc 1 95 5
- 263 0008 FFF7FEFF 		bl	PWM_control_init
-  96:User/Software/remote_control.c ****     boom_storage_status = STORAGE_OFF; // 气泵
- 264              		.loc 1 96 25
- 265 000c 034B     		ldr	r3, .L12
- 266 000e 0022     		movs	r2, #0
- 267 0010 1A70     		strb	r2, [r3]
-  97:User/Software/remote_control.c ****     boom_arm_status = ARM_BOOM_OFF;    // 机械臂
- 268              		.loc 1 97 21
- 269 0012 034B     		ldr	r3, .L12+4
- 270 0014 0122     		movs	r2, #1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 7
+ 169              		.loc 1 73 1
+ 170              		.cfi_startproc
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 1, uses_anonymous_args = 0
+ 173 0000 80B5     		push	{r7, lr}
+ 174              	.LCFI6:
+ 175              		.cfi_def_cfa_offset 8
+ 176              		.cfi_offset 7, -8
+ 177              		.cfi_offset 14, -4
+ 178 0002 00AF     		add	r7, sp, #0
+ 179              	.LCFI7:
+ 180              		.cfi_def_cfa_register 7
+  74:User/Software/remote_control.c ****     
+  75:User/Software/remote_control.c ****     switch(SBUS_CH.CH7)
+ 181              		.loc 1 75 19
+ 182 0004 0A4B     		ldr	r3, .L14
+ 183 0006 9B89     		ldrh	r3, [r3, #12]
+ 184              		.loc 1 75 5
+ 185 0008 40F26112 		movw	r2, #353
+ 186 000c 9342     		cmp	r3, r2
+ 187 000e 06D0     		beq	.L11
+ 188 0010 40F29E62 		movw	r2, #1694
+ 189 0014 9342     		cmp	r3, r2
+ 190 0016 05D1     		bne	.L12
+  76:User/Software/remote_control.c ****     {
+  77:User/Software/remote_control.c ****         case HIGH_VALUE:
+  78:User/Software/remote_control.c ****             Motor_Forward();
+ 191              		.loc 1 78 13
+ 192 0018 FFF7FEFF 		bl	Motor_Forward
+  79:User/Software/remote_control.c ****             break;
+ 193              		.loc 1 79 13
+ 194 001c 05E0     		b	.L13
+ 195              	.L11:
+  80:User/Software/remote_control.c ****         case LOW_VALUE:
+  81:User/Software/remote_control.c ****             Motor_Reverse();
+ 196              		.loc 1 81 13
+ 197 001e FFF7FEFF 		bl	Motor_Reverse
+  82:User/Software/remote_control.c ****             break;
+ 198              		.loc 1 82 13
+ 199 0022 02E0     		b	.L13
+ 200              	.L12:
+  83:User/Software/remote_control.c ****         case MID_VALUE:
+  84:User/Software/remote_control.c ****         default:  // 兜底，确保任何情况都有处理
+  85:User/Software/remote_control.c ****             Motor_Stop();
+ 201              		.loc 1 85 13
+ 202 0024 FFF7FEFF 		bl	Motor_Stop
+  86:User/Software/remote_control.c ****             break;
+ 203              		.loc 1 86 13
+ 204 0028 00BF     		nop
+ 205              	.L13:
+  87:User/Software/remote_control.c ****     }
+  88:User/Software/remote_control.c **** 
+  89:User/Software/remote_control.c **** 
+  90:User/Software/remote_control.c **** }
+ 206              		.loc 1 90 1
+ 207 002a 00BF     		nop
+ 208 002c 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 6
 
 
- 271 0016 1A70     		strb	r2, [r3]
-  98:User/Software/remote_control.c **** }
- 272              		.loc 1 98 1
- 273 0018 00BF     		nop
- 274 001a 80BD     		pop	{r7, pc}
- 275              	.L13:
- 276              		.align	2
- 277              	.L12:
- 278 001c 00000000 		.word	boom_storage_status
- 279 0020 00000000 		.word	boom_arm_status
- 280              		.cfi_endproc
- 281              	.LFE148:
- 283              		.section	.text.GPIO_init,"ax",%progbits
- 284              		.align	1
- 285              		.global	GPIO_init
- 286              		.syntax unified
- 287              		.thumb
- 288              		.thumb_func
- 290              	GPIO_init:
- 291              	.LFB149:
-  99:User/Software/remote_control.c **** 
- 100:User/Software/remote_control.c **** void GPIO_init() // 电子开关初始化
- 101:User/Software/remote_control.c **** {
- 292              		.loc 1 101 1
- 293              		.cfi_startproc
- 294              		@ args = 0, pretend = 0, frame = 0
- 295              		@ frame_needed = 1, uses_anonymous_args = 0
- 296 0000 80B5     		push	{r7, lr}
- 297              	.LCFI14:
- 298              		.cfi_def_cfa_offset 8
- 299              		.cfi_offset 7, -8
- 300              		.cfi_offset 14, -4
- 301 0002 00AF     		add	r7, sp, #0
- 302              	.LCFI15:
- 303              		.cfi_def_cfa_register 7
- 102:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET); // PD14//气泵1
- 304              		.loc 1 102 5
- 305 0004 0022     		movs	r2, #0
- 306 0006 4FF48041 		mov	r1, #16384
- 307 000a 1E48     		ldr	r0, .L15
- 308 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 103:User/Software/remote_control.c **** 
- 104:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET); // PD15//电磁阀2
- 309              		.loc 1 104 5
- 310 0010 0022     		movs	r2, #0
- 311 0012 4FF40041 		mov	r1, #32768
- 312 0016 1B48     		ldr	r0, .L15
- 313 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 105:User/Software/remote_control.c **** 
- 106:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET); // PB8
- 314              		.loc 1 106 5
- 315 001c 0022     		movs	r2, #0
- 316 001e 4FF48071 		mov	r1, #256
- 317 0022 1948     		ldr	r0, .L15+4
- 318 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 107:User/Software/remote_control.c **** 
- 108:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET); // PB9
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 8
+ 209              	.L15:
+ 210 002e 00BF     		.align	2
+ 211              	.L14:
+ 212 0030 00000000 		.word	SBUS_CH
+ 213              		.cfi_endproc
+ 214              	.LFE147:
+ 216              		.section	.text.remote_control_init,"ax",%progbits
+ 217              		.align	1
+ 218              		.global	remote_control_init
+ 219              		.syntax unified
+ 220              		.thumb
+ 221              		.thumb_func
+ 223              	remote_control_init:
+ 224              	.LFB148:
+  91:User/Software/remote_control.c **** 
+  92:User/Software/remote_control.c **** 
+  93:User/Software/remote_control.c **** void remote_control_init()
+  94:User/Software/remote_control.c **** {
+ 225              		.loc 1 94 1
+ 226              		.cfi_startproc
+ 227              		@ args = 0, pretend = 0, frame = 0
+ 228              		@ frame_needed = 1, uses_anonymous_args = 0
+ 229 0000 80B5     		push	{r7, lr}
+ 230              	.LCFI8:
+ 231              		.cfi_def_cfa_offset 8
+ 232              		.cfi_offset 7, -8
+ 233              		.cfi_offset 14, -4
+ 234 0002 00AF     		add	r7, sp, #0
+ 235              	.LCFI9:
+ 236              		.cfi_def_cfa_register 7
+  95:User/Software/remote_control.c ****     GPIO_init();
+ 237              		.loc 1 95 5
+ 238 0004 FFF7FEFF 		bl	GPIO_init
+  96:User/Software/remote_control.c ****     PWM_control_init();
+ 239              		.loc 1 96 5
+ 240 0008 FFF7FEFF 		bl	PWM_control_init
+  97:User/Software/remote_control.c ****     boom_storage_status = STORAGE_OFF; // 气泵
+ 241              		.loc 1 97 25
+ 242 000c 034B     		ldr	r3, .L17
+ 243 000e 0022     		movs	r2, #0
+ 244 0010 1A70     		strb	r2, [r3]
+  98:User/Software/remote_control.c ****     boom_arm_status = ARM_BOOM_OFF;    // 机械臂
+ 245              		.loc 1 98 21
+ 246 0012 034B     		ldr	r3, .L17+4
+ 247 0014 0122     		movs	r2, #1
+ 248 0016 1A70     		strb	r2, [r3]
+  99:User/Software/remote_control.c **** }
+ 249              		.loc 1 99 1
+ 250 0018 00BF     		nop
+ 251 001a 80BD     		pop	{r7, pc}
+ 252              	.L18:
+ 253              		.align	2
+ 254              	.L17:
+ 255 001c 00000000 		.word	boom_storage_status
+ 256 0020 00000000 		.word	boom_arm_status
+ 257              		.cfi_endproc
+ 258              	.LFE148:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 7
 
 
- 319              		.loc 1 108 5
- 320 0028 0022     		movs	r2, #0
- 321 002a 4FF40071 		mov	r1, #512
- 322 002e 1648     		ldr	r0, .L15+4
- 323 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 109:User/Software/remote_control.c **** 
- 110:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, GPIO_PIN_RESET); // PE14
- 324              		.loc 1 110 5
- 325 0034 0022     		movs	r2, #0
- 326 0036 4FF48041 		mov	r1, #16384
- 327 003a 1448     		ldr	r0, .L15+8
- 328 003c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 111:User/Software/remote_control.c **** 
- 112:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOE, GPIO_PIN_0, GPIO_PIN_RESET); // PE0，左储矿
- 329              		.loc 1 112 5
- 330 0040 0022     		movs	r2, #0
- 331 0042 0121     		movs	r1, #1
- 332 0044 1148     		ldr	r0, .L15+8
- 333 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 113:User/Software/remote_control.c **** 
- 114:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1, GPIO_PIN_RESET); // PE1
- 334              		.loc 1 114 5
- 335 004a 0022     		movs	r2, #0
- 336 004c 0221     		movs	r1, #2
- 337 004e 0F48     		ldr	r0, .L15+8
- 338 0050 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 115:User/Software/remote_control.c **** 
- 116:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET); // PC10 气泵
- 339              		.loc 1 116 5
- 340 0054 0022     		movs	r2, #0
- 341 0056 4FF48061 		mov	r1, #1024
- 342 005a 0D48     		ldr	r0, .L15+12
- 343 005c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 117:User/Software/remote_control.c **** 
- 118:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_RESET); // PC11，右储矿
- 344              		.loc 1 118 5
- 345 0060 0022     		movs	r2, #0
- 346 0062 4FF40061 		mov	r1, #2048
- 347 0066 0A48     		ldr	r0, .L15+12
- 348 0068 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 119:User/Software/remote_control.c **** 
- 120:User/Software/remote_control.c ****     HAL_GPIO_WritePin (GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
- 349              		.loc 1 120 5
- 350 006c 0022     		movs	r2, #0
- 351 006e 0121     		movs	r1, #1
- 352 0070 0848     		ldr	r0, .L15+16
- 353 0072 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 121:User/Software/remote_control.c ****     HAL_GPIO_WritePin (GPIOA,GPIO_PIN_1,GPIO_PIN_RESET);
- 354              		.loc 1 121 5
- 355 0076 0022     		movs	r2, #0
- 356 0078 0221     		movs	r1, #2
- 357 007a 0648     		ldr	r0, .L15+16
- 358 007c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 122:User/Software/remote_control.c **** }
- 359              		.loc 1 122 1
- 360 0080 00BF     		nop
- 361 0082 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 9
+ 260              		.section	.text.GPIO_init,"ax",%progbits
+ 261              		.align	1
+ 262              		.global	GPIO_init
+ 263              		.syntax unified
+ 264              		.thumb
+ 265              		.thumb_func
+ 267              	GPIO_init:
+ 268              	.LFB149:
+ 100:User/Software/remote_control.c **** 
+ 101:User/Software/remote_control.c **** void GPIO_init() // 电子开关初始化
+ 102:User/Software/remote_control.c **** {
+ 269              		.loc 1 102 1
+ 270              		.cfi_startproc
+ 271              		@ args = 0, pretend = 0, frame = 0
+ 272              		@ frame_needed = 1, uses_anonymous_args = 0
+ 273 0000 80B5     		push	{r7, lr}
+ 274              	.LCFI10:
+ 275              		.cfi_def_cfa_offset 8
+ 276              		.cfi_offset 7, -8
+ 277              		.cfi_offset 14, -4
+ 278 0002 00AF     		add	r7, sp, #0
+ 279              	.LCFI11:
+ 280              		.cfi_def_cfa_register 7
+ 103:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET); // PD14//气泵1
+ 281              		.loc 1 103 5
+ 282 0004 0022     		movs	r2, #0
+ 283 0006 4FF48041 		mov	r1, #16384
+ 284 000a 1E48     		ldr	r0, .L20
+ 285 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 104:User/Software/remote_control.c **** 
+ 105:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET); // PD15//电磁阀2
+ 286              		.loc 1 105 5
+ 287 0010 0022     		movs	r2, #0
+ 288 0012 4FF40041 		mov	r1, #32768
+ 289 0016 1B48     		ldr	r0, .L20
+ 290 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 106:User/Software/remote_control.c **** 
+ 107:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET); // PB8
+ 291              		.loc 1 107 5
+ 292 001c 0022     		movs	r2, #0
+ 293 001e 4FF48071 		mov	r1, #256
+ 294 0022 1948     		ldr	r0, .L20+4
+ 295 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 108:User/Software/remote_control.c **** 
+ 109:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET); // PB9
+ 296              		.loc 1 109 5
+ 297 0028 0022     		movs	r2, #0
+ 298 002a 4FF40071 		mov	r1, #512
+ 299 002e 1648     		ldr	r0, .L20+4
+ 300 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 110:User/Software/remote_control.c **** 
+ 111:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, GPIO_PIN_RESET); // PE14
+ 301              		.loc 1 111 5
+ 302 0034 0022     		movs	r2, #0
+ 303 0036 4FF48041 		mov	r1, #16384
+ 304 003a 1448     		ldr	r0, .L20+8
+ 305 003c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 8
 
 
- 362              	.L16:
- 363              		.align	2
- 364              	.L15:
- 365 0084 000C0258 		.word	1476529152
- 366 0088 00040258 		.word	1476527104
- 367 008c 00100258 		.word	1476530176
- 368 0090 00080258 		.word	1476528128
- 369 0094 00000258 		.word	1476526080
- 370              		.cfi_endproc
- 371              	.LFE149:
- 373              		.section	.text.PWM_control_init,"ax",%progbits
- 374              		.align	1
- 375              		.global	PWM_control_init
- 376              		.syntax unified
- 377              		.thumb
- 378              		.thumb_func
- 380              	PWM_control_init:
- 381              	.LFB150:
- 123:User/Software/remote_control.c **** 
- 124:User/Software/remote_control.c **** void PWM_control_init() // 舵机云台初始化
- 125:User/Software/remote_control.c **** {
- 382              		.loc 1 125 1
- 383              		.cfi_startproc
- 384              		@ args = 0, pretend = 0, frame = 0
- 385              		@ frame_needed = 1, uses_anonymous_args = 0
- 386              		@ link register save eliminated.
- 387 0000 80B4     		push	{r7}
- 388              	.LCFI16:
- 389              		.cfi_def_cfa_offset 4
- 390              		.cfi_offset 7, -4
- 391 0002 00AF     		add	r7, sp, #0
- 392              	.LCFI17:
- 393              		.cfi_def_cfa_register 7
- 126:User/Software/remote_control.c **** 
- 127:User/Software/remote_control.c **** }
- 394              		.loc 1 127 1
- 395 0004 00BF     		nop
- 396 0006 BD46     		mov	sp, r7
- 397              	.LCFI18:
- 398              		.cfi_def_cfa_register 13
- 399              		@ sp needed
- 400 0008 5DF8047B 		ldr	r7, [sp], #4
- 401              	.LCFI19:
- 402              		.cfi_restore 7
- 403              		.cfi_def_cfa_offset 0
- 404 000c 7047     		bx	lr
- 405              		.cfi_endproc
- 406              	.LFE150:
- 408              		.section	.text.VT13toRCdata,"ax",%progbits
- 409              		.align	1
- 410              		.global	VT13toRCdata
- 411              		.syntax unified
- 412              		.thumb
- 413              		.thumb_func
- 415              	VT13toRCdata:
- 416              	.LFB151:
- 128:User/Software/remote_control.c **** 
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 10
+ 112:User/Software/remote_control.c **** 
+ 113:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOE, GPIO_PIN_0, GPIO_PIN_RESET); // PE0，左储矿
+ 306              		.loc 1 113 5
+ 307 0040 0022     		movs	r2, #0
+ 308 0042 0121     		movs	r1, #1
+ 309 0044 1148     		ldr	r0, .L20+8
+ 310 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 114:User/Software/remote_control.c **** 
+ 115:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1, GPIO_PIN_RESET); // PE1
+ 311              		.loc 1 115 5
+ 312 004a 0022     		movs	r2, #0
+ 313 004c 0221     		movs	r1, #2
+ 314 004e 0F48     		ldr	r0, .L20+8
+ 315 0050 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 116:User/Software/remote_control.c **** 
+ 117:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET); // PC10 气泵
+ 316              		.loc 1 117 5
+ 317 0054 0022     		movs	r2, #0
+ 318 0056 4FF48061 		mov	r1, #1024
+ 319 005a 0D48     		ldr	r0, .L20+12
+ 320 005c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 118:User/Software/remote_control.c **** 
+ 119:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_RESET); // PC11，右储矿
+ 321              		.loc 1 119 5
+ 322 0060 0022     		movs	r2, #0
+ 323 0062 4FF40061 		mov	r1, #2048
+ 324 0066 0A48     		ldr	r0, .L20+12
+ 325 0068 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 120:User/Software/remote_control.c **** 
+ 121:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+ 326              		.loc 1 121 5
+ 327 006c 0022     		movs	r2, #0
+ 328 006e 0121     		movs	r1, #1
+ 329 0070 0848     		ldr	r0, .L20+16
+ 330 0072 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 122:User/Software/remote_control.c **** 
+ 123:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+ 331              		.loc 1 123 5
+ 332 0076 0022     		movs	r2, #0
+ 333 0078 0221     		movs	r1, #2
+ 334 007a 0648     		ldr	r0, .L20+16
+ 335 007c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 124:User/Software/remote_control.c **** }
+ 336              		.loc 1 124 1
+ 337 0080 00BF     		nop
+ 338 0082 80BD     		pop	{r7, pc}
+ 339              	.L21:
+ 340              		.align	2
+ 341              	.L20:
+ 342 0084 000C0258 		.word	1476529152
+ 343 0088 00040258 		.word	1476527104
+ 344 008c 00100258 		.word	1476530176
+ 345 0090 00080258 		.word	1476528128
+ 346 0094 00000258 		.word	1476526080
+ 347              		.cfi_endproc
+ 348              	.LFE149:
+ 350              		.section	.text.PWM_control_init,"ax",%progbits
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 9
 
 
- 129:User/Software/remote_control.c **** void VT13toRCdata()
- 130:User/Software/remote_control.c **** {
- 417              		.loc 1 130 1
- 418              		.cfi_startproc
- 419              		@ args = 0, pretend = 0, frame = 0
- 420              		@ frame_needed = 1, uses_anonymous_args = 0
- 421              		@ link register save eliminated.
- 422 0000 80B4     		push	{r7}
- 423              	.LCFI20:
- 424              		.cfi_def_cfa_offset 4
- 425              		.cfi_offset 7, -4
- 426 0002 00AF     		add	r7, sp, #0
- 427              	.LCFI21:
- 428              		.cfi_def_cfa_register 7
- 131:User/Software/remote_control.c **** 
- 132:User/Software/remote_control.c **** 
- 133:User/Software/remote_control.c **** }
- 429              		.loc 1 133 1
- 430 0004 00BF     		nop
- 431 0006 BD46     		mov	sp, r7
- 432              	.LCFI22:
- 433              		.cfi_def_cfa_register 13
- 434              		@ sp needed
- 435 0008 5DF8047B 		ldr	r7, [sp], #4
- 436              	.LCFI23:
- 437              		.cfi_restore 7
- 438              		.cfi_def_cfa_offset 0
- 439 000c 7047     		bx	lr
- 440              		.cfi_endproc
- 441              	.LFE151:
- 443              		.section	.text.key_mouse_control,"ax",%progbits
- 444              		.align	1
- 445              		.global	key_mouse_control
- 446              		.syntax unified
- 447              		.thumb
- 448              		.thumb_func
- 450              	key_mouse_control:
- 451              	.LFB152:
- 134:User/Software/remote_control.c **** void key_mouse_control() // 键盘鼠标模式+自定义控制器
- 135:User/Software/remote_control.c **** {
- 452              		.loc 1 135 1
- 453              		.cfi_startproc
- 454              		@ args = 0, pretend = 0, frame = 0
- 455              		@ frame_needed = 1, uses_anonymous_args = 0
- 456              		@ link register save eliminated.
- 457 0000 80B4     		push	{r7}
- 458              	.LCFI24:
- 459              		.cfi_def_cfa_offset 4
- 460              		.cfi_offset 7, -4
- 461 0002 00AF     		add	r7, sp, #0
- 462              	.LCFI25:
- 463              		.cfi_def_cfa_register 7
- 136:User/Software/remote_control.c **** }
- 464              		.loc 1 136 1
- 465 0004 00BF     		nop
- 466 0006 BD46     		mov	sp, r7
- 467              	.LCFI26:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 11
+ 351              		.align	1
+ 352              		.global	PWM_control_init
+ 353              		.syntax unified
+ 354              		.thumb
+ 355              		.thumb_func
+ 357              	PWM_control_init:
+ 358              	.LFB150:
+ 125:User/Software/remote_control.c **** 
+ 126:User/Software/remote_control.c **** void PWM_control_init() // 舵机云台初始化
+ 127:User/Software/remote_control.c **** {
+ 359              		.loc 1 127 1
+ 360              		.cfi_startproc
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 1, uses_anonymous_args = 0
+ 363              		@ link register save eliminated.
+ 364 0000 80B4     		push	{r7}
+ 365              	.LCFI12:
+ 366              		.cfi_def_cfa_offset 4
+ 367              		.cfi_offset 7, -4
+ 368 0002 00AF     		add	r7, sp, #0
+ 369              	.LCFI13:
+ 370              		.cfi_def_cfa_register 7
+ 128:User/Software/remote_control.c **** }
+ 371              		.loc 1 128 1
+ 372 0004 00BF     		nop
+ 373 0006 BD46     		mov	sp, r7
+ 374              	.LCFI14:
+ 375              		.cfi_def_cfa_register 13
+ 376              		@ sp needed
+ 377 0008 5DF8047B 		ldr	r7, [sp], #4
+ 378              	.LCFI15:
+ 379              		.cfi_restore 7
+ 380              		.cfi_def_cfa_offset 0
+ 381 000c 7047     		bx	lr
+ 382              		.cfi_endproc
+ 383              	.LFE150:
+ 385              		.section	.text.VT13toRCdata,"ax",%progbits
+ 386              		.align	1
+ 387              		.global	VT13toRCdata
+ 388              		.syntax unified
+ 389              		.thumb
+ 390              		.thumb_func
+ 392              	VT13toRCdata:
+ 393              	.LFB151:
+ 129:User/Software/remote_control.c **** 
+ 130:User/Software/remote_control.c **** void VT13toRCdata()
+ 131:User/Software/remote_control.c **** {
+ 394              		.loc 1 131 1
+ 395              		.cfi_startproc
+ 396              		@ args = 0, pretend = 0, frame = 0
+ 397              		@ frame_needed = 1, uses_anonymous_args = 0
+ 398              		@ link register save eliminated.
+ 399 0000 80B4     		push	{r7}
+ 400              	.LCFI16:
+ 401              		.cfi_def_cfa_offset 4
+ 402              		.cfi_offset 7, -4
+ 403 0002 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 10
 
 
- 468              		.cfi_def_cfa_register 13
- 469              		@ sp needed
- 470 0008 5DF8047B 		ldr	r7, [sp], #4
- 471              	.LCFI27:
- 472              		.cfi_restore 7
- 473              		.cfi_def_cfa_offset 0
- 474 000c 7047     		bx	lr
- 475              		.cfi_endproc
- 476              	.LFE152:
- 478              		.section	.text.ARM_CONNECT_STATUS_UPDATA,"ax",%progbits
- 479              		.align	1
- 480              		.global	ARM_CONNECT_STATUS_UPDATA
- 481              		.syntax unified
- 482              		.thumb
- 483              		.thumb_func
- 485              	ARM_CONNECT_STATUS_UPDATA:
- 486              	.LFB153:
- 137:User/Software/remote_control.c **** void ARM_CONNECT_STATUS_UPDATA()
- 138:User/Software/remote_control.c **** {
- 487              		.loc 1 138 1
- 488              		.cfi_startproc
- 489              		@ args = 0, pretend = 0, frame = 0
- 490              		@ frame_needed = 1, uses_anonymous_args = 0
- 491              		@ link register save eliminated.
- 492 0000 80B4     		push	{r7}
- 493              	.LCFI28:
- 494              		.cfi_def_cfa_offset 4
- 495              		.cfi_offset 7, -4
- 496 0002 00AF     		add	r7, sp, #0
- 497              	.LCFI29:
- 498              		.cfi_def_cfa_register 7
- 139:User/Software/remote_control.c ****  
- 140:User/Software/remote_control.c **** 
- 141:User/Software/remote_control.c ****     
+ 404              	.LCFI17:
+ 405              		.cfi_def_cfa_register 7
+ 132:User/Software/remote_control.c **** }
+ 406              		.loc 1 132 1
+ 407 0004 00BF     		nop
+ 408 0006 BD46     		mov	sp, r7
+ 409              	.LCFI18:
+ 410              		.cfi_def_cfa_register 13
+ 411              		@ sp needed
+ 412 0008 5DF8047B 		ldr	r7, [sp], #4
+ 413              	.LCFI19:
+ 414              		.cfi_restore 7
+ 415              		.cfi_def_cfa_offset 0
+ 416 000c 7047     		bx	lr
+ 417              		.cfi_endproc
+ 418              	.LFE151:
+ 420              		.section	.text.key_mouse_control,"ax",%progbits
+ 421              		.align	1
+ 422              		.global	key_mouse_control
+ 423              		.syntax unified
+ 424              		.thumb
+ 425              		.thumb_func
+ 427              	key_mouse_control:
+ 428              	.LFB152:
+ 133:User/Software/remote_control.c **** void key_mouse_control() // 键盘鼠标模式+自定义控制器
+ 134:User/Software/remote_control.c **** {
+ 429              		.loc 1 134 1
+ 430              		.cfi_startproc
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 1, uses_anonymous_args = 0
+ 433              		@ link register save eliminated.
+ 434 0000 80B4     		push	{r7}
+ 435              	.LCFI20:
+ 436              		.cfi_def_cfa_offset 4
+ 437              		.cfi_offset 7, -4
+ 438 0002 00AF     		add	r7, sp, #0
+ 439              	.LCFI21:
+ 440              		.cfi_def_cfa_register 7
+ 135:User/Software/remote_control.c **** }
+ 441              		.loc 1 135 1
+ 442 0004 00BF     		nop
+ 443 0006 BD46     		mov	sp, r7
+ 444              	.LCFI22:
+ 445              		.cfi_def_cfa_register 13
+ 446              		@ sp needed
+ 447 0008 5DF8047B 		ldr	r7, [sp], #4
+ 448              	.LCFI23:
+ 449              		.cfi_restore 7
+ 450              		.cfi_def_cfa_offset 0
+ 451 000c 7047     		bx	lr
+ 452              		.cfi_endproc
+ 453              	.LFE152:
+ 455              		.section	.text.ARM_CONNECT_STATUS_UPDATA,"ax",%progbits
+ 456              		.align	1
+ 457              		.global	ARM_CONNECT_STATUS_UPDATA
+ 458              		.syntax unified
+ 459              		.thumb
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 11
+
+
+ 460              		.thumb_func
+ 462              	ARM_CONNECT_STATUS_UPDATA:
+ 463              	.LFB153:
+ 136:User/Software/remote_control.c **** void ARM_CONNECT_STATUS_UPDATA()
+ 137:User/Software/remote_control.c **** {
+ 464              		.loc 1 137 1
+ 465              		.cfi_startproc
+ 466              		@ args = 0, pretend = 0, frame = 0
+ 467              		@ frame_needed = 1, uses_anonymous_args = 0
+ 468              		@ link register save eliminated.
+ 469 0000 80B4     		push	{r7}
+ 470              	.LCFI24:
+ 471              		.cfi_def_cfa_offset 4
+ 472              		.cfi_offset 7, -4
+ 473 0002 00AF     		add	r7, sp, #0
+ 474              	.LCFI25:
+ 475              		.cfi_def_cfa_register 7
+ 138:User/Software/remote_control.c **** }
+ 476              		.loc 1 138 1
+ 477 0004 00BF     		nop
+ 478 0006 BD46     		mov	sp, r7
+ 479              	.LCFI26:
+ 480              		.cfi_def_cfa_register 13
+ 481              		@ sp needed
+ 482 0008 5DF8047B 		ldr	r7, [sp], #4
+ 483              	.LCFI27:
+ 484              		.cfi_restore 7
+ 485              		.cfi_def_cfa_offset 0
+ 486 000c 7047     		bx	lr
+ 487              		.cfi_endproc
+ 488              	.LFE153:
+ 490              		.section	.text.RC_Control,"ax",%progbits
+ 491              		.align	1
+ 492              		.global	RC_Control
+ 493              		.syntax unified
+ 494              		.thumb
+ 495              		.thumb_func
+ 497              	RC_Control:
+ 498              	.LFB154:
+ 139:User/Software/remote_control.c **** //////////遥控器控制////////////////
+ 140:User/Software/remote_control.c **** void RC_Control(void)
+ 141:User/Software/remote_control.c **** {
+ 499              		.loc 1 141 1
+ 500              		.cfi_startproc
+ 501              		@ args = 0, pretend = 0, frame = 0
+ 502              		@ frame_needed = 1, uses_anonymous_args = 0
+ 503              		@ link register save eliminated.
+ 504 0000 80B4     		push	{r7}
+ 505              	.LCFI28:
+ 506              		.cfi_def_cfa_offset 4
+ 507              		.cfi_offset 7, -4
+ 508 0002 00AF     		add	r7, sp, #0
+ 509              	.LCFI29:
+ 510              		.cfi_def_cfa_register 7
  142:User/Software/remote_control.c **** }
- 499              		.loc 1 142 1
- 500 0004 00BF     		nop
- 501 0006 BD46     		mov	sp, r7
- 502              	.LCFI30:
- 503              		.cfi_def_cfa_register 13
- 504              		@ sp needed
- 505 0008 5DF8047B 		ldr	r7, [sp], #4
- 506              	.LCFI31:
- 507              		.cfi_restore 7
- 508              		.cfi_def_cfa_offset 0
- 509 000c 7047     		bx	lr
- 510              		.cfi_endproc
- 511              	.LFE153:
- 513              		.section	.text.RC_Control,"ax",%progbits
- 514              		.align	1
- 515              		.global	RC_Control
- 516              		.syntax unified
- 517              		.thumb
- 518              		.thumb_func
- 520              	RC_Control:
- 521              	.LFB154:
- 143:User/Software/remote_control.c **** //////////遥控器控制////////////////
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 12
+ 511              		.loc 1 142 1
+ 512 0004 00BF     		nop
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 12
 
 
- 144:User/Software/remote_control.c **** void RC_Control(void)
+ 513 0006 BD46     		mov	sp, r7
+ 514              	.LCFI30:
+ 515              		.cfi_def_cfa_register 13
+ 516              		@ sp needed
+ 517 0008 5DF8047B 		ldr	r7, [sp], #4
+ 518              	.LCFI31:
+ 519              		.cfi_restore 7
+ 520              		.cfi_def_cfa_offset 0
+ 521 000c 7047     		bx	lr
+ 522              		.cfi_endproc
+ 523              	.LFE154:
+ 525              		.section	.text.start,"ax",%progbits
+ 526              		.align	1
+ 527              		.global	start
+ 528              		.syntax unified
+ 529              		.thumb
+ 530              		.thumb_func
+ 532              	start:
+ 533              	.LFB155:
+ 143:User/Software/remote_control.c **** ///////////////////////////启动函数///////////////////////////
+ 144:User/Software/remote_control.c **** void start()
  145:User/Software/remote_control.c **** {
- 522              		.loc 1 145 1
- 523              		.cfi_startproc
- 524              		@ args = 0, pretend = 0, frame = 0
- 525              		@ frame_needed = 1, uses_anonymous_args = 0
- 526              		@ link register save eliminated.
- 527 0000 80B4     		push	{r7}
- 528              	.LCFI32:
- 529              		.cfi_def_cfa_offset 4
- 530              		.cfi_offset 7, -4
- 531 0002 00AF     		add	r7, sp, #0
- 532              	.LCFI33:
- 533              		.cfi_def_cfa_register 7
+ 534              		.loc 1 145 1
+ 535              		.cfi_startproc
+ 536              		@ args = 0, pretend = 0, frame = 0
+ 537              		@ frame_needed = 1, uses_anonymous_args = 0
+ 538              		@ link register save eliminated.
+ 539 0000 80B4     		push	{r7}
+ 540              	.LCFI32:
+ 541              		.cfi_def_cfa_offset 4
+ 542              		.cfi_offset 7, -4
+ 543 0002 00AF     		add	r7, sp, #0
+ 544              	.LCFI33:
+ 545              		.cfi_def_cfa_register 7
  146:User/Software/remote_control.c **** 
- 147:User/Software/remote_control.c ****     
+ 147:User/Software/remote_control.c ****     // }
  148:User/Software/remote_control.c **** }
- 534              		.loc 1 148 1
- 535 0004 00BF     		nop
- 536 0006 BD46     		mov	sp, r7
- 537              	.LCFI34:
- 538              		.cfi_def_cfa_register 13
- 539              		@ sp needed
- 540 0008 5DF8047B 		ldr	r7, [sp], #4
- 541              	.LCFI35:
- 542              		.cfi_restore 7
- 543              		.cfi_def_cfa_offset 0
- 544 000c 7047     		bx	lr
- 545              		.cfi_endproc
- 546              	.LFE154:
- 548              		.section	.text.start,"ax",%progbits
- 549              		.align	1
- 550              		.global	start
- 551              		.syntax unified
- 552              		.thumb
- 553              		.thumb_func
- 555              	start:
- 556              	.LFB155:
- 149:User/Software/remote_control.c **** ///////////////////////////启动函数///////////////////////////
- 150:User/Software/remote_control.c **** void start()
+ 546              		.loc 1 148 1
+ 547 0004 00BF     		nop
+ 548 0006 BD46     		mov	sp, r7
+ 549              	.LCFI34:
+ 550              		.cfi_def_cfa_register 13
+ 551              		@ sp needed
+ 552 0008 5DF8047B 		ldr	r7, [sp], #4
+ 553              	.LCFI35:
+ 554              		.cfi_restore 7
+ 555              		.cfi_def_cfa_offset 0
+ 556 000c 7047     		bx	lr
+ 557              		.cfi_endproc
+ 558              	.LFE155:
+ 560              		.section	.text.YAWFLOW_POS,"ax",%progbits
+ 561              		.align	1
+ 562              		.global	YAWFLOW_POS
+ 563              		.syntax unified
+ 564              		.thumb
+ 565              		.thumb_func
+ 567              	YAWFLOW_POS:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 13
+
+
+ 568              	.LFB156:
+ 149:User/Software/remote_control.c **** 
+ 150:User/Software/remote_control.c **** void YAWFLOW_POS()
  151:User/Software/remote_control.c **** {
- 557              		.loc 1 151 1
- 558              		.cfi_startproc
- 559              		@ args = 0, pretend = 0, frame = 0
- 560              		@ frame_needed = 1, uses_anonymous_args = 0
- 561              		@ link register save eliminated.
- 562 0000 80B4     		push	{r7}
- 563              	.LCFI36:
- 564              		.cfi_def_cfa_offset 4
- 565              		.cfi_offset 7, -4
- 566 0002 00AF     		add	r7, sp, #0
- 567              	.LCFI37:
- 568              		.cfi_def_cfa_register 7
- 152:User/Software/remote_control.c ****     
- 153:User/Software/remote_control.c ****     // }
- 154:User/Software/remote_control.c **** }
- 569              		.loc 1 154 1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 13
+ 569              		.loc 1 151 1
+ 570              		.cfi_startproc
+ 571              		@ args = 0, pretend = 0, frame = 0
+ 572              		@ frame_needed = 1, uses_anonymous_args = 0
+ 573              		@ link register save eliminated.
+ 574 0000 80B4     		push	{r7}
+ 575              	.LCFI36:
+ 576              		.cfi_def_cfa_offset 4
+ 577              		.cfi_offset 7, -4
+ 578 0002 00AF     		add	r7, sp, #0
+ 579              	.LCFI37:
+ 580              		.cfi_def_cfa_register 7
+ 152:User/Software/remote_control.c **** }
+ 581              		.loc 1 152 1
+ 582 0004 00BF     		nop
+ 583 0006 BD46     		mov	sp, r7
+ 584              	.LCFI38:
+ 585              		.cfi_def_cfa_register 13
+ 586              		@ sp needed
+ 587 0008 5DF8047B 		ldr	r7, [sp], #4
+ 588              	.LCFI39:
+ 589              		.cfi_restore 7
+ 590              		.cfi_def_cfa_offset 0
+ 591 000c 7047     		bx	lr
+ 592              		.cfi_endproc
+ 593              	.LFE156:
+ 595              		.section	.text.disable_all,"ax",%progbits
+ 596              		.align	1
+ 597              		.global	disable_all
+ 598              		.syntax unified
+ 599              		.thumb
+ 600              		.thumb_func
+ 602              	disable_all:
+ 603              	.LFB157:
+ 153:User/Software/remote_control.c **** 
+ 154:User/Software/remote_control.c **** //////////////////////全部失能，防止疯车//////////////////////////////
+ 155:User/Software/remote_control.c **** void disable_all()
+ 156:User/Software/remote_control.c **** {
+ 604              		.loc 1 156 1
+ 605              		.cfi_startproc
+ 606              		@ args = 0, pretend = 0, frame = 0
+ 607              		@ frame_needed = 1, uses_anonymous_args = 0
+ 608              		@ link register save eliminated.
+ 609 0000 80B4     		push	{r7}
+ 610              	.LCFI40:
+ 611              		.cfi_def_cfa_offset 4
+ 612              		.cfi_offset 7, -4
+ 613 0002 00AF     		add	r7, sp, #0
+ 614              	.LCFI41:
+ 615              		.cfi_def_cfa_register 7
+ 157:User/Software/remote_control.c **** }
+ 616              		.loc 1 157 1
+ 617 0004 00BF     		nop
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 14
 
 
- 570 0004 00BF     		nop
- 571 0006 BD46     		mov	sp, r7
- 572              	.LCFI38:
- 573              		.cfi_def_cfa_register 13
- 574              		@ sp needed
- 575 0008 5DF8047B 		ldr	r7, [sp], #4
- 576              	.LCFI39:
- 577              		.cfi_restore 7
- 578              		.cfi_def_cfa_offset 0
- 579 000c 7047     		bx	lr
- 580              		.cfi_endproc
- 581              	.LFE155:
- 583              		.section	.text.YAWFLOW_POS,"ax",%progbits
- 584              		.align	1
- 585              		.global	YAWFLOW_POS
- 586              		.syntax unified
- 587              		.thumb
- 588              		.thumb_func
- 590              	YAWFLOW_POS:
- 591              	.LFB156:
- 155:User/Software/remote_control.c **** 
- 156:User/Software/remote_control.c **** void YAWFLOW_POS()
- 157:User/Software/remote_control.c **** {
- 592              		.loc 1 157 1
- 593              		.cfi_startproc
- 594              		@ args = 0, pretend = 0, frame = 0
- 595              		@ frame_needed = 1, uses_anonymous_args = 0
- 596              		@ link register save eliminated.
- 597 0000 80B4     		push	{r7}
- 598              	.LCFI40:
- 599              		.cfi_def_cfa_offset 4
- 600              		.cfi_offset 7, -4
- 601 0002 00AF     		add	r7, sp, #0
- 602              	.LCFI41:
- 603              		.cfi_def_cfa_register 7
+ 618 0006 BD46     		mov	sp, r7
+ 619              	.LCFI42:
+ 620              		.cfi_def_cfa_register 13
+ 621              		@ sp needed
+ 622 0008 5DF8047B 		ldr	r7, [sp], #4
+ 623              	.LCFI43:
+ 624              		.cfi_restore 7
+ 625              		.cfi_def_cfa_offset 0
+ 626 000c 7047     		bx	lr
+ 627              		.cfi_endproc
+ 628              	.LFE157:
+ 630              		.section	.text.enable_all,"ax",%progbits
+ 631              		.align	1
+ 632              		.global	enable_all
+ 633              		.syntax unified
+ 634              		.thumb
+ 635              		.thumb_func
+ 637              	enable_all:
+ 638              	.LFB158:
  158:User/Software/remote_control.c **** 
- 159:User/Software/remote_control.c **** }
- 604              		.loc 1 159 1
- 605 0004 00BF     		nop
- 606 0006 BD46     		mov	sp, r7
- 607              	.LCFI42:
- 608              		.cfi_def_cfa_register 13
- 609              		@ sp needed
- 610 0008 5DF8047B 		ldr	r7, [sp], #4
- 611              	.LCFI43:
- 612              		.cfi_restore 7
- 613              		.cfi_def_cfa_offset 0
- 614 000c 7047     		bx	lr
- 615              		.cfi_endproc
- 616              	.LFE156:
- 618              		.section	.text.disable_all,"ax",%progbits
- 619              		.align	1
- 620              		.global	disable_all
- 621              		.syntax unified
- 622              		.thumb
- 623              		.thumb_func
- 625              	disable_all:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 14
+ 159:User/Software/remote_control.c **** void enable_all()
+ 160:User/Software/remote_control.c **** {
+ 639              		.loc 1 160 1
+ 640              		.cfi_startproc
+ 641              		@ args = 0, pretend = 0, frame = 0
+ 642              		@ frame_needed = 1, uses_anonymous_args = 0
+ 643              		@ link register save eliminated.
+ 644 0000 80B4     		push	{r7}
+ 645              	.LCFI44:
+ 646              		.cfi_def_cfa_offset 4
+ 647              		.cfi_offset 7, -4
+ 648 0002 00AF     		add	r7, sp, #0
+ 649              	.LCFI45:
+ 650              		.cfi_def_cfa_register 7
+ 161:User/Software/remote_control.c **** }
+ 651              		.loc 1 161 1
+ 652 0004 00BF     		nop
+ 653 0006 BD46     		mov	sp, r7
+ 654              	.LCFI46:
+ 655              		.cfi_def_cfa_register 13
+ 656              		@ sp needed
+ 657 0008 5DF8047B 		ldr	r7, [sp], #4
+ 658              	.LCFI47:
+ 659              		.cfi_restore 7
+ 660              		.cfi_def_cfa_offset 0
+ 661 000c 7047     		bx	lr
+ 662              		.cfi_endproc
+ 663              	.LFE158:
+ 665              		.section	.text.switch_servos,"ax",%progbits
+ 666              		.align	1
+ 667              		.global	switch_servos
+ 668              		.syntax unified
+ 669              		.thumb
+ 670              		.thumb_func
+ 672              	switch_servos:
+ 673              	.LFB159:
+ 162:User/Software/remote_control.c **** 
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 15
 
 
- 626              	.LFB157:
- 160:User/Software/remote_control.c **** 
- 161:User/Software/remote_control.c **** //////////////////////全部失能，防止疯车//////////////////////////////
- 162:User/Software/remote_control.c **** void disable_all()
- 163:User/Software/remote_control.c **** {
- 627              		.loc 1 163 1
- 628              		.cfi_startproc
- 629              		@ args = 0, pretend = 0, frame = 0
- 630              		@ frame_needed = 1, uses_anonymous_args = 0
- 631              		@ link register save eliminated.
- 632 0000 80B4     		push	{r7}
- 633              	.LCFI44:
- 634              		.cfi_def_cfa_offset 4
- 635              		.cfi_offset 7, -4
- 636 0002 00AF     		add	r7, sp, #0
- 637              	.LCFI45:
- 638              		.cfi_def_cfa_register 7
- 164:User/Software/remote_control.c **** 
- 165:User/Software/remote_control.c ****    
- 166:User/Software/remote_control.c **** }
- 639              		.loc 1 166 1
- 640 0004 00BF     		nop
- 641 0006 BD46     		mov	sp, r7
- 642              	.LCFI46:
- 643              		.cfi_def_cfa_register 13
- 644              		@ sp needed
- 645 0008 5DF8047B 		ldr	r7, [sp], #4
- 646              	.LCFI47:
- 647              		.cfi_restore 7
- 648              		.cfi_def_cfa_offset 0
- 649 000c 7047     		bx	lr
- 650              		.cfi_endproc
- 651              	.LFE157:
- 653              		.section	.text.enable_all,"ax",%progbits
- 654              		.align	1
- 655              		.global	enable_all
- 656              		.syntax unified
- 657              		.thumb
- 658              		.thumb_func
- 660              	enable_all:
- 661              	.LFB158:
- 167:User/Software/remote_control.c **** 
- 168:User/Software/remote_control.c **** 
- 169:User/Software/remote_control.c **** void enable_all()
- 170:User/Software/remote_control.c **** {
- 662              		.loc 1 170 1
- 663              		.cfi_startproc
- 664              		@ args = 0, pretend = 0, frame = 0
- 665              		@ frame_needed = 1, uses_anonymous_args = 0
- 666              		@ link register save eliminated.
- 667 0000 80B4     		push	{r7}
- 668              	.LCFI48:
- 669              		.cfi_def_cfa_offset 4
- 670              		.cfi_offset 7, -4
- 671 0002 00AF     		add	r7, sp, #0
- 672              	.LCFI49:
- 673              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 15
-
-
- 171:User/Software/remote_control.c **** 
- 172:User/Software/remote_control.c **** 
- 173:User/Software/remote_control.c **** }
- 674              		.loc 1 173 1
- 675 0004 00BF     		nop
- 676 0006 BD46     		mov	sp, r7
- 677              	.LCFI50:
- 678              		.cfi_def_cfa_register 13
- 679              		@ sp needed
- 680 0008 5DF8047B 		ldr	r7, [sp], #4
- 681              	.LCFI51:
- 682              		.cfi_restore 7
- 683              		.cfi_def_cfa_offset 0
- 684 000c 7047     		bx	lr
- 685              		.cfi_endproc
- 686              	.LFE158:
- 688              		.section	.text.switch_servos,"ax",%progbits
- 689              		.align	1
- 690              		.global	switch_servos
- 691              		.syntax unified
- 692              		.thumb
- 693              		.thumb_func
- 695              	switch_servos:
- 696              	.LFB159:
- 174:User/Software/remote_control.c **** 
- 175:User/Software/remote_control.c **** void switch_servos()
- 176:User/Software/remote_control.c **** {
- 697              		.loc 1 176 1
- 698              		.cfi_startproc
- 699              		@ args = 0, pretend = 0, frame = 0
- 700              		@ frame_needed = 1, uses_anonymous_args = 0
- 701              		@ link register save eliminated.
- 702 0000 80B4     		push	{r7}
- 703              	.LCFI52:
- 704              		.cfi_def_cfa_offset 4
- 705              		.cfi_offset 7, -4
- 706 0002 00AF     		add	r7, sp, #0
- 707              	.LCFI53:
- 708              		.cfi_def_cfa_register 7
- 177:User/Software/remote_control.c **** 
- 178:User/Software/remote_control.c **** 
- 179:User/Software/remote_control.c **** }...
- 709              		.loc 1 179 1
- 710 0004 00BF     		nop
- 711 0006 BD46     		mov	sp, r7
- 712              	.LCFI54:
- 713              		.cfi_def_cfa_register 13
- 714              		@ sp needed
- 715 0008 5DF8047B 		ldr	r7, [sp], #4
- 716              	.LCFI55:
- 717              		.cfi_restore 7
- 718              		.cfi_def_cfa_offset 0
- 719 000c 7047     		bx	lr
- 720              		.cfi_endproc
- 721              	.LFE159:
- 723              		.text
- 724              	.Letext0:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 16
-
-
- 725              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
- 726              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
- 727              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
- 728              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
- 729              		.file 6 "User/Software/remote_control.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 17
+ 163:User/Software/remote_control.c **** void switch_servos()
+ 164:User/Software/remote_control.c **** {
+ 674              		.loc 1 164 1
+ 675              		.cfi_startproc
+ 676              		@ args = 0, pretend = 0, frame = 0
+ 677              		@ frame_needed = 1, uses_anonymous_args = 0
+ 678              		@ link register save eliminated.
+ 679 0000 80B4     		push	{r7}
+ 680              	.LCFI48:
+ 681              		.cfi_def_cfa_offset 4
+ 682              		.cfi_offset 7, -4
+ 683 0002 00AF     		add	r7, sp, #0
+ 684              	.LCFI49:
+ 685              		.cfi_def_cfa_register 7
+ 165:User/Software/remote_control.c **** }...
+ 686              		.loc 1 165 1
+ 687 0004 00BF     		nop
+ 688 0006 BD46     		mov	sp, r7
+ 689              	.LCFI50:
+ 690              		.cfi_def_cfa_register 13
+ 691              		@ sp needed
+ 692 0008 5DF8047B 		ldr	r7, [sp], #4
+ 693              	.LCFI51:
+ 694              		.cfi_restore 7
+ 695              		.cfi_def_cfa_offset 0
+ 696 000c 7047     		bx	lr
+ 697              		.cfi_endproc
+ 698              	.LFE159:
+ 700              		.text
+ 701              	.Letext0:
+ 702              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
+ 703              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
+ 704              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
+ 705              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ 706              		.file 6 "User/Software/remote_control.h"
+ 707              		.file 7 "User/Hardware/Sbus.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 remote_control.c
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:23     .bss.arm_connect_status:00000000 arm_connect_status
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:24     .bss.arm_connect_status:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:29     .bss.boom_arm_status:00000000 boom_arm_status
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:30     .bss.boom_arm_status:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:35     .bss.boom_storage_status:00000000 boom_storage_status
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:36     .bss.boom_storage_status:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:42     .bss.total_angle:00000000 total_angle
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:39     .bss.total_angle:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:49     .bss.prev_angle:00000000 prev_angle
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:46     .bss.prev_angle:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:56     .bss.current_angle:00000000 current_angle
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:53     .bss.current_angle:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:63     .data.angle_range:00000000 angle_range
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:60     .data.angle_range:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:70     .bss.sum_arm:00000000 sum_arm
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:67     .bss.sum_arm:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:73     .text.Motor_Forward:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:79     .text.Motor_Forward:00000000 Motor_Forward
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:109    .text.Motor_Forward:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:114    .text.Motor_Reverse:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:120    .text.Motor_Reverse:00000000 Motor_Reverse
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:150    .text.Motor_Reverse:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:155    .text.Motor_Stop:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:161    .text.Motor_Stop:00000000 Motor_Stop
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:191    .text.Motor_Stop:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:196    .text.Wait:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:202    .text.Wait:00000000 Wait
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:240    .text.remote_control_init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:246    .text.remote_control_init:00000000 remote_control_init
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:290    .text.GPIO_init:00000000 GPIO_init
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:380    .text.PWM_control_init:00000000 PWM_control_init
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:278    .text.remote_control_init:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:284    .text.GPIO_init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:365    .text.GPIO_init:00000084 $d
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:374    .text.PWM_control_init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:409    .text.VT13toRCdata:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:415    .text.VT13toRCdata:00000000 VT13toRCdata
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:444    .text.key_mouse_control:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:450    .text.key_mouse_control:00000000 key_mouse_control
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:479    .text.ARM_CONNECT_STATUS_UPDATA:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:485    .text.ARM_CONNECT_STATUS_UPDATA:00000000 ARM_CONNECT_STATUS_UPDATA
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:514    .text.RC_Control:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:520    .text.RC_Control:00000000 RC_Control
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:549    .text.start:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:555    .text.start:00000000 start
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:584    .text.YAWFLOW_POS:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:590    .text.YAWFLOW_POS:00000000 YAWFLOW_POS
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:619    .text.disable_all:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:625    .text.disable_all:00000000 disable_all
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:654    .text.enable_all:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:660    .text.enable_all:00000000 enable_all
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:689    .text.switch_servos:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s:695    .text.switch_servos:00000000 switch_servos
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:23     .bss.arm_connect_status:00000000 arm_connect_status
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:24     .bss.arm_connect_status:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:29     .bss.boom_arm_status:00000000 boom_arm_status
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:30     .bss.boom_arm_status:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:35     .bss.boom_storage_status:00000000 boom_storage_status
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:36     .bss.boom_storage_status:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:38     .text.Motor_Forward:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:44     .text.Motor_Forward:00000000 Motor_Forward
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:74     .text.Motor_Forward:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:79     .text.Motor_Reverse:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:85     .text.Motor_Reverse:00000000 Motor_Reverse
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:115    .text.Motor_Reverse:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:120    .text.Motor_Stop:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:126    .text.Motor_Stop:00000000 Motor_Stop
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:156    .text.Motor_Stop:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:161    .text.Up_Down_Motor_Control:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:167    .text.Up_Down_Motor_Control:00000000 Up_Down_Motor_Control
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:212    .text.Up_Down_Motor_Control:00000030 $d
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:217    .text.remote_control_init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:223    .text.remote_control_init:00000000 remote_control_init
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:267    .text.GPIO_init:00000000 GPIO_init
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:357    .text.PWM_control_init:00000000 PWM_control_init
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:255    .text.remote_control_init:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:261    .text.GPIO_init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:342    .text.GPIO_init:00000084 $d
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:351    .text.PWM_control_init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:386    .text.VT13toRCdata:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:392    .text.VT13toRCdata:00000000 VT13toRCdata
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:421    .text.key_mouse_control:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:427    .text.key_mouse_control:00000000 key_mouse_control
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:456    .text.ARM_CONNECT_STATUS_UPDATA:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:462    .text.ARM_CONNECT_STATUS_UPDATA:00000000 ARM_CONNECT_STATUS_UPDATA
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:491    .text.RC_Control:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:497    .text.RC_Control:00000000 RC_Control
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:526    .text.start:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:532    .text.start:00000000 start
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:561    .text.YAWFLOW_POS:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:567    .text.YAWFLOW_POS:00000000 YAWFLOW_POS
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:596    .text.disable_all:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:602    .text.disable_all:00000000 disable_all
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:631    .text.enable_all:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:637    .text.enable_all:00000000 enable_all
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:666    .text.switch_servos:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cct5KDSz.s:672    .text.switch_servos:00000000 switch_servos
 
 UNDEFINED SYMBOLS
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc96pJU4.s 			page 18
-
-
 HAL_GPIO_WritePin
+SBUS_CH

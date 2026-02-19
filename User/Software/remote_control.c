@@ -5,18 +5,20 @@
 #include <tim.h>
 #include "pid.h"
 #include "UART_data_txrx.h"
-
-
-#define RELAY1_PIN    GPIO_PIN_0
-#define RELAY1_PORT   GPIOA
-#define RELAY2_PIN    GPIO_PIN_2
-#define RELAY2_PORT   GPIOA
-
-// 继电器电平定义：低电平触发吸合，高电平断开
-#define RELAY_ON      GPIO_PIN_RESET  // 继电器吸合（低电平）
-#define RELAY_OFF     GPIO_PIN_SET    // 继电器断开（高电平）
-
-
+#include "Sbus.h"
+// 遥控器值
+#define LOW_VALUE 353
+#define MID_VALUE 1024
+#define HIGH_VALUE 1694
+#define RANGE 50
+// 升降继电器电平定义：低电平触发吸合，高电平断开控制引脚
+#define RELAY1_PIN GPIO_PIN_0
+#define RELAY1_PORT GPIOA
+#define RELAY2_PIN GPIO_PIN_2
+#define RELAY2_PORT GPIOA
+//
+#define RELAY_ON GPIO_PIN_RESET // 继电器吸合（低电平）
+#define RELAY_OFF GPIO_PIN_SET  // 继电器断开（高电平）
 
 ARM_CONNECT_STATUS arm_connect_status;
 BOOM_ARM_Stats boom_arm_status;         // 机械臂气泵状态
@@ -24,12 +26,6 @@ BOOM_STORAGE_Stats boom_storage_status; // 储矿气泵状态
 #define MOVE_SENSITIVITY 10.0f          // 移动灵敏度，
 #define PITCH_SENSITIVITY 0.008f        // pitch轴灵敏度
 #define YAW_SENSITIVITY 0.005f          // yaw轴灵敏度
-                                        // DAMIAO角度读值
-float total_angle = 0.0;                // 总累积角度
-float prev_angle = 0.0;                 // 前一次读取的角度
-float current_angle = 0.0;
-float angle_range = 360.0; // 编码器量程
-int sum_arm = 0;
 
 /**
  * @brief  控制电机正转
@@ -61,7 +57,6 @@ void Motor_Reverse(void)
     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_ON);
 }
 
-
 /**
  * @brief  控制电机停止
  * @note   IN1和IN2都为高电平，两路继电器都断开，电机两端悬空，停止转动
@@ -74,21 +69,26 @@ void Motor_Stop(void)
     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
 }
-
-
-
-
-
-/**
- * @brief 统一消抖
- *
- * @param key 按键宏
- * @return uint8_t 0未到时间，1到时间
- */
-uint8_t Wait(uint8_t key)
+void Up_Down_Motor_Control(void)
 {
+    
+    switch(SBUS_CH.CH7)
+    {
+        case HIGH_VALUE:
+            Motor_Forward();
+            break;
+        case LOW_VALUE:
+            Motor_Reverse();
+            break;
+        case MID_VALUE:
+        default:  // 兜底，确保任何情况都有处理
+            Motor_Stop();
+            break;
+    }
 
 }
+
+
 void remote_control_init()
 {
     GPIO_init();
@@ -117,63 +117,48 @@ void GPIO_init() // 电子开关初始化
 
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_RESET); // PC11，右储矿
 
-    HAL_GPIO_WritePin (GPIOA,GPIO_PIN_0,GPIO_PIN_RESET);
-    HAL_GPIO_WritePin (GPIOA,GPIO_PIN_1,GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
 }
 
 void PWM_control_init() // 舵机云台初始化
 {
-
 }
 
 void VT13toRCdata()
 {
-
-
 }
 void key_mouse_control() // 键盘鼠标模式+自定义控制器
 {
 }
 void ARM_CONNECT_STATUS_UPDATA()
 {
- 
-
-    
 }
 //////////遥控器控制////////////////
 void RC_Control(void)
 {
-
-    
 }
 ///////////////////////////启动函数///////////////////////////
 void start()
 {
-    
+
     // }
 }
 
 void YAWFLOW_POS()
 {
-
 }
 
 //////////////////////全部失能，防止疯车//////////////////////////////
 void disable_all()
 {
-
-   
 }
-
 
 void enable_all()
 {
-
-
 }
 
 void switch_servos()
 {
-
-
 }

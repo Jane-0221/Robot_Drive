@@ -4,10 +4,7 @@
 #include "stdint.h"
 #include "main.h"
 
-#define LOW_VALUE    353
-#define MID_VALUE   1024
-#define HIGH_VALUE  1694
-#define RANGE        50
+
 
 
  typedef enum ARM_CONNECT_STATUS
@@ -38,7 +35,7 @@ extern int sum_arm;
 void Motor_Forward(void);
 void Motor_Reverse(void);
 void Motor_Stop(void);
-
+void Up_Down_Motor_Control(void);
 
 
 
