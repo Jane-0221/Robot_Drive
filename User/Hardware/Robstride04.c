@@ -170,7 +170,6 @@ void RobStride_Motor_Analysis(RobStride_Motor_t* motor, uint8_t* DataFrame, uint
                 motor->Pos_Info.Speed = uint16_to_float_lz((uint16_t)(DataFrame[2] << 8) | DataFrame[3], V_MIN, V_MAX, 16);
                 motor->Pos_Info.Torque = uint16_to_float_lz((uint16_t)(DataFrame[4] << 8) | DataFrame[5], T_MIN, T_MAX, 16);
                 motor->Pos_Info.Temp = (float)((uint16_t)(DataFrame[6] << 8) | DataFrame[7]) * 0.1f;
-                
                 motor->error_code = (uint8_t)((ID_ExtId >> 16) & 0x3F);
                 motor->Pos_Info.pattern = (uint8_t)((ID_ExtId >> 22) & 0x03);
             }
