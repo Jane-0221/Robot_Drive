@@ -2772,6 +2772,8 @@ Discarded input sections
  .bss           0x00000000        0x0 build/arm.o
  .bss.tx_res    0x00000000        0x1 build/arm.o
  .bss.rx_res    0x00000000        0x1 build/arm.o
+ .text.Arm_motor2
+                0x00000000       0x38 build/arm.o
  .text.Arm_motor4
                 0x00000000       0x64 build/arm.o
  .text.Arm_motor6
@@ -3526,7 +3528,7 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
                 0x08000000                g_pfnVectors
                 0x080002cc                        . = ALIGN (0x4)
 
-.text           0x080002d0    0x1e07c
+.text           0x080002d0    0x1e054
                 0x080002d0                        . = ALIGN (0x4)
  *(.text)
  .text          0x080002d0       0xa0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memchr.o)
@@ -5026,644 +5028,644 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
                 0x08019a9c       0x20 build/arm.o
                 0x08019a9c                Arm_motor1
  .text.Arm_motor3
-                0x08019abc       0x60 build/arm.o
+                0x08019abc       0x38 build/arm.o
                 0x08019abc                Arm_motor3
  .text.Arm_motor5
-                0x08019b1c       0x58 build/arm.o
-                0x08019b1c                Arm_motor5
+                0x08019af4       0x58 build/arm.o
+                0x08019af4                Arm_motor5
  .text.IMU_init
-                0x08019b74       0xb8 build/IMU_updata.o
-                0x08019b74                IMU_init
+                0x08019b4c       0xb8 build/IMU_updata.o
+                0x08019b4c                IMU_init
  .text.IMU_updata
-                0x08019c2c      0x25c build/IMU_updata.o
-                0x08019c2c                IMU_updata
+                0x08019c04      0x25c build/IMU_updata.o
+                0x08019c04                IMU_updata
  .text.IMU_heat_set
-                0x08019e88       0x24 build/IMU_updata.o
-                0x08019e88                IMU_heat_set
+                0x08019e60       0x24 build/IMU_updata.o
+                0x08019e60                IMU_heat_set
  .text.imu_temp_control
-                0x08019eac       0x64 build/IMU_updata.o
+                0x08019e84       0x64 build/IMU_updata.o
  .text.Buzzer_init
-                0x08019f10       0x24 build/buzzer.o
-                0x08019f10                Buzzer_init
+                0x08019ee8       0x24 build/buzzer.o
+                0x08019ee8                Buzzer_init
  .text.crc_ccitt_byte
-                0x08019f34       0x38 build/crc_ccitt.o
-                0x08019f34                crc_ccitt_byte
+                0x08019f0c       0x38 build/crc_ccitt.o
+                0x08019f0c                crc_ccitt_byte
  .text.crc_ccitt
-                0x08019f6c       0x3a build/crc_ccitt.o
-                0x08019f6c                crc_ccitt
- *fill*         0x08019fa6        0x2 
+                0x08019f44       0x3a build/crc_ccitt.o
+                0x08019f44                crc_ccitt
+ *fill*         0x08019f7e        0x2 
  .text.modify_data
-                0x08019fa8      0x2a0 build/gom_protocol.o
-                0x08019fa8                modify_data
+                0x08019f80      0x2a0 build/gom_protocol.o
+                0x08019f80                modify_data
  .text.Motor_Reverse
-                0x0801a248       0x20 build/remote_control.o
-                0x0801a248                Motor_Reverse
+                0x0801a220       0x20 build/remote_control.o
+                0x0801a220                Motor_Reverse
  .text.remote_control_init
-                0x0801a268       0x24 build/remote_control.o
-                0x0801a268                remote_control_init
+                0x0801a240       0x24 build/remote_control.o
+                0x0801a240                remote_control_init
  .text.GPIO_init
-                0x0801a28c       0x98 build/remote_control.o
-                0x0801a28c                GPIO_init
+                0x0801a264       0x98 build/remote_control.o
+                0x0801a264                GPIO_init
  .text.PWM_control_init
-                0x0801a324        0xe build/remote_control.o
-                0x0801a324                PWM_control_init
- *fill*         0x0801a332        0x2 
+                0x0801a2fc        0xe build/remote_control.o
+                0x0801a2fc                PWM_control_init
+ *fill*         0x0801a30a        0x2 
  .text.VirCom_send
-                0x0801a334       0x34 build/USB_VirCom.o
-                0x0801a334                VirCom_send
+                0x0801a30c       0x34 build/USB_VirCom.o
+                0x0801a30c                VirCom_send
  .text.VirCom_rev
-                0x0801a368       0x18 build/USB_VirCom.o
-                0x0801a368                VirCom_rev
+                0x0801a340       0x18 build/USB_VirCom.o
+                0x0801a340                VirCom_rev
  .text.__io_putchar
-                0x0801a380       0x1c build/USB_VirCom.o
-                0x0801a380                __io_putchar
+                0x0801a358       0x1c build/USB_VirCom.o
+                0x0801a358                __io_putchar
  .text.Music_init
-                0x0801a39c        0xc build/music.o
-                0x0801a39c                Music_init
+                0x0801a374        0xc build/music.o
+                0x0801a374                Music_init
  .text.Reset_Handler
-                0x0801a3a8       0x50 build/startup_stm32h723xx.o
-                0x0801a3a8                Reset_Handler
+                0x0801a380       0x50 build/startup_stm32h723xx.o
+                0x0801a380                Reset_Handler
  .text.Default_Handler
-                0x0801a3f8        0x2 build/startup_stm32h723xx.o
-                0x0801a3f8                RTC_Alarm_IRQHandler
-                0x0801a3f8                EXTI2_IRQHandler
-                0x0801a3f8                TIM8_CC_IRQHandler
-                0x0801a3f8                UART8_IRQHandler
-                0x0801a3f8                SPI4_IRQHandler
-                0x0801a3f8                TIM1_CC_IRQHandler
-                0x0801a3f8                BDMA_Channel6_IRQHandler
-                0x0801a3f8                DMA2_Stream5_IRQHandler
-                0x0801a3f8                CORDIC_IRQHandler
-                0x0801a3f8                BDMA_Channel1_IRQHandler
-                0x0801a3f8                TAMP_STAMP_IRQHandler
-                0x0801a3f8                EXTI3_IRQHandler
-                0x0801a3f8                LPTIM4_IRQHandler
-                0x0801a3f8                LPTIM2_IRQHandler
-                0x0801a3f8                DFSDM1_FLT1_IRQHandler
-                0x0801a3f8                DMAMUX2_OVR_IRQHandler
-                0x0801a3f8                I2C3_ER_IRQHandler
-                0x0801a3f8                DFSDM1_FLT2_IRQHandler
-                0x0801a3f8                I2C5_EV_IRQHandler
-                0x0801a3f8                MDMA_IRQHandler
-                0x0801a3f8                LPTIM3_IRQHandler
-                0x0801a3f8                HSEM1_IRQHandler
-                0x0801a3f8                EXTI0_IRQHandler
-                0x0801a3f8                I2C2_EV_IRQHandler
-                0x0801a3f8                FPU_IRQHandler
-                0x0801a3f8                OTG_HS_WKUP_IRQHandler
-                0x0801a3f8                LTDC_ER_IRQHandler
-                0x0801a3f8                DMA2_Stream2_IRQHandler
-                0x0801a3f8                SPI1_IRQHandler
-                0x0801a3f8                OCTOSPI1_IRQHandler
-                0x0801a3f8                TIM6_DAC_IRQHandler
-                0x0801a3f8                OCTOSPI2_IRQHandler
-                0x0801a3f8                DFSDM1_FLT3_IRQHandler
-                0x0801a3f8                USART6_IRQHandler
-                0x0801a3f8                TIM17_IRQHandler
-                0x0801a3f8                BDMA_Channel7_IRQHandler
-                0x0801a3f8                LPTIM5_IRQHandler
-                0x0801a3f8                ADC3_IRQHandler
-                0x0801a3f8                TIM4_IRQHandler
-                0x0801a3f8                BDMA_Channel2_IRQHandler
-                0x0801a3f8                I2C1_EV_IRQHandler
-                0x0801a3f8                DMAMUX1_OVR_IRQHandler
-                0x0801a3f8                TIM16_IRQHandler
-                0x0801a3f8                UART4_IRQHandler
-                0x0801a3f8                BDMA_Channel5_IRQHandler
-                0x0801a3f8                TIM3_IRQHandler
-                0x0801a3f8                RCC_IRQHandler
-                0x0801a3f8                UART9_IRQHandler
-                0x0801a3f8                TIM1_TRG_COM_IRQHandler
-                0x0801a3f8                Default_Handler
-                0x0801a3f8                ECC_IRQHandler
-                0x0801a3f8                FMAC_IRQHandler
-                0x0801a3f8                CEC_IRQHandler
-                0x0801a3f8                EXTI15_10_IRQHandler
-                0x0801a3f8                BDMA_Channel0_IRQHandler
-                0x0801a3f8                ADC_IRQHandler
-                0x0801a3f8                I2C5_ER_IRQHandler
-                0x0801a3f8                SPI5_IRQHandler
-                0x0801a3f8                TIM7_IRQHandler
-                0x0801a3f8                SDMMC1_IRQHandler
-                0x0801a3f8                TIM5_IRQHandler
-                0x0801a3f8                DMA2_Stream7_IRQHandler
-                0x0801a3f8                TIM15_IRQHandler
-                0x0801a3f8                PVD_AVD_IRQHandler
-                0x0801a3f8                I2C3_EV_IRQHandler
-                0x0801a3f8                EXTI9_5_IRQHandler
-                0x0801a3f8                RTC_WKUP_IRQHandler
-                0x0801a3f8                LTDC_IRQHandler
-                0x0801a3f8                ETH_WKUP_IRQHandler
-                0x0801a3f8                SPDIF_RX_IRQHandler
-                0x0801a3f8                OTG_HS_EP1_IN_IRQHandler
-                0x0801a3f8                TIM24_IRQHandler
-                0x0801a3f8                CRS_IRQHandler
-                0x0801a3f8                EXTI4_IRQHandler
-                0x0801a3f8                RNG_IRQHandler
-                0x0801a3f8                ETH_IRQHandler
-                0x0801a3f8                TIM1_UP_IRQHandler
-                0x0801a3f8                BDMA_Channel4_IRQHandler
-                0x0801a3f8                OTG_HS_EP1_OUT_IRQHandler
-                0x0801a3f8                WWDG_IRQHandler
-                0x0801a3f8                SPI6_IRQHandler
-                0x0801a3f8                MDIOS_IRQHandler
-                0x0801a3f8                I2C4_EV_IRQHandler
-                0x0801a3f8                LPUART1_IRQHandler
-                0x0801a3f8                TIM2_IRQHandler
-                0x0801a3f8                DMA2D_IRQHandler
-                0x0801a3f8                TIM1_BRK_IRQHandler
-                0x0801a3f8                EXTI1_IRQHandler
-                0x0801a3f8                SDMMC2_IRQHandler
-                0x0801a3f8                BDMA_Channel3_IRQHandler
-                0x0801a3f8                DTS_IRQHandler
-                0x0801a3f8                MDIOS_WKUP_IRQHandler
-                0x0801a3f8                USART2_IRQHandler
-                0x0801a3f8                DFSDM1_FLT0_IRQHandler
-                0x0801a3f8                SAI4_IRQHandler
-                0x0801a3f8                I2C2_ER_IRQHandler
-                0x0801a3f8                DMA2_Stream1_IRQHandler
-                0x0801a3f8                FLASH_IRQHandler
-                0x0801a3f8                SPI3_IRQHandler
-                0x0801a3f8                WAKEUP_PIN_IRQHandler
-                0x0801a3f8                I2C1_ER_IRQHandler
-                0x0801a3f8                FMC_IRQHandler
-                0x0801a3f8                FDCAN_CAL_IRQHandler
-                0x0801a3f8                SWPMI1_IRQHandler
-                0x0801a3f8                COMP1_IRQHandler
-                0x0801a3f8                LPTIM1_IRQHandler
-                0x0801a3f8                DCMI_PSSI_IRQHandler
-                0x0801a3f8                I2C4_ER_IRQHandler
-                0x0801a3f8                DMA2_Stream6_IRQHandler
-                0x0801a3f8                SAI1_IRQHandler
- *fill*         0x0801a3fa        0x2 
- .text.malloc   0x0801a3fc       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-malloc.o)
-                0x0801a3fc                malloc
+                0x0801a3d0        0x2 build/startup_stm32h723xx.o
+                0x0801a3d0                RTC_Alarm_IRQHandler
+                0x0801a3d0                EXTI2_IRQHandler
+                0x0801a3d0                TIM8_CC_IRQHandler
+                0x0801a3d0                UART8_IRQHandler
+                0x0801a3d0                SPI4_IRQHandler
+                0x0801a3d0                TIM1_CC_IRQHandler
+                0x0801a3d0                BDMA_Channel6_IRQHandler
+                0x0801a3d0                DMA2_Stream5_IRQHandler
+                0x0801a3d0                CORDIC_IRQHandler
+                0x0801a3d0                BDMA_Channel1_IRQHandler
+                0x0801a3d0                TAMP_STAMP_IRQHandler
+                0x0801a3d0                EXTI3_IRQHandler
+                0x0801a3d0                LPTIM4_IRQHandler
+                0x0801a3d0                LPTIM2_IRQHandler
+                0x0801a3d0                DFSDM1_FLT1_IRQHandler
+                0x0801a3d0                DMAMUX2_OVR_IRQHandler
+                0x0801a3d0                I2C3_ER_IRQHandler
+                0x0801a3d0                DFSDM1_FLT2_IRQHandler
+                0x0801a3d0                I2C5_EV_IRQHandler
+                0x0801a3d0                MDMA_IRQHandler
+                0x0801a3d0                LPTIM3_IRQHandler
+                0x0801a3d0                HSEM1_IRQHandler
+                0x0801a3d0                EXTI0_IRQHandler
+                0x0801a3d0                I2C2_EV_IRQHandler
+                0x0801a3d0                FPU_IRQHandler
+                0x0801a3d0                OTG_HS_WKUP_IRQHandler
+                0x0801a3d0                LTDC_ER_IRQHandler
+                0x0801a3d0                DMA2_Stream2_IRQHandler
+                0x0801a3d0                SPI1_IRQHandler
+                0x0801a3d0                OCTOSPI1_IRQHandler
+                0x0801a3d0                TIM6_DAC_IRQHandler
+                0x0801a3d0                OCTOSPI2_IRQHandler
+                0x0801a3d0                DFSDM1_FLT3_IRQHandler
+                0x0801a3d0                USART6_IRQHandler
+                0x0801a3d0                TIM17_IRQHandler
+                0x0801a3d0                BDMA_Channel7_IRQHandler
+                0x0801a3d0                LPTIM5_IRQHandler
+                0x0801a3d0                ADC3_IRQHandler
+                0x0801a3d0                TIM4_IRQHandler
+                0x0801a3d0                BDMA_Channel2_IRQHandler
+                0x0801a3d0                I2C1_EV_IRQHandler
+                0x0801a3d0                DMAMUX1_OVR_IRQHandler
+                0x0801a3d0                TIM16_IRQHandler
+                0x0801a3d0                UART4_IRQHandler
+                0x0801a3d0                BDMA_Channel5_IRQHandler
+                0x0801a3d0                TIM3_IRQHandler
+                0x0801a3d0                RCC_IRQHandler
+                0x0801a3d0                UART9_IRQHandler
+                0x0801a3d0                TIM1_TRG_COM_IRQHandler
+                0x0801a3d0                Default_Handler
+                0x0801a3d0                ECC_IRQHandler
+                0x0801a3d0                FMAC_IRQHandler
+                0x0801a3d0                CEC_IRQHandler
+                0x0801a3d0                EXTI15_10_IRQHandler
+                0x0801a3d0                BDMA_Channel0_IRQHandler
+                0x0801a3d0                ADC_IRQHandler
+                0x0801a3d0                I2C5_ER_IRQHandler
+                0x0801a3d0                SPI5_IRQHandler
+                0x0801a3d0                TIM7_IRQHandler
+                0x0801a3d0                SDMMC1_IRQHandler
+                0x0801a3d0                TIM5_IRQHandler
+                0x0801a3d0                DMA2_Stream7_IRQHandler
+                0x0801a3d0                TIM15_IRQHandler
+                0x0801a3d0                PVD_AVD_IRQHandler
+                0x0801a3d0                I2C3_EV_IRQHandler
+                0x0801a3d0                EXTI9_5_IRQHandler
+                0x0801a3d0                RTC_WKUP_IRQHandler
+                0x0801a3d0                LTDC_IRQHandler
+                0x0801a3d0                ETH_WKUP_IRQHandler
+                0x0801a3d0                SPDIF_RX_IRQHandler
+                0x0801a3d0                OTG_HS_EP1_IN_IRQHandler
+                0x0801a3d0                TIM24_IRQHandler
+                0x0801a3d0                CRS_IRQHandler
+                0x0801a3d0                EXTI4_IRQHandler
+                0x0801a3d0                RNG_IRQHandler
+                0x0801a3d0                ETH_IRQHandler
+                0x0801a3d0                TIM1_UP_IRQHandler
+                0x0801a3d0                BDMA_Channel4_IRQHandler
+                0x0801a3d0                OTG_HS_EP1_OUT_IRQHandler
+                0x0801a3d0                WWDG_IRQHandler
+                0x0801a3d0                SPI6_IRQHandler
+                0x0801a3d0                MDIOS_IRQHandler
+                0x0801a3d0                I2C4_EV_IRQHandler
+                0x0801a3d0                LPUART1_IRQHandler
+                0x0801a3d0                TIM2_IRQHandler
+                0x0801a3d0                DMA2D_IRQHandler
+                0x0801a3d0                TIM1_BRK_IRQHandler
+                0x0801a3d0                EXTI1_IRQHandler
+                0x0801a3d0                SDMMC2_IRQHandler
+                0x0801a3d0                BDMA_Channel3_IRQHandler
+                0x0801a3d0                DTS_IRQHandler
+                0x0801a3d0                MDIOS_WKUP_IRQHandler
+                0x0801a3d0                USART2_IRQHandler
+                0x0801a3d0                DFSDM1_FLT0_IRQHandler
+                0x0801a3d0                SAI4_IRQHandler
+                0x0801a3d0                I2C2_ER_IRQHandler
+                0x0801a3d0                DMA2_Stream1_IRQHandler
+                0x0801a3d0                FLASH_IRQHandler
+                0x0801a3d0                SPI3_IRQHandler
+                0x0801a3d0                WAKEUP_PIN_IRQHandler
+                0x0801a3d0                I2C1_ER_IRQHandler
+                0x0801a3d0                FMC_IRQHandler
+                0x0801a3d0                FDCAN_CAL_IRQHandler
+                0x0801a3d0                SWPMI1_IRQHandler
+                0x0801a3d0                COMP1_IRQHandler
+                0x0801a3d0                LPTIM1_IRQHandler
+                0x0801a3d0                DCMI_PSSI_IRQHandler
+                0x0801a3d0                I2C4_ER_IRQHandler
+                0x0801a3d0                DMA2_Stream6_IRQHandler
+                0x0801a3d0                SAI1_IRQHandler
+ *fill*         0x0801a3d2        0x2 
+ .text.malloc   0x0801a3d4       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-malloc.o)
+                0x0801a3d4                malloc
  .text.sbrk_aligned
-                0x0801a40c       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mallocr.o)
+                0x0801a3e4       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mallocr.o)
  .text._malloc_r
-                0x0801a450      0x100 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mallocr.o)
-                0x0801a450                _malloc_r
+                0x0801a428      0x100 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mallocr.o)
+                0x0801a428                _malloc_r
  .text.__malloc_lock
-                0x0801a550        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mlock.o)
-                0x0801a550                __malloc_lock
+                0x0801a528        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mlock.o)
+                0x0801a528                __malloc_lock
  .text.__malloc_unlock
-                0x0801a55c        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mlock.o)
-                0x0801a55c                __malloc_unlock
- .text.__cvt    0x0801a568       0xa8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
-                0x0801a568                __cvt
+                0x0801a534        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mlock.o)
+                0x0801a534                __malloc_unlock
+ .text.__cvt    0x0801a540       0xa8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+                0x0801a540                __cvt
  .text.__exponent
-                0x0801a610       0x74 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
-                0x0801a610                __exponent
- *fill*         0x0801a684        0x4 
+                0x0801a5e8       0x74 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+                0x0801a5e8                __exponent
+ *fill*         0x0801a65c        0x4 
  .text._printf_float
-                0x0801a688      0x434 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
-                0x0801a688                _printf_float
+                0x0801a660      0x434 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+                0x0801a660                _printf_float
  .text._printf_common
-                0x0801aabc       0xda C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0801aabc                _printf_common
- *fill*         0x0801ab96        0x2 
+                0x0801aa94       0xda C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0801aa94                _printf_common
+ *fill*         0x0801ab6e        0x2 
  .text._printf_i
-                0x0801ab98      0x23c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0801ab98                _printf_i
- .text.std      0x0801add4       0x6c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0801ab70      0x23c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0801ab70                _printf_i
+ .text.std      0x0801adac       0x6c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
  .text.stdio_exit_handler
-                0x0801ae40       0x18 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0801ae18       0x18 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
  .text.cleanup_stdio
-                0x0801ae58       0x40 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0801ae30       0x40 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
  .text.global_stdio_init.part.0
-                0x0801ae98       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0801ae70       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
  .text.__sfp_lock_acquire
-                0x0801aed4        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
-                0x0801aed4                __sfp_lock_acquire
+                0x0801aeac        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0801aeac                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x0801aee0        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
-                0x0801aee0                __sfp_lock_release
- .text.__sinit  0x0801aeec       0x30 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
-                0x0801aeec                __sinit
+                0x0801aeb8        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0801aeb8                __sfp_lock_release
+ .text.__sinit  0x0801aec4       0x30 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
+                0x0801aec4                __sinit
  .text._fwalk_sglue
-                0x0801af1c       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fwalk.o)
-                0x0801af1c                _fwalk_sglue
- .text.printf   0x0801af58       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-printf.o)
-                0x0801af58                iprintf
-                0x0801af58                printf
- .text._puts_r  0x0801af7c       0xaa C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-puts.o)
-                0x0801af7c                _puts_r
- *fill*         0x0801b026        0x2 
- .text.puts     0x0801b028       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-puts.o)
-                0x0801b028                puts
- .text.__sread  0x0801b038       0x22 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-stdio.o)
-                0x0801b038                __sread
+                0x0801aef4       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fwalk.o)
+                0x0801aef4                _fwalk_sglue
+ .text.printf   0x0801af30       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-printf.o)
+                0x0801af30                iprintf
+                0x0801af30                printf
+ .text._puts_r  0x0801af54       0xaa C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-puts.o)
+                0x0801af54                _puts_r
+ *fill*         0x0801affe        0x2 
+ .text.puts     0x0801b000       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-puts.o)
+                0x0801b000                puts
+ .text.__sread  0x0801b010       0x22 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-stdio.o)
+                0x0801b010                __sread
  .text.__swrite
-                0x0801b05a       0x38 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-stdio.o)
-                0x0801b05a                __swrite
- .text.__sseek  0x0801b092       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-stdio.o)
-                0x0801b092                __sseek
+                0x0801b032       0x38 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-stdio.o)
+                0x0801b032                __swrite
+ .text.__sseek  0x0801b06a       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-stdio.o)
+                0x0801b06a                __sseek
  .text.__sclose
-                0x0801b0b6        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-stdio.o)
-                0x0801b0b6                __sclose
+                0x0801b08e        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-stdio.o)
+                0x0801b08e                __sclose
  .text.__swbuf_r
-                0x0801b0be       0x7c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wbuf.o)
-                0x0801b0be                __swbuf_r
- *fill*         0x0801b13a        0x2 
+                0x0801b096       0x7c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wbuf.o)
+                0x0801b096                __swbuf_r
+ *fill*         0x0801b112        0x2 
  .text.__swsetup_r
-                0x0801b13c       0xac C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wsetup.o)
-                0x0801b13c                __swsetup_r
- .text.memset   0x0801b1e8       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memset.o)
-                0x0801b1e8                memset
+                0x0801b114       0xac C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wsetup.o)
+                0x0801b114                __swsetup_r
+ .text.memset   0x0801b1c0       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memset.o)
+                0x0801b1c0                memset
  .text._localeconv_r
-                0x0801b1f8        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-localeconv.o)
-                0x0801b1f8                _localeconv_r
+                0x0801b1d0        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-localeconv.o)
+                0x0801b1d0                _localeconv_r
  .text._close_r
-                0x0801b200       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-closer.o)
-                0x0801b200                _close_r
+                0x0801b1d8       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-closer.o)
+                0x0801b1d8                _close_r
  .text._lseek_r
-                0x0801b220       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lseekr.o)
-                0x0801b220                _lseek_r
- .text._read_r  0x0801b244       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-readr.o)
-                0x0801b244                _read_r
- .text._sbrk_r  0x0801b268       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-sbrkr.o)
-                0x0801b268                _sbrk_r
+                0x0801b1f8       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lseekr.o)
+                0x0801b1f8                _lseek_r
+ .text._read_r  0x0801b21c       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-readr.o)
+                0x0801b21c                _read_r
+ .text._sbrk_r  0x0801b240       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-sbrkr.o)
+                0x0801b240                _sbrk_r
  .text._write_r
-                0x0801b288       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-writer.o)
-                0x0801b288                _write_r
- .text.__errno  0x0801b2ac        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-errno.o)
-                0x0801b2ac                __errno
+                0x0801b260       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-writer.o)
+                0x0801b260                _write_r
+ .text.__errno  0x0801b284        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-errno.o)
+                0x0801b284                __errno
  .text.__libc_init_array
-                0x0801b2b8       0x48 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-init.o)
-                0x0801b2b8                __libc_init_array
+                0x0801b290       0x48 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-init.o)
+                0x0801b290                __libc_init_array
  .text.__retarget_lock_init_recursive
-                0x0801b300        0x2 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lock.o)
-                0x0801b300                __retarget_lock_init_recursive
+                0x0801b2d8        0x2 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lock.o)
+                0x0801b2d8                __retarget_lock_init_recursive
  .text.__retarget_lock_acquire_recursive
-                0x0801b302        0x2 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lock.o)
-                0x0801b302                __retarget_lock_acquire_recursive
+                0x0801b2da        0x2 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lock.o)
+                0x0801b2da                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x0801b304        0x2 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lock.o)
-                0x0801b304                __retarget_lock_release_recursive
+                0x0801b2dc        0x2 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lock.o)
+                0x0801b2dc                __retarget_lock_release_recursive
  .text.__aeabi_memclr
-                0x0801b306        0x6 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-aeabi_memclr.o)
-                0x0801b306                __aeabi_memclr
-                0x0801b306                __aeabi_memclr4
-                0x0801b306                __aeabi_memclr8
- .text.memcpy   0x0801b30c       0x1c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memcpy-stub.o)
-                0x0801b30c                memcpy
- .text.quorem   0x0801b328      0x110 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-dtoa.o)
- .text._dtoa_r  0x0801b438      0xa9c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-dtoa.o)
-                0x0801b438                _dtoa_r
- .text._free_r  0x0801bed4       0x94 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-freer.o)
-                0x0801bed4                _free_r
- .text._Balloc  0x0801bf68       0x80 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801bf68                _Balloc
- .text._Bfree   0x0801bfe8       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801bfe8                _Bfree
+                0x0801b2de        0x6 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-aeabi_memclr.o)
+                0x0801b2de                __aeabi_memclr
+                0x0801b2de                __aeabi_memclr4
+                0x0801b2de                __aeabi_memclr8
+ .text.memcpy   0x0801b2e4       0x1c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+                0x0801b2e4                memcpy
+ .text.quorem   0x0801b300      0x110 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-dtoa.o)
+ .text._dtoa_r  0x0801b410      0xa9c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-dtoa.o)
+                0x0801b410                _dtoa_r
+ .text._free_r  0x0801beac       0x94 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-freer.o)
+                0x0801beac                _free_r
+ .text._Balloc  0x0801bf40       0x80 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801bf40                _Balloc
+ .text._Bfree   0x0801bfc0       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801bfc0                _Bfree
  .text.__multadd
-                0x0801c02c       0x8c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801c02c                __multadd
+                0x0801c004       0x8c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801c004                __multadd
  .text.__hi0bits
-                0x0801c0b8       0x3e C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801c0b8                __hi0bits
+                0x0801c090       0x3e C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801c090                __hi0bits
  .text.__lo0bits
-                0x0801c0f6       0x5a C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801c0f6                __lo0bits
- .text.__i2b    0x0801c150       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801c150                __i2b
+                0x0801c0ce       0x5a C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801c0ce                __lo0bits
+ .text.__i2b    0x0801c128       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801c128                __i2b
  .text.__multiply
-                0x0801c17c      0x144 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801c17c                __multiply
+                0x0801c154      0x144 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801c154                __multiply
  .text.__pow5mult
-                0x0801c2c0       0xb4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801c2c0                __pow5mult
+                0x0801c298       0xb4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801c298                __pow5mult
  .text.__lshift
-                0x0801c374       0xd8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801c374                __lshift
- .text.__mcmp   0x0801c44c       0x36 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801c44c                __mcmp
- *fill*         0x0801c482        0x2 
- .text.__mdiff  0x0801c484      0x128 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801c484                __mdiff
- .text.__d2b    0x0801c5ac       0xb0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801c5ac                __d2b
+                0x0801c34c       0xd8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801c34c                __lshift
+ .text.__mcmp   0x0801c424       0x36 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801c424                __mcmp
+ *fill*         0x0801c45a        0x2 
+ .text.__mdiff  0x0801c45c      0x128 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801c45c                __mdiff
+ .text.__d2b    0x0801c584       0xb0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801c584                __d2b
  .text.__sfputc_r
-                0x0801c65c       0x2e C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x0801c634       0x2e C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
  .text.__sfputs_r
-                0x0801c68a       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
-                0x0801c68a                __sfputs_r
- *fill*         0x0801c6ae        0x2 
+                0x0801c662       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x0801c662                __sfputs_r
+ *fill*         0x0801c686        0x2 
  .text._vfprintf_r
-                0x0801c6b0      0x230 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
-                0x0801c6b0                _vfprintf_r
-                0x0801c6b0                _vfiprintf_r
+                0x0801c688      0x230 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x0801c688                _vfprintf_r
+                0x0801c688                _vfiprintf_r
  .text.__sflush_r
-                0x0801c8e0      0x108 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fflush.o)
-                0x0801c8e0                __sflush_r
+                0x0801c8b8      0x108 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fflush.o)
+                0x0801c8b8                __sflush_r
  .text._fflush_r
-                0x0801c9e8       0x50 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fflush.o)
-                0x0801c9e8                _fflush_r
+                0x0801c9c0       0x50 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fflush.o)
+                0x0801c9c0                _fflush_r
  .text.__swhatbuf_r
-                0x0801ca38       0x4c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-makebuf.o)
-                0x0801ca38                __swhatbuf_r
+                0x0801ca10       0x4c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-makebuf.o)
+                0x0801ca10                __swhatbuf_r
  .text.__smakebuf_r
-                0x0801ca84       0x78 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-makebuf.o)
-                0x0801ca84                __smakebuf_r
+                0x0801ca5c       0x78 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-makebuf.o)
+                0x0801ca5c                __smakebuf_r
  .text._fstat_r
-                0x0801cafc       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fstatr.o)
-                0x0801cafc                _fstat_r
+                0x0801cad4       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fstatr.o)
+                0x0801cad4                _fstat_r
  .text._isatty_r
-                0x0801cb20       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-isattyr.o)
-                0x0801cb20                _isatty_r
+                0x0801caf8       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-isattyr.o)
+                0x0801caf8                _isatty_r
  .text.__assert_func
-                0x0801cb40       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-assert.o)
-                0x0801cb40                __assert_func
+                0x0801cb18       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-assert.o)
+                0x0801cb18                __assert_func
  .text._calloc_r
-                0x0801cb7c       0x28 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-callocr.o)
-                0x0801cb7c                _calloc_r
+                0x0801cb54       0x28 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-callocr.o)
+                0x0801cb54                _calloc_r
  .text.__ascii_mbtowc
-                0x0801cba4       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mbtowc_r.o)
-                0x0801cba4                __ascii_mbtowc
+                0x0801cb7c       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mbtowc_r.o)
+                0x0801cb7c                __ascii_mbtowc
  .text.__ascii_wctomb
-                0x0801cbc8       0x1a C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wctomb_r.o)
-                0x0801cbc8                __ascii_wctomb
- *fill*         0x0801cbe2        0x2 
- .text.fprintf  0x0801cbe4       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fprintf.o)
-                0x0801cbe4                fiprintf
-                0x0801cbe4                fprintf
- .text.abort    0x0801cc08        0xe C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-abort.o)
-                0x0801cc08                abort
+                0x0801cba0       0x1a C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wctomb_r.o)
+                0x0801cba0                __ascii_wctomb
+ *fill*         0x0801cbba        0x2 
+ .text.fprintf  0x0801cbbc       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fprintf.o)
+                0x0801cbbc                fiprintf
+                0x0801cbbc                fprintf
+ .text.abort    0x0801cbe0        0xe C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-abort.o)
+                0x0801cbe0                abort
  .text._raise_r
-                0x0801cc16       0x50 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signal.o)
-                0x0801cc16                _raise_r
- *fill*         0x0801cc66        0x2 
- .text.raise    0x0801cc68       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signal.o)
-                0x0801cc68                raise
- .text._kill_r  0x0801cc78       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signalr.o)
-                0x0801cc78                _kill_r
+                0x0801cbee       0x50 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signal.o)
+                0x0801cbee                _raise_r
+ *fill*         0x0801cc3e        0x2 
+ .text.raise    0x0801cc40       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signal.o)
+                0x0801cc40                raise
+ .text._kill_r  0x0801cc50       0x24 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signalr.o)
+                0x0801cc50                _kill_r
  .text._getpid_r
-                0x0801cc9c        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signalr.o)
-                0x0801cc9c                _getpid_r
- .text.cos      0x0801cca0       0x80 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_cos.o)
-                0x0801cca0                cos
- .text.sin      0x0801cd20       0x80 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_sin.o)
-                0x0801cd20                sin
- .text.asinf    0x0801cda0       0x58 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_asin.o)
-                0x0801cda0                asinf
- .text.atan2f   0x0801cdf8        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_atan2.o)
-                0x0801cdf8                atan2f
- .text.sqrtf    0x0801cdfc       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_sqrt.o)
-                0x0801cdfc                sqrtf
- .text.fabsf    0x0801ce40       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_fabs.o)
-                0x0801ce40                fabsf
- .text.nanf     0x0801ce50        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_nan.o)
-                0x0801ce50                nanf
+                0x0801cc74        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signalr.o)
+                0x0801cc74                _getpid_r
+ .text.cos      0x0801cc78       0x80 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_cos.o)
+                0x0801cc78                cos
+ .text.sin      0x0801ccf8       0x80 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_sin.o)
+                0x0801ccf8                sin
+ .text.asinf    0x0801cd78       0x58 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_asin.o)
+                0x0801cd78                asinf
+ .text.atan2f   0x0801cdd0        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_atan2.o)
+                0x0801cdd0                atan2f
+ .text.sqrtf    0x0801cdd4       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_sqrt.o)
+                0x0801cdd4                sqrtf
+ .text.fabsf    0x0801ce18       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_fabs.o)
+                0x0801ce18                fabsf
+ .text.nanf     0x0801ce28        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_nan.o)
+                0x0801ce28                nanf
  .text.__ieee754_sqrtf
-                0x0801ce5c        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_sqrt.o)
-                0x0801ce5c                __ieee754_sqrtf
- *fill*         0x0801ce64        0x4 
+                0x0801ce34        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_sqrt.o)
+                0x0801ce34                __ieee754_sqrtf
+ *fill*         0x0801ce3c        0x4 
  .text.__kernel_cos
-                0x0801ce68      0x130 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_cos.o)
-                0x0801ce68                __kernel_cos
+                0x0801ce40      0x130 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_cos.o)
+                0x0801ce40                __kernel_cos
  .text.__kernel_sin
-                0x0801cf98       0xb0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_sin.o)
-                0x0801cf98                __kernel_sin
+                0x0801cf70       0xb0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_sin.o)
+                0x0801cf70                __kernel_sin
  .text.__ieee754_rem_pio2
-                0x0801d048      0x29c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-e_rem_pio2.o)
-                0x0801d048                __ieee754_rem_pio2
- .text.fabs     0x0801d2e4       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_fabs.o)
-                0x0801d2e4                fabs
+                0x0801d020      0x29c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x0801d020                __ieee754_rem_pio2
+ .text.fabs     0x0801d2bc       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_fabs.o)
+                0x0801d2bc                fabs
  .text.__ieee754_asinf
-                0x0801d2f4      0x1f8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_asin.o)
-                0x0801d2f4                __ieee754_asinf
+                0x0801d2cc      0x1f8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_asin.o)
+                0x0801d2cc                __ieee754_asinf
  .text.__ieee754_atan2f
-                0x0801d4ec      0x14c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_atan2.o)
-                0x0801d4ec                __ieee754_atan2f
- .text.atanf    0x0801d638      0x1a4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_atan.o)
-                0x0801d638                atanf
- *fill*         0x0801d7dc        0x4 
+                0x0801d4c4      0x14c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_atan2.o)
+                0x0801d4c4                __ieee754_atan2f
+ .text.atanf    0x0801d610      0x1a4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_atan.o)
+                0x0801d610                atanf
+ *fill*         0x0801d7b4        0x4 
  .text.__kernel_rem_pio2
-                0x0801d7e0      0x678 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_rem_pio2.o)
-                0x0801d7e0                __kernel_rem_pio2
- .text.scalbn   0x0801de58      0x104 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_scalbn.o)
-                0x0801de58                scalbn
- *fill*         0x0801df5c        0x4 
- .text.floor    0x0801df60      0x118 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_floor.o)
-                0x0801df60                floor
+                0x0801d7b8      0x678 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x0801d7b8                __kernel_rem_pio2
+ .text.scalbn   0x0801de30      0x104 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_scalbn.o)
+                0x0801de30                scalbn
+ *fill*         0x0801df34        0x4 
+ .text.floor    0x0801df38      0x118 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_floor.o)
+                0x0801df38                floor
  .text.__udivmoddi4
-                0x0801e078      0x2bc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libgcc.a(_udivmoddi4.o)
-                0x0801e078                __udivmoddi4
+                0x0801e050      0x2bc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libgcc.a(_udivmoddi4.o)
+                0x0801e050                __udivmoddi4
  *(.glue_7)
- .glue_7        0x0801e334        0x0 linker stubs
+ .glue_7        0x0801e30c        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0801e334        0x0 linker stubs
+ .glue_7t       0x0801e30c        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0801e334        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
+ .eh_frame      0x0801e30c        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
  *(.init)
- .init          0x0801e334        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crti.o
-                0x0801e334                _init
- .init          0x0801e338        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtn.o
+ .init          0x0801e30c        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crti.o
+                0x0801e30c                _init
+ .init          0x0801e310        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtn.o
  *(.fini)
- .fini          0x0801e340        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crti.o
-                0x0801e340                _fini
- .fini          0x0801e344        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtn.o
-                0x0801e34c                        . = ALIGN (0x4)
-                0x0801e34c                        _etext = .
+ .fini          0x0801e318        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crti.o
+                0x0801e318                _fini
+ .fini          0x0801e31c        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtn.o
+                0x0801e324                        . = ALIGN (0x4)
+                0x0801e324                        _etext = .
 
-.vfp11_veneer   0x0801e34c        0x0
- .vfp11_veneer  0x0801e34c        0x0 linker stubs
+.vfp11_veneer   0x0801e324        0x0
+ .vfp11_veneer  0x0801e324        0x0 linker stubs
 
-.v4_bx          0x0801e34c        0x0
- .v4_bx         0x0801e34c        0x0 linker stubs
+.v4_bx          0x0801e324        0x0
+ .v4_bx         0x0801e324        0x0 linker stubs
 
-.iplt           0x0801e34c        0x0
- .iplt          0x0801e34c        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
+.iplt           0x0801e324        0x0
+ .iplt          0x0801e324        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
 
-i.AHRS_fabs     0x0801e34c       0x1a
- i.AHRS_fabs    0x0801e34c       0x1a Algorithm/AHRS.lib(ahrs.o)
+i.AHRS_fabs     0x0801e324       0x1a
+ i.AHRS_fabs    0x0801e324       0x1a Algorithm/AHRS.lib(ahrs.o)
 
-i.AHRS_init     0x0801e368      0x29c
- i.AHRS_init    0x0801e368      0x29c Algorithm/AHRS.lib(ahrs.o)
-                0x0801e368                AHRS_init
+i.AHRS_init     0x0801e340      0x29c
+ i.AHRS_init    0x0801e340      0x29c Algorithm/AHRS.lib(ahrs.o)
+                0x0801e340                AHRS_init
 
-i.AHRS_update   0x0801e604      0x13a
- i.AHRS_update  0x0801e604      0x13a Algorithm/AHRS.lib(ahrs.o)
-                0x0801e604                AHRS_update
+i.AHRS_update   0x0801e5dc      0x13a
+ i.AHRS_update  0x0801e5dc      0x13a Algorithm/AHRS.lib(ahrs.o)
+                0x0801e5dc                AHRS_update
 
 i.accel_comple_filter
-                0x0801e740      0x1d0
+                0x0801e718      0x1d0
  i.accel_comple_filter
-                0x0801e740      0x1d0 Algorithm/AHRS.lib(ahrs.o)
+                0x0801e718      0x1d0 Algorithm/AHRS.lib(ahrs.o)
 
 i.accel_update_kp_ki
-                0x0801e910      0x18c
+                0x0801e8e8      0x18c
  i.accel_update_kp_ki
-                0x0801e910      0x18c Algorithm/AHRS.lib(ahrs.o)
+                0x0801e8e8      0x18c Algorithm/AHRS.lib(ahrs.o)
 
 i.angle_to_quat
-                0x0801ea9c      0x16c
+                0x0801ea74      0x16c
  i.angle_to_quat
-                0x0801ea9c      0x16c Algorithm/AHRS.lib(ahrs.o)
+                0x0801ea74      0x16c Algorithm/AHRS.lib(ahrs.o)
 
-i.get_angle     0x0801ec08       0xe8
- i.get_angle    0x0801ec08       0xe8 Algorithm/AHRS.lib(ahrs.o)
-                0x0801ec08                get_angle
+i.get_angle     0x0801ebe0       0xe8
+ i.get_angle    0x0801ebe0       0xe8 Algorithm/AHRS.lib(ahrs.o)
+                0x0801ebe0                get_angle
 
 i.quat_normalization
-                0x0801ecf0       0x84
+                0x0801ecc8       0x84
  i.quat_normalization
-                0x0801ecf0       0x84 Algorithm/AHRS.lib(ahrs.o)
+                0x0801ecc8       0x84 Algorithm/AHRS.lib(ahrs.o)
 
-i.update_w      0x0801ed74       0x7a
- i.update_w     0x0801ed74       0x7a Algorithm/AHRS.lib(ahrs.o)
+i.update_w      0x0801ed4c       0x7a
+ i.update_w     0x0801ed4c       0x7a Algorithm/AHRS.lib(ahrs.o)
 
-.rodata         0x0801edf0      0xa08
-                0x0801edf0                        . = ALIGN (0x4)
+.rodata         0x0801edc8      0xa08
+                0x0801edc8                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x0801edf0       0x46 build/usbd_desc.o
- *fill*         0x0801ee36        0x2 
- .rodata        0x0801ee38       0x4c build/stm32h7xx_hal_fdcan.o
- .rodata        0x0801ee84       0x4a build/freertos.o
- *fill*         0x0801eece        0x2 
- .rodata        0x0801eed0        0x5 build/tasks.o
- *fill*         0x0801eed5        0x3 
- .rodata        0x0801eed8        0xd build/timers.o
- *fill*         0x0801eee5        0x3 
- .rodata        0x0801eee8       0x1b build/CAN_receive_send.o
+ .rodata        0x0801edc8       0x46 build/usbd_desc.o
+ *fill*         0x0801ee0e        0x2 
+ .rodata        0x0801ee10       0x4c build/stm32h7xx_hal_fdcan.o
+ .rodata        0x0801ee5c       0x4a build/freertos.o
+ *fill*         0x0801eea6        0x2 
+ .rodata        0x0801eea8        0x5 build/tasks.o
+ *fill*         0x0801eead        0x3 
+ .rodata        0x0801eeb0        0xd build/timers.o
+ *fill*         0x0801eebd        0x3 
+ .rodata        0x0801eec0       0x1b build/CAN_receive_send.o
  *(.rodata*)
- *fill*         0x0801ef03        0x1 
+ *fill*         0x0801eedb        0x1 
  .rodata.flagBitshiftOffset.0
-                0x0801ef04        0x8 build/stm32h7xx_hal_dma.o
+                0x0801eedc        0x8 build/stm32h7xx_hal_dma.o
  .rodata.DLCtoBytes
-                0x0801ef0c       0x10 build/stm32h7xx_hal_fdcan.o
+                0x0801eee4       0x10 build/stm32h7xx_hal_fdcan.o
  .rodata.UARTPrescTable
-                0x0801ef1c       0x18 build/stm32h7xx_hal_uart.o
-                0x0801ef1c                UARTPrescTable
+                0x0801eef4       0x18 build/stm32h7xx_hal_uart.o
+                0x0801eef4                UARTPrescTable
  .rodata.numerator.1
-                0x0801ef34        0x8 build/stm32h7xx_hal_uart_ex.o
+                0x0801ef0c        0x8 build/stm32h7xx_hal_uart_ex.o
  .rodata.denominator.0
-                0x0801ef3c        0x8 build/stm32h7xx_hal_uart_ex.o
+                0x0801ef14        0x8 build/stm32h7xx_hal_uart_ex.o
  .rodata.D1CorePrescTable
-                0x0801ef44       0x10 build/system_stm32h7xx.o
-                0x0801ef44                D1CorePrescTable
+                0x0801ef1c       0x10 build/system_stm32h7xx.o
+                0x0801ef1c                D1CorePrescTable
  .rodata.Remote_control_attributes
-                0x0801ef54       0x24 build/freertos.o
-                0x0801ef54                Remote_control_attributes
+                0x0801ef2c       0x24 build/freertos.o
+                0x0801ef2c                Remote_control_attributes
  .rodata.Eng_arm_attributes
-                0x0801ef78       0x24 build/freertos.o
-                0x0801ef78                Eng_arm_attributes
+                0x0801ef50       0x24 build/freertos.o
+                0x0801ef50                Eng_arm_attributes
  .rodata.Chassis_attributes
-                0x0801ef9c       0x24 build/freertos.o
-                0x0801ef9c                Chassis_attributes
+                0x0801ef74       0x24 build/freertos.o
+                0x0801ef74                Chassis_attributes
  .rodata.Motor_control_attributes
-                0x0801efc0       0x24 build/freertos.o
-                0x0801efc0                Motor_control_attributes
+                0x0801ef98       0x24 build/freertos.o
+                0x0801ef98                Motor_control_attributes
  .rodata.Yaw_attributes
-                0x0801efe4       0x24 build/freertos.o
-                0x0801efe4                Yaw_attributes
+                0x0801efbc       0x24 build/freertos.o
+                0x0801efbc                Yaw_attributes
  .rodata.Referee_attributes
-                0x0801f008       0x24 build/freertos.o
-                0x0801f008                Referee_attributes
+                0x0801efe0       0x24 build/freertos.o
+                0x0801efe0                Referee_attributes
  .rodata.Log_and_debug_attributes
-                0x0801f02c       0x24 build/freertos.o
-                0x0801f02c                Log_and_debug_attributes
+                0x0801f004       0x24 build/freertos.o
+                0x0801f004                Log_and_debug_attributes
  .rodata.Index_List
-                0x0801f050       0x1e build/Robstride04.o
-                0x0801f050                Index_List
- *fill*         0x0801f06e        0x2 
+                0x0801f028       0x1e build/Robstride04.o
+                0x0801f028                Index_List
+ *fill*         0x0801f046        0x2 
  .rodata.crc_ccitt_table
-                0x0801f070      0x200 build/crc_ccitt.o
-                0x0801f070                crc_ccitt_table
+                0x0801f048      0x200 build/crc_ccitt.o
+                0x0801f048                crc_ccitt_table
  .rodata._printf_float.str1.1
-                0x0801f270      0x173 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+                0x0801f248      0x173 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
                                  0x12 (size before relaxing)
  .rodata._printf_i.str1.1
-                0x0801f3e3       0x22 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0801f3bb       0x22 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
  .rodata._dtoa_r.str1.1
-                0x0801f3e3       0x90 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-dtoa.o)
+                0x0801f3bb       0x90 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-dtoa.o)
  .rodata._Balloc.str1.1
-                0x0801f3e3       0x71 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801f3bb       0x71 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
  .rodata.__multadd.str1.1
-                0x0801f3e3       0x11 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
- *fill*         0x0801f3e3        0x1 
- .rodata.p05.0  0x0801f3e4        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801f3bb       0x11 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+ *fill*         0x0801f3bb        0x1 
+ .rodata.p05.0  0x0801f3bc        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
  .rodata.__mprec_bigtens
-                0x0801f3f0       0x28 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801f3f0                __mprec_bigtens
+                0x0801f3c8       0x28 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801f3c8                __mprec_bigtens
  .rodata.__mprec_tens
-                0x0801f418       0xc8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
-                0x0801f418                __mprec_tens
+                0x0801f3f0       0xc8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+                0x0801f3f0                __mprec_tens
  .rodata._vfprintf_r.str1.1
-                0x0801f4e0       0x11 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+                0x0801f4b8       0x11 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
  .rodata._setlocale_r.str1.1
-                0x0801f4e0        0x9 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-locale.o)
+                0x0801f4b8        0x9 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-locale.o)
  .rodata.str1.1
-                0x0801f4e0        0x2 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-locale.o)
+                0x0801f4b8        0x2 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-locale.o)
  .rodata.__assert_func.str1.1
-                0x0801f4e0       0x3d C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-assert.o)
+                0x0801f4b8       0x3d C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-assert.o)
  .rodata._ctype_
-                0x0801f4e0      0x101 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-ctype_.o)
-                0x0801f4e0                _ctype_
- *fill*         0x0801f5e1        0x3 
+                0x0801f4b8      0x101 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-ctype_.o)
+                0x0801f4b8                _ctype_
+ *fill*         0x0801f5b9        0x3 
  .rodata.asinf.str1.4
-                0x0801f5e4        0x1 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_asin.o)
- *fill*         0x0801f5e5        0x3 
+                0x0801f5bc        0x1 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_asin.o)
+ *fill*         0x0801f5bd        0x3 
  .rodata.npio2_hw
-                0x0801f5e8       0x80 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x0801f5c0       0x80 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-e_rem_pio2.o)
  .rodata.two_over_pi
-                0x0801f668      0x108 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-e_rem_pio2.o)
+                0x0801f640      0x108 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-e_rem_pio2.o)
  .rodata.CSWTCH.9
-                0x0801f770        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_atan2.o)
+                0x0801f748        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_atan2.o)
  .rodata.CSWTCH.8
-                0x0801f77c        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_atan2.o)
+                0x0801f754        0xc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_atan2.o)
  .rodata.atanlo
-                0x0801f788       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_atan.o)
+                0x0801f760       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_atan.o)
  .rodata.atanhi
-                0x0801f798       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_atan.o)
- .rodata.PIo2   0x0801f7a8       0x40 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x0801f770       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_atan.o)
+ .rodata.PIo2   0x0801f780       0x40 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_rem_pio2.o)
  .rodata.init_jk
-                0x0801f7e8       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_rem_pio2.o)
-                0x0801f7f8                        . = ALIGN (0x4)
+                0x0801f7c0       0x10 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_rem_pio2.o)
+                0x0801f7d0                        . = ALIGN (0x4)
 
-.constdata      0x0801f7f8        0xc
- .constdata     0x0801f7f8        0xc Algorithm/AHRS.lib(ahrs.o)
+.constdata      0x0801f7d0        0xc
+ .constdata     0x0801f7d0        0xc Algorithm/AHRS.lib(ahrs.o)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0801f804        0x8
-                0x0801f804                        __exidx_start = .
+.ARM            0x0801f7dc        0x8
+                0x0801f7dc                        __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x0801f804        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memchr.o)
- .ARM.exidx     0x0801f80c        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-strlen.o)
+ .ARM.exidx     0x0801f7dc        0x8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memchr.o)
+ .ARM.exidx     0x0801f7e4        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-strlen.o)
                                   0x8 (size before relaxing)
- .ARM.exidx     0x0801f80c        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-aeabi_memset-soft.o)
+ .ARM.exidx     0x0801f7e4        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-aeabi_memset-soft.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text.__udivmoddi4
-                0x0801f80c        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libgcc.a(_udivmoddi4.o)
+                0x0801f7e4        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libgcc.a(_udivmoddi4.o)
                                   0x8 (size before relaxing)
-                0x0801f80c                        __exidx_end = .
+                0x0801f7e4                        __exidx_end = .
 
-.rel.dyn        0x0801f80c        0x0
- .rel.iplt      0x0801f80c        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
+.rel.dyn        0x0801f7e4        0x0
+ .rel.iplt      0x0801f7e4        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
 
-.preinit_array  0x0801f80c        0x0
-                0x0801f80c                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0801f7e4        0x0
+                0x0801f7e4                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0801f80c                        PROVIDE (__preinit_array_end = .)
+                0x0801f7e4                        PROVIDE (__preinit_array_end = .)
 
-.init_array     0x0801f80c        0x4
-                0x0801f80c                        PROVIDE (__init_array_start = .)
+.init_array     0x0801f7e4        0x4
+                0x0801f7e4                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0801f80c        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
-                0x0801f810                        PROVIDE (__init_array_end = .)
+ .init_array    0x0801f7e4        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
+                0x0801f7e8                        PROVIDE (__init_array_end = .)
 
-.fini_array     0x0801f810        0x4
+.fini_array     0x0801f7e8        0x4
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0801f810        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
+ .fini_array    0x0801f7e8        0x4 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0801f814                        _sidata = LOADADDR (.data)
+                0x0801f7ec                        _sidata = LOADADDR (.data)
 
-.data           0x24000000      0x310 load address 0x0801f814
+.data           0x24000000      0x310 load address 0x0801f7ec
                 0x24000000                        . = ALIGN (0x4)
                 0x24000000                        _sdata = .
  *(.data)
@@ -5742,17 +5744,17 @@ i.update_w      0x0801ed74       0x7a
                 0x24000310                        _edata = .
 
 .tm_clone_table
-                0x24000310        0x0 load address 0x0801fb24
+                0x24000310        0x0 load address 0x0801fafc
  .tm_clone_table
                 0x24000310        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
  .tm_clone_table
                 0x24000310        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtend.o
 
-.igot.plt       0x24000310        0x0 load address 0x0801fb24
+.igot.plt       0x24000310        0x0 load address 0x0801fafc
  .igot.plt      0x24000310        0x0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard/crtbegin.o
                 0x24000310                        . = ALIGN (0x4)
 
-.bss            0x24000310     0x87bc load address 0x0801fb24
+.bss            0x24000310     0x87bc load address 0x0801fafc
                 0x24000310                        _sbss = .
                 0x24000310                        __bss_start__ = _sbss
  *(.bss)
@@ -6071,7 +6073,7 @@ i.update_w      0x0801ed74       0x7a
                 0x24008acc                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x24008acc      0x604 load address 0x0801fb24
+                0x24008acc      0x604 load address 0x0801fafc
                 0x24008ad0                        . = ALIGN (0x8)
  *fill*         0x24008acc        0x4 
                 [!provide]                        PROVIDE (end = .)
@@ -6471,7 +6473,7 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .arm_vfe_header
                 0x00000000        0x4 Algorithm/AHRS.lib(ahrs.o)
 
-.debug_info     0x00000000    0x4ace7
+.debug_info     0x00000000    0x4acfe
  .debug_info    0x00000000     0x10ca build/main.o
  .debug_info    0x000010ca      0x21b build/iwdg.o
  .debug_info    0x000012e5     0x23bd build/stm32h7xx_it.o
@@ -6529,39 +6531,39 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .debug_info    0x00040f5a      0x12f build/Stm32_time.o
  .debug_info    0x00041089     0x19c6 build/dm4310_drv.o
  .debug_info    0x00042a4f     0x1e28 build/Robstride04.o
- .debug_info    0x00044877     0x20e9 build/arm.o
- .debug_info    0x00046960     0x11b0 build/IMU_updata.o
- .debug_info    0x00047b10      0x916 build/buzzer.o
- .debug_info    0x00048426      0x177 build/crc_ccitt.o
- .debug_info    0x0004859d      0x51c build/gom_protocol.o
- .debug_info    0x00048ab9      0x775 build/remote_control.o
- .debug_info    0x0004922e      0x22b build/USB_VirCom.o
- .debug_info    0x00049459      0x236 build/music.o
- .debug_info    0x0004968f       0x30 build/startup_stm32h723xx.o
- .debug_info    0x000496bf       0xb8 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00049777      0x114 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004988b      0x148 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x000499d3      0x21c Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00049bef      0x104 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00049cf3      0x104 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00049df7      0x104 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x00049efb      0x1fc Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004a0f7      0x18c Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004a283      0x1cc Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004a44f      0x108 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004a557      0x108 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004a65f      0x108 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004a767      0x110 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004a877      0x104 Algorithm/AHRS.lib(ahrs.o)
- .debug_info    0x0004a97b      0x1ec Algorithm/AHRS.lib(ahrs.o)
-                0x0004a97b                __ARM_grp..debug_info$AHRS_MiddleWare.h$.2_oB0000_gdKo08fjhf0_300000
-                0x0004a97b                __ARM_grp.AHRS_MiddleWare.h.2_oB0000_gdKo08fjhf0_300000
- .debug_info    0x0004ab67       0xb8 Algorithm/AHRS.lib(ahrs.o)
-                0x0004ab67                __ARM_grp.AHRS.h.2_As0000_PieY4wFFo66_300000
-                0x0004ab67                __ARM_grp..debug_info$AHRS.h$.2_As0000_PieY4wFFo66_300000
- .debug_info    0x0004ac1f       0xc8 Algorithm/AHRS.lib(ahrs.o)
-                0x0004ac1f                __ARM_grp..debug_info$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
-                0x0004ac1f                __ARM_grp.AHRS.c.2_kR0000_yWR2zUbHmB7_800000
+ .debug_info    0x00044877     0x2100 build/arm.o
+ .debug_info    0x00046977     0x11b0 build/IMU_updata.o
+ .debug_info    0x00047b27      0x916 build/buzzer.o
+ .debug_info    0x0004843d      0x177 build/crc_ccitt.o
+ .debug_info    0x000485b4      0x51c build/gom_protocol.o
+ .debug_info    0x00048ad0      0x775 build/remote_control.o
+ .debug_info    0x00049245      0x22b build/USB_VirCom.o
+ .debug_info    0x00049470      0x236 build/music.o
+ .debug_info    0x000496a6       0x30 build/startup_stm32h723xx.o
+ .debug_info    0x000496d6       0xb8 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004978e      0x114 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x000498a2      0x148 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x000499ea      0x21c Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x00049c06      0x104 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x00049d0a      0x104 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x00049e0e      0x104 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x00049f12      0x1fc Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004a10e      0x18c Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004a29a      0x1cc Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004a466      0x108 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004a56e      0x108 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004a676      0x108 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004a77e      0x110 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004a88e      0x104 Algorithm/AHRS.lib(ahrs.o)
+ .debug_info    0x0004a992      0x1ec Algorithm/AHRS.lib(ahrs.o)
+                0x0004a992                __ARM_grp..debug_info$AHRS_MiddleWare.h$.2_oB0000_gdKo08fjhf0_300000
+                0x0004a992                __ARM_grp.AHRS_MiddleWare.h.2_oB0000_gdKo08fjhf0_300000
+ .debug_info    0x0004ab7e       0xb8 Algorithm/AHRS.lib(ahrs.o)
+                0x0004ab7e                __ARM_grp.AHRS.h.2_As0000_PieY4wFFo66_300000
+                0x0004ab7e                __ARM_grp..debug_info$AHRS.h$.2_As0000_PieY4wFFo66_300000
+ .debug_info    0x0004ac36       0xc8 Algorithm/AHRS.lib(ahrs.o)
+                0x0004ac36                __ARM_grp..debug_info$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
+                0x0004ac36                __ARM_grp.AHRS.c.2_kR0000_yWR2zUbHmB7_800000
 
 .debug_abbrev   0x00000000     0x8f9c
  .debug_abbrev  0x00000000      0x30c build/main.o
@@ -6633,7 +6635,7 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .debug_abbrev  0x000089f8      0x5a4 Algorithm/AHRS.lib(ahrs.o)
                 0x000089f8                __ARM_grp..debug_abbrev.group.2_Am0000_lbphKItke$2_000000
 
-.debug_loc      0x00000000    0x1adaf
+.debug_loc      0x00000000    0x1addb
  .debug_loc     0x00000000      0x14a build/main.o
  .debug_loc     0x0000014a       0x2c build/iwdg.o
  .debug_loc     0x00000176      0x5f0 build/stm32h7xx_it.o
@@ -6691,29 +6693,29 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .debug_loc     0x0001844b       0xe0 build/Stm32_time.o
  .debug_loc     0x0001852b      0x756 build/dm4310_drv.o
  .debug_loc     0x00018c81      0xbea build/Robstride04.o
- .debug_loc     0x0001986b      0x108 build/arm.o
- .debug_loc     0x00019973      0x3ec build/IMU_updata.o
- .debug_loc     0x00019d5f       0xf8 build/buzzer.o
- .debug_loc     0x00019e57       0xac build/crc_ccitt.o
- .debug_loc     0x00019f03       0xa0 build/gom_protocol.o
- .debug_loc     0x00019fa3      0x3e0 build/remote_control.o
- .debug_loc     0x0001a383       0xfc build/USB_VirCom.o
- .debug_loc     0x0001a47f       0x7c build/music.o
- .debug_loc     0x0001a4fb       0xe8 Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001a5e3      0x22c Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001a80f       0x58 Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001a867       0x3c Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001a8a3       0x54 Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001a8f7      0x158 Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001aa4f       0xd0 Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001ab1f      0x124 Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001ac43       0x40 Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001ac83       0x40 Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001acc3       0x40 Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001ad03       0x98 Algorithm/AHRS.lib(ahrs.o)
- .debug_loc     0x0001ad9b       0x14 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001986b      0x134 build/arm.o
+ .debug_loc     0x0001999f      0x3ec build/IMU_updata.o
+ .debug_loc     0x00019d8b       0xf8 build/buzzer.o
+ .debug_loc     0x00019e83       0xac build/crc_ccitt.o
+ .debug_loc     0x00019f2f       0xa0 build/gom_protocol.o
+ .debug_loc     0x00019fcf      0x3e0 build/remote_control.o
+ .debug_loc     0x0001a3af       0xfc build/USB_VirCom.o
+ .debug_loc     0x0001a4ab       0x7c build/music.o
+ .debug_loc     0x0001a527       0xe8 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001a60f      0x22c Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001a83b       0x58 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001a893       0x3c Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001a8cf       0x54 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001a923      0x158 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001aa7b       0xd0 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001ab4b      0x124 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001ac6f       0x40 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001acaf       0x40 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001acef       0x40 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001ad2f       0x98 Algorithm/AHRS.lib(ahrs.o)
+ .debug_loc     0x0001adc7       0x14 Algorithm/AHRS.lib(ahrs.o)
 
-.debug_aranges  0x00000000     0x2fd0
+.debug_aranges  0x00000000     0x2fd8
  .debug_aranges
                 0x00000000       0x40 build/main.o
  .debug_aranges
@@ -6829,25 +6831,25 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .debug_aranges
                 0x00002c28      0x140 build/Robstride04.o
  .debug_aranges
-                0x00002d68       0x48 build/arm.o
+                0x00002d68       0x50 build/arm.o
  .debug_aranges
-                0x00002db0       0x80 build/IMU_updata.o
+                0x00002db8       0x80 build/IMU_updata.o
  .debug_aranges
-                0x00002e30       0x38 build/buzzer.o
+                0x00002e38       0x38 build/buzzer.o
  .debug_aranges
-                0x00002e68       0x28 build/crc_ccitt.o
+                0x00002e70       0x28 build/crc_ccitt.o
  .debug_aranges
-                0x00002e90       0x28 build/gom_protocol.o
+                0x00002e98       0x28 build/gom_protocol.o
  .debug_aranges
-                0x00002eb8       0x98 build/remote_control.o
+                0x00002ec0       0x98 build/remote_control.o
  .debug_aranges
-                0x00002f50       0x30 build/USB_VirCom.o
+                0x00002f58       0x30 build/USB_VirCom.o
  .debug_aranges
-                0x00002f80       0x28 build/music.o
+                0x00002f88       0x28 build/music.o
  .debug_aranges
-                0x00002fa8       0x28 build/startup_stm32h723xx.o
+                0x00002fb0       0x28 build/startup_stm32h723xx.o
 
-.debug_ranges   0x00000000     0x2c40
+.debug_ranges   0x00000000     0x2c48
  .debug_ranges  0x00000000       0x30 build/main.o
  .debug_ranges  0x00000030       0x10 build/iwdg.o
  .debug_ranges  0x00000040      0x118 build/stm32h7xx_it.o
@@ -6905,17 +6907,17 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .debug_ranges  0x000027f8       0x28 build/Stm32_time.o
  .debug_ranges  0x00002820       0xb8 build/dm4310_drv.o
  .debug_ranges  0x000028d8      0x188 build/Robstride04.o
- .debug_ranges  0x00002a60       0x38 build/arm.o
- .debug_ranges  0x00002a98       0x70 build/IMU_updata.o
- .debug_ranges  0x00002b08       0x28 build/buzzer.o
- .debug_ranges  0x00002b30       0x18 build/crc_ccitt.o
- .debug_ranges  0x00002b48       0x18 build/gom_protocol.o
- .debug_ranges  0x00002b60       0x88 build/remote_control.o
- .debug_ranges  0x00002be8       0x20 build/USB_VirCom.o
- .debug_ranges  0x00002c08       0x18 build/music.o
- .debug_ranges  0x00002c20       0x20 build/startup_stm32h723xx.o
+ .debug_ranges  0x00002a60       0x40 build/arm.o
+ .debug_ranges  0x00002aa0       0x70 build/IMU_updata.o
+ .debug_ranges  0x00002b10       0x28 build/buzzer.o
+ .debug_ranges  0x00002b38       0x18 build/crc_ccitt.o
+ .debug_ranges  0x00002b50       0x18 build/gom_protocol.o
+ .debug_ranges  0x00002b68       0x88 build/remote_control.o
+ .debug_ranges  0x00002bf0       0x20 build/USB_VirCom.o
+ .debug_ranges  0x00002c10       0x18 build/music.o
+ .debug_ranges  0x00002c28       0x20 build/startup_stm32h723xx.o
 
-.debug_line     0x00000000    0x26249
+.debug_line     0x00000000    0x26253
  .debug_line    0x00000000      0x46d build/main.o
  .debug_line    0x0000046d      0x192 build/iwdg.o
  .debug_line    0x000005ff      0x506 build/stm32h7xx_it.o
@@ -6973,106 +6975,106 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .debug_line    0x00022d5f      0x15a build/Stm32_time.o
  .debug_line    0x00022eb9      0x713 build/dm4310_drv.o
  .debug_line    0x000235cc      0xd11 build/Robstride04.o
- .debug_line    0x000242dd      0x321 build/arm.o
- .debug_line    0x000245fe      0x78f build/IMU_updata.o
- .debug_line    0x00024d8d      0x1fc build/buzzer.o
- .debug_line    0x00024f89      0x161 build/crc_ccitt.o
- .debug_line    0x000250ea      0x308 build/gom_protocol.o
- .debug_line    0x000253f2      0x2c2 build/remote_control.o
- .debug_line    0x000256b4      0x144 build/USB_VirCom.o
- .debug_line    0x000257f8      0x182 build/music.o
- .debug_line    0x0002597a       0x73 build/startup_stm32h723xx.o
- .debug_line    0x000259ed       0x38 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00025a25       0x84 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00025aa9      0x10c Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00025bb5       0x6c Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00025c21       0x7c Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00025c9d       0x64 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00025d01       0xe4 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00025de5       0xbc Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00025ea1       0xf0 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00025f91       0x54 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00025fe5       0x54 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00026039       0x54 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002608d       0x74 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00026101       0x50 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x00026151       0x44 Algorithm/AHRS.lib(ahrs.o)
-                0x00026151                __ARM_grp..debug_line$AHRS_MiddleWare.h$.2_oB0000_gdKo08fjhf0_300000
- .debug_line    0x00026195       0x50 Algorithm/AHRS.lib(ahrs.o)
-                0x00026195                __ARM_grp..debug_line$AHRS.h$.2_As0000_PieY4wFFo66_300000
- .debug_line    0x000261e5       0x64 Algorithm/AHRS.lib(ahrs.o)
-                0x000261e5                __ARM_grp..debug_line$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
+ .debug_line    0x000242dd      0x32b build/arm.o
+ .debug_line    0x00024608      0x78f build/IMU_updata.o
+ .debug_line    0x00024d97      0x1fc build/buzzer.o
+ .debug_line    0x00024f93      0x161 build/crc_ccitt.o
+ .debug_line    0x000250f4      0x308 build/gom_protocol.o
+ .debug_line    0x000253fc      0x2c2 build/remote_control.o
+ .debug_line    0x000256be      0x144 build/USB_VirCom.o
+ .debug_line    0x00025802      0x182 build/music.o
+ .debug_line    0x00025984       0x73 build/startup_stm32h723xx.o
+ .debug_line    0x000259f7       0x38 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00025a2f       0x84 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00025ab3      0x10c Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00025bbf       0x6c Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00025c2b       0x7c Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00025ca7       0x64 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00025d0b       0xe4 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00025def       0xbc Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00025eab       0xf0 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00025f9b       0x54 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00025fef       0x54 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00026043       0x54 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x00026097       0x74 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002610b       0x50 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002615b       0x44 Algorithm/AHRS.lib(ahrs.o)
+                0x0002615b                __ARM_grp..debug_line$AHRS_MiddleWare.h$.2_oB0000_gdKo08fjhf0_300000
+ .debug_line    0x0002619f       0x50 Algorithm/AHRS.lib(ahrs.o)
+                0x0002619f                __ARM_grp..debug_line$AHRS.h$.2_As0000_PieY4wFFo66_300000
+ .debug_line    0x000261ef       0x64 Algorithm/AHRS.lib(ahrs.o)
+                0x000261ef                __ARM_grp..debug_line$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
 
-.debug_str      0x00000000     0xf909
- .debug_str     0x00000000     0xf909 build/main.o
+.debug_str      0x00000000     0xf914
+ .debug_str     0x00000000     0xf914 build/main.o
                                 0xdd2 (size before relaxing)
- .debug_str     0x0000f909      0x24a build/iwdg.o
- .debug_str     0x0000f909     0x196d build/stm32h7xx_it.o
- .debug_str     0x0000f909      0xbc5 build/stm32h7xx_hal_msp.o
- .debug_str     0x0000f909     0x1392 build/stm32h7xx_hal_timebase_tim.o
- .debug_str     0x0000f909      0x6da build/usb_device.o
- .debug_str     0x0000f909      0x47a build/usbd_desc.o
- .debug_str     0x0000f909      0x819 build/usbd_cdc_if.o
- .debug_str     0x0000f909     0x1dd4 build/usbd_conf.o
- .debug_str     0x0000f909      0xe22 build/stm32h7xx_hal_pcd.o
- .debug_str     0x0000f909      0x80e build/stm32h7xx_hal_pcd_ex.o
- .debug_str     0x0000f909      0xd6a build/stm32h7xx_ll_usb.o
- .debug_str     0x0000f909      0x991 build/stm32h7xx_hal_rcc.o
- .debug_str     0x0000f909      0xed3 build/stm32h7xx_hal_rcc_ex.o
- .debug_str     0x0000f909      0x6ac build/stm32h7xx_hal_gpio.o
- .debug_str     0x0000f909      0x92f build/stm32h7xx_hal_dma.o
- .debug_str     0x0000f909      0x98a build/stm32h7xx_hal_pwr_ex.o
- .debug_str     0x0000f909     0x1017 build/stm32h7xx_hal_cortex.o
- .debug_str     0x0000f909     0x1572 build/stm32h7xx_hal.o
- .debug_str     0x0000f909     0x1d6a build/stm32h7xx_hal_fdcan.o
- .debug_str     0x0000f909      0xdaa build/stm32h7xx_hal_spi.o
- .debug_str     0x0000f909     0x183f build/stm32h7xx_hal_tim.o
- .debug_str     0x0000f909     0x11cb build/stm32h7xx_hal_tim_ex.o
- .debug_str     0x0000f909     0x1478 build/stm32h7xx_hal_uart.o
- .debug_str     0x0000f909      0xb7d build/stm32h7xx_hal_uart_ex.o
- .debug_str     0x0000f909      0x27a build/stm32h7xx_hal_iwdg.o
- .debug_str     0x0000f909      0x673 build/system_stm32h7xx.o
- .debug_str     0x0000f909      0x9c9 build/usbd_core.o
- .debug_str     0x0000f909      0x7f4 build/usbd_ctlreq.o
- .debug_str     0x0000f909      0x6c9 build/usbd_ioreq.o
- .debug_str     0x0000f909      0xdc3 build/usbd_cdc.o
- .debug_str     0x0000f909      0x919 build/freertos.o
- .debug_str     0x0000f909      0x2d6 build/list.o
- .debug_str     0x0000f909      0xcdb build/queue.o
- .debug_str     0x0000f909     0x12d0 build/tasks.o
- .debug_str     0x0000f909      0xc1c build/timers.o
- .debug_str     0x0000f909     0x2566 build/cmsis_os2.o
- .debug_str     0x0000f909      0x4ef build/heap_4.o
- .debug_str     0x0000f909      0x456 build/port.o
- .debug_str     0x0000f909      0x1f9 build/sysmem.o
- .debug_str     0x0000f909      0x3cd build/syscalls.o
- .debug_str     0x0000f909      0x4b7 build/gpio.o
- .debug_str     0x0000f909      0xbca build/dma.o
- .debug_str     0x0000f909     0x162c build/fdcan.o
- .debug_str     0x0000f909     0x1698 build/spi.o
- .debug_str     0x0000f909     0x167a build/tim.o
- .debug_str     0x0000f909     0x1771 build/usart.o
- .debug_str     0x0000f909      0x53a build/BMI088driver.o
- .debug_str     0x0000f909      0x923 build/BMI088Middleware.o
- .debug_str     0x0000f909      0x223 build/AHRS_middleware.o
- .debug_str     0x0000f909      0x469 build/fifo.o
- .debug_str     0x0000f909      0x1fd build/pid.o
- .debug_str     0x0000f909      0x990 build/UART_data_txrx.o
- .debug_str     0x0000f909      0xf4f build/CAN_receive_send.o
- .debug_str     0x0000f909      0x1d7 build/Stm32_time.o
- .debug_str     0x0000f909      0xc4c build/dm4310_drv.o
- .debug_str     0x0000f909      0xe70 build/Robstride04.o
- .debug_str     0x0000f909     0x135b build/arm.o
- .debug_str     0x0000f909      0xb48 build/IMU_updata.o
- .debug_str     0x0000f909      0x862 build/buzzer.o
- .debug_str     0x0000f909      0x1d3 build/crc_ccitt.o
- .debug_str     0x0000f909      0x34c build/gom_protocol.o
- .debug_str     0x0000f909      0x4f2 build/remote_control.o
- .debug_str     0x0000f909      0x23c build/USB_VirCom.o
- .debug_str     0x0000f909      0x27d build/music.o
- .debug_str     0x0000f909       0x56 build/startup_stm32h723xx.o
+ .debug_str     0x0000f914      0x24a build/iwdg.o
+ .debug_str     0x0000f914     0x196d build/stm32h7xx_it.o
+ .debug_str     0x0000f914      0xbc5 build/stm32h7xx_hal_msp.o
+ .debug_str     0x0000f914     0x1392 build/stm32h7xx_hal_timebase_tim.o
+ .debug_str     0x0000f914      0x6da build/usb_device.o
+ .debug_str     0x0000f914      0x47a build/usbd_desc.o
+ .debug_str     0x0000f914      0x819 build/usbd_cdc_if.o
+ .debug_str     0x0000f914     0x1dd4 build/usbd_conf.o
+ .debug_str     0x0000f914      0xe22 build/stm32h7xx_hal_pcd.o
+ .debug_str     0x0000f914      0x80e build/stm32h7xx_hal_pcd_ex.o
+ .debug_str     0x0000f914      0xd6a build/stm32h7xx_ll_usb.o
+ .debug_str     0x0000f914      0x991 build/stm32h7xx_hal_rcc.o
+ .debug_str     0x0000f914      0xed3 build/stm32h7xx_hal_rcc_ex.o
+ .debug_str     0x0000f914      0x6ac build/stm32h7xx_hal_gpio.o
+ .debug_str     0x0000f914      0x92f build/stm32h7xx_hal_dma.o
+ .debug_str     0x0000f914      0x98a build/stm32h7xx_hal_pwr_ex.o
+ .debug_str     0x0000f914     0x1017 build/stm32h7xx_hal_cortex.o
+ .debug_str     0x0000f914     0x1572 build/stm32h7xx_hal.o
+ .debug_str     0x0000f914     0x1d6a build/stm32h7xx_hal_fdcan.o
+ .debug_str     0x0000f914      0xdaa build/stm32h7xx_hal_spi.o
+ .debug_str     0x0000f914     0x183f build/stm32h7xx_hal_tim.o
+ .debug_str     0x0000f914     0x11cb build/stm32h7xx_hal_tim_ex.o
+ .debug_str     0x0000f914     0x1478 build/stm32h7xx_hal_uart.o
+ .debug_str     0x0000f914      0xb7d build/stm32h7xx_hal_uart_ex.o
+ .debug_str     0x0000f914      0x27a build/stm32h7xx_hal_iwdg.o
+ .debug_str     0x0000f914      0x673 build/system_stm32h7xx.o
+ .debug_str     0x0000f914      0x9c9 build/usbd_core.o
+ .debug_str     0x0000f914      0x7f4 build/usbd_ctlreq.o
+ .debug_str     0x0000f914      0x6c9 build/usbd_ioreq.o
+ .debug_str     0x0000f914      0xdc3 build/usbd_cdc.o
+ .debug_str     0x0000f914      0x919 build/freertos.o
+ .debug_str     0x0000f914      0x2d6 build/list.o
+ .debug_str     0x0000f914      0xcdb build/queue.o
+ .debug_str     0x0000f914     0x12d0 build/tasks.o
+ .debug_str     0x0000f914      0xc1c build/timers.o
+ .debug_str     0x0000f914     0x2566 build/cmsis_os2.o
+ .debug_str     0x0000f914      0x4ef build/heap_4.o
+ .debug_str     0x0000f914      0x456 build/port.o
+ .debug_str     0x0000f914      0x1f9 build/sysmem.o
+ .debug_str     0x0000f914      0x3cd build/syscalls.o
+ .debug_str     0x0000f914      0x4b7 build/gpio.o
+ .debug_str     0x0000f914      0xbca build/dma.o
+ .debug_str     0x0000f914     0x162c build/fdcan.o
+ .debug_str     0x0000f914     0x1698 build/spi.o
+ .debug_str     0x0000f914     0x167a build/tim.o
+ .debug_str     0x0000f914     0x1771 build/usart.o
+ .debug_str     0x0000f914      0x53a build/BMI088driver.o
+ .debug_str     0x0000f914      0x923 build/BMI088Middleware.o
+ .debug_str     0x0000f914      0x223 build/AHRS_middleware.o
+ .debug_str     0x0000f914      0x469 build/fifo.o
+ .debug_str     0x0000f914      0x1fd build/pid.o
+ .debug_str     0x0000f914      0x990 build/UART_data_txrx.o
+ .debug_str     0x0000f914      0xf4f build/CAN_receive_send.o
+ .debug_str     0x0000f914      0x1d7 build/Stm32_time.o
+ .debug_str     0x0000f914      0xc4c build/dm4310_drv.o
+ .debug_str     0x0000f914      0xe70 build/Robstride04.o
+ .debug_str     0x0000f914     0x1366 build/arm.o
+ .debug_str     0x0000f914      0xb48 build/IMU_updata.o
+ .debug_str     0x0000f914      0x862 build/buzzer.o
+ .debug_str     0x0000f914      0x1d3 build/crc_ccitt.o
+ .debug_str     0x0000f914      0x34c build/gom_protocol.o
+ .debug_str     0x0000f914      0x4f2 build/remote_control.o
+ .debug_str     0x0000f914      0x23c build/USB_VirCom.o
+ .debug_str     0x0000f914      0x27d build/music.o
+ .debug_str     0x0000f914       0x56 build/startup_stm32h723xx.o
 
-.debug_frame    0x00000000     0xde18
+.debug_frame    0x00000000     0xde34
  .debug_frame   0x00000000       0xb0 build/main.o
  .debug_frame   0x000000b0       0x2c build/iwdg.o
  .debug_frame   0x000000dc      0x3b8 build/stm32h7xx_it.o
@@ -7130,89 +7132,89 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .debug_frame   0x0000b3d8       0x88 build/Stm32_time.o
  .debug_frame   0x0000b460      0x34c build/dm4310_drv.o
  .debug_frame   0x0000b7ac      0x568 build/Robstride04.o
- .debug_frame   0x0000bd14       0xb8 build/arm.o
- .debug_frame   0x0000bdcc      0x1e0 build/IMU_updata.o
- .debug_frame   0x0000bfac       0x90 build/buzzer.o
- .debug_frame   0x0000c03c       0x5c build/crc_ccitt.o
- .debug_frame   0x0000c098       0x5c build/gom_protocol.o
- .debug_frame   0x0000c0f4      0x204 build/remote_control.o
- .debug_frame   0x0000c2f8       0x80 build/USB_VirCom.o
- .debug_frame   0x0000c378       0x50 build/music.o
- .debug_frame   0x0000c3c8       0x98 Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c460       0xbc Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c51c       0x88 Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c5a4       0x74 Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c618       0x74 Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c68c       0x98 Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c724       0x98 Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c7bc       0x9c Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c858       0x7c Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c8d4       0x7c Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c950       0x7c Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000c9cc       0x84 Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000ca50       0x74 Algorithm/AHRS.lib(ahrs.o)
- .debug_frame   0x0000cac4       0x30 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-malloc.o)
- .debug_frame   0x0000caf4       0x50 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mallocr.o)
- .debug_frame   0x0000cb44       0x30 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mlock.o)
- .debug_frame   0x0000cb74       0x9c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
- .debug_frame   0x0000cc10       0x60 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
- .debug_frame   0x0000cc70      0x144 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
- .debug_frame   0x0000cdb4       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fwalk.o)
- .debug_frame   0x0000cde8       0x6c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-printf.o)
- .debug_frame   0x0000ce54       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-puts.o)
- .debug_frame   0x0000ce90       0x88 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-stdio.o)
- .debug_frame   0x0000cf18       0x40 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wbuf.o)
- .debug_frame   0x0000cf58       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wsetup.o)
- .debug_frame   0x0000cf84       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memset.o)
- .debug_frame   0x0000cfa4       0x40 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-localeconv.o)
- .debug_frame   0x0000cfe4       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-closer.o)
- .debug_frame   0x0000d010       0x38 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-reent.o)
- .debug_frame   0x0000d048       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lseekr.o)
- .debug_frame   0x0000d074       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-readr.o)
- .debug_frame   0x0000d0a0       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-sbrkr.o)
- .debug_frame   0x0000d0cc       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-writer.o)
- .debug_frame   0x0000d0f8       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-errno.o)
- .debug_frame   0x0000d118       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-init.o)
- .debug_frame   0x0000d144       0xb0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lock.o)
- .debug_frame   0x0000d1f4       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-aeabi_memclr.o)
- .debug_frame   0x0000d214       0x28 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memcpy-stub.o)
- .debug_frame   0x0000d23c       0x7c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-dtoa.o)
- .debug_frame   0x0000d2b8       0x38 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-freer.o)
- .debug_frame   0x0000d2f0      0x250 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
- .debug_frame   0x0000d540       0xa8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
- .debug_frame   0x0000d5e8       0x5c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fflush.o)
- .debug_frame   0x0000d644       0x58 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-makebuf.o)
- .debug_frame   0x0000d69c       0x48 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-locale.o)
- .debug_frame   0x0000d6e4       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fstatr.o)
- .debug_frame   0x0000d710       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-isattyr.o)
- .debug_frame   0x0000d73c       0x40 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-assert.o)
- .debug_frame   0x0000d77c       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-callocr.o)
- .debug_frame   0x0000d7a8       0x48 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mbtowc_r.o)
- .debug_frame   0x0000d7f0       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wctomb_r.o)
- .debug_frame   0x0000d82c       0x64 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fprintf.o)
- .debug_frame   0x0000d890       0x28 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-abort.o)
- .debug_frame   0x0000d8b8       0xcc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signal.o)
- .debug_frame   0x0000d984       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signalr.o)
- .debug_frame   0x0000d9c0       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_cos.o)
- .debug_frame   0x0000d9f4       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_sin.o)
- .debug_frame   0x0000da28       0x48 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_asin.o)
- .debug_frame   0x0000da70       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_atan2.o)
- .debug_frame   0x0000da90       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_sqrt.o)
- .debug_frame   0x0000dad4       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_fabs.o)
- .debug_frame   0x0000daf4       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_nan.o)
- .debug_frame   0x0000db14       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_sqrt.o)
- .debug_frame   0x0000db34       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_cos.o)
- .debug_frame   0x0000db78       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_sin.o)
- .debug_frame   0x0000db98       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-e_rem_pio2.o)
- .debug_frame   0x0000dbcc       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_fabs.o)
- .debug_frame   0x0000dbec       0x70 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_asin.o)
- .debug_frame   0x0000dc5c       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_atan2.o)
- .debug_frame   0x0000dca0       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_atan.o)
- .debug_frame   0x0000dccc       0x70 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_rem_pio2.o)
- .debug_frame   0x0000dd3c       0x48 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_scalbn.o)
- .debug_frame   0x0000dd84       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_floor.o)
- .debug_frame   0x0000ddb8       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x0000dde4       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x0000bd14       0xd4 build/arm.o
+ .debug_frame   0x0000bde8      0x1e0 build/IMU_updata.o
+ .debug_frame   0x0000bfc8       0x90 build/buzzer.o
+ .debug_frame   0x0000c058       0x5c build/crc_ccitt.o
+ .debug_frame   0x0000c0b4       0x5c build/gom_protocol.o
+ .debug_frame   0x0000c110      0x204 build/remote_control.o
+ .debug_frame   0x0000c314       0x80 build/USB_VirCom.o
+ .debug_frame   0x0000c394       0x50 build/music.o
+ .debug_frame   0x0000c3e4       0x98 Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c47c       0xbc Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c538       0x88 Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c5c0       0x74 Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c634       0x74 Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c6a8       0x98 Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c740       0x98 Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c7d8       0x9c Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c874       0x7c Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c8f0       0x7c Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c96c       0x7c Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000c9e8       0x84 Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000ca6c       0x74 Algorithm/AHRS.lib(ahrs.o)
+ .debug_frame   0x0000cae0       0x30 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-malloc.o)
+ .debug_frame   0x0000cb10       0x50 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mallocr.o)
+ .debug_frame   0x0000cb60       0x30 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mlock.o)
+ .debug_frame   0x0000cb90       0x9c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_float.o)
+ .debug_frame   0x0000cc2c       0x60 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf_i.o)
+ .debug_frame   0x0000cc8c      0x144 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-findfp.o)
+ .debug_frame   0x0000cdd0       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fwalk.o)
+ .debug_frame   0x0000ce04       0x6c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-printf.o)
+ .debug_frame   0x0000ce70       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-puts.o)
+ .debug_frame   0x0000ceac       0x88 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-stdio.o)
+ .debug_frame   0x0000cf34       0x40 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wbuf.o)
+ .debug_frame   0x0000cf74       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wsetup.o)
+ .debug_frame   0x0000cfa0       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_frame   0x0000cfc0       0x40 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-localeconv.o)
+ .debug_frame   0x0000d000       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-closer.o)
+ .debug_frame   0x0000d02c       0x38 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-reent.o)
+ .debug_frame   0x0000d064       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lseekr.o)
+ .debug_frame   0x0000d090       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-readr.o)
+ .debug_frame   0x0000d0bc       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-sbrkr.o)
+ .debug_frame   0x0000d0e8       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-writer.o)
+ .debug_frame   0x0000d114       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-errno.o)
+ .debug_frame   0x0000d134       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-init.o)
+ .debug_frame   0x0000d160       0xb0 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-lock.o)
+ .debug_frame   0x0000d210       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-aeabi_memclr.o)
+ .debug_frame   0x0000d230       0x28 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-memcpy-stub.o)
+ .debug_frame   0x0000d258       0x7c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-dtoa.o)
+ .debug_frame   0x0000d2d4       0x38 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-freer.o)
+ .debug_frame   0x0000d30c      0x250 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mprec.o)
+ .debug_frame   0x0000d55c       0xa8 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-nano-vfprintf.o)
+ .debug_frame   0x0000d604       0x5c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fflush.o)
+ .debug_frame   0x0000d660       0x58 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-makebuf.o)
+ .debug_frame   0x0000d6b8       0x48 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-locale.o)
+ .debug_frame   0x0000d700       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fstatr.o)
+ .debug_frame   0x0000d72c       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-isattyr.o)
+ .debug_frame   0x0000d758       0x40 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-assert.o)
+ .debug_frame   0x0000d798       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-callocr.o)
+ .debug_frame   0x0000d7c4       0x48 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-mbtowc_r.o)
+ .debug_frame   0x0000d80c       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-wctomb_r.o)
+ .debug_frame   0x0000d848       0x64 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-fprintf.o)
+ .debug_frame   0x0000d8ac       0x28 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-abort.o)
+ .debug_frame   0x0000d8d4       0xcc C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signal.o)
+ .debug_frame   0x0000d9a0       0x3c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libc_nano.a(libc_a-signalr.o)
+ .debug_frame   0x0000d9dc       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_cos.o)
+ .debug_frame   0x0000da10       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_sin.o)
+ .debug_frame   0x0000da44       0x48 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_asin.o)
+ .debug_frame   0x0000da8c       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_atan2.o)
+ .debug_frame   0x0000daac       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-wf_sqrt.o)
+ .debug_frame   0x0000daf0       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_fabs.o)
+ .debug_frame   0x0000db10       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_nan.o)
+ .debug_frame   0x0000db30       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_sqrt.o)
+ .debug_frame   0x0000db50       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_cos.o)
+ .debug_frame   0x0000db94       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_sin.o)
+ .debug_frame   0x0000dbb4       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-e_rem_pio2.o)
+ .debug_frame   0x0000dbe8       0x20 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_fabs.o)
+ .debug_frame   0x0000dc08       0x70 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_asin.o)
+ .debug_frame   0x0000dc78       0x44 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-ef_atan2.o)
+ .debug_frame   0x0000dcbc       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-sf_atan.o)
+ .debug_frame   0x0000dce8       0x70 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-k_rem_pio2.o)
+ .debug_frame   0x0000dd58       0x48 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_scalbn.o)
+ .debug_frame   0x0000dda0       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libm.a(libm_a-s_floor.o)
+ .debug_frame   0x0000ddd4       0x2c C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x0000de00       0x34 C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+dp/hard\libgcc.a(_udivmoddi4.o)
 
 .debug_macinfo  0x00000000      0x720
  .debug_macinfo
@@ -7289,6 +7291,7 @@ Arm_Init                                          build/arm.o
                                                   build/main.o
 Arm_motor1                                        build/arm.o
                                                   build/freertos.o
+Arm_motor2                                        build/arm.o
 Arm_motor3                                        build/arm.o
                                                   build/freertos.o
 Arm_motor4                                        build/arm.o

@@ -1,24 +1,29 @@
 #ifndef __ARM_H__
-#define __ARM__H__
+#define __ARM_H__
 
 #include "can_receive_send.h"
 #include "dm4310_drv.h"
 #include "Robstride04.h"
 #include "crc_ccitt.h"
 
+// ==================== 硬件资源统一定义 ====================
+// CAN 句柄定义（两个 CAN 接口同等重要）
+#define CAN_HANDLE_1          (&hfdcan1)
+#define CAN_HANDLE_2          (&hfdcan2)
 
+// 电机 ID 定义
+#define MOTOR_LINGZU_ID       0x01    // 灵足电机 ID
+#define MOTOR_DAMIAO_4_ID     0x04    // 达妙电机4 ID
+#define MOTOR_DAMIAO_5_ID     0x05    // 达妙电机5 ID
+#define MOTOR_DAMIAO_6_ID     0x06    // 达妙电机6 ID
+#define MOTOR_YUSHU_1_ID      2       // 宇树电机1 ID
+#define MOTOR_YUSHU_2_ID      3       // 宇树电机2 ID
+// =========================================================
 
-// 在合适的地方定义全局变量
-//灵足初始化声明
-extern RobStride_Motor_t motor1;  // ID为1的电机对象
+// 灵足电机对象
+extern RobStride_Motor_t motor1;
 
-//宇树初始化
-
-
-
-
-
-//达妙电机连接状态
+// 达妙电机状态枚举
 typedef enum Enum_Motor_DM_Status
 {
     Motor_DM_Status_DISABLE = 0,
@@ -26,10 +31,10 @@ typedef enum Enum_Motor_DM_Status
 } Motor_DM_Status;
 extern Motor_DM_Status DM_Status[6];
 
-// 
+// 函数声明
 void Arm_Init(void);
 void Arm_motor1(void);
-// void Arm_motor2(void);
+void Arm_motor2(void);
 void Arm_motor3(void);
 void Arm_motor4(void);
 void Arm_motor5(void);
