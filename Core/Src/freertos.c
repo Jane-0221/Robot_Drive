@@ -33,7 +33,7 @@
 #include "iwdg.h"
 #include "buzzer.h"
 #include "task.h"
-
+#include "arm.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -305,6 +305,8 @@ void Referee_Task(void *argument)
   for (;;)
   {
     Up_Down_Motor_Control_Updata();
+    osDelay(1);
+    Arm_All_Data_update();
     osDelay(1);
   }
   /* USER CODE END Referee_Task */
