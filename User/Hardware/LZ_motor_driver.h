@@ -60,6 +60,7 @@ typedef struct {
 } LZ_Motor_t;
 
 // º¯ÊýÉùÃ÷
+FDCAN_HandleTypeDef* Get_CanHandle(uint8_t can_bus);
 void lz_send_command(uint8_t can_bus, uint16_t motor_id, uint8_t *data);
 void lz_enable_motor(uint8_t can_bus, uint8_t motor_id);
 void lz_disable_motor(uint8_t can_bus, uint8_t motor_id);

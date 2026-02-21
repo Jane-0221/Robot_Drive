@@ -229,17 +229,7 @@ void Eng_arm_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    Arm_motor1();
-    osDelay(1);
-    // Arm_motor2();
-    osDelay(1);
-    Arm_motor3();
-    // osDelay(1);
-    // Arm_motor4();
-    osDelay(1);
-    Arm_motor5();
-    osDelay(1);
-    // Arm_motor6();
+    Arm_all_tx();
     // printf("666\n");
   }
   /* USER CODE END Eng_arm_Task */

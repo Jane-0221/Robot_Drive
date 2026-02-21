@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 1
   21:User/Software/remote_control.c **** #define RELAY_OFF GPIO_PIN_SET  // 继电器断开（高电平）
   22:User/Software/remote_control.c **** 
   23:User/Software/remote_control.c **** BOOM_ARM_Stats boom_arm_status; // 机械臂气泵状态
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 2
 
 
   24:User/Software/remote_control.c **** LIFT_State lift_state;          // 伸降杆状态
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 1
   80              	.LFB145:
   40:User/Software/remote_control.c **** 
   41:User/Software/remote_control.c **** /**
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 3
 
 
   42:User/Software/remote_control.c ****  * @brief  控制电机反转
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 1
   57:User/Software/remote_control.c ****  * @brief  控制电机停止
   58:User/Software/remote_control.c ****  * @note   IN1和IN2都为高电平，两路继电器都断开，电机两端悬空，停止转动
   59:User/Software/remote_control.c ****  * @param  无
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 4
 
 
   60:User/Software/remote_control.c ****  * @retval 无
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 1
  168              	.LCFI6:
  169              		.cfi_def_cfa_offset 8
  170              		.cfi_offset 7, -8
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 5
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 5
 
 
  171              		.cfi_offset 14, -4
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 1
  212              		.syntax unified
  213              		.thumb
  214              		.thumb_func
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 6
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 6
 
 
  216              	Up_Down_Motor_Control:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 1
  256 002a 0222     		movs	r2, #2
  257 002c 1A70     		strb	r2, [r3]
   98:User/Software/remote_control.c ****         break;
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 7
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 7
 
 
  258              		.loc 1 98 9
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 1
  306 000c 1A70     		strb	r2, [r3]
  107:User/Software/remote_control.c **** }
  307              		.loc 1 107 1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 8
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 8
 
 
  308 000e 00BF     		nop
@@ -456,29 +456,29 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 1
  338              		.loc 1 111 5
  339 0004 0022     		movs	r2, #0
  340 0006 4FF48041 		mov	r1, #16384
- 341 000a 1E48     		ldr	r0, .L28
+ 341 000a 1948     		ldr	r0, .L28
  342 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
  112:User/Software/remote_control.c **** 
  113:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET); // PD15//电磁阀2
  343              		.loc 1 113 5
  344 0010 0022     		movs	r2, #0
  345 0012 4FF40041 		mov	r1, #32768
- 346 0016 1B48     		ldr	r0, .L28
+ 346 0016 1648     		ldr	r0, .L28
  347 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
  114:User/Software/remote_control.c **** 
  115:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_RESET); // PB8
  348              		.loc 1 115 5
  349 001c 0022     		movs	r2, #0
  350 001e 4FF48071 		mov	r1, #256
- 351 0022 1948     		ldr	r0, .L28+4
+ 351 0022 1448     		ldr	r0, .L28+4
  352 0024 FFF7FEFF 		bl	HAL_GPIO_WritePin
  116:User/Software/remote_control.c **** 
  117:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET); // PB9
  353              		.loc 1 117 5
  354 0028 0022     		movs	r2, #0
  355 002a 4FF40071 		mov	r1, #512
- 356 002e 1648     		ldr	r0, .L28+4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 9
+ 356 002e 1148     		ldr	r0, .L28+4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 9
 
 
  357 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
@@ -487,105 +487,90 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 1
  358              		.loc 1 119 5
  359 0034 0022     		movs	r2, #0
  360 0036 4FF48041 		mov	r1, #16384
- 361 003a 1448     		ldr	r0, .L28+8
+ 361 003a 0F48     		ldr	r0, .L28+8
  362 003c FFF7FEFF 		bl	HAL_GPIO_WritePin
  120:User/Software/remote_control.c **** 
  121:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOE, GPIO_PIN_0, GPIO_PIN_RESET); // PE0，左储矿
  363              		.loc 1 121 5
  364 0040 0022     		movs	r2, #0
  365 0042 0121     		movs	r1, #1
- 366 0044 1148     		ldr	r0, .L28+8
+ 366 0044 0C48     		ldr	r0, .L28+8
  367 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
  122:User/Software/remote_control.c **** 
  123:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOE, GPIO_PIN_1, GPIO_PIN_RESET); // PE1
  368              		.loc 1 123 5
  369 004a 0022     		movs	r2, #0
  370 004c 0221     		movs	r1, #2
- 371 004e 0F48     		ldr	r0, .L28+8
+ 371 004e 0A48     		ldr	r0, .L28+8
  372 0050 FFF7FEFF 		bl	HAL_GPIO_WritePin
  124:User/Software/remote_control.c **** 
  125:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET); // PC10 气泵
  373              		.loc 1 125 5
  374 0054 0022     		movs	r2, #0
  375 0056 4FF48061 		mov	r1, #1024
- 376 005a 0D48     		ldr	r0, .L28+12
+ 376 005a 0848     		ldr	r0, .L28+12
  377 005c FFF7FEFF 		bl	HAL_GPIO_WritePin
  126:User/Software/remote_control.c **** 
  127:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_RESET); // PC11，右储矿
  378              		.loc 1 127 5
  379 0060 0022     		movs	r2, #0
  380 0062 4FF40061 		mov	r1, #2048
- 381 0066 0A48     		ldr	r0, .L28+12
+ 381 0066 0548     		ldr	r0, .L28+12
  382 0068 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 128:User/Software/remote_control.c **** 
- 129:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
- 383              		.loc 1 129 5
- 384 006c 0022     		movs	r2, #0
- 385 006e 0121     		movs	r1, #1
- 386 0070 0848     		ldr	r0, .L28+16
- 387 0072 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 130:User/Software/remote_control.c **** 
- 131:User/Software/remote_control.c ****     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
- 388              		.loc 1 131 5
- 389 0076 0022     		movs	r2, #0
- 390 0078 0221     		movs	r1, #2
- 391 007a 0648     		ldr	r0, .L28+16
- 392 007c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 132:User/Software/remote_control.c **** }
- 393              		.loc 1 132 1
- 394 0080 00BF     		nop
- 395 0082 80BD     		pop	{r7, pc}
- 396              	.L29:
- 397              		.align	2
- 398              	.L28:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 10
+ 128:User/Software/remote_control.c **** }
+ 383              		.loc 1 128 1
+ 384 006c 00BF     		nop
+ 385 006e 80BD     		pop	{r7, pc}
+ 386              	.L29:
+ 387              		.align	2
+ 388              	.L28:
+ 389 0070 000C0258 		.word	1476529152
+ 390 0074 00040258 		.word	1476527104
+ 391 0078 00100258 		.word	1476530176
+ 392 007c 00080258 		.word	1476528128
+ 393              		.cfi_endproc
+ 394              	.LFE150:
+ 396              		.text
+ 397              	.Letext0:
+ 398              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
+ 399              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
+ 400              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
+ 401              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ 402              		.file 6 "User/Software/remote_control.h"
+ 403              		.file 7 "User/Hardware/Sbus.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 10
 
 
- 399 0084 000C0258 		.word	1476529152
- 400 0088 00040258 		.word	1476527104
- 401 008c 00100258 		.word	1476530176
- 402 0090 00080258 		.word	1476528128
- 403 0094 00000258 		.word	1476526080
- 404              		.cfi_endproc
- 405              	.LFE150:
- 407              		.text
- 408              	.Letext0:
- 409              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
- 410              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
- 411              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
- 412              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
- 413              		.file 6 "User/Software/remote_control.h"
- 414              		.file 7 "User/Hardware/Sbus.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s 			page 11
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 remote_control.c
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:23     .bss.boom_arm_status:00000000 boom_arm_status
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:24     .bss.boom_arm_status:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:29     .bss.lift_state:00000000 lift_state
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:30     .bss.lift_state:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:32     .text.Motor_Forward:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:38     .text.Motor_Forward:00000000 Motor_Forward
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:68     .text.Motor_Forward:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:73     .text.Motor_Reverse:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:79     .text.Motor_Reverse:00000000 Motor_Reverse
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:109    .text.Motor_Reverse:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:114    .text.Motor_Stop:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:120    .text.Motor_Stop:00000000 Motor_Stop
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:150    .text.Motor_Stop:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:155    .text.Up_Down_Motor_Control_Updata:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:161    .text.Up_Down_Motor_Control_Updata:00000000 Up_Down_Motor_Control_Updata
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:205    .text.Up_Down_Motor_Control_Updata:00000028 $d
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:210    .text.Up_Down_Motor_Control:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:216    .text.Up_Down_Motor_Control:00000000 Up_Down_Motor_Control
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:275    .text.Up_Down_Motor_Control:0000003c $d
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:281    .text.remote_control_init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:287    .text.remote_control_init:00000000 remote_control_init
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:324    .text.GPIO_init:00000000 GPIO_init
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:313    .text.remote_control_init:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:318    .text.GPIO_init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccOB0yhm.s:399    .text.GPIO_init:00000084 $d
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:23     .bss.boom_arm_status:00000000 boom_arm_status
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:24     .bss.boom_arm_status:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:29     .bss.lift_state:00000000 lift_state
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:30     .bss.lift_state:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:32     .text.Motor_Forward:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:38     .text.Motor_Forward:00000000 Motor_Forward
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:68     .text.Motor_Forward:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:73     .text.Motor_Reverse:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:79     .text.Motor_Reverse:00000000 Motor_Reverse
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:109    .text.Motor_Reverse:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:114    .text.Motor_Stop:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:120    .text.Motor_Stop:00000000 Motor_Stop
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:150    .text.Motor_Stop:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:155    .text.Up_Down_Motor_Control_Updata:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:161    .text.Up_Down_Motor_Control_Updata:00000000 Up_Down_Motor_Control_Updata
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:205    .text.Up_Down_Motor_Control_Updata:00000028 $d
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:210    .text.Up_Down_Motor_Control:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:216    .text.Up_Down_Motor_Control:00000000 Up_Down_Motor_Control
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:275    .text.Up_Down_Motor_Control:0000003c $d
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:281    .text.remote_control_init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:287    .text.remote_control_init:00000000 remote_control_init
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:324    .text.GPIO_init:00000000 GPIO_init
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:313    .text.remote_control_init:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:318    .text.GPIO_init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc7eGPMH.s:389    .text.GPIO_init:00000070 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

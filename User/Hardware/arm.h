@@ -12,7 +12,9 @@
 #define CAN_HANDLE_2          (&hfdcan2)
 
 // 电机 ID 定义
-#define MOTOR_LINGZU_ID       0x01    // 灵足电机 ID
+#define MOTOR_LINGZU_1_ID       0x01    // 灵足电机 ID
+#define MOTOR_LINGZU_3_ID       0x03    // 灵足电机 ID
+
 #define MOTOR_DAMIAO_4_ID     0x04    // 达妙电机4 ID
 #define MOTOR_DAMIAO_5_ID     0x05    // 达妙电机5 ID
 #define MOTOR_DAMIAO_6_ID     0x06    // 达妙电机6 ID
@@ -22,6 +24,7 @@
 
 // 灵足电机对象
 extern RobStride_Motor_t motor1;
+extern RobStride_Motor_t motor3;
 
 // 达妙电机状态枚举
 typedef enum Enum_Motor_DM_Status
@@ -39,5 +42,6 @@ void Arm_motor3(void);
 void Arm_motor4(void);
 void Arm_motor5(void);
 void Arm_motor6(void);
+void Arm_all_tx(void);
 
 #endif

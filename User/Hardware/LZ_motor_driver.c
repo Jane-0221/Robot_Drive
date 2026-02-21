@@ -2,7 +2,14 @@
 #include "CAN_receive_send.h"
 #include "string.h"
 #include "User_math.h"
-
+FDCAN_HandleTypeDef* Get_CanHandle(uint8_t can_bus) {
+    switch (can_bus) {
+        case 0: return &hfdcan1;
+        case 1: return &hfdcan2;
+        case 2: return &hfdcan3;
+        default: return &hfdcan1;
+    }
+}
 /**
  * @brief LZ 电机驱动层，使用标准 CAN ID，电机 ID 占用 3 位，实际 ID 为 11 位 ID
  *        所有控制指令通过 CAN 总线发送，支持 MIT 协议和自定义协议
@@ -16,7 +23,8 @@
  */
 void lz_send_command(uint8_t can_bus, uint16_t motor_id, uint8_t *data) {
     FDCAN_HandleTypeDef *hfdcan = Get_CanHandle(can_bus);
-    Fdcanx_SendData(hfdcan, motor_id, data, 8);
+
+     canx_send_data(hfdcan, motor_id, data, 8);
 }
 
 /**
@@ -27,6 +35,7 @@ void lz_send_command(uint8_t can_bus, uint16_t motor_id, uint8_t *data) {
 void lz_enable_motor(uint8_t can_bus, uint8_t motor_id) {
     uint8_t data[8] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFC};
     lz_send_command(can_bus, motor_id, data);
+
 }
 
 /**

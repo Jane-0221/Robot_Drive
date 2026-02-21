@@ -41,7 +41,16 @@ build/arm.o: User/Hardware/arm.c User/Hardware/arm.h \
  User/Hardware/Unitree/crc_ccitt.h Algorithm/pid.h \
  User/Software/remote_control.h Core/Inc/gpio.h \
  User/Hardware/Unitree/gom_protocol.h User/Hardware/Unitree/crc_ccitt.h \
- Core/Inc/usart.h
+ Core/Inc/usart.h User/Hardware/LZ_motor_driver.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+ Core/Inc/FreeRTOSConfig.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+ Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 User/Hardware/arm.h:
 User/BSP/can_receive_send.h:
 Core/Inc/fdcan.h:
@@ -95,3 +104,13 @@ Core/Inc/gpio.h:
 User/Hardware/Unitree/gom_protocol.h:
 User/Hardware/Unitree/crc_ccitt.h:
 Core/Inc/usart.h:
+User/Hardware/LZ_motor_driver.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
+Core/Inc/FreeRTOSConfig.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
