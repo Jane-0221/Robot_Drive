@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -37,43 +37,44 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 1
   32      00000000 
   32      00000000 
   32      00000000 
-  33              		.global	tx_res
-  34              		.section	.bss.tx_res,"aw",%nobits
-  37              	tx_res:
-  38 0000 00       		.space	1
-  39              		.global	rx_res
-  40              		.section	.bss.rx_res,"aw",%nobits
-  43              	rx_res:
-  44 0000 00       		.space	1
-  45              		.global	motor1
-  46              		.section	.bss.motor1,"aw",%nobits
-  47              		.align	3
-  50              	motor1:
-  51 0000 00000000 		.space	216
-  51      00000000 
-  51      00000000 
-  51      00000000 
-  51      00000000 
-  52              		.global	motor3
-  53              		.section	.bss.motor3,"aw",%nobits
-  54              		.align	3
-  57              	motor3:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 2
+  33              		.global	motor1
+  34              		.section	.bss.motor1,"aw",%nobits
+  35              		.align	3
+  38              	motor1:
+  39 0000 00000000 		.space	216
+  39      00000000 
+  39      00000000 
+  39      00000000 
+  39      00000000 
+  40              		.global	motor2
+  41              		.section	.bss.motor2,"aw",%nobits
+  42              		.align	3
+  45              	motor2:
+  46 0000 00000000 		.space	216
+  46      00000000 
+  46      00000000 
+  46      00000000 
+  46      00000000 
+  47              		.global	motor3
+  48              		.section	.bss.motor3,"aw",%nobits
+  49              		.align	3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 2
 
 
-  58 0000 00000000 		.space	216
-  58      00000000 
-  58      00000000 
-  58      00000000 
-  58      00000000 
-  59              		.section	.text.Arm_Init,"ax",%progbits
-  60              		.align	1
-  61              		.global	Arm_Init
-  62              		.syntax unified
-  63              		.thumb
-  64              		.thumb_func
-  66              	Arm_Init:
-  67              	.LFB148:
+  52              	motor3:
+  53 0000 00000000 		.space	216
+  53      00000000 
+  53      00000000 
+  53      00000000 
+  53      00000000 
+  54              		.section	.text.Arm_Init,"ax",%progbits
+  55              		.align	1
+  56              		.global	Arm_Init
+  57              		.syntax unified
+  58              		.thumb
+  59              		.thumb_func
+  61              	Arm_Init:
+  62              	.LFB148:
    1:User/Hardware/arm.c **** #include "arm.h"
    2:User/Hardware/arm.c **** #include "dm4310_drv.h"
    3:User/Hardware/arm.c **** #include "Robstride04.h"
@@ -90,786 +91,821 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 1
   14:User/Hardware/arm.c **** // 宇树电机数据结构
   15:User/Hardware/arm.c **** MotorData_t YS_8010_data[2] = {0};
   16:User/Hardware/arm.c **** MotorCmd_t YS_8010_cmd[2] = {0};
-  17:User/Hardware/arm.c **** HAL_StatusTypeDef tx_res;
-  18:User/Hardware/arm.c **** HAL_StatusTypeDef rx_res;
-  19:User/Hardware/arm.c **** 
-  20:User/Hardware/arm.c **** // 达妙电机状态
-  21:User/Hardware/arm.c **** extern Motor_DM_Status DM_Status[6];
-  22:User/Hardware/arm.c **** RobStride_Motor_t motor1; // 灵足电机对象
+  17:User/Hardware/arm.c **** 
+  18:User/Hardware/arm.c **** 
+  19:User/Hardware/arm.c **** // 达妙电机状态
+  20:User/Hardware/arm.c **** extern Motor_DM_Status DM_Status[6];
+  21:User/Hardware/arm.c **** RobStride_Motor_t motor1; // 灵足电机对象
+  22:User/Hardware/arm.c **** RobStride_Motor_t motor2; // 灵足电机对象
   23:User/Hardware/arm.c **** RobStride_Motor_t motor3; // 灵足电机对象
   24:User/Hardware/arm.c **** void Arm_Init()
   25:User/Hardware/arm.c **** {
-  68              		.loc 1 25 1
-  69              		.cfi_startproc
-  70              		@ args = 0, pretend = 0, frame = 0
-  71              		@ frame_needed = 1, uses_anonymous_args = 0
-  72 0000 80B5     		push	{r7, lr}
-  73              	.LCFI0:
-  74              		.cfi_def_cfa_offset 8
-  75              		.cfi_offset 7, -8
-  76              		.cfi_offset 14, -4
-  77 0002 00AF     		add	r7, sp, #0
-  78              	.LCFI1:
-  79              		.cfi_def_cfa_register 7
+  63              		.loc 1 25 1
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 0
+  66              		@ frame_needed = 1, uses_anonymous_args = 0
+  67 0000 80B5     		push	{r7, lr}
+  68              	.LCFI0:
+  69              		.cfi_def_cfa_offset 8
+  70              		.cfi_offset 7, -8
+  71              		.cfi_offset 14, -4
+  72 0002 00AF     		add	r7, sp, #0
+  73              	.LCFI1:
+  74              		.cfi_def_cfa_register 7
   26:User/Hardware/arm.c ****     /* 灵足电机初始化（使用 CAN2）*/
   27:User/Hardware/arm.c ****     //1号电机初始化
   28:User/Hardware/arm.c ****     RobStride_Motor_Init(&motor1, MOTOR_LINGZU_1_ID, false);
-  80              		.loc 1 28 5
-  81 0004 0022     		movs	r2, #0
-  82 0006 0121     		movs	r1, #1
-  83 0008 6048     		ldr	r0, .L2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 3
+  75              		.loc 1 28 5
+  76 0004 0022     		movs	r2, #0
+  77 0006 0121     		movs	r1, #1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 3
 
 
-  84 000a FFF7FEFF 		bl	RobStride_Motor_Init
+  78 0008 7648     		ldr	r0, .L2
+  79 000a FFF7FEFF 		bl	RobStride_Motor_Init
   29:User/Hardware/arm.c ****     Get_RobStride_Motor_parameter(&motor1, CAN_HANDLE_2, 0X7005);
-  85              		.loc 1 29 5
-  86 000e 47F20502 		movw	r2, #28677
-  87 0012 5F49     		ldr	r1, .L2+4
-  88 0014 5D48     		ldr	r0, .L2
-  89 0016 FFF7FEFF 		bl	Get_RobStride_Motor_parameter
+  80              		.loc 1 29 5
+  81 000e 47F20502 		movw	r2, #28677
+  82 0012 7549     		ldr	r1, .L2+4
+  83 0014 7348     		ldr	r0, .L2
+  84 0016 FFF7FEFF 		bl	Get_RobStride_Motor_parameter
   30:User/Hardware/arm.c ****     HAL_Delay(10);
-  90              		.loc 1 30 5
-  91 001a 0A20     		movs	r0, #10
-  92 001c FFF7FEFF 		bl	HAL_Delay
+  85              		.loc 1 30 5
+  86 001a 0A20     		movs	r0, #10
+  87 001c FFF7FEFF 		bl	HAL_Delay
   31:User/Hardware/arm.c ****     Set_RobStride_Motor_parameter(&motor1, CAN_HANDLE_2, 0X7005, CSP_control_mode, 'j');
-  93              		.loc 1 31 5
-  94 0020 6A23     		movs	r3, #106
-  95 0022 B1EE040A 		vmov.f32	s0, #5.0e+0
-  96 0026 47F20502 		movw	r2, #28677
-  97 002a 5949     		ldr	r1, .L2+4
-  98 002c 5748     		ldr	r0, .L2
-  99 002e FFF7FEFF 		bl	Set_RobStride_Motor_parameter
+  88              		.loc 1 31 5
+  89 0020 6A23     		movs	r3, #106
+  90 0022 B1EE040A 		vmov.f32	s0, #5.0e+0
+  91 0026 47F20502 		movw	r2, #28677
+  92 002a 6F49     		ldr	r1, .L2+4
+  93 002c 6D48     		ldr	r0, .L2
+  94 002e FFF7FEFF 		bl	Set_RobStride_Motor_parameter
   32:User/Hardware/arm.c ****     Enable_Motor(&motor1, (hcan_t *)CAN_HANDLE_2);
- 100              		.loc 1 32 5
- 101 0032 5749     		ldr	r1, .L2+4
- 102 0034 5548     		ldr	r0, .L2
- 103 0036 FFF7FEFF 		bl	Enable_Motor
+  95              		.loc 1 32 5
+  96 0032 6D49     		ldr	r1, .L2+4
+  97 0034 6B48     		ldr	r0, .L2
+  98 0036 FFF7FEFF 		bl	Enable_Motor
   33:User/Hardware/arm.c ****     Set_RobStride_Motor_parameter(&motor1, CAN_HANDLE_2, 0X7017, 1.0f, 'p');
- 104              		.loc 1 33 5
- 105 003a 7023     		movs	r3, #112
- 106 003c B7EE000A 		vmov.f32	s0, #1.0e+0
- 107 0040 47F21702 		movw	r2, #28695
- 108 0044 5249     		ldr	r1, .L2+4
- 109 0046 5148     		ldr	r0, .L2
- 110 0048 FFF7FEFF 		bl	Set_RobStride_Motor_parameter
+  99              		.loc 1 33 5
+ 100 003a 7023     		movs	r3, #112
+ 101 003c B7EE000A 		vmov.f32	s0, #1.0e+0
+ 102 0040 47F21702 		movw	r2, #28695
+ 103 0044 6849     		ldr	r1, .L2+4
+ 104 0046 6748     		ldr	r0, .L2
+ 105 0048 FFF7FEFF 		bl	Set_RobStride_Motor_parameter
   34:User/Hardware/arm.c ****     HAL_Delay(10);
- 111              		.loc 1 34 5
- 112 004c 0A20     		movs	r0, #10
- 113 004e FFF7FEFF 		bl	HAL_Delay
+ 106              		.loc 1 34 5
+ 107 004c 0A20     		movs	r0, #10
+ 108 004e FFF7FEFF 		bl	HAL_Delay
   35:User/Hardware/arm.c ****    RobStride_Motor_ProactiveEscalationSet(&motor1,CAN_HANDLE_2,0x01);//00为关闭主动上报，01为开启主
- 114              		.loc 1 35 4
- 115 0052 0122     		movs	r2, #1
- 116 0054 4E49     		ldr	r1, .L2+4
- 117 0056 4D48     		ldr	r0, .L2
- 118 0058 FFF7FEFF 		bl	RobStride_Motor_ProactiveEscalationSet
-  36:User/Hardware/arm.c **** 
-  37:User/Hardware/arm.c ****        RobStride_Motor_Init(&motor3, MOTOR_LINGZU_3_ID, false);
- 119              		.loc 1 37 8
- 120 005c 0022     		movs	r2, #0
- 121 005e 0321     		movs	r1, #3
- 122 0060 4C48     		ldr	r0, .L2+8
- 123 0062 FFF7FEFF 		bl	RobStride_Motor_Init
-  38:User/Hardware/arm.c ****     Get_RobStride_Motor_parameter(&motor3, CAN_HANDLE_2, 0X7005);
- 124              		.loc 1 38 5
- 125 0066 47F20502 		movw	r2, #28677
- 126 006a 4949     		ldr	r1, .L2+4
- 127 006c 4948     		ldr	r0, .L2+8
- 128 006e FFF7FEFF 		bl	Get_RobStride_Motor_parameter
+ 109              		.loc 1 35 4
+ 110 0052 0122     		movs	r2, #1
+ 111 0054 6449     		ldr	r1, .L2+4
+ 112 0056 6348     		ldr	r0, .L2
+ 113 0058 FFF7FEFF 		bl	RobStride_Motor_ProactiveEscalationSet
+  36:User/Hardware/arm.c **** //2号电机初始化
+  37:User/Hardware/arm.c ****    RobStride_Motor_Init(&motor2, MOTOR_LINGZU_2_ID, false);
+ 114              		.loc 1 37 4
+ 115 005c 0022     		movs	r2, #0
+ 116 005e 0221     		movs	r1, #2
+ 117 0060 6248     		ldr	r0, .L2+8
+ 118 0062 FFF7FEFF 		bl	RobStride_Motor_Init
+  38:User/Hardware/arm.c ****     Get_RobStride_Motor_parameter(&motor2, CAN_HANDLE_2, 0X7005);
+ 119              		.loc 1 38 5
+ 120 0066 47F20502 		movw	r2, #28677
+ 121 006a 5F49     		ldr	r1, .L2+4
+ 122 006c 5F48     		ldr	r0, .L2+8
+ 123 006e FFF7FEFF 		bl	Get_RobStride_Motor_parameter
   39:User/Hardware/arm.c ****     HAL_Delay(10);
- 129              		.loc 1 39 5
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 4
 
 
- 130 0072 0A20     		movs	r0, #10
- 131 0074 FFF7FEFF 		bl	HAL_Delay
-  40:User/Hardware/arm.c ****     Set_RobStride_Motor_parameter(&motor3, CAN_HANDLE_2, 0X7005, CSP_control_mode, 'j');
- 132              		.loc 1 40 5
- 133 0078 6A23     		movs	r3, #106
- 134 007a B1EE040A 		vmov.f32	s0, #5.0e+0
- 135 007e 47F20502 		movw	r2, #28677
- 136 0082 4349     		ldr	r1, .L2+4
- 137 0084 4348     		ldr	r0, .L2+8
- 138 0086 FFF7FEFF 		bl	Set_RobStride_Motor_parameter
-  41:User/Hardware/arm.c ****     Enable_Motor(&motor3, (hcan_t *)CAN_HANDLE_2);
- 139              		.loc 1 41 5
- 140 008a 4149     		ldr	r1, .L2+4
- 141 008c 4148     		ldr	r0, .L2+8
- 142 008e FFF7FEFF 		bl	Enable_Motor
-  42:User/Hardware/arm.c ****     Set_RobStride_Motor_parameter(&motor3, CAN_HANDLE_2, 0X7017, 1.0f, 'p');
- 143              		.loc 1 42 5
- 144 0092 7023     		movs	r3, #112
- 145 0094 B7EE000A 		vmov.f32	s0, #1.0e+0
- 146 0098 47F21702 		movw	r2, #28695
- 147 009c 3C49     		ldr	r1, .L2+4
- 148 009e 3D48     		ldr	r0, .L2+8
- 149 00a0 FFF7FEFF 		bl	Set_RobStride_Motor_parameter
+ 124              		.loc 1 39 5
+ 125 0072 0A20     		movs	r0, #10
+ 126 0074 FFF7FEFF 		bl	HAL_Delay
+  40:User/Hardware/arm.c ****     Set_RobStride_Motor_parameter(&motor2, CAN_HANDLE_2, 0X7005, CSP_control_mode, 'j');
+ 127              		.loc 1 40 5
+ 128 0078 6A23     		movs	r3, #106
+ 129 007a B1EE040A 		vmov.f32	s0, #5.0e+0
+ 130 007e 47F20502 		movw	r2, #28677
+ 131 0082 5949     		ldr	r1, .L2+4
+ 132 0084 5948     		ldr	r0, .L2+8
+ 133 0086 FFF7FEFF 		bl	Set_RobStride_Motor_parameter
+  41:User/Hardware/arm.c ****     Enable_Motor(&motor2, (hcan_t *)CAN_HANDLE_2);
+ 134              		.loc 1 41 5
+ 135 008a 5749     		ldr	r1, .L2+4
+ 136 008c 5748     		ldr	r0, .L2+8
+ 137 008e FFF7FEFF 		bl	Enable_Motor
+  42:User/Hardware/arm.c ****     Set_RobStride_Motor_parameter(&motor2, CAN_HANDLE_2, 0X7017, 1.0f, 'p');
+ 138              		.loc 1 42 5
+ 139 0092 7023     		movs	r3, #112
+ 140 0094 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 141 0098 47F21702 		movw	r2, #28695
+ 142 009c 5249     		ldr	r1, .L2+4
+ 143 009e 5348     		ldr	r0, .L2+8
+ 144 00a0 FFF7FEFF 		bl	Set_RobStride_Motor_parameter
   43:User/Hardware/arm.c ****     HAL_Delay(10);
- 150              		.loc 1 43 5
- 151 00a4 0A20     		movs	r0, #10
- 152 00a6 FFF7FEFF 		bl	HAL_Delay
-  44:User/Hardware/arm.c ****    RobStride_Motor_ProactiveEscalationSet(&motor3,CAN_HANDLE_2,0x01);//00为关闭主动上报，01为开启主
- 153              		.loc 1 44 4
- 154 00aa 0122     		movs	r2, #1
- 155 00ac 3849     		ldr	r1, .L2+4
- 156 00ae 3948     		ldr	r0, .L2+8
- 157 00b0 FFF7FEFF 		bl	RobStride_Motor_ProactiveEscalationSet
-  45:User/Hardware/arm.c **** 
-  46:User/Hardware/arm.c ****    /* LZ电机初始化（使用 CAN2）*/
-  47:User/Hardware/arm.c ****     //2号电机初始化
-  48:User/Hardware/arm.c ****     lz_enable_motor(2, 2); // 使能ID为2的电机
- 158              		.loc 1 48 5
- 159 00b4 0221     		movs	r1, #2
- 160 00b6 0220     		movs	r0, #2
- 161 00b8 FFF7FEFF 		bl	lz_enable_motor
-  49:User/Hardware/arm.c ****     HAL_Delay(10);
- 162              		.loc 1 49 5
- 163 00bc 0A20     		movs	r0, #10
- 164 00be FFF7FEFF 		bl	HAL_Delay
-  50:User/Hardware/arm.c ****     lz_set_mode(2, 2, LZ_MODE_POSITION); // 设置为位置控制模式
- 165              		.loc 1 50 5
- 166 00c2 0122     		movs	r2, #1
- 167 00c4 0221     		movs	r1, #2
- 168 00c6 0220     		movs	r0, #2
- 169 00c8 FFF7FEFF 		bl	lz_set_mode
-  51:User/Hardware/arm.c ****     HAL_Delay(10);
- 170              		.loc 1 51 5
- 171 00cc 0A20     		movs	r0, #10
- 172 00ce FFF7FEFF 		bl	HAL_Delay
-  52:User/Hardware/arm.c **** 
-  53:User/Hardware/arm.c **** 
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 5
+ 145              		.loc 1 43 5
+ 146 00a4 0A20     		movs	r0, #10
+ 147 00a6 FFF7FEFF 		bl	HAL_Delay
+  44:User/Hardware/arm.c ****    RobStride_Motor_ProactiveEscalationSet(&motor2,CAN_HANDLE_2,0x01);//00为关闭主动上报，01为开启主
+ 148              		.loc 1 44 4
+ 149 00aa 0122     		movs	r2, #1
+ 150 00ac 4E49     		ldr	r1, .L2+4
+ 151 00ae 4F48     		ldr	r0, .L2+8
+ 152 00b0 FFF7FEFF 		bl	RobStride_Motor_ProactiveEscalationSet
+  45:User/Hardware/arm.c **** //3号电机初始化
+  46:User/Hardware/arm.c ****        RobStride_Motor_Init(&motor3, MOTOR_LINGZU_3_ID, false);
+ 153              		.loc 1 46 8
+ 154 00b4 0022     		movs	r2, #0
+ 155 00b6 0321     		movs	r1, #3
+ 156 00b8 4D48     		ldr	r0, .L2+12
+ 157 00ba FFF7FEFF 		bl	RobStride_Motor_Init
+  47:User/Hardware/arm.c ****     Get_RobStride_Motor_parameter(&motor3, CAN_HANDLE_2, 0X7005);
+ 158              		.loc 1 47 5
+ 159 00be 47F20502 		movw	r2, #28677
+ 160 00c2 4949     		ldr	r1, .L2+4
+ 161 00c4 4A48     		ldr	r0, .L2+12
+ 162 00c6 FFF7FEFF 		bl	Get_RobStride_Motor_parameter
+  48:User/Hardware/arm.c ****     HAL_Delay(10);
+ 163              		.loc 1 48 5
+ 164 00ca 0A20     		movs	r0, #10
+ 165 00cc FFF7FEFF 		bl	HAL_Delay
+  49:User/Hardware/arm.c ****     Set_RobStride_Motor_parameter(&motor3, CAN_HANDLE_2, 0X7005, CSP_control_mode, 'j');
+ 166              		.loc 1 49 5
+ 167 00d0 6A23     		movs	r3, #106
+ 168 00d2 B1EE040A 		vmov.f32	s0, #5.0e+0
+ 169 00d6 47F20502 		movw	r2, #28677
+ 170 00da 4349     		ldr	r1, .L2+4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 5
 
 
+ 171 00dc 4448     		ldr	r0, .L2+12
+ 172 00de FFF7FEFF 		bl	Set_RobStride_Motor_parameter
+  50:User/Hardware/arm.c ****     Enable_Motor(&motor3, (hcan_t *)CAN_HANDLE_2);
+ 173              		.loc 1 50 5
+ 174 00e2 4149     		ldr	r1, .L2+4
+ 175 00e4 4248     		ldr	r0, .L2+12
+ 176 00e6 FFF7FEFF 		bl	Enable_Motor
+  51:User/Hardware/arm.c ****     Set_RobStride_Motor_parameter(&motor3, CAN_HANDLE_2, 0X7017, 1.0f, 'p');
+ 177              		.loc 1 51 5
+ 178 00ea 7023     		movs	r3, #112
+ 179 00ec B7EE000A 		vmov.f32	s0, #1.0e+0
+ 180 00f0 47F21702 		movw	r2, #28695
+ 181 00f4 3C49     		ldr	r1, .L2+4
+ 182 00f6 3E48     		ldr	r0, .L2+12
+ 183 00f8 FFF7FEFF 		bl	Set_RobStride_Motor_parameter
+  52:User/Hardware/arm.c ****     HAL_Delay(10);
+ 184              		.loc 1 52 5
+ 185 00fc 0A20     		movs	r0, #10
+ 186 00fe FFF7FEFF 		bl	HAL_Delay
+  53:User/Hardware/arm.c ****    RobStride_Motor_ProactiveEscalationSet(&motor3,CAN_HANDLE_2,0x01);//00为关闭主动上报，01为开启主
+ 187              		.loc 1 53 4
+ 188 0102 0122     		movs	r2, #1
+ 189 0104 3849     		ldr	r1, .L2+4
+ 190 0106 3A48     		ldr	r0, .L2+12
+ 191 0108 FFF7FEFF 		bl	RobStride_Motor_ProactiveEscalationSet
   54:User/Hardware/arm.c **** 
-  55:User/Hardware/arm.c **** 
-  56:User/Hardware/arm.c ****     /* 宇树电机初始化（使用 UART，与 CAN 无关）*/
-  57:User/Hardware/arm.c ****     YS_8010_cmd[0].id = MOTOR_YUSHU_1_ID;
- 173              		.loc 1 57 23
- 174 00d2 314B     		ldr	r3, .L2+12
- 175 00d4 0222     		movs	r2, #2
- 176 00d6 1A80     		strh	r2, [r3]	@ movhi
-  58:User/Hardware/arm.c ****     YS_8010_cmd[0].mode = 1;
- 177              		.loc 1 58 25
- 178 00d8 2F4B     		ldr	r3, .L2+12
- 179 00da 0122     		movs	r2, #1
- 180 00dc 5A80     		strh	r2, [r3, #2]	@ movhi
-  59:User/Hardware/arm.c ****     YS_8010_cmd[0].K_P = 0.02f;
- 181              		.loc 1 59 24
- 182 00de 2E4B     		ldr	r3, .L2+12
- 183 00e0 2E4A     		ldr	r2, .L2+16
- 184 00e2 1A61     		str	r2, [r3, #16]	@ float
-  60:User/Hardware/arm.c ****     YS_8010_cmd[0].K_W = 0.0f;
- 185              		.loc 1 60 24
- 186 00e4 2C4B     		ldr	r3, .L2+12
- 187 00e6 4FF00002 		mov	r2, #0
- 188 00ea 5A61     		str	r2, [r3, #20]	@ float
-  61:User/Hardware/arm.c ****     YS_8010_cmd[0].Pos = 100.0f;
- 189              		.loc 1 61 24
- 190 00ec 2A4B     		ldr	r3, .L2+12
- 191 00ee 2C4A     		ldr	r2, .L2+20
- 192 00f0 DA60     		str	r2, [r3, #12]	@ float
-  62:User/Hardware/arm.c ****     YS_8010_cmd[0].W = 0.0f;
- 193              		.loc 1 62 22
- 194 00f2 294B     		ldr	r3, .L2+12
- 195 00f4 4FF00002 		mov	r2, #0
- 196 00f8 9A60     		str	r2, [r3, #8]	@ float
-  63:User/Hardware/arm.c ****     YS_8010_cmd[0].T = 0.0f;
- 197              		.loc 1 63 22
- 198 00fa 274B     		ldr	r3, .L2+12
- 199 00fc 4FF00002 		mov	r2, #0
- 200 0100 5A60     		str	r2, [r3, #4]	@ float
+  55:User/Hardware/arm.c ****    /* LZ电机初始化（使用 CAN2）*/
+  56:User/Hardware/arm.c ****     //2号电机初始化
+  57:User/Hardware/arm.c ****     lz_enable_motor(2, 2); // 使能ID为2的电机
+ 192              		.loc 1 57 5
+ 193 010c 0221     		movs	r1, #2
+ 194 010e 0220     		movs	r0, #2
+ 195 0110 FFF7FEFF 		bl	lz_enable_motor
+  58:User/Hardware/arm.c ****     HAL_Delay(10);
+ 196              		.loc 1 58 5
+ 197 0114 0A20     		movs	r0, #10
+ 198 0116 FFF7FEFF 		bl	HAL_Delay
+  59:User/Hardware/arm.c ****     lz_set_mode(2, 2, LZ_MODE_POSITION); // 设置为位置控制模式
+ 199              		.loc 1 59 5
+ 200 011a 0122     		movs	r2, #1
+ 201 011c 0221     		movs	r1, #2
+ 202 011e 0220     		movs	r0, #2
+ 203 0120 FFF7FEFF 		bl	lz_set_mode
+  60:User/Hardware/arm.c ****     HAL_Delay(10);
+ 204              		.loc 1 60 5
+ 205 0124 0A20     		movs	r0, #10
+ 206 0126 FFF7FEFF 		bl	HAL_Delay
+  61:User/Hardware/arm.c **** 
+  62:User/Hardware/arm.c **** 
+  63:User/Hardware/arm.c **** 
   64:User/Hardware/arm.c **** 
-  65:User/Hardware/arm.c ****     YS_8010_cmd[1].id = MOTOR_YUSHU_2_ID;
- 201              		.loc 1 65 23
- 202 0102 254B     		ldr	r3, .L2+12
- 203 0104 0322     		movs	r2, #3
- 204 0106 9A85     		strh	r2, [r3, #44]	@ movhi
-  66:User/Hardware/arm.c ****     YS_8010_cmd[1].mode = 1;
- 205              		.loc 1 66 25
- 206 0108 234B     		ldr	r3, .L2+12
- 207 010a 0122     		movs	r2, #1
- 208 010c DA85     		strh	r2, [r3, #46]	@ movhi
-  67:User/Hardware/arm.c ****     YS_8010_cmd[1].K_P = 0.02f;
- 209              		.loc 1 67 24
- 210 010e 224B     		ldr	r3, .L2+12
- 211 0110 224A     		ldr	r2, .L2+16
- 212 0112 DA63     		str	r2, [r3, #60]	@ float
-  68:User/Hardware/arm.c ****     YS_8010_cmd[1].K_W = 0.0f;
- 213              		.loc 1 68 24
- 214 0114 204B     		ldr	r3, .L2+12
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 6
+  65:User/Hardware/arm.c ****     /* 宇树电机初始化（使用 UART，与 CAN 无关）*/
+  66:User/Hardware/arm.c ****     YS_8010_cmd[0].id = MOTOR_YUSHU_1_ID;
+ 207              		.loc 1 66 23
+ 208 012a 324B     		ldr	r3, .L2+16
+ 209 012c 0222     		movs	r2, #2
+ 210 012e 1A80     		strh	r2, [r3]	@ movhi
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 6
 
 
- 215 0116 4FF00002 		mov	r2, #0
- 216 011a 1A64     		str	r2, [r3, #64]	@ float
-  69:User/Hardware/arm.c ****     YS_8010_cmd[1].Pos = 100.0f;
- 217              		.loc 1 69 24
- 218 011c 1E4B     		ldr	r3, .L2+12
- 219 011e 204A     		ldr	r2, .L2+20
- 220 0120 9A63     		str	r2, [r3, #56]	@ float
-  70:User/Hardware/arm.c ****     YS_8010_cmd[1].W = 0.0f;
- 221              		.loc 1 70 22
- 222 0122 1D4B     		ldr	r3, .L2+12
- 223 0124 4FF00002 		mov	r2, #0
- 224 0128 5A63     		str	r2, [r3, #52]	@ float
-  71:User/Hardware/arm.c ****     YS_8010_cmd[1].T = 0.0f;
- 225              		.loc 1 71 22
- 226 012a 1B4B     		ldr	r3, .L2+12
- 227 012c 4FF00002 		mov	r2, #0
- 228 0130 1A63     		str	r2, [r3, #48]	@ float
-  72:User/Hardware/arm.c **** 
-  73:User/Hardware/arm.c ****     /* 达妙电机初始化（使用 CAN2）*/
-  74:User/Hardware/arm.c ****     arm_motor_init(&arm_motor[Motor4], MOTOR_DAMIAO_4_ID, POS_MODE);
- 229              		.loc 1 74 5
- 230 0132 4FF48072 		mov	r2, #256
- 231 0136 0421     		movs	r1, #4
- 232 0138 1A48     		ldr	r0, .L2+24
- 233 013a FFF7FEFF 		bl	arm_motor_init
-  75:User/Hardware/arm.c ****     arm_motor_init(&arm_motor[Motor5], MOTOR_DAMIAO_5_ID, POS_MODE);
- 234              		.loc 1 75 5
- 235 013e 4FF48072 		mov	r2, #256
- 236 0142 0521     		movs	r1, #5
- 237 0144 1848     		ldr	r0, .L2+28
- 238 0146 FFF7FEFF 		bl	arm_motor_init
-  76:User/Hardware/arm.c ****     arm_motor_init(&arm_motor[Motor6], MOTOR_DAMIAO_6_ID, POS_MODE);
- 239              		.loc 1 76 5
- 240 014a 4FF48072 		mov	r2, #256
- 241 014e 0621     		movs	r1, #6
- 242 0150 1648     		ldr	r0, .L2+32
- 243 0152 FFF7FEFF 		bl	arm_motor_init
-  77:User/Hardware/arm.c **** 
-  78:User/Hardware/arm.c ****     enable_motor_mode(CAN_HANDLE_2, MOTOR_DAMIAO_4_ID, POS_MODE);
- 244              		.loc 1 78 5
- 245 0156 4FF48072 		mov	r2, #256
- 246 015a 0421     		movs	r1, #4
- 247 015c 0C48     		ldr	r0, .L2+4
- 248 015e FFF7FEFF 		bl	enable_motor_mode
-  79:User/Hardware/arm.c ****     enable_motor_mode(CAN_HANDLE_2, MOTOR_DAMIAO_5_ID, POS_MODE);
- 249              		.loc 1 79 5
- 250 0162 4FF48072 		mov	r2, #256
- 251 0166 0521     		movs	r1, #5
- 252 0168 0948     		ldr	r0, .L2+4
- 253 016a FFF7FEFF 		bl	enable_motor_mode
-  80:User/Hardware/arm.c ****     enable_motor_mode(CAN_HANDLE_2, MOTOR_DAMIAO_6_ID, POS_MODE);
- 254              		.loc 1 80 5
- 255 016e 4FF48072 		mov	r2, #256
- 256 0172 0621     		movs	r1, #6
- 257 0174 0648     		ldr	r0, .L2+4
- 258 0176 FFF7FEFF 		bl	enable_motor_mode
+  67:User/Hardware/arm.c ****     YS_8010_cmd[0].mode = 1;
+ 211              		.loc 1 67 25
+ 212 0130 304B     		ldr	r3, .L2+16
+ 213 0132 0122     		movs	r2, #1
+ 214 0134 5A80     		strh	r2, [r3, #2]	@ movhi
+  68:User/Hardware/arm.c ****     YS_8010_cmd[0].K_P = 0.02f;
+ 215              		.loc 1 68 24
+ 216 0136 2F4B     		ldr	r3, .L2+16
+ 217 0138 2F4A     		ldr	r2, .L2+20
+ 218 013a 1A61     		str	r2, [r3, #16]	@ float
+  69:User/Hardware/arm.c ****     YS_8010_cmd[0].K_W = 0.0f;
+ 219              		.loc 1 69 24
+ 220 013c 2D4B     		ldr	r3, .L2+16
+ 221 013e 4FF00002 		mov	r2, #0
+ 222 0142 5A61     		str	r2, [r3, #20]	@ float
+  70:User/Hardware/arm.c ****     YS_8010_cmd[0].Pos = 100.0f;
+ 223              		.loc 1 70 24
+ 224 0144 2B4B     		ldr	r3, .L2+16
+ 225 0146 2D4A     		ldr	r2, .L2+24
+ 226 0148 DA60     		str	r2, [r3, #12]	@ float
+  71:User/Hardware/arm.c ****     YS_8010_cmd[0].W = 0.0f;
+ 227              		.loc 1 71 22
+ 228 014a 2A4B     		ldr	r3, .L2+16
+ 229 014c 4FF00002 		mov	r2, #0
+ 230 0150 9A60     		str	r2, [r3, #8]	@ float
+  72:User/Hardware/arm.c ****     YS_8010_cmd[0].T = 0.0f;
+ 231              		.loc 1 72 22
+ 232 0152 284B     		ldr	r3, .L2+16
+ 233 0154 4FF00002 		mov	r2, #0
+ 234 0158 5A60     		str	r2, [r3, #4]	@ float
+  73:User/Hardware/arm.c **** 
+  74:User/Hardware/arm.c ****     YS_8010_cmd[1].id = MOTOR_YUSHU_2_ID;
+ 235              		.loc 1 74 23
+ 236 015a 264B     		ldr	r3, .L2+16
+ 237 015c 0322     		movs	r2, #3
+ 238 015e 9A85     		strh	r2, [r3, #44]	@ movhi
+  75:User/Hardware/arm.c ****     YS_8010_cmd[1].mode = 1;
+ 239              		.loc 1 75 25
+ 240 0160 244B     		ldr	r3, .L2+16
+ 241 0162 0122     		movs	r2, #1
+ 242 0164 DA85     		strh	r2, [r3, #46]	@ movhi
+  76:User/Hardware/arm.c ****     YS_8010_cmd[1].K_P = 0.02f;
+ 243              		.loc 1 76 24
+ 244 0166 234B     		ldr	r3, .L2+16
+ 245 0168 234A     		ldr	r2, .L2+20
+ 246 016a DA63     		str	r2, [r3, #60]	@ float
+  77:User/Hardware/arm.c ****     YS_8010_cmd[1].K_W = 0.0f;
+ 247              		.loc 1 77 24
+ 248 016c 214B     		ldr	r3, .L2+16
+ 249 016e 4FF00002 		mov	r2, #0
+ 250 0172 1A64     		str	r2, [r3, #64]	@ float
+  78:User/Hardware/arm.c ****     YS_8010_cmd[1].Pos = 100.0f;
+ 251              		.loc 1 78 24
+ 252 0174 1F4B     		ldr	r3, .L2+16
+ 253 0176 214A     		ldr	r2, .L2+24
+ 254 0178 9A63     		str	r2, [r3, #56]	@ float
+  79:User/Hardware/arm.c ****     YS_8010_cmd[1].W = 0.0f;
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 7
+
+
+ 255              		.loc 1 79 22
+ 256 017a 1E4B     		ldr	r3, .L2+16
+ 257 017c 4FF00002 		mov	r2, #0
+ 258 0180 5A63     		str	r2, [r3, #52]	@ float
+  80:User/Hardware/arm.c ****     YS_8010_cmd[1].T = 0.0f;
+ 259              		.loc 1 80 22
+ 260 0182 1C4B     		ldr	r3, .L2+16
+ 261 0184 4FF00002 		mov	r2, #0
+ 262 0188 1A63     		str	r2, [r3, #48]	@ float
   81:User/Hardware/arm.c **** 
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 7
+  82:User/Hardware/arm.c ****     /* 达妙电机初始化（使用 CAN2）*/
+  83:User/Hardware/arm.c ****     arm_motor_init(&arm_motor[Motor4], MOTOR_DAMIAO_4_ID, POS_MODE);
+ 263              		.loc 1 83 5
+ 264 018a 4FF48072 		mov	r2, #256
+ 265 018e 0421     		movs	r1, #4
+ 266 0190 1B48     		ldr	r0, .L2+28
+ 267 0192 FFF7FEFF 		bl	arm_motor_init
+  84:User/Hardware/arm.c ****     arm_motor_init(&arm_motor[Motor5], MOTOR_DAMIAO_5_ID, POS_MODE);
+ 268              		.loc 1 84 5
+ 269 0196 4FF48072 		mov	r2, #256
+ 270 019a 0521     		movs	r1, #5
+ 271 019c 1948     		ldr	r0, .L2+32
+ 272 019e FFF7FEFF 		bl	arm_motor_init
+  85:User/Hardware/arm.c ****     arm_motor_init(&arm_motor[Motor6], MOTOR_DAMIAO_6_ID, POS_MODE);
+ 273              		.loc 1 85 5
+ 274 01a2 4FF48072 		mov	r2, #256
+ 275 01a6 0621     		movs	r1, #6
+ 276 01a8 1748     		ldr	r0, .L2+36
+ 277 01aa FFF7FEFF 		bl	arm_motor_init
+  86:User/Hardware/arm.c **** 
+  87:User/Hardware/arm.c ****     enable_motor_mode(CAN_HANDLE_2, MOTOR_DAMIAO_4_ID, POS_MODE);
+ 278              		.loc 1 87 5
+ 279 01ae 4FF48072 		mov	r2, #256
+ 280 01b2 0421     		movs	r1, #4
+ 281 01b4 0C48     		ldr	r0, .L2+4
+ 282 01b6 FFF7FEFF 		bl	enable_motor_mode
+  88:User/Hardware/arm.c ****     enable_motor_mode(CAN_HANDLE_2, MOTOR_DAMIAO_5_ID, POS_MODE);
+ 283              		.loc 1 88 5
+ 284 01ba 4FF48072 		mov	r2, #256
+ 285 01be 0521     		movs	r1, #5
+ 286 01c0 0948     		ldr	r0, .L2+4
+ 287 01c2 FFF7FEFF 		bl	enable_motor_mode
+  89:User/Hardware/arm.c ****     enable_motor_mode(CAN_HANDLE_2, MOTOR_DAMIAO_6_ID, POS_MODE);
+ 288              		.loc 1 89 5
+ 289 01c6 4FF48072 		mov	r2, #256
+ 290 01ca 0621     		movs	r1, #6
+ 291 01cc 0648     		ldr	r0, .L2+4
+ 292 01ce FFF7FEFF 		bl	enable_motor_mode
+  90:User/Hardware/arm.c **** 
+  91:User/Hardware/arm.c ****     vel_motor.MT04 = 5.0;
+ 293              		.loc 1 91 20
+ 294 01d2 0E4B     		ldr	r3, .L2+40
+ 295 01d4 0E4A     		ldr	r2, .L2+44
+ 296 01d6 1A60     		str	r2, [r3]	@ float
+  92:User/Hardware/arm.c ****     pos_motor.MT04 = 0;
+ 297              		.loc 1 92 20
+ 298 01d8 0E4B     		ldr	r3, .L2+48
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 8
 
 
-  82:User/Hardware/arm.c ****     vel_motor.MT04 = 5.0;
- 259              		.loc 1 82 20
- 260 017a 0D4B     		ldr	r3, .L2+36
- 261 017c 0D4A     		ldr	r2, .L2+40
- 262 017e 1A60     		str	r2, [r3]	@ float
-  83:User/Hardware/arm.c ****     pos_motor.MT04 = 0;
- 263              		.loc 1 83 20
- 264 0180 0D4B     		ldr	r3, .L2+44
- 265 0182 4FF00002 		mov	r2, #0
- 266 0186 1A60     		str	r2, [r3]	@ float
-  84:User/Hardware/arm.c **** }
- 267              		.loc 1 84 1
- 268 0188 00BF     		nop
- 269 018a 80BD     		pop	{r7, pc}
- 270              	.L3:
- 271              		.align	2
- 272              	.L2:
- 273 018c 00000000 		.word	motor1
- 274 0190 00000000 		.word	hfdcan2
- 275 0194 00000000 		.word	motor3
- 276 0198 00000000 		.word	YS_8010_cmd
- 277 019c 0AD7A33C 		.word	1017370378
- 278 01a0 0000C842 		.word	1120403456
- 279 01a4 30030000 		.word	arm_motor+816
- 280 01a8 40040000 		.word	arm_motor+1088
- 281 01ac 50050000 		.word	arm_motor+1360
- 282 01b0 00000000 		.word	vel_motor
- 283 01b4 0000A040 		.word	1084227584
- 284 01b8 00000000 		.word	pos_motor
- 285              		.cfi_endproc
- 286              	.LFE148:
- 288              		.section	.text.Arm_motor1,"ax",%progbits
- 289              		.align	1
- 290              		.global	Arm_motor1
- 291              		.syntax unified
- 292              		.thumb
- 293              		.thumb_func
- 295              	Arm_motor1:
- 296              	.LFB149:
-  85:User/Hardware/arm.c **** 
-  86:User/Hardware/arm.c **** void Arm_motor1()
-  87:User/Hardware/arm.c **** {
- 297              		.loc 1 87 1
- 298              		.cfi_startproc
- 299              		@ args = 0, pretend = 0, frame = 0
- 300              		@ frame_needed = 1, uses_anonymous_args = 0
- 301 0000 80B5     		push	{r7, lr}
- 302              	.LCFI2:
- 303              		.cfi_def_cfa_offset 8
- 304              		.cfi_offset 7, -8
- 305              		.cfi_offset 14, -4
- 306 0002 00AF     		add	r7, sp, #0
- 307              	.LCFI3:
- 308              		.cfi_def_cfa_register 7
-  88:User/Hardware/arm.c ****     // RobStride_Motor_ProactiveEscalationSet(&motor1,CAN_HANDLE_2,0x01);
-  89:User/Hardware/arm.c ****     RobStride_Motor_CSP_control(&motor1, CAN_HANDLE_2, 20.0f, 10.0f);
- 309              		.loc 1 89 5
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 8
+ 299 01da 4FF00002 		mov	r2, #0
+ 300 01de 1A60     		str	r2, [r3]	@ float
+  93:User/Hardware/arm.c **** }
+ 301              		.loc 1 93 1
+ 302 01e0 00BF     		nop
+ 303 01e2 80BD     		pop	{r7, pc}
+ 304              	.L3:
+ 305              		.align	2
+ 306              	.L2:
+ 307 01e4 00000000 		.word	motor1
+ 308 01e8 00000000 		.word	hfdcan2
+ 309 01ec 00000000 		.word	motor2
+ 310 01f0 00000000 		.word	motor3
+ 311 01f4 00000000 		.word	YS_8010_cmd
+ 312 01f8 0AD7A33C 		.word	1017370378
+ 313 01fc 0000C842 		.word	1120403456
+ 314 0200 30030000 		.word	arm_motor+816
+ 315 0204 40040000 		.word	arm_motor+1088
+ 316 0208 50050000 		.word	arm_motor+1360
+ 317 020c 00000000 		.word	vel_motor
+ 318 0210 0000A040 		.word	1084227584
+ 319 0214 00000000 		.word	pos_motor
+ 320              		.cfi_endproc
+ 321              	.LFE148:
+ 323              		.section	.text.Arm_motor1,"ax",%progbits
+ 324              		.align	1
+ 325              		.global	Arm_motor1
+ 326              		.syntax unified
+ 327              		.thumb
+ 328              		.thumb_func
+ 330              	Arm_motor1:
+ 331              	.LFB149:
+  94:User/Hardware/arm.c **** 
+  95:User/Hardware/arm.c **** void Arm_motor1()
+  96:User/Hardware/arm.c **** {
+ 332              		.loc 1 96 1
+ 333              		.cfi_startproc
+ 334              		@ args = 0, pretend = 0, frame = 0
+ 335              		@ frame_needed = 1, uses_anonymous_args = 0
+ 336 0000 80B5     		push	{r7, lr}
+ 337              	.LCFI2:
+ 338              		.cfi_def_cfa_offset 8
+ 339              		.cfi_offset 7, -8
+ 340              		.cfi_offset 14, -4
+ 341 0002 00AF     		add	r7, sp, #0
+ 342              	.LCFI3:
+ 343              		.cfi_def_cfa_register 7
+  97:User/Hardware/arm.c ****     // RobStride_Motor_ProactiveEscalationSet(&motor1,CAN_HANDLE_2,0x01);
+  98:User/Hardware/arm.c ****     RobStride_Motor_CSP_control(&motor1, CAN_HANDLE_2, 20.0f, 10.0f);
+ 344              		.loc 1 98 5
+ 345 0004 F2EE040A 		vmov.f32	s1, #1.0e+1
+ 346 0008 B3EE040A 		vmov.f32	s0, #2.0e+1
+ 347 000c 0249     		ldr	r1, .L5
+ 348 000e 0348     		ldr	r0, .L5+4
+ 349 0010 FFF7FEFF 		bl	RobStride_Motor_CSP_control
+  99:User/Hardware/arm.c **** }
+ 350              		.loc 1 99 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 9
 
 
- 310 0004 F2EE040A 		vmov.f32	s1, #1.0e+1
- 311 0008 B3EE040A 		vmov.f32	s0, #2.0e+1
- 312 000c 0249     		ldr	r1, .L5
- 313 000e 0348     		ldr	r0, .L5+4
- 314 0010 FFF7FEFF 		bl	RobStride_Motor_CSP_control
-  90:User/Hardware/arm.c **** }
- 315              		.loc 1 90 1
- 316 0014 00BF     		nop
- 317 0016 80BD     		pop	{r7, pc}
- 318              	.L6:
- 319              		.align	2
- 320              	.L5:
- 321 0018 00000000 		.word	hfdcan2
- 322 001c 00000000 		.word	motor1
- 323              		.cfi_endproc
- 324              	.LFE149:
- 326              		.section	.text.Arm_motor2,"ax",%progbits
- 327              		.align	1
- 328              		.global	Arm_motor2
- 329              		.syntax unified
- 330              		.thumb
- 331              		.thumb_func
- 333              	Arm_motor2:
- 334              	.LFB150:
-  91:User/Hardware/arm.c **** 
-  92:User/Hardware/arm.c **** void Arm_motor2()
-  93:User/Hardware/arm.c **** {
- 335              		.loc 1 93 1
- 336              		.cfi_startproc
- 337              		@ args = 0, pretend = 0, frame = 0
- 338              		@ frame_needed = 1, uses_anonymous_args = 0
- 339 0000 80B5     		push	{r7, lr}
- 340              	.LCFI4:
- 341              		.cfi_def_cfa_offset 8
- 342              		.cfi_offset 7, -8
- 343              		.cfi_offset 14, -4
- 344 0002 00AF     		add	r7, sp, #0
- 345              	.LCFI5:
- 346              		.cfi_def_cfa_register 7
-  94:User/Hardware/arm.c ****     //yushu
-  95:User/Hardware/arm.c ****     // modify_data(&YS_8010_cmd[0]);
-  96:User/Hardware/arm.c ****     // HAL_UART_Transmit(&huart3, (uint8_t *)&YS_8010_cmd[0].motor_send_data, sizeof(YS_8010_cmd[0]
-  97:User/Hardware/arm.c ****     // HAL_UART_Receive(&huart3, (uint8_t *)&YS_8010_data[0].motor_recv_data, sizeof(YS_8010_data[0
-  98:User/Hardware/arm.c ****    // LZ电机位置控制（ID=2）
-  99:User/Hardware/arm.c ****     // 使用CAN2总线，目标位置设为0.0弧度，速度设为1.0弧度/秒
- 100:User/Hardware/arm.c ****     // 可根据实际需求调整目标位置和速度参数
- 101:User/Hardware/arm.c ****     lz_set_position(2, 2, 0.0f, 1.0f);
- 347              		.loc 1 101 5
- 348 0004 F7EE000A 		vmov.f32	s1, #1.0e+0
- 349 0008 9FED030A 		vldr.32	s0, .L8
- 350 000c 0221     		movs	r1, #2
- 351 000e 0220     		movs	r0, #2
- 352 0010 FFF7FEFF 		bl	lz_set_position
- 102:User/Hardware/arm.c **** 
- 103:User/Hardware/arm.c **** 
- 104:User/Hardware/arm.c **** 
- 105:User/Hardware/arm.c **** }
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 9
+ 351 0014 00BF     		nop
+ 352 0016 80BD     		pop	{r7, pc}
+ 353              	.L6:
+ 354              		.align	2
+ 355              	.L5:
+ 356 0018 00000000 		.word	hfdcan2
+ 357 001c 00000000 		.word	motor1
+ 358              		.cfi_endproc
+ 359              	.LFE149:
+ 361              		.section	.text.Arm_motor2,"ax",%progbits
+ 362              		.align	1
+ 363              		.global	Arm_motor2
+ 364              		.syntax unified
+ 365              		.thumb
+ 366              		.thumb_func
+ 368              	Arm_motor2:
+ 369              	.LFB150:
+ 100:User/Hardware/arm.c **** 
+ 101:User/Hardware/arm.c **** void Arm_motor2()
+ 102:User/Hardware/arm.c **** {
+ 370              		.loc 1 102 1
+ 371              		.cfi_startproc
+ 372              		@ args = 0, pretend = 0, frame = 0
+ 373              		@ frame_needed = 1, uses_anonymous_args = 0
+ 374 0000 80B5     		push	{r7, lr}
+ 375              	.LCFI4:
+ 376              		.cfi_def_cfa_offset 8
+ 377              		.cfi_offset 7, -8
+ 378              		.cfi_offset 14, -4
+ 379 0002 00AF     		add	r7, sp, #0
+ 380              	.LCFI5:
+ 381              		.cfi_def_cfa_register 7
+ 103:User/Hardware/arm.c ****     //yushu
+ 104:User/Hardware/arm.c ****     // modify_data(&YS_8010_cmd[0]);
+ 105:User/Hardware/arm.c ****     // HAL_UART_Transmit(&huart3, (uint8_t *)&YS_8010_cmd[0].motor_send_data, sizeof(YS_8010_cmd[0]
+ 106:User/Hardware/arm.c ****     // HAL_UART_Receive(&huart3, (uint8_t *)&YS_8010_data[0].motor_recv_data, sizeof(YS_8010_data[0
+ 107:User/Hardware/arm.c ****    // LZ电机位置控制（ID=2）
+ 108:User/Hardware/arm.c ****     // 使用CAN2总线，目标位置设为0.0弧度，速度设为1.0弧度/秒
+ 109:User/Hardware/arm.c ****     // 可根据实际需求调整目标位置和速度参数
+ 110:User/Hardware/arm.c ****     RobStride_Motor_CSP_control(&motor2, CAN_HANDLE_2, 0.0f, 1.0f);
+ 382              		.loc 1 110 5
+ 383 0004 F7EE000A 		vmov.f32	s1, #1.0e+0
+ 384 0008 9FED030A 		vldr.32	s0, .L8
+ 385 000c 0349     		ldr	r1, .L8+4
+ 386 000e 0448     		ldr	r0, .L8+8
+ 387 0010 FFF7FEFF 		bl	RobStride_Motor_CSP_control
+ 111:User/Hardware/arm.c **** 
+ 112:User/Hardware/arm.c **** 
+ 113:User/Hardware/arm.c **** 
+ 114:User/Hardware/arm.c **** }
+ 388              		.loc 1 114 1
+ 389 0014 00BF     		nop
+ 390 0016 80BD     		pop	{r7, pc}
+ 391              	.L9:
+ 392              		.align	2
+ 393              	.L8:
+ 394 0018 00000000 		.word	0
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 10
 
 
- 353              		.loc 1 105 1
- 354 0014 00BF     		nop
- 355 0016 80BD     		pop	{r7, pc}
- 356              	.L9:
- 357              		.align	2
- 358              	.L8:
- 359 0018 00000000 		.word	0
- 360              		.cfi_endproc
- 361              	.LFE150:
- 363              		.section	.text.Arm_motor3,"ax",%progbits
- 364              		.align	1
- 365              		.global	Arm_motor3
- 366              		.syntax unified
- 367              		.thumb
- 368              		.thumb_func
- 370              	Arm_motor3:
- 371              	.LFB151:
- 106:User/Hardware/arm.c **** 
- 107:User/Hardware/arm.c **** void Arm_motor3()
- 108:User/Hardware/arm.c **** {
- 372              		.loc 1 108 1
- 373              		.cfi_startproc
- 374              		@ args = 0, pretend = 0, frame = 0
- 375              		@ frame_needed = 1, uses_anonymous_args = 0
- 376 0000 80B5     		push	{r7, lr}
- 377              	.LCFI6:
- 378              		.cfi_def_cfa_offset 8
- 379              		.cfi_offset 7, -8
- 380              		.cfi_offset 14, -4
- 381 0002 00AF     		add	r7, sp, #0
- 382              	.LCFI7:
- 383              		.cfi_def_cfa_register 7
- 109:User/Hardware/arm.c ****     //yushu
- 110:User/Hardware/arm.c ****     // modify_data(&YS_8010_cmd[1]);
- 111:User/Hardware/arm.c ****     // HAL_UART_Transmit(&huart3, (uint8_t *)&YS_8010_cmd[1].motor_send_data, sizeof(YS_8010_cmd[1]
- 112:User/Hardware/arm.c ****     // HAL_UART_Receive(&huart3, (uint8_t *)&YS_8010_data[1].motor_recv_data, sizeof(YS_8010_data[1
- 113:User/Hardware/arm.c ****      RobStride_Motor_CSP_control(&motor3, CAN_HANDLE_2, 1.0f, 10.0f);
- 384              		.loc 1 113 6
- 385 0004 F2EE040A 		vmov.f32	s1, #1.0e+1
- 386 0008 B7EE000A 		vmov.f32	s0, #1.0e+0
- 387 000c 0249     		ldr	r1, .L11
- 388 000e 0348     		ldr	r0, .L11+4
- 389 0010 FFF7FEFF 		bl	RobStride_Motor_CSP_control
- 114:User/Hardware/arm.c **** 
+ 395 001c 00000000 		.word	hfdcan2
+ 396 0020 00000000 		.word	motor2
+ 397              		.cfi_endproc
+ 398              	.LFE150:
+ 400              		.section	.text.Arm_motor3,"ax",%progbits
+ 401              		.align	1
+ 402              		.global	Arm_motor3
+ 403              		.syntax unified
+ 404              		.thumb
+ 405              		.thumb_func
+ 407              	Arm_motor3:
+ 408              	.LFB151:
  115:User/Hardware/arm.c **** 
- 116:User/Hardware/arm.c **** 
- 117:User/Hardware/arm.c **** }
- 390              		.loc 1 117 1
- 391 0014 00BF     		nop
- 392 0016 80BD     		pop	{r7, pc}
- 393              	.L12:
- 394              		.align	2
- 395              	.L11:
- 396 0018 00000000 		.word	hfdcan2
- 397 001c 00000000 		.word	motor3
- 398              		.cfi_endproc
- 399              	.LFE151:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 10
-
-
- 401              		.section	.text.Arm_motor4,"ax",%progbits
- 402              		.align	1
- 403              		.global	Arm_motor4
- 404              		.syntax unified
- 405              		.thumb
- 406              		.thumb_func
- 408              	Arm_motor4:
- 409              	.LFB152:
- 118:User/Hardware/arm.c **** 
- 119:User/Hardware/arm.c **** void Arm_motor4()
- 120:User/Hardware/arm.c **** {
- 410              		.loc 1 120 1
- 411              		.cfi_startproc
- 412              		@ args = 0, pretend = 0, frame = 0
- 413              		@ frame_needed = 1, uses_anonymous_args = 0
- 414 0000 80B5     		push	{r7, lr}
- 415              	.LCFI8:
- 416              		.cfi_def_cfa_offset 8
- 417              		.cfi_offset 7, -8
- 418              		.cfi_offset 14, -4
- 419 0002 00AF     		add	r7, sp, #0
- 420              	.LCFI9:
- 421              		.cfi_def_cfa_register 7
- 121:User/Hardware/arm.c ****     set_DM_mode(Motor4, POS_MODE);
- 422              		.loc 1 121 5
- 423 0004 4FF48071 		mov	r1, #256
- 424 0008 0320     		movs	r0, #3
- 425 000a FFF7FEFF 		bl	set_DM_mode
- 122:User/Hardware/arm.c ****     set_DM_pos_vel(pos_motor.MT04, vel_motor.MT04, Motor4);
- 426              		.loc 1 122 5
- 427 000e 0F4B     		ldr	r3, .L14
- 428 0010 D3ED007A 		vldr.32	s15, [r3]
- 429 0014 0E4B     		ldr	r3, .L14+4
- 430 0016 93ED007A 		vldr.32	s14, [r3]
- 431 001a 0320     		movs	r0, #3
- 432 001c F0EE470A 		vmov.f32	s1, s14
- 433 0020 B0EE670A 		vmov.f32	s0, s15
- 434 0024 FFF7FEFF 		bl	set_DM_pos_vel
- 123:User/Hardware/arm.c ****     pos_speed_ctrl(CAN_HANDLE_2, MOTOR_DAMIAO_4_ID, 5, 10);
- 435              		.loc 1 123 5
- 436 0028 F2EE040A 		vmov.f32	s1, #1.0e+1
- 437 002c B1EE040A 		vmov.f32	s0, #5.0e+0
- 438 0030 0421     		movs	r1, #4
- 439 0032 0848     		ldr	r0, .L14+8
- 440 0034 FFF7FEFF 		bl	pos_speed_ctrl
- 124:User/Hardware/arm.c ****     pos_motor.MT04 = 20;
- 441              		.loc 1 124 20
- 442 0038 044B     		ldr	r3, .L14
- 443 003a 074A     		ldr	r2, .L14+12
- 444 003c 1A60     		str	r2, [r3]	@ float
- 125:User/Hardware/arm.c ****     Pre_Flag_damiao[4] = Flag_damiao[4];
- 445              		.loc 1 125 37
- 446 003e 074B     		ldr	r3, .L14+16
- 447 0040 1B69     		ldr	r3, [r3, #16]
- 448              		.loc 1 125 24
- 449 0042 074A     		ldr	r2, .L14+20
- 450 0044 1361     		str	r3, [r2, #16]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 11
-
-
+ 116:User/Hardware/arm.c **** void Arm_motor3()
+ 117:User/Hardware/arm.c **** {
+ 409              		.loc 1 117 1
+ 410              		.cfi_startproc
+ 411              		@ args = 0, pretend = 0, frame = 0
+ 412              		@ frame_needed = 1, uses_anonymous_args = 0
+ 413 0000 80B5     		push	{r7, lr}
+ 414              	.LCFI6:
+ 415              		.cfi_def_cfa_offset 8
+ 416              		.cfi_offset 7, -8
+ 417              		.cfi_offset 14, -4
+ 418 0002 00AF     		add	r7, sp, #0
+ 419              	.LCFI7:
+ 420              		.cfi_def_cfa_register 7
+ 118:User/Hardware/arm.c ****     //yushu
+ 119:User/Hardware/arm.c ****     // modify_data(&YS_8010_cmd[1]);
+ 120:User/Hardware/arm.c ****     // HAL_UART_Transmit(&huart3, (uint8_t *)&YS_8010_cmd[1].motor_send_data, sizeof(YS_8010_cmd[1]
+ 121:User/Hardware/arm.c ****     // HAL_UART_Receive(&huart3, (uint8_t *)&YS_8010_data[1].motor_recv_data, sizeof(YS_8010_data[1
+ 122:User/Hardware/arm.c ****      RobStride_Motor_CSP_control(&motor3, CAN_HANDLE_2, 1.0f, 10.0f);
+ 421              		.loc 1 122 6
+ 422 0004 F2EE040A 		vmov.f32	s1, #1.0e+1
+ 423 0008 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 424 000c 0249     		ldr	r1, .L11
+ 425 000e 0348     		ldr	r0, .L11+4
+ 426 0010 FFF7FEFF 		bl	RobStride_Motor_CSP_control
+ 123:User/Hardware/arm.c **** 
+ 124:User/Hardware/arm.c **** 
+ 125:User/Hardware/arm.c **** 
  126:User/Hardware/arm.c **** }
- 451              		.loc 1 126 1
- 452 0046 00BF     		nop
- 453 0048 80BD     		pop	{r7, pc}
- 454              	.L15:
- 455 004a 00BF     		.align	2
- 456              	.L14:
- 457 004c 00000000 		.word	pos_motor
- 458 0050 00000000 		.word	vel_motor
- 459 0054 00000000 		.word	hfdcan2
- 460 0058 0000A041 		.word	1101004800
- 461 005c 00000000 		.word	Flag_damiao
- 462 0060 00000000 		.word	Pre_Flag_damiao
- 463              		.cfi_endproc
- 464              	.LFE152:
- 466              		.section	.text.Arm_motor5,"ax",%progbits
- 467              		.align	1
- 468              		.global	Arm_motor5
- 469              		.syntax unified
- 470              		.thumb
- 471              		.thumb_func
- 473              	Arm_motor5:
- 474              	.LFB153:
+ 427              		.loc 1 126 1
+ 428 0014 00BF     		nop
+ 429 0016 80BD     		pop	{r7, pc}
+ 430              	.L12:
+ 431              		.align	2
+ 432              	.L11:
+ 433 0018 00000000 		.word	hfdcan2
+ 434 001c 00000000 		.word	motor3
+ 435              		.cfi_endproc
+ 436              	.LFE151:
+ 438              		.section	.text.Arm_motor4,"ax",%progbits
+ 439              		.align	1
+ 440              		.global	Arm_motor4
+ 441              		.syntax unified
+ 442              		.thumb
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 11
+
+
+ 443              		.thumb_func
+ 445              	Arm_motor4:
+ 446              	.LFB152:
  127:User/Hardware/arm.c **** 
- 128:User/Hardware/arm.c **** void Arm_motor5()
+ 128:User/Hardware/arm.c **** void Arm_motor4()
  129:User/Hardware/arm.c **** {
- 475              		.loc 1 129 1
- 476              		.cfi_startproc
- 477              		@ args = 0, pretend = 0, frame = 0
- 478              		@ frame_needed = 1, uses_anonymous_args = 0
- 479 0000 80B5     		push	{r7, lr}
- 480              	.LCFI10:
- 481              		.cfi_def_cfa_offset 8
- 482              		.cfi_offset 7, -8
- 483              		.cfi_offset 14, -4
- 484 0002 00AF     		add	r7, sp, #0
- 485              	.LCFI11:
- 486              		.cfi_def_cfa_register 7
- 130:User/Hardware/arm.c ****     set_DM_mode(Motor5, POS_MODE);
- 487              		.loc 1 130 5
- 488 0004 4FF48071 		mov	r1, #256
- 489 0008 0420     		movs	r0, #4
- 490 000a FFF7FEFF 		bl	set_DM_mode
- 131:User/Hardware/arm.c ****     set_DM_pos_vel(pos_motor.MT05, vel_motor.MT05, Motor5);
- 491              		.loc 1 131 5
- 492 000e 0D4B     		ldr	r3, .L17
- 493 0010 D3ED017A 		vldr.32	s15, [r3, #4]
- 494 0014 0C4B     		ldr	r3, .L17+4
- 495 0016 93ED017A 		vldr.32	s14, [r3, #4]
- 496 001a 0420     		movs	r0, #4
- 497 001c F0EE470A 		vmov.f32	s1, s14
- 498 0020 B0EE670A 		vmov.f32	s0, s15
- 499 0024 FFF7FEFF 		bl	set_DM_pos_vel
- 132:User/Hardware/arm.c ****     pos_speed_ctrl(CAN_HANDLE_2, MOTOR_DAMIAO_5_ID, 10, 1);
- 500              		.loc 1 132 5
- 501 0028 F7EE000A 		vmov.f32	s1, #1.0e+0
- 502 002c B2EE040A 		vmov.f32	s0, #1.0e+1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 12
-
-
- 503 0030 0521     		movs	r1, #5
- 504 0032 0648     		ldr	r0, .L17+8
- 505 0034 FFF7FEFF 		bl	pos_speed_ctrl
- 133:User/Hardware/arm.c ****     Pre_Flag_damiao[5] = Flag_damiao[5];
- 506              		.loc 1 133 37
- 507 0038 054B     		ldr	r3, .L17+12
- 508 003a 5B69     		ldr	r3, [r3, #20]
- 509              		.loc 1 133 24
- 510 003c 054A     		ldr	r2, .L17+16
- 511 003e 5361     		str	r3, [r2, #20]
+ 447              		.loc 1 129 1
+ 448              		.cfi_startproc
+ 449              		@ args = 0, pretend = 0, frame = 0
+ 450              		@ frame_needed = 1, uses_anonymous_args = 0
+ 451 0000 80B5     		push	{r7, lr}
+ 452              	.LCFI8:
+ 453              		.cfi_def_cfa_offset 8
+ 454              		.cfi_offset 7, -8
+ 455              		.cfi_offset 14, -4
+ 456 0002 00AF     		add	r7, sp, #0
+ 457              	.LCFI9:
+ 458              		.cfi_def_cfa_register 7
+ 130:User/Hardware/arm.c ****     set_DM_mode(Motor4, POS_MODE);
+ 459              		.loc 1 130 5
+ 460 0004 4FF48071 		mov	r1, #256
+ 461 0008 0320     		movs	r0, #3
+ 462 000a FFF7FEFF 		bl	set_DM_mode
+ 131:User/Hardware/arm.c ****     set_DM_pos_vel(pos_motor.MT04, vel_motor.MT04, Motor4);
+ 463              		.loc 1 131 5
+ 464 000e 0D4B     		ldr	r3, .L14
+ 465 0010 D3ED007A 		vldr.32	s15, [r3]
+ 466 0014 0C4B     		ldr	r3, .L14+4
+ 467 0016 93ED007A 		vldr.32	s14, [r3]
+ 468 001a 0320     		movs	r0, #3
+ 469 001c F0EE470A 		vmov.f32	s1, s14
+ 470 0020 B0EE670A 		vmov.f32	s0, s15
+ 471 0024 FFF7FEFF 		bl	set_DM_pos_vel
+ 132:User/Hardware/arm.c ****     pos_speed_ctrl(CAN_HANDLE_2, MOTOR_DAMIAO_4_ID, 5, 10);
+ 472              		.loc 1 132 5
+ 473 0028 F2EE040A 		vmov.f32	s1, #1.0e+1
+ 474 002c B1EE040A 		vmov.f32	s0, #5.0e+0
+ 475 0030 0421     		movs	r1, #4
+ 476 0032 0648     		ldr	r0, .L14+8
+ 477 0034 FFF7FEFF 		bl	pos_speed_ctrl
+ 133:User/Hardware/arm.c ****     pos_motor.MT04 = 20;
+ 478              		.loc 1 133 20
+ 479 0038 024B     		ldr	r3, .L14
+ 480 003a 054A     		ldr	r2, .L14+12
+ 481 003c 1A60     		str	r2, [r3]	@ float
  134:User/Hardware/arm.c **** }
- 512              		.loc 1 134 1
- 513 0040 00BF     		nop
- 514 0042 80BD     		pop	{r7, pc}
- 515              	.L18:
- 516              		.align	2
- 517              	.L17:
- 518 0044 00000000 		.word	pos_motor
- 519 0048 00000000 		.word	vel_motor
- 520 004c 00000000 		.word	hfdcan2
- 521 0050 00000000 		.word	Flag_damiao
- 522 0054 00000000 		.word	Pre_Flag_damiao
- 523              		.cfi_endproc
- 524              	.LFE153:
- 526              		.section	.text.Arm_motor6,"ax",%progbits
- 527              		.align	1
- 528              		.global	Arm_motor6
- 529              		.syntax unified
- 530              		.thumb
- 531              		.thumb_func
- 533              	Arm_motor6:
- 534              	.LFB154:
+ 482              		.loc 1 134 1
+ 483 003e 00BF     		nop
+ 484 0040 80BD     		pop	{r7, pc}
+ 485              	.L15:
+ 486 0042 00BF     		.align	2
+ 487              	.L14:
+ 488 0044 00000000 		.word	pos_motor
+ 489 0048 00000000 		.word	vel_motor
+ 490 004c 00000000 		.word	hfdcan2
+ 491 0050 0000A041 		.word	1101004800
+ 492              		.cfi_endproc
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 12
+
+
+ 493              	.LFE152:
+ 495              		.section	.text.Arm_motor5,"ax",%progbits
+ 496              		.align	1
+ 497              		.global	Arm_motor5
+ 498              		.syntax unified
+ 499              		.thumb
+ 500              		.thumb_func
+ 502              	Arm_motor5:
+ 503              	.LFB153:
  135:User/Hardware/arm.c **** 
- 136:User/Hardware/arm.c **** void Arm_motor6()
+ 136:User/Hardware/arm.c **** void Arm_motor5()
  137:User/Hardware/arm.c **** {
- 535              		.loc 1 137 1
- 536              		.cfi_startproc
- 537              		@ args = 0, pretend = 0, frame = 0
- 538              		@ frame_needed = 1, uses_anonymous_args = 0
- 539 0000 80B5     		push	{r7, lr}
- 540              	.LCFI12:
- 541              		.cfi_def_cfa_offset 8
- 542              		.cfi_offset 7, -8
- 543              		.cfi_offset 14, -4
- 544 0002 00AF     		add	r7, sp, #0
- 545              	.LCFI13:
- 546              		.cfi_def_cfa_register 7
- 138:User/Hardware/arm.c ****     set_DM_mode(Motor6, POS_MODE);
- 547              		.loc 1 138 5
- 548 0004 4FF48071 		mov	r1, #256
- 549 0008 0520     		movs	r0, #5
- 550 000a FFF7FEFF 		bl	set_DM_mode
- 139:User/Hardware/arm.c ****     set_DM_pos_vel(pos_motor.MT06, vel_motor.MT06, Motor6);
- 551              		.loc 1 139 5
- 552 000e 114B     		ldr	r3, .L20
- 553 0010 D3ED027A 		vldr.32	s15, [r3, #8]
- 554 0014 104B     		ldr	r3, .L20+4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 13
+ 504              		.loc 1 137 1
+ 505              		.cfi_startproc
+ 506              		@ args = 0, pretend = 0, frame = 0
+ 507              		@ frame_needed = 1, uses_anonymous_args = 0
+ 508 0000 80B5     		push	{r7, lr}
+ 509              	.LCFI10:
+ 510              		.cfi_def_cfa_offset 8
+ 511              		.cfi_offset 7, -8
+ 512              		.cfi_offset 14, -4
+ 513 0002 00AF     		add	r7, sp, #0
+ 514              	.LCFI11:
+ 515              		.cfi_def_cfa_register 7
+ 138:User/Hardware/arm.c ****     set_DM_mode(Motor5, POS_MODE);
+ 516              		.loc 1 138 5
+ 517 0004 4FF48071 		mov	r1, #256
+ 518 0008 0420     		movs	r0, #4
+ 519 000a FFF7FEFF 		bl	set_DM_mode
+ 139:User/Hardware/arm.c ****     set_DM_pos_vel(pos_motor.MT05, vel_motor.MT05, Motor5);
+ 520              		.loc 1 139 5
+ 521 000e 0B4B     		ldr	r3, .L17
+ 522 0010 D3ED017A 		vldr.32	s15, [r3, #4]
+ 523 0014 0A4B     		ldr	r3, .L17+4
+ 524 0016 93ED017A 		vldr.32	s14, [r3, #4]
+ 525 001a 0420     		movs	r0, #4
+ 526 001c F0EE470A 		vmov.f32	s1, s14
+ 527 0020 B0EE670A 		vmov.f32	s0, s15
+ 528 0024 FFF7FEFF 		bl	set_DM_pos_vel
+ 140:User/Hardware/arm.c ****     pos_speed_ctrl(CAN_HANDLE_2, MOTOR_DAMIAO_5_ID, 10, 1);
+ 529              		.loc 1 140 5
+ 530 0028 F7EE000A 		vmov.f32	s1, #1.0e+0
+ 531 002c B2EE040A 		vmov.f32	s0, #1.0e+1
+ 532 0030 0521     		movs	r1, #5
+ 533 0032 0448     		ldr	r0, .L17+8
+ 534 0034 FFF7FEFF 		bl	pos_speed_ctrl
+ 141:User/Hardware/arm.c **** }
+ 535              		.loc 1 141 1
+ 536 0038 00BF     		nop
+ 537 003a 80BD     		pop	{r7, pc}
+ 538              	.L18:
+ 539              		.align	2
+ 540              	.L17:
+ 541 003c 00000000 		.word	pos_motor
+ 542 0040 00000000 		.word	vel_motor
+ 543 0044 00000000 		.word	hfdcan2
+ 544              		.cfi_endproc
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 13
 
 
- 555 0016 93ED027A 		vldr.32	s14, [r3, #8]
- 556 001a 0520     		movs	r0, #5
- 557 001c F0EE470A 		vmov.f32	s1, s14
- 558 0020 B0EE670A 		vmov.f32	s0, s15
- 559 0024 FFF7FEFF 		bl	set_DM_pos_vel
- 140:User/Hardware/arm.c ****     pos_motor.MT06 = 10;
- 560              		.loc 1 140 20
- 561 0028 0A4B     		ldr	r3, .L20
- 562 002a 0C4A     		ldr	r2, .L20+8
- 563 002c 9A60     		str	r2, [r3, #8]	@ float
- 141:User/Hardware/arm.c ****     pos_speed_ctrl(CAN_HANDLE_2, MOTOR_DAMIAO_6_ID, arm_motor[Motor6].ctrl.pos_set, 1);
- 564              		.loc 1 141 5
- 565 002e 0C4B     		ldr	r3, .L20+12
- 566 0030 03F28C53 		addw	r3, r3, #1420
- 567 0034 D3ED007A 		vldr.32	s15, [r3]
- 568 0038 F7EE000A 		vmov.f32	s1, #1.0e+0
- 569 003c B0EE670A 		vmov.f32	s0, s15
- 570 0040 0621     		movs	r1, #6
- 571 0042 0848     		ldr	r0, .L20+16
- 572 0044 FFF7FEFF 		bl	pos_speed_ctrl
- 142:User/Hardware/arm.c ****     Pre_Flag_damiao[6] = Flag_damiao[6];
- 573              		.loc 1 142 37
- 574 0048 074B     		ldr	r3, .L20+20
- 575 004a 9B69     		ldr	r3, [r3, #24]
- 576              		.loc 1 142 24
- 577 004c 074A     		ldr	r2, .L20+24
- 578 004e 9361     		str	r3, [r2, #24]
- 143:User/Hardware/arm.c **** }
- 579              		.loc 1 143 1
- 580 0050 00BF     		nop
- 581 0052 80BD     		pop	{r7, pc}
- 582              	.L21:
- 583              		.align	2
- 584              	.L20:
- 585 0054 00000000 		.word	pos_motor
- 586 0058 00000000 		.word	vel_motor
- 587 005c 00002041 		.word	1092616192
- 588 0060 00000000 		.word	arm_motor
- 589 0064 00000000 		.word	hfdcan2
- 590 0068 00000000 		.word	Flag_damiao
- 591 006c 00000000 		.word	Pre_Flag_damiao
- 592              		.cfi_endproc
- 593              	.LFE154:
- 595              		.section	.text.Arm_all_tx,"ax",%progbits
- 596              		.align	1
- 597              		.global	Arm_all_tx
- 598              		.syntax unified
- 599              		.thumb
- 600              		.thumb_func
- 602              	Arm_all_tx:
- 603              	.LFB155:
- 144:User/Hardware/arm.c **** void Arm_all_tx()
- 145:User/Hardware/arm.c **** {
- 604              		.loc 1 145 1
- 605              		.cfi_startproc
- 606              		@ args = 0, pretend = 0, frame = 0
- 607              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 14
+ 545              	.LFE153:
+ 547              		.section	.text.Arm_motor6,"ax",%progbits
+ 548              		.align	1
+ 549              		.global	Arm_motor6
+ 550              		.syntax unified
+ 551              		.thumb
+ 552              		.thumb_func
+ 554              	Arm_motor6:
+ 555              	.LFB154:
+ 142:User/Hardware/arm.c **** 
+ 143:User/Hardware/arm.c **** void Arm_motor6()
+ 144:User/Hardware/arm.c **** {
+ 556              		.loc 1 144 1
+ 557              		.cfi_startproc
+ 558              		@ args = 0, pretend = 0, frame = 0
+ 559              		@ frame_needed = 1, uses_anonymous_args = 0
+ 560 0000 80B5     		push	{r7, lr}
+ 561              	.LCFI12:
+ 562              		.cfi_def_cfa_offset 8
+ 563              		.cfi_offset 7, -8
+ 564              		.cfi_offset 14, -4
+ 565 0002 00AF     		add	r7, sp, #0
+ 566              	.LCFI13:
+ 567              		.cfi_def_cfa_register 7
+ 145:User/Hardware/arm.c ****     set_DM_mode(Motor6, POS_MODE);
+ 568              		.loc 1 145 5
+ 569 0004 4FF48071 		mov	r1, #256
+ 570 0008 0520     		movs	r0, #5
+ 571 000a FFF7FEFF 		bl	set_DM_mode
+ 146:User/Hardware/arm.c ****     set_DM_pos_vel(pos_motor.MT06, vel_motor.MT06, Motor6);
+ 572              		.loc 1 146 5
+ 573 000e 0F4B     		ldr	r3, .L20
+ 574 0010 D3ED027A 		vldr.32	s15, [r3, #8]
+ 575 0014 0E4B     		ldr	r3, .L20+4
+ 576 0016 93ED027A 		vldr.32	s14, [r3, #8]
+ 577 001a 0520     		movs	r0, #5
+ 578 001c F0EE470A 		vmov.f32	s1, s14
+ 579 0020 B0EE670A 		vmov.f32	s0, s15
+ 580 0024 FFF7FEFF 		bl	set_DM_pos_vel
+ 147:User/Hardware/arm.c ****     pos_motor.MT06 = 10;
+ 581              		.loc 1 147 20
+ 582 0028 084B     		ldr	r3, .L20
+ 583 002a 0A4A     		ldr	r2, .L20+8
+ 584 002c 9A60     		str	r2, [r3, #8]	@ float
+ 148:User/Hardware/arm.c ****     pos_speed_ctrl(CAN_HANDLE_2, MOTOR_DAMIAO_6_ID, arm_motor[Motor6].ctrl.pos_set, 1);
+ 585              		.loc 1 148 5
+ 586 002e 0A4B     		ldr	r3, .L20+12
+ 587 0030 03F28C53 		addw	r3, r3, #1420
+ 588 0034 D3ED007A 		vldr.32	s15, [r3]
+ 589 0038 F7EE000A 		vmov.f32	s1, #1.0e+0
+ 590 003c B0EE670A 		vmov.f32	s0, s15
+ 591 0040 0621     		movs	r1, #6
+ 592 0042 0648     		ldr	r0, .L20+16
+ 593 0044 FFF7FEFF 		bl	pos_speed_ctrl
+ 149:User/Hardware/arm.c **** }
+ 594              		.loc 1 149 1
+ 595 0048 00BF     		nop
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 14
 
 
- 608 0000 80B5     		push	{r7, lr}
- 609              	.LCFI14:
- 610              		.cfi_def_cfa_offset 8
- 611              		.cfi_offset 7, -8
- 612              		.cfi_offset 14, -4
- 613 0002 00AF     		add	r7, sp, #0
- 614              	.LCFI15:
- 615              		.cfi_def_cfa_register 7
- 146:User/Hardware/arm.c ****     // Arm_motor1();
- 147:User/Hardware/arm.c ****     // osDelay(1);
- 148:User/Hardware/arm.c ****     // Arm_motor2();
- 149:User/Hardware/arm.c ****     // osDelay(1);
- 150:User/Hardware/arm.c ****     Arm_motor3();
- 616              		.loc 1 150 5
- 617 0004 FFF7FEFF 		bl	Arm_motor3
- 151:User/Hardware/arm.c ****     osDelay(1);
- 618              		.loc 1 151 5
- 619 0008 0120     		movs	r0, #1
- 620 000a FFF7FEFF 		bl	osDelay
- 152:User/Hardware/arm.c ****     // Arm_motor4();
- 153:User/Hardware/arm.c ****     // osDelay(1);
- 154:User/Hardware/arm.c ****     //  Arm_motor5();
- 155:User/Hardware/arm.c ****     //  osDelay(1);
- 156:User/Hardware/arm.c ****     // Arm_motor6();
- 157:User/Hardware/arm.c ****     //  osDelay(1);
- 158:User/Hardware/arm.c **** 
- 159:User/Hardware/arm.c **** 
- 160:User/Hardware/arm.c **** }...
- 621              		.loc 1 160 1
- 622 000e 00BF     		nop
- 623 0010 80BD     		pop	{r7, pc}
- 624              		.cfi_endproc
- 625              	.LFE155:
- 627              		.text
- 628              	.Letext0:
- 629              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
- 630              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
- 631              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
- 632              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h"
- 633              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 634              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fdcan.h"
- 635              		.file 8 "User/BSP/can_receive_send.h"
- 636              		.file 9 "Core/Inc/fdcan.h"
- 637              		.file 10 "User/Hardware/dm4310_drv.h"
- 638              		.file 11 "User/Hardware/Robstride04.h"
- 639              		.file 12 "User/Hardware/arm.h"
- 640              		.file 13 "User/Hardware/Unitree/gom_protocol.h"
- 641              		.file 14 "User/Hardware/LZ_motor_driver.h"
- 642              		.file 15 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 15
+ 596 004a 80BD     		pop	{r7, pc}
+ 597              	.L21:
+ 598              		.align	2
+ 599              	.L20:
+ 600 004c 00000000 		.word	pos_motor
+ 601 0050 00000000 		.word	vel_motor
+ 602 0054 00002041 		.word	1092616192
+ 603 0058 00000000 		.word	arm_motor
+ 604 005c 00000000 		.word	hfdcan2
+ 605              		.cfi_endproc
+ 606              	.LFE154:
+ 608              		.section	.text.Arm_all_tx,"ax",%progbits
+ 609              		.align	1
+ 610              		.global	Arm_all_tx
+ 611              		.syntax unified
+ 612              		.thumb
+ 613              		.thumb_func
+ 615              	Arm_all_tx:
+ 616              	.LFB155:
+ 150:User/Hardware/arm.c **** void Arm_all_tx()
+ 151:User/Hardware/arm.c **** {
+ 617              		.loc 1 151 1
+ 618              		.cfi_startproc
+ 619              		@ args = 0, pretend = 0, frame = 0
+ 620              		@ frame_needed = 1, uses_anonymous_args = 0
+ 621 0000 80B5     		push	{r7, lr}
+ 622              	.LCFI14:
+ 623              		.cfi_def_cfa_offset 8
+ 624              		.cfi_offset 7, -8
+ 625              		.cfi_offset 14, -4
+ 626 0002 00AF     		add	r7, sp, #0
+ 627              	.LCFI15:
+ 628              		.cfi_def_cfa_register 7
+ 152:User/Hardware/arm.c ****     Arm_motor1();
+ 629              		.loc 1 152 5
+ 630 0004 FFF7FEFF 		bl	Arm_motor1
+ 153:User/Hardware/arm.c ****     osDelay(1);
+ 631              		.loc 1 153 5
+ 632 0008 0120     		movs	r0, #1
+ 633 000a FFF7FEFF 		bl	osDelay
+ 154:User/Hardware/arm.c ****     Arm_motor2();
+ 634              		.loc 1 154 5
+ 635 000e FFF7FEFF 		bl	Arm_motor2
+ 155:User/Hardware/arm.c ****     osDelay(1);
+ 636              		.loc 1 155 5
+ 637 0012 0120     		movs	r0, #1
+ 638 0014 FFF7FEFF 		bl	osDelay
+ 156:User/Hardware/arm.c ****     Arm_motor3();
+ 639              		.loc 1 156 5
+ 640 0018 FFF7FEFF 		bl	Arm_motor3
+ 157:User/Hardware/arm.c ****     osDelay(1);
+ 641              		.loc 1 157 5
+ 642 001c 0120     		movs	r0, #1
+ 643 001e FFF7FEFF 		bl	osDelay
+ 158:User/Hardware/arm.c ****     // Arm_motor4();
+ 159:User/Hardware/arm.c ****     // osDelay(1);
+ 160:User/Hardware/arm.c ****     //  Arm_motor5();
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 15
+
+
+ 161:User/Hardware/arm.c ****     //  osDelay(1);
+ 162:User/Hardware/arm.c ****     // Arm_motor6();
+ 163:User/Hardware/arm.c ****     //  osDelay(1);
+ 164:User/Hardware/arm.c **** 
+ 165:User/Hardware/arm.c **** 
+ 166:User/Hardware/arm.c **** }...
+ 644              		.loc 1 166 1
+ 645 0022 00BF     		nop
+ 646 0024 80BD     		pop	{r7, pc}
+ 647              		.cfi_endproc
+ 648              	.LFE155:
+ 650              		.text
+ 651              	.Letext0:
+ 652              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
+ 653              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
+ 654              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
+ 655              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h"
+ 656              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 657              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fdcan.h"
+ 658              		.file 8 "User/BSP/can_receive_send.h"
+ 659              		.file 9 "User/Hardware/dm4310_drv.h"
+ 660              		.file 10 "Core/Inc/fdcan.h"
+ 661              		.file 11 "User/Hardware/Robstride04.h"
+ 662              		.file 12 "User/Hardware/arm.h"
+ 663              		.file 13 "User/Hardware/Unitree/gom_protocol.h"
+ 664              		.file 14 "User/Hardware/LZ_motor_driver.h"
+ 665              		.file 15 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 arm.c
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:24     .bss.YS_8010_data:00000000 YS_8010_data
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:21     .bss.YS_8010_data:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:31     .bss.YS_8010_cmd:00000000 YS_8010_cmd
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:28     .bss.YS_8010_cmd:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:37     .bss.tx_res:00000000 tx_res
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:38     .bss.tx_res:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:43     .bss.rx_res:00000000 rx_res
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:44     .bss.rx_res:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:50     .bss.motor1:00000000 motor1
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:47     .bss.motor1:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:57     .bss.motor3:00000000 motor3
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:54     .bss.motor3:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:60     .text.Arm_Init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:66     .text.Arm_Init:00000000 Arm_Init
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:273    .text.Arm_Init:0000018c $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:289    .text.Arm_motor1:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:295    .text.Arm_motor1:00000000 Arm_motor1
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:321    .text.Arm_motor1:00000018 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:327    .text.Arm_motor2:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:333    .text.Arm_motor2:00000000 Arm_motor2
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:359    .text.Arm_motor2:00000018 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:364    .text.Arm_motor3:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:370    .text.Arm_motor3:00000000 Arm_motor3
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:396    .text.Arm_motor3:00000018 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:402    .text.Arm_motor4:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:408    .text.Arm_motor4:00000000 Arm_motor4
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:457    .text.Arm_motor4:0000004c $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:467    .text.Arm_motor5:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:473    .text.Arm_motor5:00000000 Arm_motor5
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:518    .text.Arm_motor5:00000044 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:527    .text.Arm_motor6:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:533    .text.Arm_motor6:00000000 Arm_motor6
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:585    .text.Arm_motor6:00000054 $d
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:596    .text.Arm_all_tx:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s:602    .text.Arm_all_tx:00000000 Arm_all_tx
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:24     .bss.YS_8010_data:00000000 YS_8010_data
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:21     .bss.YS_8010_data:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:31     .bss.YS_8010_cmd:00000000 YS_8010_cmd
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:28     .bss.YS_8010_cmd:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:38     .bss.motor1:00000000 motor1
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:35     .bss.motor1:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:45     .bss.motor2:00000000 motor2
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:42     .bss.motor2:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:52     .bss.motor3:00000000 motor3
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:49     .bss.motor3:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:55     .text.Arm_Init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:61     .text.Arm_Init:00000000 Arm_Init
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:307    .text.Arm_Init:000001e4 $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:324    .text.Arm_motor1:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:330    .text.Arm_motor1:00000000 Arm_motor1
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:356    .text.Arm_motor1:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:362    .text.Arm_motor2:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:368    .text.Arm_motor2:00000000 Arm_motor2
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:394    .text.Arm_motor2:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:401    .text.Arm_motor3:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:407    .text.Arm_motor3:00000000 Arm_motor3
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:433    .text.Arm_motor3:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:439    .text.Arm_motor4:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:445    .text.Arm_motor4:00000000 Arm_motor4
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:488    .text.Arm_motor4:00000044 $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:496    .text.Arm_motor5:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:502    .text.Arm_motor5:00000000 Arm_motor5
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:541    .text.Arm_motor5:0000003c $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:548    .text.Arm_motor6:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:554    .text.Arm_motor6:00000000 Arm_motor6
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:600    .text.Arm_motor6:0000004c $d
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:609    .text.Arm_all_tx:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccq1Gorn.s:615    .text.Arm_all_tx:00000000 Arm_all_tx
 
 UNDEFINED SYMBOLS
 RobStride_Motor_Init
@@ -887,13 +923,7 @@ arm_motor
 vel_motor
 pos_motor
 RobStride_Motor_CSP_control
-lz_set_position
 set_DM_mode
 set_DM_pos_vel
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccP6WRRQ.s 			page 16
-
-
 pos_speed_ctrl
-Flag_damiao
-Pre_Flag_damiao
 osDelay

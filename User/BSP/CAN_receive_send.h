@@ -1,7 +1,5 @@
 #ifndef __CAN_RECEIVE_SEND_H__
 #define __CAN_RECEIVE_SEND_H__
-
-//#include "cover_headerfile_h.h"
 #include "fdcan.h"
 
 // 马达基础参数
@@ -36,8 +34,6 @@ typedef struct
 
 typedef FDCAN_HandleTypeDef hcan_t;//
     //当前时刻的电机接收flag
-    extern   uint32_t Flag_damiao[10];
-    extern uint32_t Pre_Flag_damiao[10];
 
 extern motor_measure_t motor_data[33];
 extern void can_init(void);

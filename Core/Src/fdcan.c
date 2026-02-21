@@ -72,58 +72,36 @@ void MX_FDCAN1_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN FDCAN1_Init 2 */
+  // 标准帧过滤器（接收所有标准帧）
   FDCAN_FilterTypeDef sFilterConfig;
-  
-  // -------------------------- 配置FDCAN1标准帧过滤器（接收所有标准帧） --------------------------
-  sFilterConfig.IdType = FDCAN_STANDARD_ID;          // 针对标准帧（11位ID）
-  sFilterConfig.FilterIndex = 0;                     // 使用第0个标准帧过滤器
-  sFilterConfig.FilterType = FDCAN_FILTER_MASK;      // 掩码过滤模式
-  sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0; // 匹配帧存入RX FIFO0
-  sFilterConfig.FilterID1 = 0x000;                   // 标准帧ID（设为0）
-  sFilterConfig.FilterID2 = 0x000;                   // 掩码设为0 → 接收所有标准帧
-  
-  if (HAL_FDCAN_ConfigFilter(&hfdcan1, &sFilterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  
-  // -------------------------- 配置FDCAN1扩展帧过滤器（接收所有扩展帧） --------------------------
-  sFilterConfig.IdType = FDCAN_EXTENDED_ID;          // 针对扩展帧（29位ID）
-  sFilterConfig.FilterIndex = 0;                     // 使用第0个扩展帧过滤器
-  sFilterConfig.FilterType = FDCAN_FILTER_MASK;      // 掩码过滤模式
-  sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0; // 匹配帧存入RX FIFO0
-  sFilterConfig.FilterID1 = 0x00000000;              // 扩展帧ID（设为0）
-  sFilterConfig.FilterID2 = 0x00000000;              // 掩码设为0 → 接收所有扩展帧
-  
-  if (HAL_FDCAN_ConfigFilter(&hfdcan1, &sFilterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  
-  // 启用RX FIFO0新消息通知（可选，中断方式接收需启用）
-  if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  
-  // 启动FDCAN1外设（必须启动才能收发）
-  if (HAL_FDCAN_Start(&hfdcan1) != HAL_OK)
-  {
-    Error_Handler();
-  }
+  sFilterConfig.IdType = FDCAN_STANDARD_ID;
+  sFilterConfig.FilterIndex = 0;
+  sFilterConfig.FilterType = FDCAN_FILTER_MASK;
+  sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+  sFilterConfig.FilterID1 = 0x000;
+  sFilterConfig.FilterID2 = 0x000;
+  HAL_FDCAN_ConfigFilter(&hfdcan1, &sFilterConfig);
+
+  // 扩展帧过滤器（接收所有扩展帧）
+  sFilterConfig.IdType = FDCAN_EXTENDED_ID;
+  sFilterConfig.FilterIndex = 0;      // 独立索引空间
+  sFilterConfig.FilterID1 = 0x00000000;
+  sFilterConfig.FilterID2 = 0x00000000;
+  HAL_FDCAN_ConfigFilter(&hfdcan1, &sFilterConfig);
+
+  // 激活 RX FIFO0 新消息通知
+  HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+  // 启动 FDCAN
+  HAL_FDCAN_Start(&hfdcan1);
   /* USER CODE END FDCAN1_Init 2 */
 
 }
 /* FDCAN2 init function */
 void MX_FDCAN2_Init(void)
 {
-
   /* USER CODE BEGIN FDCAN2_Init 0 */
-
   /* USER CODE END FDCAN2_Init 0 */
-
   /* USER CODE BEGIN FDCAN2_Init 1 */
-
   /* USER CODE END FDCAN2_Init 1 */
   hfdcan2.Instance = FDCAN2;
   hfdcan2.Init.FrameFormat = FDCAN_FRAME_CLASSIC;
@@ -159,57 +137,32 @@ void MX_FDCAN2_Init(void)
   }
   /* USER CODE BEGIN FDCAN2_Init 2 */
   FDCAN_FilterTypeDef sFilterConfig;
-  
-  // -------------------------- 配置FDCAN2标准帧过滤器（接收所有标准帧） --------------------------
-  sFilterConfig.IdType = FDCAN_STANDARD_ID;          // 针对标准帧（11位ID）
-  sFilterConfig.FilterIndex = 0;                     // 使用第0个标准帧过滤器
-  sFilterConfig.FilterType = FDCAN_FILTER_MASK;      // 掩码过滤模式
-  sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0; // 匹配帧存入RX FIFO0
-  sFilterConfig.FilterID1 = 0x000;                   // 标准帧ID（设为0）
-  sFilterConfig.FilterID2 = 0x000;                   // 掩码设为0 → 接收所有标准帧
-  
-  if (HAL_FDCAN_ConfigFilter(&hfdcan2, &sFilterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  
-  // -------------------------- 配置FDCAN2扩展帧过滤器（接收所有扩展帧） --------------------------
-  sFilterConfig.IdType = FDCAN_EXTENDED_ID;          // 针对扩展帧（29位ID）
-  sFilterConfig.FilterIndex = 0;                     // 使用第0个扩展帧过滤器
-  sFilterConfig.FilterType = FDCAN_FILTER_MASK;      // 掩码过滤模式
-  sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0; // 匹配帧存入RX FIFO0
-  sFilterConfig.FilterID1 = 0x00000000;              // 扩展帧ID（设为0）
-  sFilterConfig.FilterID2 = 0x00000000;              // 掩码设为0 → 接收所有扩展帧
-  
-  if (HAL_FDCAN_ConfigFilter(&hfdcan2, &sFilterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  
-  // 启用RX FIFO0新消息通知
-  if (HAL_FDCAN_ActivateNotification(&hfdcan2, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  
-  // 启动FDCAN2外设
-  if (HAL_FDCAN_Start(&hfdcan2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE END FDCAN2_Init 2 */
+  // 标准帧过滤器
+  sFilterConfig.IdType = FDCAN_STANDARD_ID;
+  sFilterConfig.FilterIndex = 0;
+  sFilterConfig.FilterType = FDCAN_FILTER_MASK;
+  sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+  sFilterConfig.FilterID1 = 0x000;
+  sFilterConfig.FilterID2 = 0x000;
+  HAL_FDCAN_ConfigFilter(&hfdcan2, &sFilterConfig);
 
+  // 扩展帧过滤器
+  sFilterConfig.IdType = FDCAN_EXTENDED_ID;
+  sFilterConfig.FilterIndex = 0;
+  sFilterConfig.FilterID1 = 0x00000000;
+  sFilterConfig.FilterID2 = 0x00000000;
+  HAL_FDCAN_ConfigFilter(&hfdcan2, &sFilterConfig);
+
+  HAL_FDCAN_ActivateNotification(&hfdcan2, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+  HAL_FDCAN_Start(&hfdcan2);
+  /* USER CODE END FDCAN2_Init 2 */
 }
 /* FDCAN3 init function */
 void MX_FDCAN3_Init(void)
 {
-
   /* USER CODE BEGIN FDCAN3_Init 0 */
-
   /* USER CODE END FDCAN3_Init 0 */
-
   /* USER CODE BEGIN FDCAN3_Init 1 */
-
   /* USER CODE END FDCAN3_Init 1 */
   hfdcan3.Instance = FDCAN3;
   hfdcan3.Init.FrameFormat = FDCAN_FRAME_CLASSIC;
@@ -245,59 +198,36 @@ void MX_FDCAN3_Init(void)
   }
   /* USER CODE BEGIN FDCAN3_Init 2 */
   FDCAN_FilterTypeDef sFilterConfig;
-  
-  // -------------------------- 配置FDCAN3标准帧过滤器（接收所有标准帧） --------------------------
-  sFilterConfig.IdType = FDCAN_STANDARD_ID;          // 针对标准帧（11位ID）
-  sFilterConfig.FilterIndex = 0;                     // 使用第0个标准帧过滤器
-  sFilterConfig.FilterType = FDCAN_FILTER_MASK;      // 掩码过滤模式
-  sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0; // 匹配帧存入RX FIFO0
-  sFilterConfig.FilterID1 = 0x000;                   // 标准帧ID（设为0）
-  sFilterConfig.FilterID2 = 0x000;                   // 掩码设为0 → 接收所有标准帧
-  
-  if (HAL_FDCAN_ConfigFilter(&hfdcan3, &sFilterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  
-  // -------------------------- 配置FDCAN3扩展帧过滤器（接收所有扩展帧） --------------------------
-  sFilterConfig.IdType = FDCAN_EXTENDED_ID;          // 针对扩展帧（29位ID）
-  sFilterConfig.FilterIndex = 0;                     // 使用第0个扩展帧过滤器
-  sFilterConfig.FilterType = FDCAN_FILTER_MASK;      // 掩码过滤模式
-  sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0; // 匹配帧存入RX FIFO0
-  sFilterConfig.FilterID1 = 0x00000000;              // 扩展帧ID（设为0）
-  sFilterConfig.FilterID2 = 0x00000000;              // 掩码设为0 → 接收所有扩展帧
-  
-  if (HAL_FDCAN_ConfigFilter(&hfdcan3, &sFilterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  
-  // 启用RX FIFO0新消息通知
-  if (HAL_FDCAN_ActivateNotification(&hfdcan3, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  
-  // 启动FDCAN3外设
-  if (HAL_FDCAN_Start(&hfdcan3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE END FDCAN3_Init 2 */
+  // 标准帧过滤器
+  sFilterConfig.IdType = FDCAN_STANDARD_ID;
+  sFilterConfig.FilterIndex = 0;
+  sFilterConfig.FilterType = FDCAN_FILTER_MASK;
+  sFilterConfig.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+  sFilterConfig.FilterID1 = 0x000;
+  sFilterConfig.FilterID2 = 0x000;
+  HAL_FDCAN_ConfigFilter(&hfdcan3, &sFilterConfig);
 
+  // 扩展帧过滤器
+  sFilterConfig.IdType = FDCAN_EXTENDED_ID;
+  sFilterConfig.FilterIndex = 0;
+  sFilterConfig.FilterID1 = 0x00000000;
+  sFilterConfig.FilterID2 = 0x00000000;
+  HAL_FDCAN_ConfigFilter(&hfdcan3, &sFilterConfig);
+
+  HAL_FDCAN_ActivateNotification(&hfdcan3, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+  HAL_FDCAN_Start(&hfdcan3);
+  /* USER CODE END FDCAN3_Init 2 */
 }
 
 static uint32_t HAL_RCC_FDCAN_CLK_ENABLED=0;
 
 void HAL_FDCAN_MspInit(FDCAN_HandleTypeDef* fdcanHandle)
 {
-
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
   if(fdcanHandle->Instance==FDCAN1)
   {
   /* USER CODE BEGIN FDCAN1_MspInit 0 */
-
   /* USER CODE END FDCAN1_MspInit 0 */
 
   /** Initializes the peripherals clock
@@ -333,13 +263,11 @@ void HAL_FDCAN_MspInit(FDCAN_HandleTypeDef* fdcanHandle)
     HAL_NVIC_SetPriority(FDCAN1_IT1_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(FDCAN1_IT1_IRQn);
   /* USER CODE BEGIN FDCAN1_MspInit 1 */
-
   /* USER CODE END FDCAN1_MspInit 1 */
   }
   else if(fdcanHandle->Instance==FDCAN2)
   {
   /* USER CODE BEGIN FDCAN2_MspInit 0 */
-
   /* USER CODE END FDCAN2_MspInit 0 */
 
   /** Initializes the peripherals clock
@@ -375,13 +303,11 @@ void HAL_FDCAN_MspInit(FDCAN_HandleTypeDef* fdcanHandle)
     HAL_NVIC_SetPriority(FDCAN2_IT1_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(FDCAN2_IT1_IRQn);
   /* USER CODE BEGIN FDCAN2_MspInit 1 */
-
   /* USER CODE END FDCAN2_MspInit 1 */
   }
   else if(fdcanHandle->Instance==FDCAN3)
   {
   /* USER CODE BEGIN FDCAN3_MspInit 0 */
-
   /* USER CODE END FDCAN3_MspInit 0 */
 
   /** Initializes the peripherals clock
@@ -417,18 +343,15 @@ void HAL_FDCAN_MspInit(FDCAN_HandleTypeDef* fdcanHandle)
     HAL_NVIC_SetPriority(FDCAN3_IT1_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(FDCAN3_IT1_IRQn);
   /* USER CODE BEGIN FDCAN3_MspInit 1 */
-
   /* USER CODE END FDCAN3_MspInit 1 */
   }
 }
 
 void HAL_FDCAN_MspDeInit(FDCAN_HandleTypeDef* fdcanHandle)
 {
-
   if(fdcanHandle->Instance==FDCAN1)
   {
   /* USER CODE BEGIN FDCAN1_MspDeInit 0 */
-
   /* USER CODE END FDCAN1_MspDeInit 0 */
     /* Peripheral clock disable */
     HAL_RCC_FDCAN_CLK_ENABLED--;
@@ -446,13 +369,11 @@ void HAL_FDCAN_MspDeInit(FDCAN_HandleTypeDef* fdcanHandle)
     HAL_NVIC_DisableIRQ(FDCAN1_IT0_IRQn);
     HAL_NVIC_DisableIRQ(FDCAN1_IT1_IRQn);
   /* USER CODE BEGIN FDCAN1_MspDeInit 1 */
-
   /* USER CODE END FDCAN1_MspDeInit 1 */
   }
   else if(fdcanHandle->Instance==FDCAN2)
   {
   /* USER CODE BEGIN FDCAN2_MspDeInit 0 */
-
   /* USER CODE END FDCAN2_MspDeInit 0 */
     /* Peripheral clock disable */
     HAL_RCC_FDCAN_CLK_ENABLED--;
@@ -470,13 +391,11 @@ void HAL_FDCAN_MspDeInit(FDCAN_HandleTypeDef* fdcanHandle)
     HAL_NVIC_DisableIRQ(FDCAN2_IT0_IRQn);
     HAL_NVIC_DisableIRQ(FDCAN2_IT1_IRQn);
   /* USER CODE BEGIN FDCAN2_MspDeInit 1 */
-
   /* USER CODE END FDCAN2_MspDeInit 1 */
   }
   else if(fdcanHandle->Instance==FDCAN3)
   {
   /* USER CODE BEGIN FDCAN3_MspDeInit 0 */
-
   /* USER CODE END FDCAN3_MspDeInit 0 */
     /* Peripheral clock disable */
     HAL_RCC_FDCAN_CLK_ENABLED--;
@@ -494,10 +413,6 @@ void HAL_FDCAN_MspDeInit(FDCAN_HandleTypeDef* fdcanHandle)
     HAL_NVIC_DisableIRQ(FDCAN3_IT0_IRQn);
     HAL_NVIC_DisableIRQ(FDCAN3_IT1_IRQn);
   /* USER CODE BEGIN FDCAN3_MspDeInit 1 */
-
   /* USER CODE END FDCAN3_MspDeInit 1 */
   }
 }
-
-
-/* USER CODE END 1 */

@@ -13,6 +13,7 @@
 
 // 电机 ID 定义
 #define MOTOR_LINGZU_1_ID       0x01    // 灵足电机 ID
+#define MOTOR_LINGZU_2_ID       0x02    // 灵足电机 ID
 #define MOTOR_LINGZU_3_ID       0x03    // 灵足电机 ID
 
 #define MOTOR_DAMIAO_4_ID     0x04    // 达妙电机4 ID
@@ -24,6 +25,9 @@
 
 // 灵足电机对象
 extern RobStride_Motor_t motor1;
+// 灵足电机对象
+extern RobStride_Motor_t motor2;
+// 灵足电机对象
 extern RobStride_Motor_t motor3;
 
 // 达妙电机状态枚举
