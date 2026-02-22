@@ -113,6 +113,7 @@ User/BSP/Stm32_time.c \
 User/Hardware/dm4310_drv.c \
 User/Hardware/Robstride04.c \
 User/Hardware/LZ_motor_driver.c \
+User/Hardware/DrEmpower_can.c \
 User/Hardware/arm.c \
 User/Hardware/IMU_updata.c \
 User/Hardware/Sbus.c \

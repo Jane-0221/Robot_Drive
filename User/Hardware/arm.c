@@ -9,6 +9,7 @@
 #include "LZ_motor_driver.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "DrEmpower_can.h"
 ShoulderType_t g_ShoulderType;
 
 // 达妙电机状态
@@ -25,9 +26,9 @@ ArmMotorData_t Damiao_motor_data[3];
 
 void Arm_Init()
 {
-    // 选择默认肩部类型为灵足肩
-    g_ShoulderType = SHOULDER_TYPE_LINGZU;
-    // g_ShoulderType = SHOULDER_TYPE_DARAN;
+    // 选择默认肩部类型
+    // g_ShoulderType = SHOULDER_TYPE_LINGZU;
+    g_ShoulderType = SHOULDER_TYPE_DARAN;
     /* 灵足电机初始化（使用 CAN2）*/
     // 1号电机初始化
     RobStride_Motor_Init(&motor1, MOTOR_LINGZU_1_ID, false);
@@ -56,6 +57,16 @@ void Arm_Init()
     Set_RobStride_Motor_parameter(&motor3, CAN_HANDLE_2, 0X7017, 1.0f, 'p');
     HAL_Delay(10);
     RobStride_Motor_ProactiveEscalationSet(&motor3, CAN_HANDLE_2, 0x01); // 00为关闭主动上报，01为开启主动上报
+                                                                         /* 大然电机初始化（使用 CAN2）*/
+                                                                         // 1号电机初始化
+                                                                         // clear_error(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
+
+    // set_mode(CAN_HANDLE_2, MOTOR_DARAN_1_ID, 2);
+
+    clear_error(CAN_HANDLE_2, MOTOR_DARAN_2_ID);
+    set_mode(CAN_HANDLE_2, MOTOR_DARAN_2_ID, 2);
+
+
     /* 达妙电机初始化（使用 CAN2）*/
     arm_motor_init(&arm_motor[Motor4], MOTOR_DAMIAO_4_ID, POS_MODE);
     arm_motor_init(&arm_motor[Motor5], MOTOR_DAMIAO_5_ID, POS_MODE);
@@ -64,12 +75,21 @@ void Arm_Init()
     enable_motor_mode(CAN_HANDLE_2, MOTOR_DAMIAO_4_ID, POS_MODE);
     enable_motor_mode(CAN_HANDLE_2, MOTOR_DAMIAO_5_ID, POS_MODE);
     enable_motor_mode(CAN_HANDLE_2, MOTOR_DAMIAO_6_ID, POS_MODE);
+    // 灵足肩电机数据
     Linzu_motor_data[0].target_angle = 10.0f;
     Linzu_motor_data[1].target_angle = 10.0f;
     Linzu_motor_data[2].target_angle = 10.0f;
     Linzu_motor_data[0].target_velocity = 1.0f;
     Linzu_motor_data[1].target_velocity = 1.0f;
     Linzu_motor_data[2].target_velocity = 1.0f;
+    // 大然肩电机数据
+    Daran_motor_data[0].target_angle = 10.0f;
+    Daran_motor_data[1].target_angle = 330.0f;
+    Daran_motor_data[2].target_angle = 10.0f;
+
+    Daran_motor_data[0].target_velocity = 20.0f;
+    Daran_motor_data[1].target_velocity = 20.0f;
+    Daran_motor_data[2].target_velocity = 20.0f;
 }
 
 void Arm_Linzu_motor1()
@@ -87,11 +107,18 @@ void Arm_Linzu_motor3()
 
     RobStride_Motor_CSP_control(&motor3, CAN_HANDLE_2, Linzu_motor_data[2].target_angle, Linzu_motor_data[2].target_velocity);
 }
+
 void Arm_Daran_motor1()
 {
+    // get_state(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
+    // set_angle(CAN_HANDLE_2, MOTOR_DARAN_1_ID, Daran_motor_data[0].target_angle, Daran_motor_data[0].target_velocity, 10.0f, 1);
 }
 void Arm_Daran_motor2()
 {
+     get_state(CAN_HANDLE_2, MOTOR_DARAN_2_ID);
+     
+    set_angle(CAN_HANDLE_2, MOTOR_DARAN_2_ID, Daran_motor_data[1].target_angle, Daran_motor_data[1].target_velocity, 10.0f, 1);
+
 }
 
 void Arm_Daran_motor3()
@@ -158,10 +185,10 @@ void Arm_all_tx()
         osDelay(1);
     }
 
-    Arm_Damiao_motor4();
-    osDelay(1);
-    Arm_Damiao_motor5();
-    osDelay(1);
-    Arm_Damiao_motor6();
-    osDelay(1);
+    // Arm_Damiao_motor4();
+    // osDelay(1);
+    // Arm_Damiao_motor5();
+    // osDelay(1);
+    // Arm_Damiao_motor6();
+    // osDelay(1);
 }

@@ -1,5 +1,5 @@
-build/arm.o: User/Hardware/arm.c User/Hardware/arm.h \
- User/BSP/can_receive_send.h Core/Inc/fdcan.h Core/Inc/main.h \
+build/DrEmpower_can.o: User/Hardware/DrEmpower_can.c \
+ User/Hardware/DrEmpower_can.h Core/Inc/fdcan.h Core/Inc/main.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  Core/Inc/stm32h7xx_hal_conf.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -37,23 +37,8 @@ build/arm.o: User/Hardware/arm.c User/Hardware/arm.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
- User/Hardware/dm4310_drv.h Core/Inc/main.h User/Hardware/Robstride04.h \
- User/Hardware/Unitree/crc_ccitt.h Algorithm/pid.h \
- User/Software/remote_control.h Core/Inc/gpio.h \
- User/Hardware/Unitree/gom_protocol.h User/Hardware/Unitree/crc_ccitt.h \
- Core/Inc/usart.h User/Hardware/LZ_motor_driver.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
- Core/Inc/FreeRTOSConfig.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
- Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- User/Hardware/DrEmpower_can.h
-User/Hardware/arm.h:
-User/BSP/can_receive_send.h:
+ User/BSP/can_receive_send.h
+User/Hardware/DrEmpower_can.h:
 Core/Inc/fdcan.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
@@ -95,24 +80,4 @@ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
-User/Hardware/dm4310_drv.h:
-Core/Inc/main.h:
-User/Hardware/Robstride04.h:
-User/Hardware/Unitree/crc_ccitt.h:
-Algorithm/pid.h:
-User/Software/remote_control.h:
-Core/Inc/gpio.h:
-User/Hardware/Unitree/gom_protocol.h:
-User/Hardware/Unitree/crc_ccitt.h:
-Core/Inc/usart.h:
-User/Hardware/LZ_motor_driver.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
-Core/Inc/FreeRTOSConfig.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
-Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-User/Hardware/DrEmpower_can.h:
+User/BSP/can_receive_send.h:

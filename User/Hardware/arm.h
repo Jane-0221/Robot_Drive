@@ -16,9 +16,9 @@
 #define MOTOR_LINGZU_2_ID 0x02 // 灵足电机2 ID
 #define MOTOR_LINGZU_3_ID 0x03 // 灵足电机3 ID
 
-#define MOTOR_DARAN_1_ID 0x11 // 大然电机1 ID
-#define MOTOR_DARAN_2_ID 0x12 // 大然电机2 ID
-#define MOTOR_DARAN_3_ID 0x13 // 大然电机3 ID
+#define MOTOR_DARAN_1_ID 0x0b // 大然电机11 ID
+#define MOTOR_DARAN_2_ID 0x0c // 大然电机12 ID
+#define MOTOR_DARAN_3_ID 0x0d // 大然电机13 ID
 
 #define MOTOR_DAMIAO_4_ID 0x04 // 达妙电机4 ID
 #define MOTOR_DAMIAO_5_ID 0x05 // 达妙电机5 ID

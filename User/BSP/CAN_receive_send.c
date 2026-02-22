@@ -27,8 +27,9 @@
 #include <cmsis_os2.h>
 #include "iwdg.h"
 #include "buzzer.h"
+#include "fdcan.h"
+#include "DrEmpower_can.h"  // 必须包含大然电机驱动头文件
 /* USER CODE END Includes */
-
 // 注意：过滤器配置已在 fdcan.c 中由 CubeMX 完成，此处不再重复配置
 // 本文件只负责数据收发处理和用户层初始化
 
@@ -36,6 +37,11 @@ FDCAN_RxHeaderTypeDef RxHeader1; // 可能用于其他用途，保留
 uint8_t g_Can1RxData[64];        // 保留但建议不再使用（改用局部变量）
 float daibaoshan[3];
 motor_measure_t motor_data[33];
+
+extern uint8_t rx_buffer[8];
+extern int8_t READ_FLAG;
+extern uint16_t can_id;
+
 extern FDCAN_HandleTypeDef hfdcan1;
 extern FDCAN_HandleTypeDef hfdcan2;
 extern FDCAN_HandleTypeDef hfdcan3;
@@ -180,29 +186,19 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
   if ((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) == 0)
     return;
 
-  // 循环读取 FIFO0 中所有待处理消息
   while (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &rx_header, rx_data) == HAL_OK)
   {
-    // 根据 CAN 实例分发处理
     if (hfdcan->Instance == FDCAN1)
     {
-      switch (rx_header.Identifier)
-      {
-      case 5:
-        damiao_fbdata(&arm_motor[Motor1], rx_data);
-
-        break;
-      default:
-        break;
-      }
+      // FDCAN1 的处理（如有）
     }
     else if (hfdcan->Instance == FDCAN2)
     {
       if (rx_header.IdType == FDCAN_STANDARD_ID)
       {
+        // 先处理已知的其他电机（如大疆）
         switch (rx_header.Identifier)
         {
-
         case 4:
           damiao_fbdata(&arm_motor[Motor4], rx_data);
           break;
@@ -213,12 +209,30 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
           damiao_fbdata(&arm_motor[Motor6], rx_data);
           break;
         default:
+          // --- 新增：大然电机处理 ---
+          // 提取电机ID（ID的高5位）
+          uint8_t motor_id = (rx_header.Identifier >> 5) & 0x3F;
+          if (motor_id == 11) // 您使用的大然电机ID
+          {
+            // 将接收到的数据存入驱动库全局变量
+       
+          }
+          else if (motor_id == 12)
+          {
+    
+          }
+          else if (motor_id == 13)
+          {
+     
+          }
+
+          // 若还有其他标准帧电机，可在此扩展
           break;
         }
       }
       else if (rx_header.IdType == FDCAN_EXTENDED_ID)
       {
-        // 解析扩展帧 ID，假设高字节为目标电机 ID
+        // 扩展帧处理（原RobStride等）
         uint8_t target_id = (uint8_t)((rx_header.Identifier >> 8) & 0xFF);
         if (target_id == 0x01)
         {
@@ -232,10 +246,8 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
         {
           RobStride_Motor_Analysis(&motor3, rx_data, rx_header.Identifier);
         }
-        // 可添加其他扩展 ID 处理
       }
     }
-    // 若使用 FDCAN3，可在此添加类似处理
   }
 }
 
