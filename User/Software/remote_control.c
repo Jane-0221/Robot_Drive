@@ -6,6 +6,7 @@
 #include "pid.h"
 #include "UART_data_txrx.h"
 #include "Sbus.h"
+#include "head.h"
 // 遥控器值
 #define LOW_VALUE 353
 #define MID_VALUE 1024
@@ -22,6 +23,27 @@
 
 BOOM_ARM_Stats boom_arm_status; // 机械臂气泵状态
 LIFT_State lift_state;          // 伸降杆状态
+
+
+
+
+
+void Head_Motor_Control_Updata(void)
+{
+if(SBUS_CH.CH6==HIGH_VALUE)
+{
+    head_motor_data[1].target_angle=0;
+}
+else if(SBUS_CH.CH6==MID_VALUE)
+{
+    head_motor_data[1].target_angle=9000;
+}
+else if(SBUS_CH.CH6==LOW_VALUE)
+{
+    head_motor_data[1].target_angle=18000;
+}
+
+}
 
 /**
  * @brief  控制电机正转

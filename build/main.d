@@ -55,7 +55,9 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Core/Inc/struct_typedef.h User/BSP/CAN_receive_send.h \
  User/Hardware/IMU_updata.h Algorithm/Kalman_Filter_c.h \
  User/Hardware/LED.h User/Software/music.h User/Hardware/buzzer.h \
- Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+ Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
+ User/Hardware/head.h User/BSP/can_receive_send.h \
+ User/Hardware/ktech_motor.h
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 Core/Inc/stm32h7xx_hal_conf.h:
@@ -127,3 +129,6 @@ User/Hardware/LED.h:
 User/Software/music.h:
 User/Hardware/buzzer.h:
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
+User/Hardware/head.h:
+User/BSP/can_receive_send.h:
+User/Hardware/ktech_motor.h:

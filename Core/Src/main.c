@@ -35,6 +35,7 @@
 #include "IMU_updata.h"
 #include "LED.h"
 #include "music.h"
+#include "head.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -129,6 +130,7 @@ int main(void)
   IMU_init();
   Music_init();
   Arm_Init();
+  Head_Init();
   HAL_IWDG_Refresh(&hiwdg1);
   remote_control_init();
 

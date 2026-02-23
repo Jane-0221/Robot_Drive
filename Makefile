@@ -111,10 +111,12 @@ User/BSP/UART_data_txrx.c \
 User/BSP/CAN_receive_send.c \
 User/BSP/Stm32_time.c \
 User/Hardware/dm4310_drv.c \
+User/Hardware/ktech_motor.c \
 User/Hardware/Robstride04.c \
 User/Hardware/LZ_motor_driver.c \
 User/Hardware/DrEmpower_can.c \
 User/Hardware/arm.c \
+User/Hardware/head.c \
 User/Hardware/IMU_updata.c \
 User/Hardware/Sbus.c \
 User/Hardware/LED.c \

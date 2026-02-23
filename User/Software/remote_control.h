@@ -17,7 +17,10 @@ typedef enum LIFT_State {
     LIFT_STOP       // 升降停止
 } LIFT_State;
 extern LIFT_State lift_state;
-/* 外部函数调用 */
+
+
+extern void Head_Motor_Control_Updata(void);
+
 void Motor_Forward(void);
 void Motor_Reverse(void);
 void Motor_Stop(void);

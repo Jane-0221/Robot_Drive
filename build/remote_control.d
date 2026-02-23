@@ -40,7 +40,9 @@ build/remote_control.o: User/Software/remote_control.c \
  Algorithm/ramp_generator.h User/Hardware/IMU_updata.h \
  Core/Inc/struct_typedef.h Algorithm/Kalman_Filter_c.h \
  User/BSP/Stm32_time.h Core/Inc/tim.h Core/Inc/main.h Algorithm/pid.h \
- User/BSP/UART_data_txrx.h Core/Inc/usart.h User/Hardware/Sbus.h
+ User/BSP/UART_data_txrx.h Core/Inc/usart.h User/Hardware/Sbus.h \
+ User/Hardware/head.h User/BSP/can_receive_send.h Core/Inc/fdcan.h \
+ User/Hardware/ktech_motor.h
 User/Software/remote_control.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
@@ -93,3 +95,7 @@ Algorithm/pid.h:
 User/BSP/UART_data_txrx.h:
 Core/Inc/usart.h:
 User/Hardware/Sbus.h:
+User/Hardware/head.h:
+User/BSP/can_receive_send.h:
+Core/Inc/fdcan.h:
+User/Hardware/ktech_motor.h:

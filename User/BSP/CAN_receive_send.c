@@ -28,7 +28,9 @@
 #include "iwdg.h"
 #include "buzzer.h"
 #include "fdcan.h"
-#include "DrEmpower_can.h"  // 必须包含大然电机驱动头文件
+#include "DrEmpower_can.h" // 必须包含大然电机驱动头文件‘
+#include "ktech_motor.h"
+#include "head.h"
 /* USER CODE END Includes */
 // 注意：过滤器配置已在 fdcan.c 中由 CubeMX 完成，此处不再重复配置
 // 本文件只负责数据收发处理和用户层初始化
@@ -190,13 +192,22 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
   {
     if (hfdcan->Instance == FDCAN1)
     {
-      // FDCAN1 的处理（如有）
+      if (rx_header.Identifier == 0x141)
+      {
+        ktech_parse_motor_fb(&motor_linkong[0], rx_data);
+      }
+      else if (rx_header.Identifier == 0x142)
+      {
+        ktech_parse_motor_fb(&motor_linkong[1], rx_data);
+      }
+
+
     }
     else if (hfdcan->Instance == FDCAN2)
     {
       if (rx_header.IdType == FDCAN_STANDARD_ID)
       {
-        // 先处理已知的其他电机（如大疆）
+
         switch (rx_header.Identifier)
         {
         case 4:
@@ -215,15 +226,12 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
           if (motor_id == 11) // 您使用的大然电机ID
           {
             // 将接收到的数据存入驱动库全局变量
-       
           }
           else if (motor_id == 12)
           {
-    
           }
           else if (motor_id == 13)
           {
-     
           }
 
           // 若还有其他标准帧电机，可在此扩展

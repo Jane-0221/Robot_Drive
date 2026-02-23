@@ -7,8 +7,7 @@
 #include "crc_ccitt.h"
 #include "DrEmpower_can.h"
 // ==================== 硬件资源统一定义 ====================
-// CAN 句柄定义（两个 CAN 接口同等重要）
-#define CAN_HANDLE_1 (&hfdcan1)
+// CAN 句柄定义
 #define CAN_HANDLE_2 (&hfdcan2)
 
 // 电机 ID 定义
@@ -23,6 +22,7 @@
 #define MOTOR_DAMIAO_4_ID 0x04 // 达妙电机4 ID
 #define MOTOR_DAMIAO_5_ID 0x05 // 达妙电机5 ID
 #define MOTOR_DAMIAO_6_ID 0x06 // 达妙电机6 ID
+
 #define MOTOR_YUSHU_1_ID 2     // 宇树电机1 ID
 #define MOTOR_YUSHU_2_ID 3     // 宇树电机2 ID
 // =========================================================

@@ -1,0 +1,584 @@
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 6
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"head.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "User/Hardware/head.c"
+  19              		.global	motor_linkong
+  20              		.section	.bss.motor_linkong,"aw",%nobits
+  21              		.align	3
+  24              	motor_linkong:
+  25 0000 00000000 		.space	176
+  25      00000000 
+  25      00000000 
+  25      00000000 
+  25      00000000 
+  26              		.global	head_motor_data
+  27              		.section	.bss.head_motor_data,"aw",%nobits
+  28              		.align	2
+  31              	head_motor_data:
+  32 0000 00000000 		.space	40
+  32      00000000 
+  32      00000000 
+  32      00000000 
+  32      00000000 
+  33              		.section	.text.Head_Init,"ax",%progbits
+  34              		.align	1
+  35              		.global	Head_Init
+  36              		.syntax unified
+  37              		.thumb
+  38              		.thumb_func
+  40              	Head_Init:
+  41              	.LFB144:
+   1:User/Hardware/head.c **** #include "head.h"
+   2:User/Hardware/head.c **** #include "ktech_motor.h"
+   3:User/Hardware/head.c **** KTech_Motor_t motor_linkong[2];// µç»ú·´À¡Ö¡½á¹¹Ìå¶¨Òå
+   4:User/Hardware/head.c **** Head_MotorData_t head_motor_data[2];// Í·µç»úÊý¾Ý½á¹¹Ìå¶¨Òå
+   5:User/Hardware/head.c **** 
+   6:User/Hardware/head.c **** 
+   7:User/Hardware/head.c **** 
+   8:User/Hardware/head.c **** void Head_Init()
+   9:User/Hardware/head.c **** {
+  42              		.loc 1 9 1
+  43              		.cfi_startproc
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 2
+
+
+  46 0000 80B5     		push	{r7, lr}
+  47              	.LCFI0:
+  48              		.cfi_def_cfa_offset 8
+  49              		.cfi_offset 7, -8
+  50              		.cfi_offset 14, -4
+  51 0002 00AF     		add	r7, sp, #0
+  52              	.LCFI1:
+  53              		.cfi_def_cfa_register 7
+  10:User/Hardware/head.c ****     ktech_motor_init(MOTOR_LINKONG_1_ID);
+  54              		.loc 1 10 5
+  55 0004 0120     		movs	r0, #1
+  56 0006 FFF7FEFF 		bl	ktech_motor_init
+  11:User/Hardware/head.c ****     // 2. ¿ªÆôµç»ú£¨´Ó¹Ø±Õ×´Ì¬ÇÐ»»µ½¿ªÆô×´Ì¬£©
+  12:User/Hardware/head.c ****     ktech_motor_on(CAN_HANDLE_1, MOTOR_LINKONG_1_ID);
+  57              		.loc 1 12 5
+  58 000a 0121     		movs	r1, #1
+  59 000c 1048     		ldr	r0, .L2
+  60 000e FFF7FEFF 		bl	ktech_motor_on
+  13:User/Hardware/head.c **** 
+  14:User/Hardware/head.c ****     //µç»ú·¢ËÍÊý¾Ý³õÊ¼»¯
+  15:User/Hardware/head.c ****     head_motor_data[0].direction = DIR_CW;   //0:Ë³Ê±Õë, 1:ÄæÊ±Õë
+  61              		.loc 1 15 34
+  62 0012 104B     		ldr	r3, .L2+4
+  63 0014 0022     		movs	r2, #0
+  64 0016 1A72     		strb	r2, [r3, #8]
+  16:User/Hardware/head.c ****     head_motor_data[0].target_angle = 18000;
+  65              		.loc 1 16 37
+  66 0018 0E4B     		ldr	r3, .L2+4
+  67 001a 44F25062 		movw	r2, #18000
+  68 001e DA60     		str	r2, [r3, #12]
+  17:User/Hardware/head.c ****     head_motor_data[0].max_speed = 360;
+  69              		.loc 1 17 34
+  70 0020 0C4B     		ldr	r3, .L2+4
+  71 0022 4FF4B472 		mov	r2, #360
+  72 0026 1A82     		strh	r2, [r3, #16]	@ movhi
+  18:User/Hardware/head.c **** 
+  19:User/Hardware/head.c ****     ktech_motor_init(MOTOR_LINKONG_2_ID);
+  73              		.loc 1 19 5
+  74 0028 0220     		movs	r0, #2
+  75 002a FFF7FEFF 		bl	ktech_motor_init
+  20:User/Hardware/head.c ****     // 2. ¿ªÆôµç»ú£¨´Ó¹Ø±Õ×´Ì¬ÇÐ»»µ½¿ªÆô×´Ì¬£©
+  21:User/Hardware/head.c ****     ktech_motor_on(CAN_HANDLE_1, MOTOR_LINKONG_2_ID);
+  76              		.loc 1 21 5
+  77 002e 0221     		movs	r1, #2
+  78 0030 0748     		ldr	r0, .L2
+  79 0032 FFF7FEFF 		bl	ktech_motor_on
+  22:User/Hardware/head.c ****      //µç»ú·¢ËÍÊý¾Ý³õÊ¼»¯
+  23:User/Hardware/head.c ****     head_motor_data[1].direction = DIR_CW;   //0:Ë³Ê±Õë, 1:ÄæÊ±Õë
+  80              		.loc 1 23 34
+  81 0036 074B     		ldr	r3, .L2+4
+  82 0038 0022     		movs	r2, #0
+  83 003a 1A77     		strb	r2, [r3, #28]
+  24:User/Hardware/head.c ****     head_motor_data[1].target_angle = 9000;
+  84              		.loc 1 24 37
+  85 003c 054B     		ldr	r3, .L2+4
+  86 003e 42F22832 		movw	r2, #9000
+  87 0042 1A62     		str	r2, [r3, #32]
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 3
+
+
+  25:User/Hardware/head.c ****     head_motor_data[1].max_speed = 360;
+  88              		.loc 1 25 34
+  89 0044 034B     		ldr	r3, .L2+4
+  90 0046 4FF4B472 		mov	r2, #360
+  91 004a 9A84     		strh	r2, [r3, #36]	@ movhi
+  26:User/Hardware/head.c **** 
+  27:User/Hardware/head.c **** 
+  28:User/Hardware/head.c **** };
+  92              		.loc 1 28 1
+  93 004c 00BF     		nop
+  94 004e 80BD     		pop	{r7, pc}
+  95              	.L3:
+  96              		.align	2
+  97              	.L2:
+  98 0050 00000000 		.word	hfdcan1
+  99 0054 00000000 		.word	head_motor_data
+ 100              		.cfi_endproc
+ 101              	.LFE144:
+ 103              		.section	.text.Head_Lk_motor1,"ax",%progbits
+ 104              		.align	1
+ 105              		.global	Head_Lk_motor1
+ 106              		.syntax unified
+ 107              		.thumb
+ 108              		.thumb_func
+ 110              	Head_Lk_motor1:
+ 111              	.LFB145:
+  29:User/Hardware/head.c **** // Ñ­»·Ö´ÐÐµÄµç»ú¿ØÖÆº¯Êý
+  30:User/Hardware/head.c **** void Head_Lk_motor1(void)
+  31:User/Hardware/head.c **** {
+ 112              		.loc 1 31 1
+ 113              		.cfi_startproc
+ 114              		@ args = 0, pretend = 0, frame = 8
+ 115              		@ frame_needed = 1, uses_anonymous_args = 0
+ 116 0000 80B5     		push	{r7, lr}
+ 117              	.LCFI2:
+ 118              		.cfi_def_cfa_offset 8
+ 119              		.cfi_offset 7, -8
+ 120              		.cfi_offset 14, -4
+ 121 0002 84B0     		sub	sp, sp, #16
+ 122              	.LCFI3:
+ 123              		.cfi_def_cfa_offset 24
+ 124 0004 02AF     		add	r7, sp, #8
+ 125              	.LCFI4:
+ 126              		.cfi_def_cfa 7, 16
+  32:User/Hardware/head.c **** 
+  33:User/Hardware/head.c ****     // ¾²Ì¬±äÁ¿£º½öµÚÒ»´ÎÖ´ÐÐÊ±³õÊ¼»¯£¬ºóÐøÓÀ¾Ã±£ÁôÉÏÒ»´ÎµÄÄ¿±ê½Ç¶ÈÖµ£¬ÓÃÓÚÐÂÀÏ¶Ô±È
+  34:User/Hardware/head.c ****     // ×¢Òâ£ºÈç¹ûÄúµÄtarget_angleÊÇint32_tÀàÐÍ£¬´Ë´¦Í¬²½¸ÄÎªint32_t
+  35:User/Hardware/head.c ****     static uint32_t last_target_angle = 0;
+  36:User/Hardware/head.c ****     // ÌáÈ¡±¾´ÎÐÂµÄÄ¿±ê½Ç¶È£¬¼ò»¯´úÂë¿É¶ÁÐÔ
+  37:User/Hardware/head.c ****     uint32_t current_target = head_motor_data[0].target_angle;
+ 127              		.loc 1 37 14
+ 128 0006 124B     		ldr	r3, .L7
+ 129 0008 DB68     		ldr	r3, [r3, #12]
+ 130 000a 7B60     		str	r3, [r7, #4]
+  38:User/Hardware/head.c **** 
+  39:User/Hardware/head.c ****     /************************* ºËÐÄ·½ÏòÅÐ¶ÏÂß¼­ *************************/
+  40:User/Hardware/head.c ****     // ÐÂÄ¿±êÖµ > ÉÏÒ»´ÎµÄÀÏÖµ ¡ú Ë³Ê±Õë£¬·½ÏòÉèÎª0
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 4
+
+
+  41:User/Hardware/head.c ****     if (current_target > last_target_angle)
+ 131              		.loc 1 41 24
+ 132 000c 114B     		ldr	r3, .L7+4
+ 133 000e 1B68     		ldr	r3, [r3]
+ 134              		.loc 1 41 8
+ 135 0010 7A68     		ldr	r2, [r7, #4]
+ 136 0012 9A42     		cmp	r2, r3
+ 137 0014 03D9     		bls	.L5
+  42:User/Hardware/head.c ****     {
+  43:User/Hardware/head.c ****         head_motor_data[0].direction = 0;
+ 138              		.loc 1 43 38
+ 139 0016 0E4B     		ldr	r3, .L7
+ 140 0018 0022     		movs	r2, #0
+ 141 001a 1A72     		strb	r2, [r3, #8]
+ 142 001c 07E0     		b	.L6
+ 143              	.L5:
+  44:User/Hardware/head.c ****     }
+  45:User/Hardware/head.c ****     // ÐÂÄ¿±êÖµ < ÉÏÒ»´ÎµÄÀÏÖµ ¡ú ÄæÊ±Õë£¬·½ÏòÉèÎª1
+  46:User/Hardware/head.c ****     else if (current_target < last_target_angle)
+ 144              		.loc 1 46 29
+ 145 001e 0D4B     		ldr	r3, .L7+4
+ 146 0020 1B68     		ldr	r3, [r3]
+ 147              		.loc 1 46 13
+ 148 0022 7A68     		ldr	r2, [r7, #4]
+ 149 0024 9A42     		cmp	r2, r3
+ 150 0026 02D2     		bcs	.L6
+  47:User/Hardware/head.c ****     {
+  48:User/Hardware/head.c ****         head_motor_data[0].direction = 1;
+ 151              		.loc 1 48 38
+ 152 0028 094B     		ldr	r3, .L7
+ 153 002a 0122     		movs	r2, #1
+ 154 002c 1A72     		strb	r2, [r3, #8]
+ 155              	.L6:
+  49:User/Hardware/head.c ****     }
+  50:User/Hardware/head.c ****     // ÐÂÀÏÖµÏàµÈÊ±£º·½Ïò±£³Ö²»±ä£¬²»×öÐÞ¸Ä£¬±ÜÃâÎÞÒâÒåµÄ²ÎÊýË¢ÐÂºÍµç»ú¶¶¶¯
+  51:User/Hardware/head.c **** 
+  52:User/Hardware/head.c ****     /************************* Ö´ÐÐµç»ú¿ØÖÆ *************************/
+  53:User/Hardware/head.c ****     ktech_pos_single2(CAN_HANDLE_1, 
+ 156              		.loc 1 53 5
+ 157 002e 084B     		ldr	r3, .L7
+ 158 0030 1A7A     		ldrb	r2, [r3, #8]	@ zero_extendqisi2
+ 159 0032 074B     		ldr	r3, .L7
+ 160 0034 1B8A     		ldrh	r3, [r3, #16]
+ 161 0036 0093     		str	r3, [sp]
+ 162 0038 7B68     		ldr	r3, [r7, #4]
+ 163 003a 0121     		movs	r1, #1
+ 164 003c 0648     		ldr	r0, .L7+8
+ 165 003e FFF7FEFF 		bl	ktech_pos_single2
+  54:User/Hardware/head.c ****                       MOTOR_LINKONG_1_ID, 
+  55:User/Hardware/head.c ****                       head_motor_data[0].direction, 
+  56:User/Hardware/head.c ****                       current_target, 
+  57:User/Hardware/head.c ****                       head_motor_data[0].max_speed);
+  58:User/Hardware/head.c **** 
+  59:User/Hardware/head.c ****     /************************* ¸üÐÂÀÏÖµ£¬¹©ÏÂÒ»´ÎÑ­»·¶Ô±È *************************/
+  60:User/Hardware/head.c ****     last_target_angle = current_target;
+ 166              		.loc 1 60 23
+ 167 0042 044A     		ldr	r2, .L7+4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 5
+
+
+ 168 0044 7B68     		ldr	r3, [r7, #4]
+ 169 0046 1360     		str	r3, [r2]
+  61:User/Hardware/head.c **** }
+ 170              		.loc 1 61 1
+ 171 0048 00BF     		nop
+ 172 004a 0837     		adds	r7, r7, #8
+ 173              	.LCFI5:
+ 174              		.cfi_def_cfa_offset 8
+ 175 004c BD46     		mov	sp, r7
+ 176              	.LCFI6:
+ 177              		.cfi_def_cfa_register 13
+ 178              		@ sp needed
+ 179 004e 80BD     		pop	{r7, pc}
+ 180              	.L8:
+ 181              		.align	2
+ 182              	.L7:
+ 183 0050 00000000 		.word	head_motor_data
+ 184 0054 00000000 		.word	last_target_angle.1
+ 185 0058 00000000 		.word	hfdcan1
+ 186              		.cfi_endproc
+ 187              	.LFE145:
+ 189              		.section	.text.Head_Lk_motor2,"ax",%progbits
+ 190              		.align	1
+ 191              		.global	Head_Lk_motor2
+ 192              		.syntax unified
+ 193              		.thumb
+ 194              		.thumb_func
+ 196              	Head_Lk_motor2:
+ 197              	.LFB146:
+  62:User/Hardware/head.c **** void Head_Lk_motor2()
+  63:User/Hardware/head.c **** {
+ 198              		.loc 1 63 1
+ 199              		.cfi_startproc
+ 200              		@ args = 0, pretend = 0, frame = 8
+ 201              		@ frame_needed = 1, uses_anonymous_args = 0
+ 202 0000 80B5     		push	{r7, lr}
+ 203              	.LCFI7:
+ 204              		.cfi_def_cfa_offset 8
+ 205              		.cfi_offset 7, -8
+ 206              		.cfi_offset 14, -4
+ 207 0002 84B0     		sub	sp, sp, #16
+ 208              	.LCFI8:
+ 209              		.cfi_def_cfa_offset 24
+ 210 0004 02AF     		add	r7, sp, #8
+ 211              	.LCFI9:
+ 212              		.cfi_def_cfa 7, 16
+  64:User/Hardware/head.c ****     
+  65:User/Hardware/head.c ****     // ¾²Ì¬±äÁ¿£º½öµÚÒ»´ÎÖ´ÐÐÊ±³õÊ¼»¯£¬ºóÐøÓÀ¾Ã±£ÁôÉÏÒ»´ÎµÄÄ¿±ê½Ç¶ÈÖµ£¬ÓÃÓÚÐÂÀÏ¶Ô±È
+  66:User/Hardware/head.c ****     // ×¢Òâ£ºÈç¹ûÄúµÄtarget_angleÊÇint32_tÀàÐÍ£¬´Ë´¦Í¬²½¸ÄÎªint32_t
+  67:User/Hardware/head.c ****     static uint32_t last_target_angle = 0;
+  68:User/Hardware/head.c ****     // ÌáÈ¡±¾´ÎÐÂµÄÄ¿±ê½Ç¶È£¬¼ò»¯´úÂë¿É¶ÁÐÔ
+  69:User/Hardware/head.c ****     uint32_t current_target = head_motor_data[1].target_angle;
+ 213              		.loc 1 69 14
+ 214 0006 124B     		ldr	r3, .L12
+ 215 0008 1B6A     		ldr	r3, [r3, #32]
+ 216 000a 7B60     		str	r3, [r7, #4]
+  70:User/Hardware/head.c **** 
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 6
+
+
+  71:User/Hardware/head.c ****     /************************* ºËÐÄ·½ÏòÅÐ¶ÏÂß¼­ *************************/
+  72:User/Hardware/head.c ****     // ÐÂÄ¿±êÖµ > ÉÏÒ»´ÎµÄÀÏÖµ ¡ú Ë³Ê±Õë£¬·½ÏòÉèÎª0
+  73:User/Hardware/head.c ****     if (current_target > last_target_angle)
+ 217              		.loc 1 73 24
+ 218 000c 114B     		ldr	r3, .L12+4
+ 219 000e 1B68     		ldr	r3, [r3]
+ 220              		.loc 1 73 8
+ 221 0010 7A68     		ldr	r2, [r7, #4]
+ 222 0012 9A42     		cmp	r2, r3
+ 223 0014 03D9     		bls	.L10
+  74:User/Hardware/head.c ****     {
+  75:User/Hardware/head.c ****         head_motor_data[1].direction = 0;
+ 224              		.loc 1 75 38
+ 225 0016 0E4B     		ldr	r3, .L12
+ 226 0018 0022     		movs	r2, #0
+ 227 001a 1A77     		strb	r2, [r3, #28]
+ 228 001c 07E0     		b	.L11
+ 229              	.L10:
+  76:User/Hardware/head.c ****     }
+  77:User/Hardware/head.c ****     // ÐÂÄ¿±êÖµ < ÉÏÒ»´ÎµÄÀÏÖµ ¡ú ÄæÊ±Õë£¬·½ÏòÉèÎª1
+  78:User/Hardware/head.c ****     else if (current_target < last_target_angle)
+ 230              		.loc 1 78 29
+ 231 001e 0D4B     		ldr	r3, .L12+4
+ 232 0020 1B68     		ldr	r3, [r3]
+ 233              		.loc 1 78 13
+ 234 0022 7A68     		ldr	r2, [r7, #4]
+ 235 0024 9A42     		cmp	r2, r3
+ 236 0026 02D2     		bcs	.L11
+  79:User/Hardware/head.c ****     {
+  80:User/Hardware/head.c ****         head_motor_data[1].direction = 1;
+ 237              		.loc 1 80 38
+ 238 0028 094B     		ldr	r3, .L12
+ 239 002a 0122     		movs	r2, #1
+ 240 002c 1A77     		strb	r2, [r3, #28]
+ 241              	.L11:
+  81:User/Hardware/head.c ****     }
+  82:User/Hardware/head.c ****     // ÐÂÀÏÖµÏàµÈÊ±£º·½Ïò±£³Ö²»±ä£¬²»×öÐÞ¸Ä£¬±ÜÃâÎÞÒâÒåµÄ²ÎÊýË¢ÐÂºÍµç»ú¶¶¶¯
+  83:User/Hardware/head.c **** 
+  84:User/Hardware/head.c ****     /************************* Ö´ÐÐµç»ú¿ØÖÆ *************************/
+  85:User/Hardware/head.c ****     ktech_pos_single2(CAN_HANDLE_1, 
+ 242              		.loc 1 85 5
+ 243 002e 084B     		ldr	r3, .L12
+ 244 0030 1A7F     		ldrb	r2, [r3, #28]	@ zero_extendqisi2
+ 245 0032 074B     		ldr	r3, .L12
+ 246 0034 9B8C     		ldrh	r3, [r3, #36]
+ 247 0036 0093     		str	r3, [sp]
+ 248 0038 7B68     		ldr	r3, [r7, #4]
+ 249 003a 0221     		movs	r1, #2
+ 250 003c 0648     		ldr	r0, .L12+8
+ 251 003e FFF7FEFF 		bl	ktech_pos_single2
+  86:User/Hardware/head.c ****                       MOTOR_LINKONG_2_ID, 
+  87:User/Hardware/head.c ****                       head_motor_data[1].direction, 
+  88:User/Hardware/head.c ****                       current_target, 
+  89:User/Hardware/head.c ****                       head_motor_data[1].max_speed);
+  90:User/Hardware/head.c **** 
+  91:User/Hardware/head.c ****     /************************* ¸üÐÂÀÏÖµ£¬¹©ÏÂÒ»´ÎÑ­»·¶Ô±È *************************/
+  92:User/Hardware/head.c ****     last_target_angle = current_target;
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 7
+
+
+ 252              		.loc 1 92 23
+ 253 0042 044A     		ldr	r2, .L12+4
+ 254 0044 7B68     		ldr	r3, [r7, #4]
+ 255 0046 1360     		str	r3, [r2]
+  93:User/Hardware/head.c **** }
+ 256              		.loc 1 93 1
+ 257 0048 00BF     		nop
+ 258 004a 0837     		adds	r7, r7, #8
+ 259              	.LCFI10:
+ 260              		.cfi_def_cfa_offset 8
+ 261 004c BD46     		mov	sp, r7
+ 262              	.LCFI11:
+ 263              		.cfi_def_cfa_register 13
+ 264              		@ sp needed
+ 265 004e 80BD     		pop	{r7, pc}
+ 266              	.L13:
+ 267              		.align	2
+ 268              	.L12:
+ 269 0050 00000000 		.word	head_motor_data
+ 270 0054 00000000 		.word	last_target_angle.0
+ 271 0058 00000000 		.word	hfdcan1
+ 272              		.cfi_endproc
+ 273              	.LFE146:
+ 275              		.section	.text.Head_all_tx,"ax",%progbits
+ 276              		.align	1
+ 277              		.global	Head_all_tx
+ 278              		.syntax unified
+ 279              		.thumb
+ 280              		.thumb_func
+ 282              	Head_all_tx:
+ 283              	.LFB147:
+  94:User/Hardware/head.c **** void Head_all_tx()
+  95:User/Hardware/head.c **** {
+ 284              		.loc 1 95 1
+ 285              		.cfi_startproc
+ 286              		@ args = 0, pretend = 0, frame = 0
+ 287              		@ frame_needed = 1, uses_anonymous_args = 0
+ 288 0000 80B5     		push	{r7, lr}
+ 289              	.LCFI12:
+ 290              		.cfi_def_cfa_offset 8
+ 291              		.cfi_offset 7, -8
+ 292              		.cfi_offset 14, -4
+ 293 0002 00AF     		add	r7, sp, #0
+ 294              	.LCFI13:
+ 295              		.cfi_def_cfa_register 7
+  96:User/Hardware/head.c **** Head_Lk_motor1();
+ 296              		.loc 1 96 1
+ 297 0004 FFF7FEFF 		bl	Head_Lk_motor1
+  97:User/Hardware/head.c **** HAL_Delay(1);
+ 298              		.loc 1 97 1
+ 299 0008 0120     		movs	r0, #1
+ 300 000a FFF7FEFF 		bl	HAL_Delay
+  98:User/Hardware/head.c **** Head_Lk_motor2();
+ 301              		.loc 1 98 1
+ 302 000e FFF7FEFF 		bl	Head_Lk_motor2
+  99:User/Hardware/head.c **** 
+ 100:User/Hardware/head.c **** }
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 8
+
+
+ 303              		.loc 1 100 1
+ 304 0012 00BF     		nop
+ 305 0014 80BD     		pop	{r7, pc}
+ 306              		.cfi_endproc
+ 307              	.LFE147:
+ 309              		.section	.text.Arm_Lk_Data_update,"ax",%progbits
+ 310              		.align	1
+ 311              		.global	Arm_Lk_Data_update
+ 312              		.syntax unified
+ 313              		.thumb
+ 314              		.thumb_func
+ 316              	Arm_Lk_Data_update:
+ 317              	.LFB148:
+ 101:User/Hardware/head.c **** void Arm_Lk_Data_update()
+ 102:User/Hardware/head.c **** {
+ 318              		.loc 1 102 1
+ 319              		.cfi_startproc
+ 320              		@ args = 0, pretend = 0, frame = 0
+ 321              		@ frame_needed = 1, uses_anonymous_args = 0
+ 322              		@ link register save eliminated.
+ 323 0000 80B4     		push	{r7}
+ 324              	.LCFI14:
+ 325              		.cfi_def_cfa_offset 4
+ 326              		.cfi_offset 7, -4
+ 327 0002 00AF     		add	r7, sp, #0
+ 328              	.LCFI15:
+ 329              		.cfi_def_cfa_register 7
+ 103:User/Hardware/head.c **** 
+ 104:User/Hardware/head.c **** head_motor_data[0].current_angle=motor_linkong[0].fb.encoder/65536.0f * 360.0f;     // ·´À¡±àÂëÆ÷Öµ
+ 330              		.loc 1 104 53
+ 331 0004 1D4B     		ldr	r3, .L16
+ 332 0006 9B8A     		ldrh	r3, [r3, #20]
+ 333 0008 07EE903A 		vmov	s15, r3	@ int
+ 334              		.loc 1 104 61
+ 335 000c B8EEE77A 		vcvt.f32.s32	s14, s15
+ 336 0010 DFED1B6A 		vldr.32	s13, .L16+4
+ 337 0014 C7EE267A 		vdiv.f32	s15, s14, s13
+ 338              		.loc 1 104 71
+ 339 0018 9FED1A7A 		vldr.32	s14, .L16+8
+ 340 001c 67EE877A 		vmul.f32	s15, s15, s14
+ 341              		.loc 1 104 33
+ 342 0020 194B     		ldr	r3, .L16+12
+ 343 0022 C3ED017A 		vstr.32	s15, [r3, #4]
+ 105:User/Hardware/head.c **** head_motor_data[0].current_velocity=motor_linkong[0].fb.speed;                 // ·´À¡ËÙ¶ÈÖµ×ª»»Îª½
+ 344              		.loc 1 105 56
+ 345 0026 154B     		ldr	r3, .L16
+ 346 0028 B3F91230 		ldrsh	r3, [r3, #18]
+ 347              		.loc 1 105 36
+ 348 002c 07EE903A 		vmov	s15, r3	@ int
+ 349 0030 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 350 0034 144B     		ldr	r3, .L16+12
+ 351 0036 C3ED007A 		vstr.32	s15, [r3]
+ 106:User/Hardware/head.c **** 
+ 107:User/Hardware/head.c **** head_motor_data[1].current_angle=motor_linkong[1].fb.encoder/65536.0f * 360.0f;     // ·´À¡±àÂëÆ÷Öµ
+ 352              		.loc 1 107 53
+ 353 003a 104B     		ldr	r3, .L16
+ 354 003c B3F86C30 		ldrh	r3, [r3, #108]
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 9
+
+
+ 355 0040 07EE903A 		vmov	s15, r3	@ int
+ 356              		.loc 1 107 61
+ 357 0044 B8EEE77A 		vcvt.f32.s32	s14, s15
+ 358 0048 DFED0D6A 		vldr.32	s13, .L16+4
+ 359 004c C7EE267A 		vdiv.f32	s15, s14, s13
+ 360              		.loc 1 107 71
+ 361 0050 9FED0C7A 		vldr.32	s14, .L16+8
+ 362 0054 67EE877A 		vmul.f32	s15, s15, s14
+ 363              		.loc 1 107 33
+ 364 0058 0B4B     		ldr	r3, .L16+12
+ 365 005a C3ED067A 		vstr.32	s15, [r3, #24]
+ 108:User/Hardware/head.c **** head_motor_data[1].current_velocity=motor_linkong[1].fb.speed;                 // ·´À¡ËÙ¶ÈÖµ×ª»»Îª½
+ 366              		.loc 1 108 56
+ 367 005e 074B     		ldr	r3, .L16
+ 368 0060 B3F96A30 		ldrsh	r3, [r3, #106]
+ 369              		.loc 1 108 36
+ 370 0064 07EE903A 		vmov	s15, r3	@ int
+ 371 0068 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 372 006c 064B     		ldr	r3, .L16+12
+ 373 006e C3ED057A 		vstr.32	s15, [r3, #20]
+ 109:User/Hardware/head.c **** 
+ 110:User/Hardware/head.c **** 
+ 111:User/Hardware/head.c **** }...
+ 374              		.loc 1 111 1
+ 375 0072 00BF     		nop
+ 376 0074 BD46     		mov	sp, r7
+ 377              	.LCFI16:
+ 378              		.cfi_def_cfa_register 13
+ 379              		@ sp needed
+ 380 0076 5DF8047B 		ldr	r7, [sp], #4
+ 381              	.LCFI17:
+ 382              		.cfi_restore 7
+ 383              		.cfi_def_cfa_offset 0
+ 384 007a 7047     		bx	lr
+ 385              	.L17:
+ 386              		.align	2
+ 387              	.L16:
+ 388 007c 00000000 		.word	motor_linkong
+ 389 0080 00008047 		.word	1199570944
+ 390 0084 0000B443 		.word	1135869952
+ 391 0088 00000000 		.word	head_motor_data
+ 392              		.cfi_endproc
+ 393              	.LFE148:
+ 395              		.section	.bss.last_target_angle.1,"aw",%nobits
+ 396              		.align	2
+ 399              	last_target_angle.1:
+ 400 0000 00000000 		.space	4
+ 401              		.section	.bss.last_target_angle.0,"aw",%nobits
+ 402              		.align	2
+ 405              	last_target_angle.0:
+ 406 0000 00000000 		.space	4
+ 407              		.text
+ 408              	.Letext0:
+ 409              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
+ 410              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
+ 411              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
+ 412              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 10
+
+
+ 413              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 414              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fdcan.h"
+ 415              		.file 8 "User/BSP/can_receive_send.h"
+ 416              		.file 9 "User/Hardware/ktech_motor.h"
+ 417              		.file 10 "User/Hardware/head.h"
+ 418              		.file 11 "Core/Inc/fdcan.h"
+ 419              		.file 12 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 head.c
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:24     .bss.motor_linkong:00000000 motor_linkong
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:21     .bss.motor_linkong:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:31     .bss.head_motor_data:00000000 head_motor_data
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:28     .bss.head_motor_data:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:34     .text.Head_Init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:40     .text.Head_Init:00000000 Head_Init
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:98     .text.Head_Init:00000050 $d
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:104    .text.Head_Lk_motor1:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:110    .text.Head_Lk_motor1:00000000 Head_Lk_motor1
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:183    .text.Head_Lk_motor1:00000050 $d
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:399    .bss.last_target_angle.1:00000000 last_target_angle.1
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:190    .text.Head_Lk_motor2:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:196    .text.Head_Lk_motor2:00000000 Head_Lk_motor2
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:269    .text.Head_Lk_motor2:00000050 $d
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:405    .bss.last_target_angle.0:00000000 last_target_angle.0
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:276    .text.Head_all_tx:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:282    .text.Head_all_tx:00000000 Head_all_tx
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:310    .text.Arm_Lk_Data_update:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:316    .text.Arm_Lk_Data_update:00000000 Arm_Lk_Data_update
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:388    .text.Arm_Lk_Data_update:0000007c $d
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:396    .bss.last_target_angle.1:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:402    .bss.last_target_angle.0:00000000 $d
+
+UNDEFINED SYMBOLS
+ktech_motor_init
+ktech_motor_on
+hfdcan1
+ktech_pos_single2
+HAL_Delay
