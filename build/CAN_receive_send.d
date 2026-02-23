@@ -40,7 +40,7 @@ build/CAN_receive_send.o: User/BSP/CAN_receive_send.c \
  User/Hardware/dm4310_drv.h Core/Inc/main.h User/BSP/can_receive_send.h \
  User/Hardware/Robstride04.h User/Hardware/arm.h \
  User/Hardware/dm4310_drv.h User/Hardware/Robstride04.h \
- User/Hardware/Unitree/crc_ccitt.h \
+ User/Hardware/Unitree/crc_ccitt.h User/Hardware/DrEmpower_can.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  Core/Inc/FreeRTOSConfig.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -55,7 +55,7 @@ build/CAN_receive_send.o: User/BSP/CAN_receive_send.c \
  User/Software/remote_control.h User/Software/music.h \
  User/Hardware/buzzer.h Core/Inc/tim.h Core/Inc/gpio.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- User/Hardware/LED.h Core/Inc/iwdg.h
+ User/Hardware/LED.h Core/Inc/iwdg.h User/Hardware/DrEmpower_can.h
 User/BSP/can_receive_send.h:
 Core/Inc/fdcan.h:
 Core/Inc/main.h:
@@ -106,6 +106,7 @@ User/Hardware/arm.h:
 User/Hardware/dm4310_drv.h:
 User/Hardware/Robstride04.h:
 User/Hardware/Unitree/crc_ccitt.h:
+User/Hardware/DrEmpower_can.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -125,3 +126,4 @@ Core/Inc/gpio.h:
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 User/Hardware/LED.h:
 Core/Inc/iwdg.h:
+User/Hardware/DrEmpower_can.h:

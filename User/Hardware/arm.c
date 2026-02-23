@@ -10,8 +10,10 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "DrEmpower_can.h"
-ShoulderType_t g_ShoulderType;
+ShoulderType_t g_ShoulderType; // 肩部类型
 
+struct servo_state servo_state_daran[3];
+struct servo_volcur servo_volcur_daran[3];
 // 达妙电机状态
 extern Motor_DM_Status DM_Status[6];
 RobStride_Motor_t motor1; // 灵足电机对象
@@ -24,6 +26,7 @@ ArmMotorData_t Daran_motor_data[3];
 // 达妙电机数据
 ArmMotorData_t Damiao_motor_data[3];
 
+float reply_enable = 0.0f;
 void Arm_Init()
 {
     // 选择默认肩部类型
@@ -61,11 +64,13 @@ void Arm_Init()
                                                                          // 1号电机初始化
                                                                          // clear_error(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
 
-    // set_mode(CAN_HANDLE_2, MOTOR_DARAN_1_ID, 2);
-
+    /* 大然电机初始化（使用 CAN2）*/
+    clear_error(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
+    set_mode(CAN_HANDLE_2, MOTOR_DARAN_1_ID, 2);
     clear_error(CAN_HANDLE_2, MOTOR_DARAN_2_ID);
     set_mode(CAN_HANDLE_2, MOTOR_DARAN_2_ID, 2);
-
+    clear_error(CAN_HANDLE_2, MOTOR_DARAN_3_ID);
+    set_mode(CAN_HANDLE_2, MOTOR_DARAN_3_ID, 2);
 
     /* 达妙电机初始化（使用 CAN2）*/
     arm_motor_init(&arm_motor[Motor4], MOTOR_DAMIAO_4_ID, POS_MODE);
@@ -83,8 +88,8 @@ void Arm_Init()
     Linzu_motor_data[1].target_velocity = 1.0f;
     Linzu_motor_data[2].target_velocity = 1.0f;
     // 大然肩电机数据
-    Daran_motor_data[0].target_angle = 10.0f;
-    Daran_motor_data[1].target_angle = 330.0f;
+    Daran_motor_data[0].target_angle = 190.0f;
+    Daran_motor_data[1].target_angle = 10.0f;
     Daran_motor_data[2].target_angle = 10.0f;
 
     Daran_motor_data[0].target_velocity = 20.0f;
@@ -110,19 +115,20 @@ void Arm_Linzu_motor3()
 
 void Arm_Daran_motor1()
 {
-    // get_state(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
-    // set_angle(CAN_HANDLE_2, MOTOR_DARAN_1_ID, Daran_motor_data[0].target_angle, Daran_motor_data[0].target_velocity, 10.0f, 1);
+    // servo_state_daran[0] = get_state(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
+    servo_volcur_daran[0] = get_volcur(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
+    set_angle(CAN_HANDLE_2, MOTOR_DARAN_1_ID, Daran_motor_data[0].target_angle, Daran_motor_data[0].target_velocity, 10.0f, 1);
 }
 void Arm_Daran_motor2()
 {
-     get_state(CAN_HANDLE_2, MOTOR_DARAN_2_ID);
-     
-    set_angle(CAN_HANDLE_2, MOTOR_DARAN_2_ID, Daran_motor_data[1].target_angle, Daran_motor_data[1].target_velocity, 10.0f, 1);
-
+    // get_volcur(CAN_HANDLE_2, MOTOR_DARAN_2_ID);
+    // servo_state_daran[1] = get_state(CAN_HANDLE_2, MOTOR_DARAN_2_ID);
+    // set_angle(CAN_HANDLE_2, MOTOR_DARAN_2_ID, Daran_motor_data[1].target_angle, Daran_motor_data[1].target_velocity, 10.0f, 1);
 }
 
 void Arm_Daran_motor3()
 {
+    set_angle(CAN_HANDLE_2, MOTOR_DARAN_3_ID, Daran_motor_data[2].target_angle, Daran_motor_data[2].target_velocity, 10.0f, 1);
 }
 
 void Arm_Damiao_motor4()

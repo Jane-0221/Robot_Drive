@@ -5,7 +5,7 @@
 #include "dm4310_drv.h"
 #include "Robstride04.h"
 #include "crc_ccitt.h"
-
+#include "DrEmpower_can.h"
 // ==================== 硬件资源统一定义 ====================
 // CAN 句柄定义（两个 CAN 接口同等重要）
 #define CAN_HANDLE_1 (&hfdcan1)
@@ -33,6 +33,9 @@ extern RobStride_Motor_t motor1;
 extern RobStride_Motor_t motor2;
 // 灵足电机对象
 extern RobStride_Motor_t motor3;
+//大然
+extern struct servo_state servo_state_daran[3];
+extern struct servo_volcur servo_volcur_daran[3];
 
 // 达妙电机状态枚举
 typedef enum Enum_Motor_DM_Status

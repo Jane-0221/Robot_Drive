@@ -52,7 +52,8 @@ build/freertos.o: Core/Src/freertos.c \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  User/Hardware/LED.h Core/Inc/iwdg.h User/Hardware/arm.h \
  User/BSP/can_receive_send.h Core/Inc/fdcan.h User/Hardware/dm4310_drv.h \
- User/Hardware/Robstride04.h User/Hardware/Unitree/crc_ccitt.h
+ User/Hardware/Robstride04.h User/Hardware/Unitree/crc_ccitt.h \
+ User/Hardware/DrEmpower_can.h
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -119,3 +120,4 @@ Core/Inc/fdcan.h:
 User/Hardware/dm4310_drv.h:
 User/Hardware/Robstride04.h:
 User/Hardware/Unitree/crc_ccitt.h:
+User/Hardware/DrEmpower_can.h:
