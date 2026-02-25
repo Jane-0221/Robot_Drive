@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
   49              		.global	can_init
   50              		.syntax unified
   51              		.thumb
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 2
 
 
   52              		.thumb_func
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
   52:User/BSP/CAN_receive_send.c ****  * @brief 初始化can（用户层初始化）
   53:User/BSP/CAN_receive_send.c ****  *        注意：过滤器、中断、启动已在 fdcan.c 中完成，本函数无需重复调用 HAL 函数。
   54:User/BSP/CAN_receive_send.c ****  *        若需额外初始化（如变量清零），可在此添加。
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 3
 
 
   55:User/BSP/CAN_receive_send.c ****  */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  102              		.cfi_def_cfa_offset 16
  103 0004 00AF     		add	r7, sp, #0
  104              	.LCFI6:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 4
 
 
  105              		.cfi_def_cfa_register 7
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  155 004c 3B68     		ldr	r3, [r7]
  156 004e 0433     		adds	r3, r3, #4
  157 0050 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 5
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 5
 
 
  158              		.loc 1 68 26
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  206              		@ args = 0, pretend = 0, frame = 56
  207              		@ frame_needed = 1, uses_anonymous_args = 0
  208 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 6
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 6
 
 
  209              	.LCFI10:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  252 0034 3B68     		ldr	r3, [r7]
  253 0036 102B     		cmp	r3, #16
  254 0038 02D1     		bne	.L7
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 7
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 7
 
 
   88:User/BSP/CAN_receive_send.c ****     TxHeader.DataLength = FDCAN_DLC_BYTES_16;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  298 0072 16E0     		b	.L14
  299              	.L5:
   99:User/BSP/CAN_receive_send.c **** 
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 8
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 8
 
 
  100:User/BSP/CAN_receive_send.c ****   TxHeader.ErrorStateIndicator = FDCAN_ESI_ACTIVE;
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  342              	.LFE153:
  344              		.section	.text.canx_send_ext_data,"ax",%progbits
  345              		.align	1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 9
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 9
 
 
  346              		.global	canx_send_ext_data
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  387 0024 3B62     		str	r3, [r7, #32]
  388 0026 25E0     		b	.L17
  389              	.L16:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 10
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 10
 
 
  126:User/BSP/CAN_receive_send.c ****   else if (len == 12)
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  434              	.L22:
  136:User/BSP/CAN_receive_send.c ****   else if (len == 64)
  435              		.loc 1 136 11
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 11
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 11
 
 
  436 0064 3B68     		ldr	r3, [r7]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  151:User/BSP/CAN_receive_send.c ****   return 0;
  476              		.loc 1 151 10
  477 00a0 0023     		movs	r3, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 12
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 12
 
 
  478              	.L26:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  525 0016 FFF7FEFF 		bl	HAL_FDCAN_GetRxMessage
  526 001a 0346     		mov	r3, r0
  527              		.loc 1 160 6 discriminator 1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 13
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 13
 
 
  528 001c 002B     		cmp	r3, #0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  574 0004 82B0     		sub	sp, sp, #8
  575              	.LCFI26:
  576              		.cfi_def_cfa_offset 32
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 14
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 14
 
 
  577 0006 00AF     		add	r7, sp, #0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  628 0072 7B68     		ldr	r3, [r7, #4]
  629 0074 B3F90A30 		ldrsh	r3, [r3, #10]
  630              		.loc 1 173 11
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 15
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 15
 
 
  631 0078 B3F57A7F 		cmp	r3, #1000
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  682 00e8 B1F90A10 		ldrsh	r1, [r1, #10]
  683              		.loc 1 176 45
  684 00ec 411A     		subs	r1, r0, r1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 16
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 16
 
 
  685 00ee C817     		asrs	r0, r1, #31
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  733 0004 00AF     		add	r7, sp, #0
  734              	.LCFI32:
  735              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 17
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 17
 
 
  736 0006 7860     		str	r0, [r7, #4]
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  773 0042 07F10C03 		add	r3, r7, #12
  774 0046 1946     		mov	r1, r3
  775 0048 3948     		ldr	r0, .L53+8
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 18
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 18
 
 
  776 004a FFF7FEFF 		bl	ktech_parse_motor_fb
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  814 0082 07F10C03 		add	r3, r7, #12
  815 0086 1946     		mov	r1, r3
  816 0088 2C48     		ldr	r0, .L53+20
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 19
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 19
 
 
  817 008a FFF7FEFF 		bl	damiao_fbdata
@@ -1116,46 +1116,48 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  229:User/BSP/CAN_receive_send.c ****           }
  230:User/BSP/CAN_receive_send.c ****           else if (motor_id == 12)
  231:User/BSP/CAN_receive_send.c ****           {
- 232:User/BSP/CAN_receive_send.c ****           }
- 233:User/BSP/CAN_receive_send.c ****           else if (motor_id == 13)
- 234:User/BSP/CAN_receive_send.c ****           {
- 235:User/BSP/CAN_receive_send.c ****           }
- 236:User/BSP/CAN_receive_send.c **** 
- 237:User/BSP/CAN_receive_send.c ****           // 若还有其他标准帧电机，可在此扩展
- 238:User/BSP/CAN_receive_send.c ****           break;
- 838              		.loc 1 238 11
+ 232:User/BSP/CAN_receive_send.c **** 
+ 233:User/BSP/CAN_receive_send.c ****           }
+ 234:User/BSP/CAN_receive_send.c ****           else if (motor_id == 13)
+ 235:User/BSP/CAN_receive_send.c ****           {
+ 236:User/BSP/CAN_receive_send.c ****             
+ 237:User/BSP/CAN_receive_send.c ****           }
+ 238:User/BSP/CAN_receive_send.c **** 
+ 239:User/BSP/CAN_receive_send.c ****           // 若还有其他标准帧电机，可在此扩展
+ 240:User/BSP/CAN_receive_send.c ****           break;
+ 838              		.loc 1 240 11
  839 00ac 2AE0     		b	.L39
  840              	.L43:
  841              	.LBE2:
- 239:User/BSP/CAN_receive_send.c ****         }
- 240:User/BSP/CAN_receive_send.c ****       }
- 241:User/BSP/CAN_receive_send.c ****       else if (rx_header.IdType == FDCAN_EXTENDED_ID)
- 842              		.loc 1 241 25
+ 241:User/BSP/CAN_receive_send.c ****         }
+ 242:User/BSP/CAN_receive_send.c ****       }
+ 243:User/BSP/CAN_receive_send.c ****       else if (rx_header.IdType == FDCAN_EXTENDED_ID)
+ 842              		.loc 1 243 25
  843 00ae BB69     		ldr	r3, [r7, #24]
- 844              		.loc 1 241 15
+ 844              		.loc 1 243 15
  845 00b0 B3F1804F 		cmp	r3, #1073741824
  846 00b4 26D1     		bne	.L39
  847              	.LBB3:
- 242:User/BSP/CAN_receive_send.c ****       {
- 243:User/BSP/CAN_receive_send.c ****         // 扩展帧处理（原RobStride等）
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 20
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 20
 
 
- 244:User/BSP/CAN_receive_send.c ****         uint8_t target_id = (uint8_t)((rx_header.Identifier >> 8) & 0xFF);
- 848              		.loc 1 244 49
+ 244:User/BSP/CAN_receive_send.c ****       {
+ 245:User/BSP/CAN_receive_send.c ****         // 扩展帧处理（原RobStride等）
+ 246:User/BSP/CAN_receive_send.c ****         uint8_t target_id = (uint8_t)((rx_header.Identifier >> 8) & 0xFF);
+ 848              		.loc 1 246 49
  849 00b6 7B69     		ldr	r3, [r7, #20]
- 850              		.loc 1 244 61
+ 850              		.loc 1 246 61
  851 00b8 1B0A     		lsrs	r3, r3, #8
- 852              		.loc 1 244 17
+ 852              		.loc 1 246 17
  853 00ba 87F83F30 		strb	r3, [r7, #63]
- 245:User/BSP/CAN_receive_send.c ****         if (target_id == 0x01)
- 854              		.loc 1 245 12
+ 247:User/BSP/CAN_receive_send.c ****         if (target_id == 0x01)
+ 854              		.loc 1 247 12
  855 00be 97F83F30 		ldrb	r3, [r7, #63]	@ zero_extendqisi2
  856 00c2 012B     		cmp	r3, #1
  857 00c4 07D1     		bne	.L49
- 246:User/BSP/CAN_receive_send.c ****         {
- 247:User/BSP/CAN_receive_send.c ****           RobStride_Motor_Analysis(&motor1, rx_data, rx_header.Identifier);
- 858              		.loc 1 247 11
+ 248:User/BSP/CAN_receive_send.c ****         {
+ 249:User/BSP/CAN_receive_send.c ****           RobStride_Motor_Analysis(&motor1, rx_data, rx_header.Identifier);
+ 858              		.loc 1 249 11
  859 00c6 7A69     		ldr	r2, [r7, #20]
  860 00c8 07F10C03 		add	r3, r7, #12
  861 00cc 1946     		mov	r1, r3
@@ -1163,15 +1165,15 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  863 00d0 FFF7FEFF 		bl	RobStride_Motor_Analysis
  864 00d4 16E0     		b	.L39
  865              	.L49:
- 248:User/BSP/CAN_receive_send.c ****         }
- 249:User/BSP/CAN_receive_send.c ****         else if (target_id == 0x02)
- 866              		.loc 1 249 17
+ 250:User/BSP/CAN_receive_send.c ****         }
+ 251:User/BSP/CAN_receive_send.c ****         else if (target_id == 0x02)
+ 866              		.loc 1 251 17
  867 00d6 97F83F30 		ldrb	r3, [r7, #63]	@ zero_extendqisi2
  868 00da 022B     		cmp	r3, #2
  869 00dc 07D1     		bne	.L50
- 250:User/BSP/CAN_receive_send.c ****         {
- 251:User/BSP/CAN_receive_send.c ****           RobStride_Motor_Analysis(&motor2, rx_data, rx_header.Identifier);
- 870              		.loc 1 251 11
+ 252:User/BSP/CAN_receive_send.c ****         {
+ 253:User/BSP/CAN_receive_send.c ****           RobStride_Motor_Analysis(&motor2, rx_data, rx_header.Identifier);
+ 870              		.loc 1 253 11
  871 00de 7A69     		ldr	r2, [r7, #20]
  872 00e0 07F10C03 		add	r3, r7, #12
  873 00e4 1946     		mov	r1, r3
@@ -1179,15 +1181,15 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  875 00e8 FFF7FEFF 		bl	RobStride_Motor_Analysis
  876 00ec 0AE0     		b	.L39
  877              	.L50:
- 252:User/BSP/CAN_receive_send.c ****         }
- 253:User/BSP/CAN_receive_send.c ****         else if (target_id == 0x03)
- 878              		.loc 1 253 17
+ 254:User/BSP/CAN_receive_send.c ****         }
+ 255:User/BSP/CAN_receive_send.c ****         else if (target_id == 0x03)
+ 878              		.loc 1 255 17
  879 00ee 97F83F30 		ldrb	r3, [r7, #63]	@ zero_extendqisi2
  880 00f2 032B     		cmp	r3, #3
  881 00f4 06D1     		bne	.L39
- 254:User/BSP/CAN_receive_send.c ****         {
- 255:User/BSP/CAN_receive_send.c ****           RobStride_Motor_Analysis(&motor3, rx_data, rx_header.Identifier);
- 882              		.loc 1 255 11
+ 256:User/BSP/CAN_receive_send.c ****         {
+ 257:User/BSP/CAN_receive_send.c ****           RobStride_Motor_Analysis(&motor3, rx_data, rx_header.Identifier);
+ 882              		.loc 1 257 11
  883 00f6 7A69     		ldr	r2, [r7, #20]
  884 00f8 07F10C03 		add	r3, r7, #12
  885 00fc 1946     		mov	r1, r3
@@ -1196,11 +1198,11 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  888              	.L39:
  889              	.LBE3:
  191:User/BSP/CAN_receive_send.c ****   {
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 21
+
+
  890              		.loc 1 191 10
  891 0104 07F10C03 		add	r3, r7, #12
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 21
-
-
  892 0108 07F11402 		add	r2, r7, #20
  893 010c 4021     		movs	r1, #64
  894 010e 7868     		ldr	r0, [r7, #4]
@@ -1216,12 +1218,12 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  902              		.loc 1 189 5 discriminator 1
  903 011e 00BF     		nop
  904              	.L36:
- 256:User/BSP/CAN_receive_send.c ****         }
- 257:User/BSP/CAN_receive_send.c ****       }
- 258:User/BSP/CAN_receive_send.c ****     }
- 259:User/BSP/CAN_receive_send.c ****   }
- 260:User/BSP/CAN_receive_send.c **** }
- 905              		.loc 1 260 1
+ 258:User/BSP/CAN_receive_send.c ****         }
+ 259:User/BSP/CAN_receive_send.c ****       }
+ 260:User/BSP/CAN_receive_send.c ****     }
+ 261:User/BSP/CAN_receive_send.c ****   }
+ 262:User/BSP/CAN_receive_send.c **** }
+ 905              		.loc 1 262 1
  906 0120 4037     		adds	r7, r7, #64
  907              	.LCFI33:
  908              		.cfi_def_cfa_offset 8
@@ -1253,16 +1255,16 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  935              		.thumb_func
  937              	HAL_FDCAN_ErrorCallback:
  938              	.LFB158:
- 261:User/BSP/CAN_receive_send.c **** 
- 262:User/BSP/CAN_receive_send.c **** /**
- 263:User/BSP/CAN_receive_send.c ****  * @brief CAN错误处理回调，重新初始化并恢复过滤器（同时配置标准和扩展）
- 264:User/BSP/CAN_receive_send.c ****  */
- 265:User/BSP/CAN_receive_send.c **** void HAL_FDCAN_ErrorCallback(FDCAN_HandleTypeDef *hfdcan)
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 22
+ 263:User/BSP/CAN_receive_send.c **** 
+ 264:User/BSP/CAN_receive_send.c **** /**
+ 265:User/BSP/CAN_receive_send.c ****  * @brief CAN错误处理回调，重新初始化并恢复过滤器（同时配置标准和扩展）
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 22
 
 
- 266:User/BSP/CAN_receive_send.c **** {
- 939              		.loc 1 266 1
+ 266:User/BSP/CAN_receive_send.c ****  */
+ 267:User/BSP/CAN_receive_send.c **** void HAL_FDCAN_ErrorCallback(FDCAN_HandleTypeDef *hfdcan)
+ 268:User/BSP/CAN_receive_send.c **** {
+ 939              		.loc 1 268 1
  940              		.cfi_startproc
  941              		@ args = 0, pretend = 0, frame = 40
  942              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1278,84 +1280,84 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  952              	.LCFI37:
  953              		.cfi_def_cfa 7, 48
  954 0006 7860     		str	r0, [r7, #4]
- 267:User/BSP/CAN_receive_send.c ****   // 停止、反初始化、重新初始化
- 268:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_Stop(hfdcan);
- 955              		.loc 1 268 3
+ 269:User/BSP/CAN_receive_send.c ****   // 停止、反初始化、重新初始化
+ 270:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_Stop(hfdcan);
+ 955              		.loc 1 270 3
  956 0008 7868     		ldr	r0, [r7, #4]
  957 000a FFF7FEFF 		bl	HAL_FDCAN_Stop
- 269:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_DeInit(hfdcan);
- 958              		.loc 1 269 3
+ 271:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_DeInit(hfdcan);
+ 958              		.loc 1 271 3
  959 000e 7868     		ldr	r0, [r7, #4]
  960 0010 FFF7FEFF 		bl	HAL_FDCAN_DeInit
- 270:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_Init(hfdcan);
- 961              		.loc 1 270 3
+ 272:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_Init(hfdcan);
+ 961              		.loc 1 272 3
  962 0014 7868     		ldr	r0, [r7, #4]
  963 0016 FFF7FEFF 		bl	HAL_FDCAN_Init
- 271:User/BSP/CAN_receive_send.c **** 
- 272:User/BSP/CAN_receive_send.c ****   // 重新配置过滤器（标准+扩展）
- 273:User/BSP/CAN_receive_send.c ****   FDCAN_FilterTypeDef sFilter;
- 274:User/BSP/CAN_receive_send.c ****   // 标准帧过滤器（接收所有标准帧）
- 275:User/BSP/CAN_receive_send.c ****   sFilter.IdType = FDCAN_STANDARD_ID;
- 964              		.loc 1 275 18
+ 273:User/BSP/CAN_receive_send.c **** 
+ 274:User/BSP/CAN_receive_send.c ****   // 重新配置过滤器（标准+扩展）
+ 275:User/BSP/CAN_receive_send.c ****   FDCAN_FilterTypeDef sFilter;
+ 276:User/BSP/CAN_receive_send.c ****   // 标准帧过滤器（接收所有标准帧）
+ 277:User/BSP/CAN_receive_send.c ****   sFilter.IdType = FDCAN_STANDARD_ID;
+ 964              		.loc 1 277 18
  965 001a 0023     		movs	r3, #0
  966 001c BB60     		str	r3, [r7, #8]
- 276:User/BSP/CAN_receive_send.c ****   sFilter.FilterIndex = 0;
- 967              		.loc 1 276 23
+ 278:User/BSP/CAN_receive_send.c ****   sFilter.FilterIndex = 0;
+ 967              		.loc 1 278 23
  968 001e 0023     		movs	r3, #0
  969 0020 FB60     		str	r3, [r7, #12]
- 277:User/BSP/CAN_receive_send.c ****   sFilter.FilterType = FDCAN_FILTER_MASK;
- 970              		.loc 1 277 22
+ 279:User/BSP/CAN_receive_send.c ****   sFilter.FilterType = FDCAN_FILTER_MASK;
+ 970              		.loc 1 279 22
  971 0022 0223     		movs	r3, #2
  972 0024 3B61     		str	r3, [r7, #16]
- 278:User/BSP/CAN_receive_send.c ****   sFilter.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
- 973              		.loc 1 278 24
+ 280:User/BSP/CAN_receive_send.c ****   sFilter.FilterConfig = FDCAN_FILTER_TO_RXFIFO0;
+ 973              		.loc 1 280 24
  974 0026 0123     		movs	r3, #1
  975 0028 7B61     		str	r3, [r7, #20]
- 279:User/BSP/CAN_receive_send.c ****   sFilter.FilterID1 = 0x000;
- 976              		.loc 1 279 21
+ 281:User/BSP/CAN_receive_send.c ****   sFilter.FilterID1 = 0x000;
+ 976              		.loc 1 281 21
  977 002a 0023     		movs	r3, #0
  978 002c BB61     		str	r3, [r7, #24]
- 280:User/BSP/CAN_receive_send.c ****   sFilter.FilterID2 = 0x000;
- 979              		.loc 1 280 21
+ 282:User/BSP/CAN_receive_send.c ****   sFilter.FilterID2 = 0x000;
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 23
+
+
+ 979              		.loc 1 282 21
  980 002e 0023     		movs	r3, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 23
-
-
  981 0030 FB61     		str	r3, [r7, #28]
- 281:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_ConfigFilter(hfdcan, &sFilter);
- 982              		.loc 1 281 3
+ 283:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_ConfigFilter(hfdcan, &sFilter);
+ 982              		.loc 1 283 3
  983 0032 07F10803 		add	r3, r7, #8
  984 0036 1946     		mov	r1, r3
  985 0038 7868     		ldr	r0, [r7, #4]
  986 003a FFF7FEFF 		bl	HAL_FDCAN_ConfigFilter
- 282:User/BSP/CAN_receive_send.c **** 
- 283:User/BSP/CAN_receive_send.c ****   // 扩展帧过滤器（接收所有扩展帧）
- 284:User/BSP/CAN_receive_send.c ****   sFilter.IdType = FDCAN_EXTENDED_ID;
- 987              		.loc 1 284 18
+ 284:User/BSP/CAN_receive_send.c **** 
+ 285:User/BSP/CAN_receive_send.c ****   // 扩展帧过滤器（接收所有扩展帧）
+ 286:User/BSP/CAN_receive_send.c ****   sFilter.IdType = FDCAN_EXTENDED_ID;
+ 987              		.loc 1 286 18
  988 003e 4FF08043 		mov	r3, #1073741824
  989 0042 BB60     		str	r3, [r7, #8]
- 285:User/BSP/CAN_receive_send.c ****   sFilter.FilterIndex = 0; // 独立索引空间
- 990              		.loc 1 285 23
+ 287:User/BSP/CAN_receive_send.c ****   sFilter.FilterIndex = 0; // 独立索引空间
+ 990              		.loc 1 287 23
  991 0044 0023     		movs	r3, #0
  992 0046 FB60     		str	r3, [r7, #12]
- 286:User/BSP/CAN_receive_send.c ****   sFilter.FilterID1 = 0x00000000;
- 993              		.loc 1 286 21
+ 288:User/BSP/CAN_receive_send.c ****   sFilter.FilterID1 = 0x00000000;
+ 993              		.loc 1 288 21
  994 0048 0023     		movs	r3, #0
  995 004a BB61     		str	r3, [r7, #24]
- 287:User/BSP/CAN_receive_send.c ****   sFilter.FilterID2 = 0x00000000;
- 996              		.loc 1 287 21
+ 289:User/BSP/CAN_receive_send.c ****   sFilter.FilterID2 = 0x00000000;
+ 996              		.loc 1 289 21
  997 004c 0023     		movs	r3, #0
  998 004e FB61     		str	r3, [r7, #28]
- 288:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_ConfigFilter(hfdcan, &sFilter);
- 999              		.loc 1 288 3
+ 290:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_ConfigFilter(hfdcan, &sFilter);
+ 999              		.loc 1 290 3
  1000 0050 07F10803 		add	r3, r7, #8
  1001 0054 1946     		mov	r1, r3
  1002 0056 7868     		ldr	r0, [r7, #4]
  1003 0058 FFF7FEFF 		bl	HAL_FDCAN_ConfigFilter
- 289:User/BSP/CAN_receive_send.c **** 
- 290:User/BSP/CAN_receive_send.c ****   // 可选：配置全局过滤器为接受所有（若不想依赖过滤器，可设 FDCAN_ACCEPT_IN_RX_FIFO0）
- 291:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_ConfigGlobalFilter(hfdcan, FDCAN_ACCEPT_IN_RX_FIFO0, FDCAN_ACCEPT_IN_RX_FIFO0,
- 1004              		.loc 1 291 3
+ 291:User/BSP/CAN_receive_send.c **** 
+ 292:User/BSP/CAN_receive_send.c ****   // 可选：配置全局过滤器为接受所有（若不想依赖过滤器，可设 FDCAN_ACCEPT_IN_RX_FIFO0）
+ 293:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_ConfigGlobalFilter(hfdcan, FDCAN_ACCEPT_IN_RX_FIFO0, FDCAN_ACCEPT_IN_RX_FIFO0,
+ 1004              		.loc 1 293 3
  1005 005c 0023     		movs	r3, #0
  1006 005e 0093     		str	r3, [sp]
  1007 0060 0023     		movs	r3, #0
@@ -1363,24 +1365,24 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  1009 0064 0021     		movs	r1, #0
  1010 0066 7868     		ldr	r0, [r7, #4]
  1011 0068 FFF7FEFF 		bl	HAL_FDCAN_ConfigGlobalFilter
- 292:User/BSP/CAN_receive_send.c ****                                FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE);
- 293:User/BSP/CAN_receive_send.c **** 
- 294:User/BSP/CAN_receive_send.c ****   // 重新激活通知并启动
- 295:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_ActivateNotification(hfdcan, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
- 1012              		.loc 1 295 3
+ 294:User/BSP/CAN_receive_send.c ****                                FDCAN_FILTER_REMOTE, FDCAN_FILTER_REMOTE);
+ 295:User/BSP/CAN_receive_send.c **** 
+ 296:User/BSP/CAN_receive_send.c ****   // 重新激活通知并启动
+ 297:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_ActivateNotification(hfdcan, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+ 1012              		.loc 1 297 3
  1013 006c 0022     		movs	r2, #0
  1014 006e 0121     		movs	r1, #1
  1015 0070 7868     		ldr	r0, [r7, #4]
  1016 0072 FFF7FEFF 		bl	HAL_FDCAN_ActivateNotification
- 296:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_Start(hfdcan);
- 1017              		.loc 1 296 3
+ 298:User/BSP/CAN_receive_send.c ****   HAL_FDCAN_Start(hfdcan);
+ 1017              		.loc 1 298 3
  1018 0076 7868     		ldr	r0, [r7, #4]
  1019 0078 FFF7FEFF 		bl	HAL_FDCAN_Start
- 297:User/BSP/CAN_receive_send.c **** }...
- 1020              		.loc 1 297 1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 24
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 24
 
 
+ 299:User/BSP/CAN_receive_send.c **** }...
+ 1020              		.loc 1 299 1
  1021 007c 00BF     		nop
  1022 007e 2837     		adds	r7, r7, #40
  1023              	.LCFI38:
@@ -1407,37 +1409,37 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 1
  1045              		.file 12 "User/Hardware/ktech_motor.h"
  1046              		.file 13 "User/Hardware/head.h"
  1047              		.file 14 "Core/Inc/main.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s 			page 25
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s 			page 25
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 CAN_receive_send.c
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:24     .bss.RxHeader1:00000000 RxHeader1
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:21     .bss.RxHeader1:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:31     .bss.g_Can1RxData:00000000 g_Can1RxData
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:28     .bss.g_Can1RxData:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:38     .bss.daibaoshan:00000000 daibaoshan
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:35     .bss.daibaoshan:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:45     .bss.motor_data:00000000 motor_data
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:42     .bss.motor_data:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:48     .text.can_init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:54     .text.can_init:00000000 can_init
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:83     .text.get_motor_measure:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:89     .text.get_motor_measure:00000000 get_motor_measure
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:196    .text.canx_send_data:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:202    .text.canx_send_data:00000000 canx_send_data
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:345    .text.canx_send_ext_data:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:351    .text.canx_send_ext_data:00000000 canx_send_ext_data
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:493    .text.fdcanx_receive:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:499    .text.fdcanx_receive:00000000 fdcanx_receive
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:553    .text.process_motor_data:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:559    .text.process_motor_data:00000000 process_motor_data
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:708    .text.process_motor_data:00000110 $d
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:713    .text.HAL_FDCAN_RxFifo0Callback:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:719    .text.HAL_FDCAN_RxFifo0Callback:00000000 HAL_FDCAN_RxFifo0Callback
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:917    .text.HAL_FDCAN_RxFifo0Callback:00000128 $d
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:931    .text.HAL_FDCAN_ErrorCallback:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccLqrx3g.s:937    .text.HAL_FDCAN_ErrorCallback:00000000 HAL_FDCAN_ErrorCallback
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:24     .bss.RxHeader1:00000000 RxHeader1
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:21     .bss.RxHeader1:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:31     .bss.g_Can1RxData:00000000 g_Can1RxData
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:28     .bss.g_Can1RxData:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:38     .bss.daibaoshan:00000000 daibaoshan
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:35     .bss.daibaoshan:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:45     .bss.motor_data:00000000 motor_data
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:42     .bss.motor_data:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:48     .text.can_init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:54     .text.can_init:00000000 can_init
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:83     .text.get_motor_measure:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:89     .text.get_motor_measure:00000000 get_motor_measure
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:196    .text.canx_send_data:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:202    .text.canx_send_data:00000000 canx_send_data
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:345    .text.canx_send_ext_data:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:351    .text.canx_send_ext_data:00000000 canx_send_ext_data
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:493    .text.fdcanx_receive:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:499    .text.fdcanx_receive:00000000 fdcanx_receive
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:553    .text.process_motor_data:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:559    .text.process_motor_data:00000000 process_motor_data
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:708    .text.process_motor_data:00000110 $d
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:713    .text.HAL_FDCAN_RxFifo0Callback:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:719    .text.HAL_FDCAN_RxFifo0Callback:00000000 HAL_FDCAN_RxFifo0Callback
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:917    .text.HAL_FDCAN_RxFifo0Callback:00000128 $d
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:931    .text.HAL_FDCAN_ErrorCallback:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc1oo7M6.s:937    .text.HAL_FDCAN_ErrorCallback:00000000 HAL_FDCAN_ErrorCallback
 
 UNDEFINED SYMBOLS
 HAL_FDCAN_AddMessageToTxFifoQ

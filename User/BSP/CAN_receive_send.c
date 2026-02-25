@@ -229,9 +229,11 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
           }
           else if (motor_id == 12)
           {
+
           }
           else if (motor_id == 13)
           {
+            
           }
 
           // 若还有其他标准帧电机，可在此扩展

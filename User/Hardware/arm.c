@@ -88,11 +88,11 @@ void Arm_Init()
     Linzu_motor_data[1].target_velocity = 1.0f;
     Linzu_motor_data[2].target_velocity = 1.0f;
     // 大然肩电机数据
-    Daran_motor_data[0].target_angle = 190.0f;
+    Daran_motor_data[0].target_angle = 10.0f;
     Daran_motor_data[1].target_angle = 10.0f;
     Daran_motor_data[2].target_angle = 10.0f;
 
-    Daran_motor_data[0].target_velocity = 20.0f;
+    Daran_motor_data[0].target_velocity = 200.0f;
     Daran_motor_data[1].target_velocity = 20.0f;
     Daran_motor_data[2].target_velocity = 20.0f;
 }
@@ -115,8 +115,9 @@ void Arm_Linzu_motor3()
 
 void Arm_Daran_motor1()
 {
-    // servo_state_daran[0] = get_state(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
-    servo_volcur_daran[0] = get_volcur(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
+//get_state(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
+    read_property(CAN_HANDLE_2, MOTOR_DARAN_1_ID,38007, 0);
+    HAL_Delay(1);
     set_angle(CAN_HANDLE_2, MOTOR_DARAN_1_ID, Daran_motor_data[0].target_angle, Daran_motor_data[0].target_velocity, 10.0f, 1);
 }
 void Arm_Daran_motor2()
@@ -185,10 +186,10 @@ void Arm_all_tx()
     {
         Arm_Daran_motor1();
         osDelay(1);
-        Arm_Daran_motor2();
-        osDelay(1);
-        Arm_Daran_motor3();
-        osDelay(1);
+        // Arm_Daran_motor2();
+        // osDelay(1);
+        // Arm_Daran_motor3();
+        // osDelay(1);
     }
 
     // Arm_Damiao_motor4();

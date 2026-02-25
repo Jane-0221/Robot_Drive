@@ -42,7 +42,9 @@ build/remote_control.o: User/Software/remote_control.c \
  User/BSP/Stm32_time.h Core/Inc/tim.h Core/Inc/main.h Algorithm/pid.h \
  User/BSP/UART_data_txrx.h Core/Inc/usart.h User/Hardware/Sbus.h \
  User/Hardware/head.h User/BSP/can_receive_send.h Core/Inc/fdcan.h \
- User/Hardware/ktech_motor.h
+ User/Hardware/ktech_motor.h User/Hardware/arm.h \
+ User/Hardware/dm4310_drv.h User/Hardware/Robstride04.h \
+ User/Hardware/Unitree/crc_ccitt.h User/Hardware/DrEmpower_can.h
 User/Software/remote_control.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
@@ -99,3 +101,8 @@ User/Hardware/head.h:
 User/BSP/can_receive_send.h:
 Core/Inc/fdcan.h:
 User/Hardware/ktech_motor.h:
+User/Hardware/arm.h:
+User/Hardware/dm4310_drv.h:
+User/Hardware/Robstride04.h:
+User/Hardware/Unitree/crc_ccitt.h:
+User/Hardware/DrEmpower_can.h:

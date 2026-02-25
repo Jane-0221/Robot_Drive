@@ -7,6 +7,7 @@
 #include "UART_data_txrx.h"
 #include "Sbus.h"
 #include "head.h"
+#include "arm.h"
 // Ò£¿ØÆ÷Öµ
 #define LOW_VALUE 353
 #define MID_VALUE 1024
@@ -32,15 +33,15 @@ void Head_Motor_Control_Updata(void)
 {
 if(SBUS_CH.CH6==HIGH_VALUE)
 {
-    head_motor_data[1].target_angle=0;
+    Daran_motor_data[0].target_angle=0;
 }
 else if(SBUS_CH.CH6==MID_VALUE)
 {
-    head_motor_data[1].target_angle=9000;
+    Daran_motor_data[0].target_angle=90;
 }
 else if(SBUS_CH.CH6==LOW_VALUE)
 {
-    head_motor_data[1].target_angle=18000;
+    Daran_motor_data[0].target_angle=180;
 }
 
 }
