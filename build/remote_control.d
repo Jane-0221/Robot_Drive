@@ -44,7 +44,8 @@ build/remote_control.o: User/Software/remote_control.c \
  User/Hardware/head.h User/BSP/can_receive_send.h Core/Inc/fdcan.h \
  User/Hardware/ktech_motor.h User/Hardware/arm.h \
  User/Hardware/dm4310_drv.h User/Hardware/Robstride04.h \
- User/Hardware/Unitree/crc_ccitt.h User/Hardware/DrEmpower_can.h
+ User/Hardware/Unitree/crc_ccitt.h User/Hardware/DrEmpower_can.h \
+ User/Hardware/lift_control.h User/Hardware/pump_control.h
 User/Software/remote_control.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
@@ -106,3 +107,5 @@ User/Hardware/dm4310_drv.h:
 User/Hardware/Robstride04.h:
 User/Hardware/Unitree/crc_ccitt.h:
 User/Hardware/DrEmpower_can.h:
+User/Hardware/lift_control.h:
+User/Hardware/pump_control.h:

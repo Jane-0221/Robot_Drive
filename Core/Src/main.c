@@ -133,7 +133,8 @@ int main(void)
   Head_Init();
   HAL_IWDG_Refresh(&hiwdg1);
   remote_control_init();
-
+  Pump_Init();
+  Lift_Init();
 
 
 

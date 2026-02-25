@@ -212,6 +212,8 @@ void Remote_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
+    Head_Motor_Control_Updata();
+    osDelay(1);
     osDelay(1);
   }
   /* USER CODE END Remote_control_Task */
@@ -289,7 +291,7 @@ void Yaw_Task(void *argument)
     Head_all_tx();
 
     Arm_Lk_Data_update();
-    
+
     osDelay(1);
   }
   /* USER CODE END Yaw_Task */
@@ -308,10 +310,6 @@ void Referee_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    Head_Motor_Control_Updata();
-    osDelay(1);
-    Up_Down_Motor_Control_Updata();
-    osDelay(1);
     Arm_All_Data_update();
     osDelay(1);
   }

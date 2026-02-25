@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
   43              		.cfi_startproc
   44              		@ args = 0, pretend = 0, frame = 0
   45              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 2
 
 
   46 0000 80B5     		push	{r7, lr}
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
   85 003c 054B     		ldr	r3, .L2+4
   86 003e 42F22832 		movw	r2, #9000
   87 0042 1A62     		str	r2, [r3, #32]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 3
 
 
   25:User/Hardware/head.c ****     head_motor_data[1].max_speed = 360;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
   38:User/Hardware/head.c **** 
   39:User/Hardware/head.c ****     /************************* 核心方向判断逻辑 *************************/
   40:User/Hardware/head.c ****     // 新目标值 > 上一次的老值 → 顺时针，方向设为0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 4
 
 
   41:User/Hardware/head.c ****     if (current_target > last_target_angle)
@@ -190,7 +190,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
  136 0012 9A42     		cmp	r2, r3
  137 0014 03D9     		bls	.L5
   42:User/Hardware/head.c ****     {
-  43:User/Hardware/head.c ****         head_motor_data[0].direction = 0;
+  43:User/Hardware/head.c ****         head_motor_data[0].direction = DIR_CW;
  138              		.loc 1 43 38
  139 0016 0E4B     		ldr	r3, .L7
  140 0018 0022     		movs	r2, #0
@@ -208,7 +208,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
  149 0024 9A42     		cmp	r2, r3
  150 0026 02D2     		bcs	.L6
   47:User/Hardware/head.c ****     {
-  48:User/Hardware/head.c ****         head_motor_data[0].direction = 1;
+  48:User/Hardware/head.c ****         head_motor_data[0].direction = DIR_CCW;
  151              		.loc 1 48 38
  152 0028 094B     		ldr	r3, .L7
  153 002a 0122     		movs	r2, #1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
   60:User/Hardware/head.c ****     last_target_angle = current_target;
  166              		.loc 1 60 23
  167 0042 044A     		ldr	r2, .L7+4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 5
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 5
 
 
  168 0044 7B68     		ldr	r3, [r7, #4]
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
  215 0008 1B6A     		ldr	r3, [r3, #32]
  216 000a 7B60     		str	r3, [r7, #4]
   70:User/Hardware/head.c **** 
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 6
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 6
 
 
   71:User/Hardware/head.c ****     /************************* 核心方向判断逻辑 *************************/
@@ -312,7 +312,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
  222 0012 9A42     		cmp	r2, r3
  223 0014 03D9     		bls	.L10
   74:User/Hardware/head.c ****     {
-  75:User/Hardware/head.c ****         head_motor_data[1].direction = 0;
+  75:User/Hardware/head.c ****         head_motor_data[1].direction = DIR_CW;
  224              		.loc 1 75 38
  225 0016 0E4B     		ldr	r3, .L12
  226 0018 0022     		movs	r2, #0
@@ -330,7 +330,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
  235 0024 9A42     		cmp	r2, r3
  236 0026 02D2     		bcs	.L11
   79:User/Hardware/head.c ****     {
-  80:User/Hardware/head.c ****         head_motor_data[1].direction = 1;
+  80:User/Hardware/head.c ****         head_motor_data[1].direction = DIR_CCW;
  237              		.loc 1 80 38
  238 0028 094B     		ldr	r3, .L12
  239 002a 0122     		movs	r2, #1
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
   90:User/Hardware/head.c **** 
   91:User/Hardware/head.c ****     /************************* 更新老值，供下一次循环对比 *************************/
   92:User/Hardware/head.c ****     last_target_angle = current_target;
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 7
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 7
 
 
  252              		.loc 1 92 23
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
  302 000e FFF7FEFF 		bl	Head_Lk_motor2
   99:User/Hardware/head.c **** 
  100:User/Hardware/head.c **** }
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 8
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 8
 
 
  303              		.loc 1 100 1
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
  352              		.loc 1 107 53
  353 003a 104B     		ldr	r3, .L16
  354 003c B3F86C30 		ldrh	r3, [r3, #108]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 9
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 9
 
 
  355 0040 07EE903A 		vmov	s15, r3	@ int
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
  410              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
  411              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
  412              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 10
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 10
 
 
  413              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
@@ -548,33 +548,33 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 1
  417              		.file 10 "User/Hardware/head.h"
  418              		.file 11 "Core/Inc/fdcan.h"
  419              		.file 12 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s 			page 11
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 head.c
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:24     .bss.motor_linkong:00000000 motor_linkong
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:21     .bss.motor_linkong:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:31     .bss.head_motor_data:00000000 head_motor_data
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:28     .bss.head_motor_data:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:34     .text.Head_Init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:40     .text.Head_Init:00000000 Head_Init
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:98     .text.Head_Init:00000050 $d
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:104    .text.Head_Lk_motor1:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:110    .text.Head_Lk_motor1:00000000 Head_Lk_motor1
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:183    .text.Head_Lk_motor1:00000050 $d
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:399    .bss.last_target_angle.1:00000000 last_target_angle.1
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:190    .text.Head_Lk_motor2:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:196    .text.Head_Lk_motor2:00000000 Head_Lk_motor2
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:269    .text.Head_Lk_motor2:00000050 $d
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:405    .bss.last_target_angle.0:00000000 last_target_angle.0
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:276    .text.Head_all_tx:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:282    .text.Head_all_tx:00000000 Head_all_tx
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:310    .text.Arm_Lk_Data_update:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:316    .text.Arm_Lk_Data_update:00000000 Arm_Lk_Data_update
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:388    .text.Arm_Lk_Data_update:0000007c $d
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:396    .bss.last_target_angle.1:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccini8Wm.s:402    .bss.last_target_angle.0:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:24     .bss.motor_linkong:00000000 motor_linkong
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:21     .bss.motor_linkong:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:31     .bss.head_motor_data:00000000 head_motor_data
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:28     .bss.head_motor_data:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:34     .text.Head_Init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:40     .text.Head_Init:00000000 Head_Init
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:98     .text.Head_Init:00000050 $d
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:104    .text.Head_Lk_motor1:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:110    .text.Head_Lk_motor1:00000000 Head_Lk_motor1
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:183    .text.Head_Lk_motor1:00000050 $d
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:399    .bss.last_target_angle.1:00000000 last_target_angle.1
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:190    .text.Head_Lk_motor2:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:196    .text.Head_Lk_motor2:00000000 Head_Lk_motor2
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:269    .text.Head_Lk_motor2:00000050 $d
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:405    .bss.last_target_angle.0:00000000 last_target_angle.0
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:276    .text.Head_all_tx:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:282    .text.Head_all_tx:00000000 Head_all_tx
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:310    .text.Arm_Lk_Data_update:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:316    .text.Arm_Lk_Data_update:00000000 Arm_Lk_Data_update
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:388    .text.Arm_Lk_Data_update:0000007c $d
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:396    .bss.last_target_angle.1:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccH4uJBk.s:402    .bss.last_target_angle.0:00000000 $d
 
 UNDEFINED SYMBOLS
 ktech_motor_init

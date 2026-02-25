@@ -107,7 +107,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
     HAL_UARTEx_ReceiveToIdle_DMA(huart, UART5_data.rev_data, UART_BUFFER_SIZE);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
-  else if (huart == &huart7) // 电管裁判系统
+  else if (huart == &huart7) //升降杆高度读取
   {
  
   }
