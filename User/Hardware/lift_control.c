@@ -1,6 +1,7 @@
 #include "lift_control.h"
 #include "remote_control.h"
-
+#include "usart.h"
+#include "UART_data_txrx.h"
 // 定义全局变量
 LIFT_State lift_state = LIFT_STOP;      // 初始为停止
 uint16_t lift_current_height = 0;       // 初始高度0

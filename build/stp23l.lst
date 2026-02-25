@@ -1,0 +1,1417 @@
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 6
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"stp23l.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "User/Hardware/stp23l.c"
+  19              		.global	stp23l_data
+  20              		.section	.bss.stp23l_data,"aw",%nobits
+  21              		.align	2
+  24              	stp23l_data:
+  25 0000 00000000 		.space	256
+  25      00000000 
+  25      00000000 
+  25      00000000 
+  25      00000000 
+  26              		.section	.bss.stp23l_state,"aw",%nobits
+  29              	stp23l_state:
+  30 0000 00       		.space	1
+  31              		.section	.bss.stp23l_crc,"aw",%nobits
+  34              	stp23l_crc:
+  35 0000 00       		.space	1
+  36              		.section	.bss.stp23l_datalen,"aw",%nobits
+  37              		.align	1
+  40              	stp23l_datalen:
+  41 0000 0000     		.space	2
+  42              		.section	.bss.stp23l_offset,"aw",%nobits
+  43              		.align	1
+  46              	stp23l_offset:
+  47 0000 0000     		.space	2
+  48              		.section	.bss.stp23l_pnt_cnt,"aw",%nobits
+  51              	stp23l_pnt_cnt:
+  52 0000 00       		.space	1
+  53              		.section	.bss.stp23l_last_tick,"aw",%nobits
+  54              		.align	2
+  57              	stp23l_last_tick:
+  58 0000 00000000 		.space	4
+  59              		.section	.text.STP23L_Reset,"ax",%progbits
+  60              		.align	1
+  61              		.global	STP23L_Reset
+  62              		.syntax unified
+  63              		.thumb
+  64              		.thumb_func
+  66              	STP23L_Reset:
+  67              	.LFB1:
+   1:User/Hardware/stp23l.c **** #include "stp23l.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 2
+
+
+   2:User/Hardware/stp23l.c **** 
+   3:User/Hardware/stp23l.c **** /************************* 全局数据结构体实例化（供extern调用） *************************/
+   4:User/Hardware/stp23l.c **** STP23L_DataDef stp23l_data = {0};
+   5:User/Hardware/stp23l.c **** 
+   6:User/Hardware/stp23l.c **** /************************* 解析状态机静态变量（仅模块内可见，无全局污染） *************************
+   7:User/Hardware/stp23l.c **** static uint8_t  stp23l_state = 0;    // 解析状态机状态
+   8:User/Hardware/stp23l.c **** static uint8_t  stp23l_crc = 0;      // 校验和（自动低8位溢出，匹配协议）
+   9:User/Hardware/stp23l.c **** static uint16_t stp23l_datalen = 0;  // 协议数据长度域
+  10:User/Hardware/stp23l.c **** static uint16_t stp23l_offset = 0;   // 分块偏移地址
+  11:User/Hardware/stp23l.c **** static uint8_t  stp23l_pnt_cnt = 0;  // 测量点计数（0~11）
+  12:User/Hardware/stp23l.c **** static uint32_t stp23l_last_tick = 0;// 最后接收字节的系统时间（超时判断）
+  13:User/Hardware/stp23l.c **** 
+  14:User/Hardware/stp23l.c **** /************************* 状态机复位实现 *************************/
+  15:User/Hardware/stp23l.c **** void STP23L_Reset(void)
+  16:User/Hardware/stp23l.c **** {
+  68              		.loc 1 16 1
+  69              		.cfi_startproc
+  70              		@ args = 0, pretend = 0, frame = 0
+  71              		@ frame_needed = 1, uses_anonymous_args = 0
+  72 0000 80B5     		push	{r7, lr}
+  73              	.LCFI0:
+  74              		.cfi_def_cfa_offset 8
+  75              		.cfi_offset 7, -8
+  76              		.cfi_offset 14, -4
+  77 0002 00AF     		add	r7, sp, #0
+  78              	.LCFI1:
+  79              		.cfi_def_cfa_register 7
+  17:User/Hardware/stp23l.c ****     // 复位状态机变量
+  18:User/Hardware/stp23l.c ****     stp23l_state = 0;
+  80              		.loc 1 18 18
+  81 0004 0C4B     		ldr	r3, .L2
+  82 0006 0022     		movs	r2, #0
+  83 0008 1A70     		strb	r2, [r3]
+  19:User/Hardware/stp23l.c ****     stp23l_crc = 0;
+  84              		.loc 1 19 16
+  85 000a 0C4B     		ldr	r3, .L2+4
+  86 000c 0022     		movs	r2, #0
+  87 000e 1A70     		strb	r2, [r3]
+  20:User/Hardware/stp23l.c ****     stp23l_datalen = 0;
+  88              		.loc 1 20 20
+  89 0010 0B4B     		ldr	r3, .L2+8
+  90 0012 0022     		movs	r2, #0
+  91 0014 1A80     		strh	r2, [r3]	@ movhi
+  21:User/Hardware/stp23l.c ****     stp23l_offset = 0;
+  92              		.loc 1 21 19
+  93 0016 0B4B     		ldr	r3, .L2+12
+  94 0018 0022     		movs	r2, #0
+  95 001a 1A80     		strh	r2, [r3]	@ movhi
+  22:User/Hardware/stp23l.c ****     stp23l_pnt_cnt = 0;
+  96              		.loc 1 22 20
+  97 001c 0A4B     		ldr	r3, .L2+16
+  98 001e 0022     		movs	r2, #0
+  99 0020 1A70     		strb	r2, [r3]
+  23:User/Hardware/stp23l.c ****     stp23l_last_tick = HAL_GetTick();
+ 100              		.loc 1 23 24
+ 101 0022 FFF7FEFF 		bl	HAL_GetTick
+ 102 0026 0346     		mov	r3, r0
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 3
+
+
+ 103              		.loc 1 23 24 is_stmt 0 discriminator 1
+ 104 0028 1A46     		mov	r2, r3
+ 105              		.loc 1 23 22 is_stmt 1 discriminator 1
+ 106 002a 084B     		ldr	r3, .L2+20
+ 107 002c 1A60     		str	r2, [r3]
+  24:User/Hardware/stp23l.c ****     // 复位错误标志
+  25:User/Hardware/stp23l.c ****     stp23l_data.parse_err = 0;
+ 108              		.loc 1 25 27
+ 109 002e 084B     		ldr	r3, .L2+24
+ 110 0030 0022     		movs	r2, #0
+ 111 0032 5A70     		strb	r2, [r3, #1]
+  26:User/Hardware/stp23l.c **** }
+ 112              		.loc 1 26 1
+ 113 0034 00BF     		nop
+ 114 0036 80BD     		pop	{r7, pc}
+ 115              	.L3:
+ 116              		.align	2
+ 117              	.L2:
+ 118 0038 00000000 		.word	stp23l_state
+ 119 003c 00000000 		.word	stp23l_crc
+ 120 0040 00000000 		.word	stp23l_datalen
+ 121 0044 00000000 		.word	stp23l_offset
+ 122 0048 00000000 		.word	stp23l_pnt_cnt
+ 123 004c 00000000 		.word	stp23l_last_tick
+ 124 0050 00000000 		.word	stp23l_data
+ 125              		.cfi_endproc
+ 126              	.LFE1:
+ 128              		.section	.text.STP23L_ParseByte,"ax",%progbits
+ 129              		.align	1
+ 130              		.global	STP23L_ParseByte
+ 131              		.syntax unified
+ 132              		.thumb
+ 133              		.thumb_func
+ 135              	STP23L_ParseByte:
+ 136              	.LFB2:
+  27:User/Hardware/stp23l.c **** 
+  28:User/Hardware/stp23l.c **** /************************* 核心单字节解析实现 *************************/
+  29:User/Hardware/stp23l.c **** void STP23L_ParseByte(uint8_t byte)
+  30:User/Hardware/stp23l.c **** {
+ 137              		.loc 1 30 1
+ 138              		.cfi_startproc
+ 139              		@ args = 0, pretend = 0, frame = 16
+ 140              		@ frame_needed = 1, uses_anonymous_args = 0
+ 141 0000 80B5     		push	{r7, lr}
+ 142              	.LCFI2:
+ 143              		.cfi_def_cfa_offset 8
+ 144              		.cfi_offset 7, -8
+ 145              		.cfi_offset 14, -4
+ 146 0002 84B0     		sub	sp, sp, #16
+ 147              	.LCFI3:
+ 148              		.cfi_def_cfa_offset 24
+ 149 0004 00AF     		add	r7, sp, #0
+ 150              	.LCFI4:
+ 151              		.cfi_def_cfa_register 7
+ 152 0006 0346     		mov	r3, r0
+ 153 0008 FB71     		strb	r3, [r7, #7]
+  31:User/Hardware/stp23l.c ****     uint8_t point_byte_idx = 0;  // 测量点内字节偏移（0~14）
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 4
+
+
+ 154              		.loc 1 31 13
+ 155 000a 0023     		movs	r3, #0
+ 156 000c FB73     		strb	r3, [r7, #15]
+  32:User/Hardware/stp23l.c ****     uint8_t ts_byte_idx = 0;     // 时间戳内字节偏移（0~3）
+ 157              		.loc 1 32 13
+ 158 000e 0023     		movs	r3, #0
+ 159 0010 BB73     		strb	r3, [r7, #14]
+ 160              	.LBB2:
+  33:User/Hardware/stp23l.c **** 
+  34:User/Hardware/stp23l.c ****     /************************* 第一步：超时判断，超时则复位状态机 *************************/
+  35:User/Hardware/stp23l.c ****     if((HAL_GetTick() - stp23l_last_tick) > STP23L_RECV_TIMEOUT)
+ 161              		.loc 1 35 9
+ 162 0012 FFF7FEFF 		bl	HAL_GetTick
+ 163 0016 0346     		mov	r3, r0
+ 164              		.loc 1 35 9 is_stmt 0 discriminator 1
+ 165 0018 1A46     		mov	r2, r3
+ 166              		.loc 1 35 23 is_stmt 1 discriminator 1
+ 167 001a A84B     		ldr	r3, .L57
+ 168 001c 1B68     		ldr	r3, [r3]
+ 169 001e D31A     		subs	r3, r2, r3
+ 170              		.loc 1 35 7 discriminator 1
+ 171 0020 322B     		cmp	r3, #50
+ 172 0022 05D9     		bls	.L5
+  36:User/Hardware/stp23l.c ****     {
+  37:User/Hardware/stp23l.c ****         stp23l_data.parse_err = 1;
+ 173              		.loc 1 37 31
+ 174 0024 A64B     		ldr	r3, .L57+4
+ 175 0026 0122     		movs	r2, #1
+ 176 0028 5A70     		strb	r2, [r3, #1]
+  38:User/Hardware/stp23l.c ****         STP23L_Reset();
+ 177              		.loc 1 38 9
+ 178 002a FFF7FEFF 		bl	STP23L_Reset
+  39:User/Hardware/stp23l.c ****         return;
+ 179              		.loc 1 39 9
+ 180 002e F6E2     		b	.L4
+ 181              	.L5:
+ 182              	.LBE2:
+  40:User/Hardware/stp23l.c ****     }
+  41:User/Hardware/stp23l.c ****     stp23l_last_tick = HAL_GetTick(); // 更新最后接收时间
+ 183              		.loc 1 41 24
+ 184 0030 FFF7FEFF 		bl	HAL_GetTick
+ 185 0034 0346     		mov	r3, r0
+ 186              		.loc 1 41 24 is_stmt 0 discriminator 1
+ 187 0036 1A46     		mov	r2, r3
+ 188              		.loc 1 41 22 is_stmt 1 discriminator 1
+ 189 0038 A04B     		ldr	r3, .L57
+ 190 003a 1A60     		str	r2, [r3]
+  42:User/Hardware/stp23l.c **** 
+  43:User/Hardware/stp23l.c ****     /************************* 第二步：解析4个起始符0xAA *************************/
+  44:User/Hardware/stp23l.c ****     if(stp23l_state < 4)
+ 191              		.loc 1 44 21
+ 192 003c A14B     		ldr	r3, .L57+8
+ 193 003e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 194              		.loc 1 44 7
+ 195 0040 032B     		cmp	r3, #3
+ 196 0042 0FD8     		bhi	.L7
+  45:User/Hardware/stp23l.c ****     {
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 5
+
+
+  46:User/Hardware/stp23l.c ****         if(byte == STP23L_HEADER)
+ 197              		.loc 1 46 11
+ 198 0044 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 199 0046 AA2B     		cmp	r3, #170
+ 200 0048 06D1     		bne	.L8
+  47:User/Hardware/stp23l.c ****         {
+  48:User/Hardware/stp23l.c ****             stp23l_state++;
+ 201              		.loc 1 48 25
+ 202 004a 9E4B     		ldr	r3, .L57+8
+ 203 004c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 204 004e 0133     		adds	r3, r3, #1
+ 205 0050 DAB2     		uxtb	r2, r3
+ 206 0052 9C4B     		ldr	r3, .L57+8
+ 207 0054 1A70     		strb	r2, [r3]
+  49:User/Hardware/stp23l.c ****         }
+  50:User/Hardware/stp23l.c ****         else
+  51:User/Hardware/stp23l.c ****         {
+  52:User/Hardware/stp23l.c ****             stp23l_data.parse_err = 1;
+  53:User/Hardware/stp23l.c ****             STP23L_Reset(); // 非起始符，直接复位
+  54:User/Hardware/stp23l.c ****         }
+  55:User/Hardware/stp23l.c ****         return;
+ 208              		.loc 1 55 9
+ 209 0056 E2E2     		b	.L4
+ 210              	.L8:
+  52:User/Hardware/stp23l.c ****             STP23L_Reset(); // 非起始符，直接复位
+ 211              		.loc 1 52 35
+ 212 0058 994B     		ldr	r3, .L57+4
+ 213 005a 0122     		movs	r2, #1
+ 214 005c 5A70     		strb	r2, [r3, #1]
+  53:User/Hardware/stp23l.c ****         }
+ 215              		.loc 1 53 13
+ 216 005e FFF7FEFF 		bl	STP23L_Reset
+ 217              		.loc 1 55 9
+ 218 0062 DCE2     		b	.L4
+ 219              	.L7:
+  56:User/Hardware/stp23l.c ****     }
+  57:User/Hardware/stp23l.c **** 
+  58:User/Hardware/stp23l.c ****     /************************* 第三步：解析包头（设备地址+命令码+偏移+数据长度） ******************
+  59:User/Hardware/stp23l.c ****     if((stp23l_state >= 4) && (stp23l_state < STP23L_HEAD_LEN))
+ 220              		.loc 1 59 22
+ 221 0064 974B     		ldr	r3, .L57+8
+ 222 0066 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 223              		.loc 1 59 7
+ 224 0068 032B     		cmp	r3, #3
+ 225 006a 40F2B680 		bls	.L10
+ 226              		.loc 1 59 45 discriminator 1
+ 227 006e 954B     		ldr	r3, .L57+8
+ 228 0070 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 229              		.loc 1 59 28 discriminator 1
+ 230 0072 092B     		cmp	r3, #9
+ 231 0074 00F2B180 		bhi	.L10
+  60:User/Hardware/stp23l.c ****     {
+  61:User/Hardware/stp23l.c ****         switch(stp23l_state)
+ 232              		.loc 1 61 9
+ 233 0078 924B     		ldr	r3, .L57+8
+ 234 007a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 235 007c 043B     		subs	r3, r3, #4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 6
+
+
+ 236 007e 052B     		cmp	r3, #5
+ 237 0080 00F2A380 		bhi	.L11
+ 238 0084 01A2     		adr	r2, .L13
+ 239 0086 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 240 008a 00BF     		.p2align 2
+ 241              	.L13:
+ 242 008c A5000000 		.word	.L18+1
+ 243 0090 D3000000 		.word	.L17+1
+ 244 0094 09010000 		.word	.L16+1
+ 245 0098 2D010000 		.word	.L15+1
+ 246 009c 61010000 		.word	.L14+1
+ 247 00a0 85010000 		.word	.L12+1
+ 248              		.p2align 1
+ 249              	.L18:
+  62:User/Hardware/stp23l.c ****         {
+  63:User/Hardware/stp23l.c ****             case 4: // 解析设备地址
+  64:User/Hardware/stp23l.c ****                 if(byte == STP23L_DEV_ADDR)
+ 250              		.loc 1 64 19
+ 251 00a4 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 252 00a6 002B     		cmp	r3, #0
+ 253 00a8 0DD1     		bne	.L19
+  65:User/Hardware/stp23l.c ****                 {
+  66:User/Hardware/stp23l.c ****                     stp23l_crc += byte; // 校验和从设备地址开始累加（协议要求除去4个AA）
+ 254              		.loc 1 66 32
+ 255 00aa 874B     		ldr	r3, .L57+12
+ 256 00ac 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 257 00ae FB79     		ldrb	r3, [r7, #7]
+ 258 00b0 1344     		add	r3, r3, r2
+ 259 00b2 DAB2     		uxtb	r2, r3
+ 260 00b4 844B     		ldr	r3, .L57+12
+ 261 00b6 1A70     		strb	r2, [r3]
+  67:User/Hardware/stp23l.c ****                     stp23l_state++;
+ 262              		.loc 1 67 33
+ 263 00b8 824B     		ldr	r3, .L57+8
+ 264 00ba 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 265 00bc 0133     		adds	r3, r3, #1
+ 266 00be DAB2     		uxtb	r2, r3
+ 267 00c0 804B     		ldr	r3, .L57+8
+ 268 00c2 1A70     		strb	r2, [r3]
+  68:User/Hardware/stp23l.c ****                 }
+  69:User/Hardware/stp23l.c ****                 else
+  70:User/Hardware/stp23l.c ****                 {
+  71:User/Hardware/stp23l.c ****                     stp23l_data.parse_err = 1;
+  72:User/Hardware/stp23l.c ****                     STP23L_Reset();
+  73:User/Hardware/stp23l.c ****                 }
+  74:User/Hardware/stp23l.c ****                 break;
+ 269              		.loc 1 74 17
+ 270 00c4 88E0     		b	.L21
+ 271              	.L19:
+  71:User/Hardware/stp23l.c ****                     STP23L_Reset();
+ 272              		.loc 1 71 43
+ 273 00c6 7E4B     		ldr	r3, .L57+4
+ 274 00c8 0122     		movs	r2, #1
+ 275 00ca 5A70     		strb	r2, [r3, #1]
+  72:User/Hardware/stp23l.c ****                 }
+ 276              		.loc 1 72 21
+ 277 00cc FFF7FEFF 		bl	STP23L_Reset
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 7
+
+
+ 278              		.loc 1 74 17
+ 279 00d0 82E0     		b	.L21
+ 280              	.L17:
+  75:User/Hardware/stp23l.c ****             case 5: // 解析命令码，仅处理测量数据命令
+  76:User/Hardware/stp23l.c ****                 if(byte == STP23L_CMD_GET_DIST)
+ 281              		.loc 1 76 19
+ 282 00d2 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 283 00d4 022B     		cmp	r3, #2
+ 284 00d6 11D1     		bne	.L22
+  77:User/Hardware/stp23l.c ****                 {
+  78:User/Hardware/stp23l.c ****                     stp23l_data.cmd_code = byte;
+ 285              		.loc 1 78 42
+ 286 00d8 794A     		ldr	r2, .L57+4
+ 287 00da FB79     		ldrb	r3, [r7, #7]
+ 288 00dc 82F8FC30 		strb	r3, [r2, #252]
+  79:User/Hardware/stp23l.c ****                     stp23l_crc += byte;
+ 289              		.loc 1 79 32
+ 290 00e0 794B     		ldr	r3, .L57+12
+ 291 00e2 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 292 00e4 FB79     		ldrb	r3, [r7, #7]
+ 293 00e6 1344     		add	r3, r3, r2
+ 294 00e8 DAB2     		uxtb	r2, r3
+ 295 00ea 774B     		ldr	r3, .L57+12
+ 296 00ec 1A70     		strb	r2, [r3]
+  80:User/Hardware/stp23l.c ****                     stp23l_state++;
+ 297              		.loc 1 80 33
+ 298 00ee 754B     		ldr	r3, .L57+8
+ 299 00f0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 300 00f2 0133     		adds	r3, r3, #1
+ 301 00f4 DAB2     		uxtb	r2, r3
+ 302 00f6 734B     		ldr	r3, .L57+8
+ 303 00f8 1A70     		strb	r2, [r3]
+  81:User/Hardware/stp23l.c ****                 }
+  82:User/Hardware/stp23l.c ****                 else
+  83:User/Hardware/stp23l.c ****                 {
+  84:User/Hardware/stp23l.c ****                     stp23l_data.parse_err = 1;
+  85:User/Hardware/stp23l.c ****                     STP23L_Reset(); // 非测量数据命令，直接复位（可根据需求扩展）
+  86:User/Hardware/stp23l.c ****                 }
+  87:User/Hardware/stp23l.c ****                 break;
+ 304              		.loc 1 87 17
+ 305 00fa 6DE0     		b	.L21
+ 306              	.L22:
+  84:User/Hardware/stp23l.c ****                     STP23L_Reset(); // 非测量数据命令，直接复位（可根据需求扩展）
+ 307              		.loc 1 84 43
+ 308 00fc 704B     		ldr	r3, .L57+4
+ 309 00fe 0122     		movs	r2, #1
+ 310 0100 5A70     		strb	r2, [r3, #1]
+  85:User/Hardware/stp23l.c ****                 }
+ 311              		.loc 1 85 21
+ 312 0102 FFF7FEFF 		bl	STP23L_Reset
+ 313              		.loc 1 87 17
+ 314 0106 67E0     		b	.L21
+ 315              	.L16:
+  88:User/Hardware/stp23l.c ****             case 6: // 解析分块偏移地址低字节
+  89:User/Hardware/stp23l.c ****                 stp23l_offset = byte;
+ 316              		.loc 1 89 31
+ 317 0108 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 8
+
+
+ 318 010a 9AB2     		uxth	r2, r3
+ 319 010c 6F4B     		ldr	r3, .L57+16
+ 320 010e 1A80     		strh	r2, [r3]	@ movhi
+  90:User/Hardware/stp23l.c ****                 stp23l_crc += byte;
+ 321              		.loc 1 90 28
+ 322 0110 6D4B     		ldr	r3, .L57+12
+ 323 0112 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 324 0114 FB79     		ldrb	r3, [r7, #7]
+ 325 0116 1344     		add	r3, r3, r2
+ 326 0118 DAB2     		uxtb	r2, r3
+ 327 011a 6B4B     		ldr	r3, .L57+12
+ 328 011c 1A70     		strb	r2, [r3]
+  91:User/Hardware/stp23l.c ****                 stp23l_state++;
+ 329              		.loc 1 91 29
+ 330 011e 694B     		ldr	r3, .L57+8
+ 331 0120 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 332 0122 0133     		adds	r3, r3, #1
+ 333 0124 DAB2     		uxtb	r2, r3
+ 334 0126 674B     		ldr	r3, .L57+8
+ 335 0128 1A70     		strb	r2, [r3]
+  92:User/Hardware/stp23l.c ****                 break;
+ 336              		.loc 1 92 17
+ 337 012a 55E0     		b	.L21
+ 338              	.L15:
+  93:User/Hardware/stp23l.c ****             case 7: // 解析分块偏移地址高字节
+  94:User/Hardware/stp23l.c ****                 stp23l_offset |= (uint16_t)byte << 8;
+ 339              		.loc 1 94 31
+ 340 012c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 341 012e 1BB2     		sxth	r3, r3
+ 342 0130 1B02     		lsls	r3, r3, #8
+ 343 0132 1AB2     		sxth	r2, r3
+ 344 0134 654B     		ldr	r3, .L57+16
+ 345 0136 1B88     		ldrh	r3, [r3]
+ 346 0138 1BB2     		sxth	r3, r3
+ 347 013a 1343     		orrs	r3, r3, r2
+ 348 013c 1BB2     		sxth	r3, r3
+ 349 013e 9AB2     		uxth	r2, r3
+ 350 0140 624B     		ldr	r3, .L57+16
+ 351 0142 1A80     		strh	r2, [r3]	@ movhi
+  95:User/Hardware/stp23l.c ****                 stp23l_crc += byte;
+ 352              		.loc 1 95 28
+ 353 0144 604B     		ldr	r3, .L57+12
+ 354 0146 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 355 0148 FB79     		ldrb	r3, [r7, #7]
+ 356 014a 1344     		add	r3, r3, r2
+ 357 014c DAB2     		uxtb	r2, r3
+ 358 014e 5E4B     		ldr	r3, .L57+12
+ 359 0150 1A70     		strb	r2, [r3]
+  96:User/Hardware/stp23l.c ****                 stp23l_state++;
+ 360              		.loc 1 96 29
+ 361 0152 5C4B     		ldr	r3, .L57+8
+ 362 0154 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 363 0156 0133     		adds	r3, r3, #1
+ 364 0158 DAB2     		uxtb	r2, r3
+ 365 015a 5A4B     		ldr	r3, .L57+8
+ 366 015c 1A70     		strb	r2, [r3]
+  97:User/Hardware/stp23l.c ****                 break;
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 9
+
+
+ 367              		.loc 1 97 17
+ 368 015e 3BE0     		b	.L21
+ 369              	.L14:
+  98:User/Hardware/stp23l.c ****             case 8: // 解析数据长度低字节
+  99:User/Hardware/stp23l.c ****                 stp23l_datalen = byte;
+ 370              		.loc 1 99 32
+ 371 0160 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 372 0162 9AB2     		uxth	r2, r3
+ 373 0164 5A4B     		ldr	r3, .L57+20
+ 374 0166 1A80     		strh	r2, [r3]	@ movhi
+ 100:User/Hardware/stp23l.c ****                 stp23l_crc += byte;
+ 375              		.loc 1 100 28
+ 376 0168 574B     		ldr	r3, .L57+12
+ 377 016a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 378 016c FB79     		ldrb	r3, [r7, #7]
+ 379 016e 1344     		add	r3, r3, r2
+ 380 0170 DAB2     		uxtb	r2, r3
+ 381 0172 554B     		ldr	r3, .L57+12
+ 382 0174 1A70     		strb	r2, [r3]
+ 101:User/Hardware/stp23l.c ****                 stp23l_state++;
+ 383              		.loc 1 101 29
+ 384 0176 534B     		ldr	r3, .L57+8
+ 385 0178 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 386 017a 0133     		adds	r3, r3, #1
+ 387 017c DAB2     		uxtb	r2, r3
+ 388 017e 514B     		ldr	r3, .L57+8
+ 389 0180 1A70     		strb	r2, [r3]
+ 102:User/Hardware/stp23l.c ****                 break;
+ 390              		.loc 1 102 17
+ 391 0182 29E0     		b	.L21
+ 392              	.L12:
+ 103:User/Hardware/stp23l.c ****             case 9: // 解析数据长度高字节+校验数据长度
+ 104:User/Hardware/stp23l.c ****                 stp23l_datalen |= (uint16_t)byte << 8;
+ 393              		.loc 1 104 32
+ 394 0184 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 395 0186 1BB2     		sxth	r3, r3
+ 396 0188 1B02     		lsls	r3, r3, #8
+ 397 018a 1AB2     		sxth	r2, r3
+ 398 018c 504B     		ldr	r3, .L57+20
+ 399 018e 1B88     		ldrh	r3, [r3]
+ 400 0190 1BB2     		sxth	r3, r3
+ 401 0192 1343     		orrs	r3, r3, r2
+ 402 0194 1BB2     		sxth	r3, r3
+ 403 0196 9AB2     		uxth	r2, r3
+ 404 0198 4D4B     		ldr	r3, .L57+20
+ 405 019a 1A80     		strh	r2, [r3]	@ movhi
+ 105:User/Hardware/stp23l.c ****                 stp23l_crc += byte;
+ 406              		.loc 1 105 28
+ 407 019c 4A4B     		ldr	r3, .L57+12
+ 408 019e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 409 01a0 FB79     		ldrb	r3, [r7, #7]
+ 410 01a2 1344     		add	r3, r3, r2
+ 411 01a4 DAB2     		uxtb	r2, r3
+ 412 01a6 484B     		ldr	r3, .L57+12
+ 413 01a8 1A70     		strb	r2, [r3]
+ 106:User/Hardware/stp23l.c ****                 stp23l_state++;
+ 414              		.loc 1 106 29
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 10
+
+
+ 415 01aa 464B     		ldr	r3, .L57+8
+ 416 01ac 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 417 01ae 0133     		adds	r3, r3, #1
+ 418 01b0 DAB2     		uxtb	r2, r3
+ 419 01b2 444B     		ldr	r3, .L57+8
+ 420 01b4 1A70     		strb	r2, [r3]
+ 107:User/Hardware/stp23l.c ****                 // 协议强制校验：测量数据命令的长度必须为0x00B8，否则丢弃
+ 108:User/Hardware/stp23l.c ****                 if(stp23l_datalen != STP23L_DATA_LEN)
+ 421              		.loc 1 108 35
+ 422 01b6 464B     		ldr	r3, .L57+20
+ 423 01b8 1B88     		ldrh	r3, [r3]
+ 424              		.loc 1 108 19
+ 425 01ba B82B     		cmp	r3, #184
+ 426 01bc 0BD0     		beq	.L54
+ 109:User/Hardware/stp23l.c ****                 {
+ 110:User/Hardware/stp23l.c ****                     stp23l_data.parse_err = 1;
+ 427              		.loc 1 110 43
+ 428 01be 404B     		ldr	r3, .L57+4
+ 429 01c0 0122     		movs	r2, #1
+ 430 01c2 5A70     		strb	r2, [r3, #1]
+ 111:User/Hardware/stp23l.c ****                     STP23L_Reset();
+ 431              		.loc 1 111 21
+ 432 01c4 FFF7FEFF 		bl	STP23L_Reset
+ 112:User/Hardware/stp23l.c ****                 }
+ 113:User/Hardware/stp23l.c ****                 break;
+ 433              		.loc 1 113 17
+ 434 01c8 05E0     		b	.L54
+ 435              	.L11:
+ 114:User/Hardware/stp23l.c ****             default:
+ 115:User/Hardware/stp23l.c ****                 stp23l_data.parse_err = 1;
+ 436              		.loc 1 115 39
+ 437 01ca 3D4B     		ldr	r3, .L57+4
+ 438 01cc 0122     		movs	r2, #1
+ 439 01ce 5A70     		strb	r2, [r3, #1]
+ 116:User/Hardware/stp23l.c ****                 STP23L_Reset();
+ 440              		.loc 1 116 17
+ 441 01d0 FFF7FEFF 		bl	STP23L_Reset
+ 117:User/Hardware/stp23l.c ****                 break;
+ 442              		.loc 1 117 17
+ 443 01d4 00E0     		b	.L21
+ 444              	.L54:
+ 113:User/Hardware/stp23l.c ****             default:
+ 445              		.loc 1 113 17
+ 446 01d6 00BF     		nop
+ 447              	.L21:
+ 118:User/Hardware/stp23l.c ****         }
+ 119:User/Hardware/stp23l.c ****         return;
+ 448              		.loc 1 119 9
+ 449 01d8 21E2     		b	.L4
+ 450              	.L10:
+ 120:User/Hardware/stp23l.c ****     }
+ 121:User/Hardware/stp23l.c **** 
+ 122:User/Hardware/stp23l.c ****     /************************* 第四步：解析数据域（12个测量点+4字节时间戳） ***********************
+ 123:User/Hardware/stp23l.c ****     if((stp23l_state >= STP23L_HEAD_LEN) && (stp23l_state < STP23L_PACK_LEN - 1))
+ 451              		.loc 1 123 22
+ 452 01da 3A4B     		ldr	r3, .L57+8
+ 453 01dc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 11
+
+
+ 454              		.loc 1 123 7
+ 455 01de 092B     		cmp	r3, #9
+ 456 01e0 40F20182 		bls	.L25
+ 457              		.loc 1 123 59 discriminator 1
+ 458 01e4 374B     		ldr	r3, .L57+8
+ 459 01e6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 460              		.loc 1 123 42 discriminator 1
+ 461 01e8 C12B     		cmp	r3, #193
+ 462 01ea 00F2FC81 		bhi	.L25
+ 124:User/Hardware/stp23l.c ****     {
+ 125:User/Hardware/stp23l.c ****         // 解析12个测量点（0~179字节：STP23L_HEAD_LEN ~ STP23L_HEAD_LEN+12*15-1）
+ 126:User/Hardware/stp23l.c ****         if(stp23l_state < (STP23L_HEAD_LEN + STP23L_POINT_NUM * STP23L_POINT_BYTES))
+ 463              		.loc 1 126 25
+ 464 01ee 354B     		ldr	r3, .L57+8
+ 465 01f0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 466              		.loc 1 126 11
+ 467 01f2 BD2B     		cmp	r3, #189
+ 468 01f4 00F2A681 		bhi	.L26
+ 127:User/Hardware/stp23l.c ****         {
+ 128:User/Hardware/stp23l.c ****             // 计算当前测量点内的字节偏移（0~14）
+ 129:User/Hardware/stp23l.c ****             point_byte_idx = (stp23l_state - STP23L_HEAD_LEN) % STP23L_POINT_BYTES;
+ 469              		.loc 1 129 44
+ 470 01f8 324B     		ldr	r3, .L57+8
+ 471 01fa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 472 01fc A3F10A01 		sub	r1, r3, #10
+ 473              		.loc 1 129 63
+ 474 0200 344B     		ldr	r3, .L57+24
+ 475 0202 A3FB0123 		umull	r2, r3, r3, r1
+ 476 0206 DA08     		lsrs	r2, r3, #3
+ 477 0208 1346     		mov	r3, r2
+ 478 020a 1B01     		lsls	r3, r3, #4
+ 479 020c 9B1A     		subs	r3, r3, r2
+ 480 020e CA1A     		subs	r2, r1, r3
+ 481              		.loc 1 129 28
+ 482 0210 1346     		mov	r3, r2
+ 483 0212 FB73     		strb	r3, [r7, #15]
+ 130:User/Hardware/stp23l.c ****             // 小端模式逐字节解析测量点数据
+ 131:User/Hardware/stp23l.c ****             switch(point_byte_idx)
+ 484              		.loc 1 131 13
+ 485 0214 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 486 0216 0E2B     		cmp	r3, #14
+ 487 0218 00F28581 		bhi	.L55
+ 488 021c 01A2     		adr	r2, .L29
+ 489 021e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 490 0222 00BF     		.p2align 2
+ 491              	.L29:
+ 492 0224 61020000 		.word	.L43+1
+ 493 0228 7F020000 		.word	.L42+1
+ 494 022c DD020000 		.word	.L41+1
+ 495 0230 FB020000 		.word	.L40+1
+ 496 0234 3B030000 		.word	.L39+1
+ 497 0238 55030000 		.word	.L38+1
+ 498 023c 89030000 		.word	.L37+1
+ 499 0240 BD030000 		.word	.L36+1
+ 500 0244 F1030000 		.word	.L35+1
+ 501 0248 0B040000 		.word	.L34+1
+ 502 024c 25040000 		.word	.L33+1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 12
+
+
+ 503 0250 59040000 		.word	.L32+1
+ 504 0254 8D040000 		.word	.L31+1
+ 505 0258 C1040000 		.word	.L30+1
+ 506 025c DF040000 		.word	.L28+1
+ 507              		.p2align 1
+ 508              	.L43:
+ 132:User/Hardware/stp23l.c ****             {
+ 133:User/Hardware/stp23l.c ****                 case 0: stp23l_data.points[stp23l_pnt_cnt].distance = byte; break;
+ 509              		.loc 1 133 59
+ 510 0260 1D4B     		ldr	r3, .L57+28
+ 511 0262 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 512 0264 1946     		mov	r1, r3
+ 513              		.loc 1 133 69
+ 514 0266 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 515 0268 18B2     		sxth	r0, r3
+ 516 026a 154A     		ldr	r2, .L57+4
+ 517 026c 0B46     		mov	r3, r1
+ 518 026e 9B00     		lsls	r3, r3, #2
+ 519 0270 0B44     		add	r3, r3, r1
+ 520 0272 9B00     		lsls	r3, r3, #2
+ 521 0274 1344     		add	r3, r3, r2
+ 522 0276 0433     		adds	r3, r3, #4
+ 523 0278 0246     		mov	r2, r0	@ movhi
+ 524 027a 1A80     		strh	r2, [r3]	@ movhi
+ 525              		.loc 1 133 77
+ 526 027c 54E1     		b	.L44
+ 527              	.L42:
+ 134:User/Hardware/stp23l.c ****                 case 1: stp23l_data.points[stp23l_pnt_cnt].distance |= (int16_t)byte << 8; break;
+ 528              		.loc 1 134 59
+ 529 027e 164B     		ldr	r3, .L57+28
+ 530 0280 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 531 0282 1946     		mov	r1, r3
+ 532 0284 0E4A     		ldr	r2, .L57+4
+ 533 0286 0B46     		mov	r3, r1
+ 534 0288 9B00     		lsls	r3, r3, #2
+ 535 028a 0B44     		add	r3, r3, r1
+ 536 028c 9B00     		lsls	r3, r3, #2
+ 537 028e 1344     		add	r3, r3, r2
+ 538 0290 0433     		adds	r3, r3, #4
+ 539 0292 B3F90020 		ldrsh	r2, [r3]
+ 540              		.loc 1 134 69
+ 541 0296 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 542 0298 1BB2     		sxth	r3, r3
+ 543 029a 1B02     		lsls	r3, r3, #8
+ 544 029c 1BB2     		sxth	r3, r3
+ 545              		.loc 1 134 59
+ 546 029e 0E49     		ldr	r1, .L57+28
+ 547 02a0 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 548              		.loc 1 134 69
+ 549 02a2 1343     		orrs	r3, r3, r2
+ 550 02a4 18B2     		sxth	r0, r3
+ 551 02a6 064A     		ldr	r2, .L57+4
+ 552 02a8 0B46     		mov	r3, r1
+ 553 02aa 9B00     		lsls	r3, r3, #2
+ 554 02ac 0B44     		add	r3, r3, r1
+ 555 02ae 9B00     		lsls	r3, r3, #2
+ 556 02b0 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 13
+
+
+ 557 02b2 0433     		adds	r3, r3, #4
+ 558 02b4 0246     		mov	r2, r0	@ movhi
+ 559 02b6 1A80     		strh	r2, [r3]	@ movhi
+ 560              		.loc 1 134 92
+ 561 02b8 36E1     		b	.L44
+ 562              	.L58:
+ 563 02ba 00BF     		.align	2
+ 564              	.L57:
+ 565 02bc 00000000 		.word	stp23l_last_tick
+ 566 02c0 00000000 		.word	stp23l_data
+ 567 02c4 00000000 		.word	stp23l_state
+ 568 02c8 00000000 		.word	stp23l_crc
+ 569 02cc 00000000 		.word	stp23l_offset
+ 570 02d0 00000000 		.word	stp23l_datalen
+ 571 02d4 89888888 		.word	-2004318071
+ 572 02d8 00000000 		.word	stp23l_pnt_cnt
+ 573              	.L41:
+ 135:User/Hardware/stp23l.c ****                 case 2: stp23l_data.points[stp23l_pnt_cnt].noise = byte; break;
+ 574              		.loc 1 135 59
+ 575 02dc B14B     		ldr	r3, .L59
+ 576 02de 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 577 02e0 1946     		mov	r1, r3
+ 578              		.loc 1 135 66
+ 579 02e2 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 580 02e4 98B2     		uxth	r0, r3
+ 581 02e6 B04A     		ldr	r2, .L59+4
+ 582 02e8 0B46     		mov	r3, r1
+ 583 02ea 9B00     		lsls	r3, r3, #2
+ 584 02ec 0B44     		add	r3, r3, r1
+ 585 02ee 9B00     		lsls	r3, r3, #2
+ 586 02f0 1344     		add	r3, r3, r2
+ 587 02f2 0633     		adds	r3, r3, #6
+ 588 02f4 0246     		mov	r2, r0	@ movhi
+ 589 02f6 1A80     		strh	r2, [r3]	@ movhi
+ 590              		.loc 1 135 74
+ 591 02f8 16E1     		b	.L44
+ 592              	.L40:
+ 136:User/Hardware/stp23l.c ****                 case 3: stp23l_data.points[stp23l_pnt_cnt].noise |= (uint16_t)byte << 8; break;
+ 593              		.loc 1 136 59
+ 594 02fa AA4B     		ldr	r3, .L59
+ 595 02fc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 596 02fe 1946     		mov	r1, r3
+ 597 0300 A94A     		ldr	r2, .L59+4
+ 598 0302 0B46     		mov	r3, r1
+ 599 0304 9B00     		lsls	r3, r3, #2
+ 600 0306 0B44     		add	r3, r3, r1
+ 601 0308 9B00     		lsls	r3, r3, #2
+ 602 030a 1344     		add	r3, r3, r2
+ 603 030c 0633     		adds	r3, r3, #6
+ 604 030e 1B88     		ldrh	r3, [r3]
+ 605 0310 1AB2     		sxth	r2, r3
+ 606              		.loc 1 136 66
+ 607 0312 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 608 0314 1BB2     		sxth	r3, r3
+ 609 0316 1B02     		lsls	r3, r3, #8
+ 610 0318 1BB2     		sxth	r3, r3
+ 611 031a 1343     		orrs	r3, r3, r2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 14
+
+
+ 612 031c 1AB2     		sxth	r2, r3
+ 613              		.loc 1 136 59
+ 614 031e A14B     		ldr	r3, .L59
+ 615 0320 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 616 0322 1946     		mov	r1, r3
+ 617              		.loc 1 136 66
+ 618 0324 90B2     		uxth	r0, r2
+ 619 0326 A04A     		ldr	r2, .L59+4
+ 620 0328 0B46     		mov	r3, r1
+ 621 032a 9B00     		lsls	r3, r3, #2
+ 622 032c 0B44     		add	r3, r3, r1
+ 623 032e 9B00     		lsls	r3, r3, #2
+ 624 0330 1344     		add	r3, r3, r2
+ 625 0332 0633     		adds	r3, r3, #6
+ 626 0334 0246     		mov	r2, r0	@ movhi
+ 627 0336 1A80     		strh	r2, [r3]	@ movhi
+ 628              		.loc 1 136 90
+ 629 0338 F6E0     		b	.L44
+ 630              	.L39:
+ 137:User/Hardware/stp23l.c ****                 case 4: stp23l_data.points[stp23l_pnt_cnt].peak = byte; break;
+ 631              		.loc 1 137 59
+ 632 033a 9A4B     		ldr	r3, .L59
+ 633 033c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 634 033e 1846     		mov	r0, r3
+ 635              		.loc 1 137 65
+ 636 0340 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 637 0342 9949     		ldr	r1, .L59+4
+ 638 0344 0346     		mov	r3, r0
+ 639 0346 9B00     		lsls	r3, r3, #2
+ 640 0348 0344     		add	r3, r3, r0
+ 641 034a 9B00     		lsls	r3, r3, #2
+ 642 034c 0B44     		add	r3, r3, r1
+ 643 034e 0833     		adds	r3, r3, #8
+ 644 0350 1A60     		str	r2, [r3]
+ 645              		.loc 1 137 73
+ 646 0352 E9E0     		b	.L44
+ 647              	.L38:
+ 138:User/Hardware/stp23l.c ****                 case 5: stp23l_data.points[stp23l_pnt_cnt].peak |= (uint32_t)byte << 8; break;
+ 648              		.loc 1 138 59
+ 649 0354 934B     		ldr	r3, .L59
+ 650 0356 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 651 0358 1946     		mov	r1, r3
+ 652 035a 934A     		ldr	r2, .L59+4
+ 653 035c 0B46     		mov	r3, r1
+ 654 035e 9B00     		lsls	r3, r3, #2
+ 655 0360 0B44     		add	r3, r3, r1
+ 656 0362 9B00     		lsls	r3, r3, #2
+ 657 0364 1344     		add	r3, r3, r2
+ 658 0366 0833     		adds	r3, r3, #8
+ 659 0368 1A68     		ldr	r2, [r3]
+ 660              		.loc 1 138 68
+ 661 036a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 662              		.loc 1 138 83
+ 663 036c 1B02     		lsls	r3, r3, #8
+ 664              		.loc 1 138 59
+ 665 036e 8D49     		ldr	r1, .L59
+ 666 0370 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 15
+
+
+ 667 0372 0846     		mov	r0, r1
+ 668              		.loc 1 138 65
+ 669 0374 1A43     		orrs	r2, r2, r3
+ 670 0376 8C49     		ldr	r1, .L59+4
+ 671 0378 0346     		mov	r3, r0
+ 672 037a 9B00     		lsls	r3, r3, #2
+ 673 037c 0344     		add	r3, r3, r0
+ 674 037e 9B00     		lsls	r3, r3, #2
+ 675 0380 0B44     		add	r3, r3, r1
+ 676 0382 0833     		adds	r3, r3, #8
+ 677 0384 1A60     		str	r2, [r3]
+ 678              		.loc 1 138 89
+ 679 0386 CFE0     		b	.L44
+ 680              	.L37:
+ 139:User/Hardware/stp23l.c ****                 case 6: stp23l_data.points[stp23l_pnt_cnt].peak |= (uint32_t)byte << 16; break;
+ 681              		.loc 1 139 59
+ 682 0388 864B     		ldr	r3, .L59
+ 683 038a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 684 038c 1946     		mov	r1, r3
+ 685 038e 864A     		ldr	r2, .L59+4
+ 686 0390 0B46     		mov	r3, r1
+ 687 0392 9B00     		lsls	r3, r3, #2
+ 688 0394 0B44     		add	r3, r3, r1
+ 689 0396 9B00     		lsls	r3, r3, #2
+ 690 0398 1344     		add	r3, r3, r2
+ 691 039a 0833     		adds	r3, r3, #8
+ 692 039c 1A68     		ldr	r2, [r3]
+ 693              		.loc 1 139 68
+ 694 039e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 695              		.loc 1 139 83
+ 696 03a0 1B04     		lsls	r3, r3, #16
+ 697              		.loc 1 139 59
+ 698 03a2 8049     		ldr	r1, .L59
+ 699 03a4 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 700 03a6 0846     		mov	r0, r1
+ 701              		.loc 1 139 65
+ 702 03a8 1A43     		orrs	r2, r2, r3
+ 703 03aa 7F49     		ldr	r1, .L59+4
+ 704 03ac 0346     		mov	r3, r0
+ 705 03ae 9B00     		lsls	r3, r3, #2
+ 706 03b0 0344     		add	r3, r3, r0
+ 707 03b2 9B00     		lsls	r3, r3, #2
+ 708 03b4 0B44     		add	r3, r3, r1
+ 709 03b6 0833     		adds	r3, r3, #8
+ 710 03b8 1A60     		str	r2, [r3]
+ 711              		.loc 1 139 90
+ 712 03ba B5E0     		b	.L44
+ 713              	.L36:
+ 140:User/Hardware/stp23l.c ****                 case 7: stp23l_data.points[stp23l_pnt_cnt].peak |= (uint32_t)byte << 24; break;
+ 714              		.loc 1 140 59
+ 715 03bc 794B     		ldr	r3, .L59
+ 716 03be 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 717 03c0 1946     		mov	r1, r3
+ 718 03c2 794A     		ldr	r2, .L59+4
+ 719 03c4 0B46     		mov	r3, r1
+ 720 03c6 9B00     		lsls	r3, r3, #2
+ 721 03c8 0B44     		add	r3, r3, r1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 16
+
+
+ 722 03ca 9B00     		lsls	r3, r3, #2
+ 723 03cc 1344     		add	r3, r3, r2
+ 724 03ce 0833     		adds	r3, r3, #8
+ 725 03d0 1A68     		ldr	r2, [r3]
+ 726              		.loc 1 140 68
+ 727 03d2 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 728              		.loc 1 140 83
+ 729 03d4 1B06     		lsls	r3, r3, #24
+ 730              		.loc 1 140 59
+ 731 03d6 7349     		ldr	r1, .L59
+ 732 03d8 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 733 03da 0846     		mov	r0, r1
+ 734              		.loc 1 140 65
+ 735 03dc 1A43     		orrs	r2, r2, r3
+ 736 03de 7249     		ldr	r1, .L59+4
+ 737 03e0 0346     		mov	r3, r0
+ 738 03e2 9B00     		lsls	r3, r3, #2
+ 739 03e4 0344     		add	r3, r3, r0
+ 740 03e6 9B00     		lsls	r3, r3, #2
+ 741 03e8 0B44     		add	r3, r3, r1
+ 742 03ea 0833     		adds	r3, r3, #8
+ 743 03ec 1A60     		str	r2, [r3]
+ 744              		.loc 1 140 90
+ 745 03ee 9BE0     		b	.L44
+ 746              	.L35:
+ 141:User/Hardware/stp23l.c ****                 case 8: stp23l_data.points[stp23l_pnt_cnt].confidence = byte; break;
+ 747              		.loc 1 141 59
+ 748 03f0 6C4B     		ldr	r3, .L59
+ 749 03f2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 750 03f4 1946     		mov	r1, r3
+ 751              		.loc 1 141 71
+ 752 03f6 6C4A     		ldr	r2, .L59+4
+ 753 03f8 0B46     		mov	r3, r1
+ 754 03fa 9B00     		lsls	r3, r3, #2
+ 755 03fc 0B44     		add	r3, r3, r1
+ 756 03fe 9B00     		lsls	r3, r3, #2
+ 757 0400 1344     		add	r3, r3, r2
+ 758 0402 0C33     		adds	r3, r3, #12
+ 759 0404 FA79     		ldrb	r2, [r7, #7]
+ 760 0406 1A70     		strb	r2, [r3]
+ 761              		.loc 1 141 79
+ 762 0408 8EE0     		b	.L44
+ 763              	.L34:
+ 142:User/Hardware/stp23l.c ****                 case 9: stp23l_data.points[stp23l_pnt_cnt].intg = byte; break;
+ 764              		.loc 1 142 59
+ 765 040a 664B     		ldr	r3, .L59
+ 766 040c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 767 040e 1846     		mov	r0, r3
+ 768              		.loc 1 142 65
+ 769 0410 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 770 0412 6549     		ldr	r1, .L59+4
+ 771 0414 0346     		mov	r3, r0
+ 772 0416 9B00     		lsls	r3, r3, #2
+ 773 0418 0344     		add	r3, r3, r0
+ 774 041a 9B00     		lsls	r3, r3, #2
+ 775 041c 0B44     		add	r3, r3, r1
+ 776 041e 1033     		adds	r3, r3, #16
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 17
+
+
+ 777 0420 1A60     		str	r2, [r3]
+ 778              		.loc 1 142 73
+ 779 0422 81E0     		b	.L44
+ 780              	.L33:
+ 143:User/Hardware/stp23l.c ****                 case 10: stp23l_data.points[stp23l_pnt_cnt].intg |= (uint32_t)byte << 8; break;
+ 781              		.loc 1 143 60
+ 782 0424 5F4B     		ldr	r3, .L59
+ 783 0426 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 784 0428 1946     		mov	r1, r3
+ 785 042a 5F4A     		ldr	r2, .L59+4
+ 786 042c 0B46     		mov	r3, r1
+ 787 042e 9B00     		lsls	r3, r3, #2
+ 788 0430 0B44     		add	r3, r3, r1
+ 789 0432 9B00     		lsls	r3, r3, #2
+ 790 0434 1344     		add	r3, r3, r2
+ 791 0436 1033     		adds	r3, r3, #16
+ 792 0438 1A68     		ldr	r2, [r3]
+ 793              		.loc 1 143 69
+ 794 043a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 795              		.loc 1 143 84
+ 796 043c 1B02     		lsls	r3, r3, #8
+ 797              		.loc 1 143 60
+ 798 043e 5949     		ldr	r1, .L59
+ 799 0440 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 800 0442 0846     		mov	r0, r1
+ 801              		.loc 1 143 66
+ 802 0444 1A43     		orrs	r2, r2, r3
+ 803 0446 5849     		ldr	r1, .L59+4
+ 804 0448 0346     		mov	r3, r0
+ 805 044a 9B00     		lsls	r3, r3, #2
+ 806 044c 0344     		add	r3, r3, r0
+ 807 044e 9B00     		lsls	r3, r3, #2
+ 808 0450 0B44     		add	r3, r3, r1
+ 809 0452 1033     		adds	r3, r3, #16
+ 810 0454 1A60     		str	r2, [r3]
+ 811              		.loc 1 143 90
+ 812 0456 67E0     		b	.L44
+ 813              	.L32:
+ 144:User/Hardware/stp23l.c ****                 case 11: stp23l_data.points[stp23l_pnt_cnt].intg |= (uint32_t)byte << 16; break;
+ 814              		.loc 1 144 60
+ 815 0458 524B     		ldr	r3, .L59
+ 816 045a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 817 045c 1946     		mov	r1, r3
+ 818 045e 524A     		ldr	r2, .L59+4
+ 819 0460 0B46     		mov	r3, r1
+ 820 0462 9B00     		lsls	r3, r3, #2
+ 821 0464 0B44     		add	r3, r3, r1
+ 822 0466 9B00     		lsls	r3, r3, #2
+ 823 0468 1344     		add	r3, r3, r2
+ 824 046a 1033     		adds	r3, r3, #16
+ 825 046c 1A68     		ldr	r2, [r3]
+ 826              		.loc 1 144 69
+ 827 046e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 828              		.loc 1 144 84
+ 829 0470 1B04     		lsls	r3, r3, #16
+ 830              		.loc 1 144 60
+ 831 0472 4C49     		ldr	r1, .L59
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 18
+
+
+ 832 0474 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 833 0476 0846     		mov	r0, r1
+ 834              		.loc 1 144 66
+ 835 0478 1A43     		orrs	r2, r2, r3
+ 836 047a 4B49     		ldr	r1, .L59+4
+ 837 047c 0346     		mov	r3, r0
+ 838 047e 9B00     		lsls	r3, r3, #2
+ 839 0480 0344     		add	r3, r3, r0
+ 840 0482 9B00     		lsls	r3, r3, #2
+ 841 0484 0B44     		add	r3, r3, r1
+ 842 0486 1033     		adds	r3, r3, #16
+ 843 0488 1A60     		str	r2, [r3]
+ 844              		.loc 1 144 91
+ 845 048a 4DE0     		b	.L44
+ 846              	.L31:
+ 145:User/Hardware/stp23l.c ****                 case 12: stp23l_data.points[stp23l_pnt_cnt].intg |= (uint32_t)byte << 24; break;
+ 847              		.loc 1 145 60
+ 848 048c 454B     		ldr	r3, .L59
+ 849 048e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 850 0490 1946     		mov	r1, r3
+ 851 0492 454A     		ldr	r2, .L59+4
+ 852 0494 0B46     		mov	r3, r1
+ 853 0496 9B00     		lsls	r3, r3, #2
+ 854 0498 0B44     		add	r3, r3, r1
+ 855 049a 9B00     		lsls	r3, r3, #2
+ 856 049c 1344     		add	r3, r3, r2
+ 857 049e 1033     		adds	r3, r3, #16
+ 858 04a0 1A68     		ldr	r2, [r3]
+ 859              		.loc 1 145 69
+ 860 04a2 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 861              		.loc 1 145 84
+ 862 04a4 1B06     		lsls	r3, r3, #24
+ 863              		.loc 1 145 60
+ 864 04a6 3F49     		ldr	r1, .L59
+ 865 04a8 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 866 04aa 0846     		mov	r0, r1
+ 867              		.loc 1 145 66
+ 868 04ac 1A43     		orrs	r2, r2, r3
+ 869 04ae 3E49     		ldr	r1, .L59+4
+ 870 04b0 0346     		mov	r3, r0
+ 871 04b2 9B00     		lsls	r3, r3, #2
+ 872 04b4 0344     		add	r3, r3, r0
+ 873 04b6 9B00     		lsls	r3, r3, #2
+ 874 04b8 0B44     		add	r3, r3, r1
+ 875 04ba 1033     		adds	r3, r3, #16
+ 876 04bc 1A60     		str	r2, [r3]
+ 877              		.loc 1 145 91
+ 878 04be 33E0     		b	.L44
+ 879              	.L30:
+ 146:User/Hardware/stp23l.c ****                 case 13: stp23l_data.points[stp23l_pnt_cnt].reftof = byte; break;
+ 880              		.loc 1 146 60
+ 881 04c0 384B     		ldr	r3, .L59
+ 882 04c2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 883 04c4 1946     		mov	r1, r3
+ 884              		.loc 1 146 68
+ 885 04c6 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 886 04c8 18B2     		sxth	r0, r3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 19
+
+
+ 887 04ca 374A     		ldr	r2, .L59+4
+ 888 04cc 0B46     		mov	r3, r1
+ 889 04ce 9B00     		lsls	r3, r3, #2
+ 890 04d0 0B44     		add	r3, r3, r1
+ 891 04d2 9B00     		lsls	r3, r3, #2
+ 892 04d4 1344     		add	r3, r3, r2
+ 893 04d6 1433     		adds	r3, r3, #20
+ 894 04d8 0246     		mov	r2, r0	@ movhi
+ 895 04da 1A80     		strh	r2, [r3]	@ movhi
+ 896              		.loc 1 146 76
+ 897 04dc 24E0     		b	.L44
+ 898              	.L28:
+ 147:User/Hardware/stp23l.c ****                 case 14: // 单个测量点解析完成，计数+1
+ 148:User/Hardware/stp23l.c ****                     stp23l_data.points[stp23l_pnt_cnt].reftof |= (int16_t)byte << 8;
+ 899              		.loc 1 148 55
+ 900 04de 314B     		ldr	r3, .L59
+ 901 04e0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 902 04e2 1946     		mov	r1, r3
+ 903 04e4 304A     		ldr	r2, .L59+4
+ 904 04e6 0B46     		mov	r3, r1
+ 905 04e8 9B00     		lsls	r3, r3, #2
+ 906 04ea 0B44     		add	r3, r3, r1
+ 907 04ec 9B00     		lsls	r3, r3, #2
+ 908 04ee 1344     		add	r3, r3, r2
+ 909 04f0 1433     		adds	r3, r3, #20
+ 910 04f2 B3F90020 		ldrsh	r2, [r3]
+ 911              		.loc 1 148 63
+ 912 04f6 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 913 04f8 1BB2     		sxth	r3, r3
+ 914 04fa 1B02     		lsls	r3, r3, #8
+ 915 04fc 1BB2     		sxth	r3, r3
+ 916              		.loc 1 148 55
+ 917 04fe 2949     		ldr	r1, .L59
+ 918 0500 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 919              		.loc 1 148 63
+ 920 0502 1343     		orrs	r3, r3, r2
+ 921 0504 18B2     		sxth	r0, r3
+ 922 0506 284A     		ldr	r2, .L59+4
+ 923 0508 0B46     		mov	r3, r1
+ 924 050a 9B00     		lsls	r3, r3, #2
+ 925 050c 0B44     		add	r3, r3, r1
+ 926 050e 9B00     		lsls	r3, r3, #2
+ 927 0510 1344     		add	r3, r3, r2
+ 928 0512 1433     		adds	r3, r3, #20
+ 929 0514 0246     		mov	r2, r0	@ movhi
+ 930 0516 1A80     		strh	r2, [r3]	@ movhi
+ 149:User/Hardware/stp23l.c ****                     stp23l_pnt_cnt++;
+ 931              		.loc 1 149 35
+ 932 0518 224B     		ldr	r3, .L59
+ 933 051a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 934 051c 0133     		adds	r3, r3, #1
+ 935 051e DAB2     		uxtb	r2, r3
+ 936 0520 204B     		ldr	r3, .L59
+ 937 0522 1A70     		strb	r2, [r3]
+ 150:User/Hardware/stp23l.c ****                     break;
+ 938              		.loc 1 150 21
+ 939 0524 00E0     		b	.L44
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 20
+
+
+ 940              	.L55:
+ 151:User/Hardware/stp23l.c ****                 default: break;
+ 941              		.loc 1 151 26
+ 942 0526 00BF     		nop
+ 943              	.L44:
+ 152:User/Hardware/stp23l.c ****             }
+ 153:User/Hardware/stp23l.c ****             stp23l_crc += byte;
+ 944              		.loc 1 153 24
+ 945 0528 204B     		ldr	r3, .L59+8
+ 946 052a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 947 052c FB79     		ldrb	r3, [r7, #7]
+ 948 052e 1344     		add	r3, r3, r2
+ 949 0530 DAB2     		uxtb	r2, r3
+ 950 0532 1E4B     		ldr	r3, .L59+8
+ 951 0534 1A70     		strb	r2, [r3]
+ 154:User/Hardware/stp23l.c ****             stp23l_state++;
+ 952              		.loc 1 154 25
+ 953 0536 1E4B     		ldr	r3, .L59+12
+ 954 0538 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 955 053a 0133     		adds	r3, r3, #1
+ 956 053c DAB2     		uxtb	r2, r3
+ 957 053e 1C4B     		ldr	r3, .L59+12
+ 958 0540 1A70     		strb	r2, [r3]
+ 155:User/Hardware/stp23l.c ****             return;
+ 959              		.loc 1 155 13
+ 960 0542 6CE0     		b	.L4
+ 961              	.L26:
+ 156:User/Hardware/stp23l.c ****         }
+ 157:User/Hardware/stp23l.c **** 
+ 158:User/Hardware/stp23l.c ****         // 解析4字节时间戳（180~183字节：STP23L_HEAD_LEN+12*15 ~ STP23L_HEAD_LEN+183）
+ 159:User/Hardware/stp23l.c ****         if(stp23l_state < (STP23L_HEAD_LEN + STP23L_DATA_LEN))
+ 962              		.loc 1 159 25
+ 963 0544 1A4B     		ldr	r3, .L59+12
+ 964 0546 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 965              		.loc 1 159 11
+ 966 0548 C12B     		cmp	r3, #193
+ 967 054a 4CD8     		bhi	.L25
+ 160:User/Hardware/stp23l.c ****         {
+ 161:User/Hardware/stp23l.c ****             ts_byte_idx = stp23l_state - (STP23L_HEAD_LEN + STP23L_POINT_NUM * STP23L_POINT_BYTES);
+ 968              		.loc 1 161 40
+ 969 054c 184B     		ldr	r3, .L59+12
+ 970 054e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 971              		.loc 1 161 25
+ 972 0550 4233     		adds	r3, r3, #66
+ 973 0552 BB73     		strb	r3, [r7, #14]
+ 162:User/Hardware/stp23l.c ****             switch(ts_byte_idx)
+ 974              		.loc 1 162 13
+ 975 0554 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 976 0556 032B     		cmp	r3, #3
+ 977 0558 36D8     		bhi	.L56
+ 978 055a 01A2     		adr	r2, .L47
+ 979 055c 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 980              		.p2align 2
+ 981              	.L47:
+ 982 0560 71050000 		.word	.L50+1
+ 983 0564 7B050000 		.word	.L49+1
+ 984 0568 8F050000 		.word	.L48+1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 21
+
+
+ 985 056c B5050000 		.word	.L46+1
+ 986              		.p2align 1
+ 987              	.L50:
+ 163:User/Hardware/stp23l.c ****             {
+ 164:User/Hardware/stp23l.c ****                 case 0: stp23l_data.timestamp = byte; break;
+ 988              		.loc 1 164 47
+ 989 0570 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 990 0572 0D4A     		ldr	r2, .L59+4
+ 991 0574 C2F8F430 		str	r3, [r2, #244]
+ 992              		.loc 1 164 55
+ 993 0578 27E0     		b	.L51
+ 994              	.L49:
+ 165:User/Hardware/stp23l.c ****                 case 1: stp23l_data.timestamp |= (uint32_t)byte << 8; break;
+ 995              		.loc 1 165 36
+ 996 057a 0B4B     		ldr	r3, .L59+4
+ 997 057c D3F8F420 		ldr	r2, [r3, #244]
+ 998              		.loc 1 165 50
+ 999 0580 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1000              		.loc 1 165 65
+ 1001 0582 1B02     		lsls	r3, r3, #8
+ 1002              		.loc 1 165 47
+ 1003 0584 1343     		orrs	r3, r3, r2
+ 1004 0586 084A     		ldr	r2, .L59+4
+ 1005 0588 C2F8F430 		str	r3, [r2, #244]
+ 1006              		.loc 1 165 71
+ 1007 058c 1DE0     		b	.L51
+ 1008              	.L48:
+ 166:User/Hardware/stp23l.c ****                 case 2: stp23l_data.timestamp |= (uint32_t)byte << 16; break;
+ 1009              		.loc 1 166 36
+ 1010 058e 064B     		ldr	r3, .L59+4
+ 1011 0590 D3F8F420 		ldr	r2, [r3, #244]
+ 1012              		.loc 1 166 50
+ 1013 0594 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1014              		.loc 1 166 65
+ 1015 0596 1B04     		lsls	r3, r3, #16
+ 1016              		.loc 1 166 47
+ 1017 0598 1343     		orrs	r3, r3, r2
+ 1018 059a 034A     		ldr	r2, .L59+4
+ 1019 059c C2F8F430 		str	r3, [r2, #244]
+ 1020              		.loc 1 166 72
+ 1021 05a0 13E0     		b	.L51
+ 1022              	.L60:
+ 1023 05a2 00BF     		.align	2
+ 1024              	.L59:
+ 1025 05a4 00000000 		.word	stp23l_pnt_cnt
+ 1026 05a8 00000000 		.word	stp23l_data
+ 1027 05ac 00000000 		.word	stp23l_crc
+ 1028 05b0 00000000 		.word	stp23l_state
+ 1029              	.L46:
+ 167:User/Hardware/stp23l.c ****                 case 3: stp23l_data.timestamp |= (uint32_t)byte << 24; break;
+ 1030              		.loc 1 167 36
+ 1031 05b4 1B4B     		ldr	r3, .L61
+ 1032 05b6 D3F8F420 		ldr	r2, [r3, #244]
+ 1033              		.loc 1 167 50
+ 1034 05ba FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1035              		.loc 1 167 65
+ 1036 05bc 1B06     		lsls	r3, r3, #24
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 22
+
+
+ 1037              		.loc 1 167 47
+ 1038 05be 1343     		orrs	r3, r3, r2
+ 1039 05c0 184A     		ldr	r2, .L61
+ 1040 05c2 C2F8F430 		str	r3, [r2, #244]
+ 1041              		.loc 1 167 72
+ 1042 05c6 00E0     		b	.L51
+ 1043              	.L56:
+ 168:User/Hardware/stp23l.c ****                 default: break;
+ 1044              		.loc 1 168 26
+ 1045 05c8 00BF     		nop
+ 1046              	.L51:
+ 169:User/Hardware/stp23l.c ****             }
+ 170:User/Hardware/stp23l.c ****             stp23l_crc += byte;
+ 1047              		.loc 1 170 24
+ 1048 05ca 174B     		ldr	r3, .L61+4
+ 1049 05cc 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1050 05ce FB79     		ldrb	r3, [r7, #7]
+ 1051 05d0 1344     		add	r3, r3, r2
+ 1052 05d2 DAB2     		uxtb	r2, r3
+ 1053 05d4 144B     		ldr	r3, .L61+4
+ 1054 05d6 1A70     		strb	r2, [r3]
+ 171:User/Hardware/stp23l.c ****             stp23l_state++;
+ 1055              		.loc 1 171 25
+ 1056 05d8 144B     		ldr	r3, .L61+8
+ 1057 05da 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1058 05dc 0133     		adds	r3, r3, #1
+ 1059 05de DAB2     		uxtb	r2, r3
+ 1060 05e0 124B     		ldr	r3, .L61+8
+ 1061 05e2 1A70     		strb	r2, [r3]
+ 172:User/Hardware/stp23l.c ****             return;
+ 1062              		.loc 1 172 13
+ 1063 05e4 1BE0     		b	.L4
+ 1064              	.L25:
+ 173:User/Hardware/stp23l.c ****         }
+ 174:User/Hardware/stp23l.c ****     }
+ 175:User/Hardware/stp23l.c **** 
+ 176:User/Hardware/stp23l.c ****     /************************* 第五步：解析校验码并验证，完成解析 *************************/
+ 177:User/Hardware/stp23l.c ****     if(stp23l_state == STP23L_PACK_LEN - 1)
+ 1065              		.loc 1 177 21
+ 1066 05e6 114B     		ldr	r3, .L61+8
+ 1067 05e8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1068              		.loc 1 177 7
+ 1069 05ea C22B     		cmp	r3, #194
+ 1070 05ec 17D1     		bne	.L4
+ 178:User/Hardware/stp23l.c ****     {
+ 179:User/Hardware/stp23l.c ****         // 校验码匹配：接收的字节 == 累加的校验和（低8位）
+ 180:User/Hardware/stp23l.c ****         if(byte == stp23l_crc)
+ 1071              		.loc 1 180 17
+ 1072 05ee 0E4B     		ldr	r3, .L61+4
+ 1073 05f0 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1074              		.loc 1 180 11
+ 1075 05f2 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 1076 05f4 9A42     		cmp	r2, r3
+ 1077 05f6 0DD1     		bne	.L52
+ 181:User/Hardware/stp23l.c ****         {
+ 182:User/Hardware/stp23l.c ****             stp23l_data.parse_ok = 1;    // 置位解析完成标志
+ 1078              		.loc 1 182 34
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 23
+
+
+ 1079 05f8 0A4B     		ldr	r3, .L61
+ 1080 05fa 0122     		movs	r2, #1
+ 1081 05fc 1A70     		strb	r2, [r3]
+ 183:User/Hardware/stp23l.c ****             stp23l_data.recv_cnt++;      // 成功接收计数+1
+ 1082              		.loc 1 183 24
+ 1083 05fe 094B     		ldr	r3, .L61
+ 1084 0600 D3F8F830 		ldr	r3, [r3, #248]
+ 1085              		.loc 1 183 33
+ 1086 0604 0133     		adds	r3, r3, #1
+ 1087 0606 074A     		ldr	r2, .L61
+ 1088 0608 C2F8F830 		str	r3, [r2, #248]
+ 184:User/Hardware/stp23l.c ****             stp23l_data.parse_err = 0;   // 清除错误标志
+ 1089              		.loc 1 184 35
+ 1090 060c 054B     		ldr	r3, .L61
+ 1091 060e 0022     		movs	r2, #0
+ 1092 0610 5A70     		strb	r2, [r3, #1]
+ 1093 0612 02E0     		b	.L53
+ 1094              	.L52:
+ 185:User/Hardware/stp23l.c ****         }
+ 186:User/Hardware/stp23l.c ****         else
+ 187:User/Hardware/stp23l.c ****         {
+ 188:User/Hardware/stp23l.c ****             stp23l_data.parse_err = 1;   // 校验失败，置位错误标志
+ 1095              		.loc 1 188 35
+ 1096 0614 034B     		ldr	r3, .L61
+ 1097 0616 0122     		movs	r2, #1
+ 1098 0618 5A70     		strb	r2, [r3, #1]
+ 1099              	.L53:
+ 189:User/Hardware/stp23l.c ****         }
+ 190:User/Hardware/stp23l.c ****         STP23L_Reset(); // 解析完成/失败，均复位状态机，准备下一包解析
+ 1100              		.loc 1 190 9
+ 1101 061a FFF7FEFF 		bl	STP23L_Reset
+ 1102              	.L4:
+ 191:User/Hardware/stp23l.c ****     }
+ 192:User/Hardware/stp23l.c **** }...
+ 1103              		.loc 1 192 1
+ 1104 061e 1037     		adds	r7, r7, #16
+ 1105              	.LCFI5:
+ 1106              		.cfi_def_cfa_offset 8
+ 1107 0620 BD46     		mov	sp, r7
+ 1108              	.LCFI6:
+ 1109              		.cfi_def_cfa_register 13
+ 1110              		@ sp needed
+ 1111 0622 80BD     		pop	{r7, pc}
+ 1112              	.L62:
+ 1113              		.align	2
+ 1114              	.L61:
+ 1115 0624 00000000 		.word	stp23l_data
+ 1116 0628 00000000 		.word	stp23l_crc
+ 1117 062c 00000000 		.word	stp23l_state
+ 1118              		.cfi_endproc
+ 1119              	.LFE2:
+ 1121              		.text
+ 1122              	.Letext0:
+ 1123              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
+ 1124              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
+ 1125              		.file 4 "User/Hardware/stp23l.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stp23l.c
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:24     .bss.stp23l_data:00000000 stp23l_data
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:21     .bss.stp23l_data:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:29     .bss.stp23l_state:00000000 stp23l_state
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:30     .bss.stp23l_state:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:34     .bss.stp23l_crc:00000000 stp23l_crc
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:35     .bss.stp23l_crc:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:37     .bss.stp23l_datalen:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:40     .bss.stp23l_datalen:00000000 stp23l_datalen
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:43     .bss.stp23l_offset:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:46     .bss.stp23l_offset:00000000 stp23l_offset
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:51     .bss.stp23l_pnt_cnt:00000000 stp23l_pnt_cnt
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:52     .bss.stp23l_pnt_cnt:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:54     .bss.stp23l_last_tick:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:57     .bss.stp23l_last_tick:00000000 stp23l_last_tick
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:60     .text.STP23L_Reset:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:66     .text.STP23L_Reset:00000000 STP23L_Reset
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:118    .text.STP23L_Reset:00000038 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:129    .text.STP23L_ParseByte:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:135    .text.STP23L_ParseByte:00000000 STP23L_ParseByte
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:242    .text.STP23L_ParseByte:0000008c $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:248    .text.STP23L_ParseByte:000000a4 $t
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:492    .text.STP23L_ParseByte:00000224 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:507    .text.STP23L_ParseByte:00000260 $t
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:565    .text.STP23L_ParseByte:000002bc $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:575    .text.STP23L_ParseByte:000002dc $t
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:982    .text.STP23L_ParseByte:00000560 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:986    .text.STP23L_ParseByte:00000570 $t
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:1025   .text.STP23L_ParseByte:000005a4 $d
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:1031   .text.STP23L_ParseByte:000005b4 $t
+C:\Users\Godwin\AppData\Local\Temp\ccZwTlmt.s:1115   .text.STP23L_ParseByte:00000624 $d
+
+UNDEFINED SYMBOLS
+HAL_GetTick

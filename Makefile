@@ -121,6 +121,7 @@ User/Hardware/pump_control.c \
 User/Hardware/head.c \
 User/Hardware/IMU_updata.c \
 User/Hardware/Sbus.c \
+User/Hardware/stp23l.c \
 User/Hardware/LED.c \
 User/Hardware/buzzer.c \
 User/Hardware/Unitree/crc_ccitt.c \

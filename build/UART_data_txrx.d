@@ -39,7 +39,7 @@ build/UART_data_txrx.o: User/BSP/UART_data_txrx.c Algorithm/fifo.h \
  User/BSP/UART_data_txrx.h Core/Inc/main.h Core/Inc/usart.h \
  Core/Inc/main.h Core/Inc/struct_typedef.h \
  User/Hardware/Unitree/gom_protocol.h User/Hardware/Unitree/crc_ccitt.h \
- User/Hardware/Sbus.h
+ User/Hardware/Sbus.h User/Hardware/stp23l.h
 Algorithm/fifo.h:
 Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
 Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h:
@@ -88,3 +88,4 @@ Core/Inc/struct_typedef.h:
 User/Hardware/Unitree/gom_protocol.h:
 User/Hardware/Unitree/crc_ccitt.h:
 User/Hardware/Sbus.h:
+User/Hardware/stp23l.h:

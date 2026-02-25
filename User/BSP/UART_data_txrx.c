@@ -16,6 +16,7 @@
 #include "UART_data_txrx.h"
 #include "gom_protocol.h"
 #include "Sbus.h"
+#include "stp23l.h"
 uint32_t Flag_T13 = 0;
 
 // DMA控制变量
@@ -109,7 +110,15 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
   }
   else if (huart == &huart7) //升降杆高度读取
   {
- 
+    if(Size > 0 && Size <= UART_BUFFER_SIZE) // 防止越界
+    {
+        for(uint16_t i = 0; i < Size; i++)
+        {
+            STP23L_ParseByte(UART7_data.rev_data[i]); // 逐个字节传入解析函数
+        }
+    }
+      HAL_UARTEx_ReceiveToIdle_DMA(huart, UART7_data.rev_data, UART_BUFFER_SIZE);
+    __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
   else if (huart == &huart10) // 图传链路裁判系统
   {
