@@ -74,9 +74,9 @@ extern DMA_HandleTypeDef hdma_uart7_rx;
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
 
@@ -106,6 +106,8 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
+  MX_UART5_Init();
+  MX_UART7_Init();
   MX_FDCAN1_Init();
   MX_FDCAN2_Init();
   MX_SPI2_Init();
@@ -113,8 +115,6 @@ int main(void)
   MX_TIM13_Init();
   MX_TIM14_Init();
   MX_SPI6_Init();
-  MX_UART5_Init();
-  MX_UART7_Init();
   MX_USART10_UART_Init();
   MX_FDCAN3_Init();
   MX_IWDG1_Init();
@@ -123,7 +123,7 @@ int main(void)
   MX_TIM12_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  HAL_IWDG_Refresh(&hiwdg1);
+ // HAL_IWDG_Refresh(&hiwdg1);
   /*INIT*/
   uart_init();
   can_init();
@@ -131,17 +131,15 @@ int main(void)
   Music_init();
   Arm_Init();
   Head_Init();
-  HAL_IWDG_Refresh(&hiwdg1);
+ HAL_IWDG_Refresh(&hiwdg1);
   remote_control_init();
   Pump_Init();
   Lift_Init();
 
-
-
   /* USER CODE END 2 */
 
   /* Init scheduler */
-  osKernelInitialize();  /* Call init function for freertos objects (in cmsis_os2.c) */
+  osKernelInitialize(); /* Call init function for freertos objects (in cmsis_os2.c) */
   MX_FREERTOS_Init();
 
   /* Start scheduler */
@@ -161,29 +159,30 @@ int main(void)
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Supply configuration update enable
-  */
+   */
   HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
 
   /** Configure the main internal regulator output voltage
-  */
+   */
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE0);
 
-  while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
+  while (!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY))
+  {
+  }
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48|RCC_OSCILLATORTYPE_HSI
-                              |RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
+   * in the RCC_OscInitTypeDef structure.
+   */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI48 | RCC_OSCILLATORTYPE_HSI | RCC_OSCILLATORTYPE_LSI | RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSIState = RCC_HSI_DIV1;
   RCC_OscInitStruct.HSICalibrationValue = 64;
@@ -205,10 +204,8 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
-                              |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;
+   */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2 | RCC_CLOCKTYPE_D3PCLK1 | RCC_CLOCKTYPE_D1PCLK1;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;
@@ -229,7 +226,7 @@ void SystemClock_Config(void)
 
 /* USER CODE END 4 */
 
- /* MPU Configuration */
+/* MPU Configuration */
 
 void MPU_Config(void)
 {
@@ -239,7 +236,7 @@ void MPU_Config(void)
   HAL_MPU_Disable();
 
   /** Initializes and configures the Region and the memory to be protected
-  */
+   */
   MPU_InitStruct.Enable = MPU_REGION_ENABLE;
   MPU_InitStruct.Number = MPU_REGION_NUMBER0;
   MPU_InitStruct.BaseAddress = 0x08000000;
@@ -255,7 +252,7 @@ void MPU_Config(void)
   HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
   /** Initializes and configures the Region and the memory to be protected
-  */
+   */
   MPU_InitStruct.Number = MPU_REGION_NUMBER1;
   MPU_InitStruct.BaseAddress = 0x20000000;
   MPU_InitStruct.Size = MPU_REGION_SIZE_128MB;
@@ -266,32 +263,31 @@ void MPU_Config(void)
   HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
   /** Initializes and configures the Region and the memory to be protected
-  */
+   */
   MPU_InitStruct.Number = MPU_REGION_NUMBER2;
   HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
   /** Initializes and configures the Region and the memory to be protected
-  */
+   */
   MPU_InitStruct.Number = MPU_REGION_NUMBER3;
   HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
   /** Initializes and configures the Region and the memory to be protected
-  */
+   */
   MPU_InitStruct.Number = MPU_REGION_NUMBER4;
   HAL_MPU_ConfigRegion(&MPU_InitStruct);
   /* Enables the MPU */
   HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
-
 }
 
 /**
-  * @brief  Period elapsed callback in non blocking mode
-  * @note   This function is called  when TIM23 interrupt took place, inside
-  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
-  * a global variable "uwTick" used as application time base.
-  * @param  htim : TIM handle
-  * @retval None
-  */
+ * @brief  Period elapsed callback in non blocking mode
+ * @note   This function is called  when TIM23 interrupt took place, inside
+ * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+ * a global variable "uwTick" used as application time base.
+ * @param  htim : TIM handle
+ * @retval None
+ */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
@@ -307,8 +303,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     static uint8_t i;
     IMU_updata();
     if (i >= 5)
-    { // 降频�????200hz
-   
+    { // 降频�?????200hz
+
       i = 0;
     }
     i++;
@@ -317,9 +313,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 }
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -332,12 +328,12 @@ void Error_Handler(void)
 }
 #ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */

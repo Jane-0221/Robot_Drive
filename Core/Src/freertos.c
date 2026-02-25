@@ -35,6 +35,7 @@
 #include "task.h"
 #include "arm.h"
 #include "head.h"
+#include "lift_control.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,51 +59,51 @@ uint32_t color = 0;
 /* Definitions for Remote_control */
 osThreadId_t Remote_controlHandle;
 const osThreadAttr_t Remote_control_attributes = {
-  .name = "Remote_control",
-  .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityNormal1,
+    .name = "Remote_control",
+    .stack_size = 512 * 4,
+    .priority = (osPriority_t)osPriorityNormal1,
 };
 /* Definitions for Eng_arm */
 osThreadId_t Eng_armHandle;
 const osThreadAttr_t Eng_arm_attributes = {
-  .name = "Eng_arm",
-  .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+    .name = "Eng_arm",
+    .stack_size = 512 * 4,
+    .priority = (osPriority_t)osPriorityNormal,
 };
 /* Definitions for Chassis */
 osThreadId_t ChassisHandle;
 const osThreadAttr_t Chassis_attributes = {
-  .name = "Chassis",
-  .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+    .name = "Chassis",
+    .stack_size = 512 * 4,
+    .priority = (osPriority_t)osPriorityLow,
 };
 /* Definitions for Motor_control */
 osThreadId_t Motor_controlHandle;
 const osThreadAttr_t Motor_control_attributes = {
-  .name = "Motor_control",
-  .stack_size = 256 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+    .name = "Motor_control",
+    .stack_size = 256 * 4,
+    .priority = (osPriority_t)osPriorityLow,
 };
 /* Definitions for Yaw */
 osThreadId_t YawHandle;
 const osThreadAttr_t Yaw_attributes = {
-  .name = "Yaw",
-  .stack_size = 256 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+    .name = "Yaw",
+    .stack_size = 256 * 4,
+    .priority = (osPriority_t)osPriorityLow,
 };
 /* Definitions for Referee */
 osThreadId_t RefereeHandle;
 const osThreadAttr_t Referee_attributes = {
-  .name = "Referee",
-  .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+    .name = "Referee",
+    .stack_size = 512 * 4,
+    .priority = (osPriority_t)osPriorityLow,
 };
 /* Definitions for Log_and_debug */
 osThreadId_t Log_and_debugHandle;
 const osThreadAttr_t Log_and_debug_attributes = {
-  .name = "Log_and_debug",
-  .stack_size = 256 * 4,
-  .priority = (osPriority_t) osPriorityLow,
+    .name = "Log_and_debug",
+    .stack_size = 256 * 4,
+    .priority = (osPriority_t)osPriorityLow,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -140,11 +141,12 @@ void vApplicationIdleHook(void)
 /* USER CODE END 2 */
 
 /**
-  * @brief  FreeRTOS initialization
-  * @param  None
-  * @retval None
-  */
-void MX_FREERTOS_Init(void) {
+ * @brief  FreeRTOS initialization
+ * @param  None
+ * @retval None
+ */
+void MX_FREERTOS_Init(void)
+{
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
@@ -194,7 +196,6 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
   /* USER CODE END RTOS_EVENTS */
-
 }
 
 /* USER CODE BEGIN Header_Remote_control_Task */
@@ -245,13 +246,13 @@ void Eng_arm_Task(void *argument)
  * @retval None
  */
 /* USER CODE END Header_Chassis_Task */
-void Chassis_Task(void *argument)
+void Chassis_Task(void *argument) // 升降
 {
   /* USER CODE BEGIN Chassis_Task */
   /* Infinite loop */
   for (;;)
   {
-
+    Lift_RefreshHeight();
     HAL_IWDG_Refresh(&hiwdg1);
     osDelay(1);
   }
@@ -326,16 +327,16 @@ void Referee_Task(void *argument)
 void Log_and_debug_Task(void *argument)
 {
   /* USER CODE BEGIN Log_and_debug_Task */
-
+  LEDshowcolor(RED);
+  osDelay(500);
+  LEDshowcolor(BLUE);
+  osDelay(500);
+  LEDshowcolor(GREEN);
+  osDelay(500);
   /* Infinite loop */
   for (;;)
   {
-    LEDshowcolor(RED);
-    osDelay(500);
-    LEDshowcolor(BLUE);
-    osDelay(500);
-    LEDshowcolor(GREEN);
-    osDelay(500);
+
     // Music_play(melody);
     //  printf("hello\n");
     osDelay(1);
@@ -347,4 +348,3 @@ void Log_and_debug_Task(void *argument)
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
-

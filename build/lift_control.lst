@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -19,747 +19,891 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 1
   16              	.Ltext0:
   17              		.cfi_sections	.debug_frame
   18              		.file 1 "User/Hardware/lift_control.c"
-  19              		.global	lift_state
-  20              		.section	.data.lift_state,"aw"
-  23              	lift_state:
-  24 0000 02       		.byte	2
-  25              		.global	lift_current_height
-  26              		.section	.bss.lift_current_height,"aw",%nobits
-  27              		.align	1
-  30              	lift_current_height:
-  31 0000 0000     		.space	2
-  32              		.section	.text.Lift_Init,"ax",%progbits
-  33              		.align	1
-  34              		.global	Lift_Init
-  35              		.syntax unified
-  36              		.thumb
-  37              		.thumb_func
-  39              	Lift_Init:
-  40              	.LFB144:
+  19              		.section	.text.STP23L_ClearOkFlag,"ax",%progbits
+  20              		.align	1
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	STP23L_ClearOkFlag:
+  26              	.LFB144:
+  27              		.file 2 "User/Hardware/stp23l.h"
+   1:User/Hardware/stp23l.h **** #ifndef STP23L_H
+   2:User/Hardware/stp23l.h **** #define STP23L_H
+   3:User/Hardware/stp23l.h **** 
+   4:User/Hardware/stp23l.h **** #include "stdint.h"
+   5:User/Hardware/stp23l.h **** 
+   6:User/Hardware/stp23l.h **** /************************* 严格遵循STP23L官方手册宏定义 *************************/
+   7:User/Hardware/stp23l.h **** #define STP23L_HEADER            0xAAU        // 数据包起始符
+   8:User/Hardware/stp23l.h **** #define STP23L_DEV_ADDR          0x00U        // 设备地址（保留位）
+   9:User/Hardware/stp23l.h **** #define STP23L_PACK_TOTAL_LEN    195U         // 整包总字节：10包头+184数据+1校验
+  10:User/Hardware/stp23l.h **** #define STP23L_HEAD_LEN          10U          // 包头长度
+  11:User/Hardware/stp23l.h **** #define STP23L_DATA_FIELD_LEN    0x00B8U      // 数据域长度184字节
+  12:User/Hardware/stp23l.h **** #define STP23L_POINT_NUM         12U          // 一帧12个测量点
+  13:User/Hardware/stp23l.h **** #define STP23L_POINT_BYTES       15U          // 每个测点15字节
+  14:User/Hardware/stp23l.h **** #define STP23L_TS_BYTES          4U           // 时间戳4字节
+  15:User/Hardware/stp23l.h **** #define STP23L_HEADER_BYTES      4U           // 4个AA起始符
+  16:User/Hardware/stp23l.h **** 
+  17:User/Hardware/stp23l.h **** /************************* 手册核心测距指标（硬过滤） *************************/
+  18:User/Hardware/stp23l.h **** #define STP23L_CONFIDENCE_THRESH 80U          // 置信度阈值（0~100，可配置）
+  19:User/Hardware/stp23l.h **** #define STP23L_DIST_BLIND        30           // 手册标注盲区：最小有效距离30mm
+  20:User/Hardware/stp23l.h **** #define STP23L_DIST_MAX          7500         // 手册标注最大有效距离7500mm
+  21:User/Hardware/stp23l.h **** 
+  22:User/Hardware/stp23l.h **** /************************* 命令码宏定义 *************************/
+  23:User/Hardware/stp23l.h **** #define STP23L_CMD_GET_DIST      0x02U        // 获取测量数据（核心）
+  24:User/Hardware/stp23l.h **** #define STP23L_CMD_RESET         0x0DU        // 复位
+  25:User/Hardware/stp23l.h **** #define STP23L_CMD_STOP          0x0FU        // 停止传输
+  26:User/Hardware/stp23l.h **** #define STP23L_CMD_ACK           0x10U        // 应答
+  27:User/Hardware/stp23l.h **** #define STP23L_CMD_VERSION       0x14U        // 获取传感器信息
+  28:User/Hardware/stp23l.h **** 
+  29:User/Hardware/stp23l.h **** /************************* 测点结构体（严格匹配手册） *************************/
+  30:User/Hardware/stp23l.h **** typedef struct
+  31:User/Hardware/stp23l.h **** {
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 2
+
+
+  32:User/Hardware/stp23l.h ****     int16_t  distance;   // 距离(mm) 2B小端
+  33:User/Hardware/stp23l.h ****     uint16_t noise;      // 环境噪声 2B小端
+  34:User/Hardware/stp23l.h ****     uint32_t peak;       // 接收强度 4B小端
+  35:User/Hardware/stp23l.h ****     uint8_t  confidence; // 置信度 1B（噪声+接收强度融合）
+  36:User/Hardware/stp23l.h ****     uint32_t intg;       // 积分次数 4B小端
+  37:User/Hardware/stp23l.h ****     int16_t  reftof;     // 温度表征值 2B小端
+  38:User/Hardware/stp23l.h **** }STP23L_PointDef;
+  39:User/Hardware/stp23l.h **** 
+  40:User/Hardware/stp23l.h **** /************************* 全局解析数据结构体（extern供外部调用） *************************/
+  41:User/Hardware/stp23l.h **** typedef struct
+  42:User/Hardware/stp23l.h **** {
+  43:User/Hardware/stp23l.h ****     uint8_t         parse_ok;    // 解析完成标志：1-帧解析完成，0-未完成
+  44:User/Hardware/stp23l.h ****     uint8_t         parse_err;   // 解析错误标志：1-校验/帧错误，0-正常
+  45:User/Hardware/stp23l.h ****     STP23L_PointDef points[STP23L_POINT_NUM]; // 12个测点原始数据
+  46:User/Hardware/stp23l.h ****     uint32_t        timestamp;   // 帧时间戳
+  47:User/Hardware/stp23l.h ****     uint32_t        recv_cnt;    // 成功接收帧数
+  48:User/Hardware/stp23l.h ****     uint8_t         cmd_code;    // 当前命令码
+  49:User/Hardware/stp23l.h **** }STP23L_DataDef;
+  50:User/Hardware/stp23l.h **** 
+  51:User/Hardware/stp23l.h **** extern STP23L_DataDef stp23l_data;
+  52:User/Hardware/stp23l.h **** 
+  53:User/Hardware/stp23l.h **** /************************* 核心函数声明 *************************/
+  54:User/Hardware/stp23l.h **** void STP23L_ParseData(uint8_t *buf, uint16_t size); // 整包解析函数
+  55:User/Hardware/stp23l.h **** void STP23L_Reset(void);                           // 解析复位
+  56:User/Hardware/stp23l.h **** static inline void STP23L_ClearOkFlag(void)        // 清除解析完成标志
+  57:User/Hardware/stp23l.h **** {
+  28              		.loc 2 57 1
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33 0000 80B4     		push	{r7}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 4
+  36              		.cfi_offset 7, -4
+  37 0002 00AF     		add	r7, sp, #0
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_register 7
+  58:User/Hardware/stp23l.h ****     stp23l_data.parse_ok = 0;
+  40              		.loc 2 58 26
+  41 0004 034B     		ldr	r3, .L2
+  42 0006 0022     		movs	r2, #0
+  43 0008 1A70     		strb	r2, [r3]
+  59:User/Hardware/stp23l.h **** }
+  44              		.loc 2 59 1
+  45 000a 00BF     		nop
+  46 000c BD46     		mov	sp, r7
+  47              	.LCFI2:
+  48              		.cfi_def_cfa_register 13
+  49              		@ sp needed
+  50 000e 5DF8047B 		ldr	r7, [sp], #4
+  51              	.LCFI3:
+  52              		.cfi_restore 7
+  53              		.cfi_def_cfa_offset 0
+  54 0012 7047     		bx	lr
+  55              	.L3:
+  56              		.align	2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 3
+
+
+  57              	.L2:
+  58 0014 00000000 		.word	stp23l_data
+  59              		.cfi_endproc
+  60              	.LFE144:
+  62              		.global	lift_state
+  63              		.section	.data.lift_state,"aw"
+  66              	lift_state:
+  67 0000 02       		.byte	2
+  68              		.global	lift_current_height
+  69              		.section	.bss.lift_current_height,"aw",%nobits
+  70              		.align	1
+  73              	lift_current_height:
+  74 0000 0000     		.space	2
+  75              		.global	lift_height_final
+  76              		.section	.bss.lift_height_final,"aw",%nobits
+  77              		.align	1
+  80              	lift_height_final:
+  81 0000 0000     		.space	2
+  82              		.section	.text.Lift_Init,"ax",%progbits
+  83              		.align	1
+  84              		.global	Lift_Init
+  85              		.syntax unified
+  86              		.thumb
+  87              		.thumb_func
+  89              	Lift_Init:
+  90              	.LFB145:
    1:User/Hardware/lift_control.c **** #include "lift_control.h"
    2:User/Hardware/lift_control.c **** #include "remote_control.h"
    3:User/Hardware/lift_control.c **** #include "usart.h"
    4:User/Hardware/lift_control.c **** #include "UART_data_txrx.h"
-   5:User/Hardware/lift_control.c **** // 定义全局变量
-   6:User/Hardware/lift_control.c **** LIFT_State lift_state = LIFT_STOP;      // 初始为停止
-   7:User/Hardware/lift_control.c **** uint16_t lift_current_height = 0;       // 初始高度0
-   8:User/Hardware/lift_control.c **** 
-   9:User/Hardware/lift_control.c **** // 底层电机控制函数（内部使用）
-  10:User/Hardware/lift_control.c **** static void Motor_Forward(void);
-  11:User/Hardware/lift_control.c **** static void Motor_Reverse(void);
-  12:User/Hardware/lift_control.c **** static void Motor_Stop(void);
-  13:User/Hardware/lift_control.c **** 
-  14:User/Hardware/lift_control.c **** /**
-  15:User/Hardware/lift_control.c ****  * @brief  初始化升降杆控制
-  16:User/Hardware/lift_control.c ****  * @note   确保电机停止，状态复位；引脚初始化通常在硬件初始化中完成
-  17:User/Hardware/lift_control.c ****  * @param  无
-  18:User/Hardware/lift_control.c ****  * @retval 无
-  19:User/Hardware/lift_control.c ****  */
-  20:User/Hardware/lift_control.c **** void Lift_Init(void)
-  21:User/Hardware/lift_control.c **** {
-  41              		.loc 1 21 1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 2
+   5:User/Hardware/lift_control.c **** #include "stp23l.h"
+   6:User/Hardware/lift_control.c **** // 定义全局变量
+   7:User/Hardware/lift_control.c **** LIFT_State lift_state = LIFT_STOP;      // 初始为停止
+   8:User/Hardware/lift_control.c **** uint16_t lift_current_height = 0;       // 初始高度0
+   9:User/Hardware/lift_control.c **** 
+  10:User/Hardware/lift_control.c **** //定义局部变量
+  11:User/Hardware/lift_control.c **** int16_t lift_height_final = 0; // 升降杆最终高度值（每帧更新一次）
+  12:User/Hardware/lift_control.c **** // 底层电机控制函数（内部使用）
+  13:User/Hardware/lift_control.c **** static void Motor_Forward(void);
+  14:User/Hardware/lift_control.c **** static void Motor_Reverse(void);
+  15:User/Hardware/lift_control.c **** static void Motor_Stop(void);
+  16:User/Hardware/lift_control.c **** 
+  17:User/Hardware/lift_control.c **** /**
+  18:User/Hardware/lift_control.c ****  * @brief  初始化升降杆控制
+  19:User/Hardware/lift_control.c ****  * @note   确保电机停止，状态复位；引脚初始化通常在硬件初始化中完成
+  20:User/Hardware/lift_control.c ****  * @param  无
+  21:User/Hardware/lift_control.c ****  * @retval 无
+  22:User/Hardware/lift_control.c ****  */
+  23:User/Hardware/lift_control.c **** void Lift_Init(void)
+  24:User/Hardware/lift_control.c **** {
+  91              		.loc 1 24 1
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 0
+  94              		@ frame_needed = 1, uses_anonymous_args = 0
+  95 0000 80B5     		push	{r7, lr}
+  96              	.LCFI4:
+  97              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 4
 
 
-  42              		.cfi_startproc
-  43              		@ args = 0, pretend = 0, frame = 0
-  44              		@ frame_needed = 1, uses_anonymous_args = 0
-  45 0000 80B5     		push	{r7, lr}
-  46              	.LCFI0:
-  47              		.cfi_def_cfa_offset 8
-  48              		.cfi_offset 7, -8
-  49              		.cfi_offset 14, -4
-  50 0002 00AF     		add	r7, sp, #0
-  51              	.LCFI1:
-  52              		.cfi_def_cfa_register 7
-  22:User/Hardware/lift_control.c ****     Motor_Stop();
-  53              		.loc 1 22 5
-  54 0004 FFF7FEFF 		bl	Motor_Stop
-  23:User/Hardware/lift_control.c ****     lift_state = LIFT_STOP;
-  55              		.loc 1 23 16
-  56 0008 034B     		ldr	r3, .L2
-  57 000a 0222     		movs	r2, #2
-  58 000c 1A70     		strb	r2, [r3]
-  24:User/Hardware/lift_control.c ****     lift_current_height = 0;
-  59              		.loc 1 24 25
-  60 000e 034B     		ldr	r3, .L2+4
-  61 0010 0022     		movs	r2, #0
-  62 0012 1A80     		strh	r2, [r3]	@ movhi
-  25:User/Hardware/lift_control.c **** }
-  63              		.loc 1 25 1
-  64 0014 00BF     		nop
-  65 0016 80BD     		pop	{r7, pc}
-  66              	.L3:
-  67              		.align	2
-  68              	.L2:
-  69 0018 00000000 		.word	lift_state
-  70 001c 00000000 		.word	lift_current_height
-  71              		.cfi_endproc
-  72              	.LFE144:
-  74              		.section	.text.Lift_Up,"ax",%progbits
-  75              		.align	1
-  76              		.global	Lift_Up
-  77              		.syntax unified
-  78              		.thumb
-  79              		.thumb_func
-  81              	Lift_Up:
-  82              	.LFB145:
-  26:User/Hardware/lift_control.c **** 
-  27:User/Hardware/lift_control.c **** /**
-  28:User/Hardware/lift_control.c ****  * @brief  设置上升状态
-  29:User/Hardware/lift_control.c ****  * @param  无
-  30:User/Hardware/lift_control.c ****  * @retval 无
-  31:User/Hardware/lift_control.c ****  */
-  32:User/Hardware/lift_control.c **** void Lift_Up(void)
-  33:User/Hardware/lift_control.c **** {
-  83              		.loc 1 33 1
-  84              		.cfi_startproc
-  85              		@ args = 0, pretend = 0, frame = 0
-  86              		@ frame_needed = 1, uses_anonymous_args = 0
-  87              		@ link register save eliminated.
-  88 0000 80B4     		push	{r7}
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 3
+  98              		.cfi_offset 7, -8
+  99              		.cfi_offset 14, -4
+ 100 0002 00AF     		add	r7, sp, #0
+ 101              	.LCFI5:
+ 102              		.cfi_def_cfa_register 7
+  25:User/Hardware/lift_control.c ****     Motor_Stop();
+ 103              		.loc 1 25 5
+ 104 0004 FFF7FEFF 		bl	Motor_Stop
+  26:User/Hardware/lift_control.c ****     lift_state = LIFT_STOP;
+ 105              		.loc 1 26 16
+ 106 0008 034B     		ldr	r3, .L5
+ 107 000a 0222     		movs	r2, #2
+ 108 000c 1A70     		strb	r2, [r3]
+  27:User/Hardware/lift_control.c ****     lift_current_height = 0;
+ 109              		.loc 1 27 25
+ 110 000e 034B     		ldr	r3, .L5+4
+ 111 0010 0022     		movs	r2, #0
+ 112 0012 1A80     		strh	r2, [r3]	@ movhi
+  28:User/Hardware/lift_control.c **** }
+ 113              		.loc 1 28 1
+ 114 0014 00BF     		nop
+ 115 0016 80BD     		pop	{r7, pc}
+ 116              	.L6:
+ 117              		.align	2
+ 118              	.L5:
+ 119 0018 00000000 		.word	lift_state
+ 120 001c 00000000 		.word	lift_current_height
+ 121              		.cfi_endproc
+ 122              	.LFE145:
+ 124              		.section	.text.Lift_Up,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	Lift_Up
+ 127              		.syntax unified
+ 128              		.thumb
+ 129              		.thumb_func
+ 131              	Lift_Up:
+ 132              	.LFB146:
+  29:User/Hardware/lift_control.c **** 
+  30:User/Hardware/lift_control.c **** /**
+  31:User/Hardware/lift_control.c ****  * @brief  设置上升状态
+  32:User/Hardware/lift_control.c ****  * @param  无
+  33:User/Hardware/lift_control.c ****  * @retval 无
+  34:User/Hardware/lift_control.c ****  */
+  35:User/Hardware/lift_control.c **** void Lift_Up(void)
+  36:User/Hardware/lift_control.c **** {
+ 133              		.loc 1 36 1
+ 134              		.cfi_startproc
+ 135              		@ args = 0, pretend = 0, frame = 0
+ 136              		@ frame_needed = 1, uses_anonymous_args = 0
+ 137              		@ link register save eliminated.
+ 138 0000 80B4     		push	{r7}
+ 139              	.LCFI6:
+ 140              		.cfi_def_cfa_offset 4
+ 141              		.cfi_offset 7, -4
+ 142 0002 00AF     		add	r7, sp, #0
+ 143              	.LCFI7:
+ 144              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 5
 
 
-  89              	.LCFI2:
-  90              		.cfi_def_cfa_offset 4
-  91              		.cfi_offset 7, -4
-  92 0002 00AF     		add	r7, sp, #0
-  93              	.LCFI3:
-  94              		.cfi_def_cfa_register 7
-  34:User/Hardware/lift_control.c ****     lift_state = LIFT_UP;
-  95              		.loc 1 34 16
-  96 0004 034B     		ldr	r3, .L5
-  97 0006 0022     		movs	r2, #0
-  98 0008 1A70     		strb	r2, [r3]
-  35:User/Hardware/lift_control.c **** }
-  99              		.loc 1 35 1
- 100 000a 00BF     		nop
- 101 000c BD46     		mov	sp, r7
- 102              	.LCFI4:
- 103              		.cfi_def_cfa_register 13
- 104              		@ sp needed
- 105 000e 5DF8047B 		ldr	r7, [sp], #4
- 106              	.LCFI5:
- 107              		.cfi_restore 7
- 108              		.cfi_def_cfa_offset 0
- 109 0012 7047     		bx	lr
- 110              	.L6:
- 111              		.align	2
- 112              	.L5:
- 113 0014 00000000 		.word	lift_state
- 114              		.cfi_endproc
- 115              	.LFE145:
- 117              		.section	.text.Lift_Down,"ax",%progbits
- 118              		.align	1
- 119              		.global	Lift_Down
- 120              		.syntax unified
- 121              		.thumb
- 122              		.thumb_func
- 124              	Lift_Down:
- 125              	.LFB146:
-  36:User/Hardware/lift_control.c **** 
-  37:User/Hardware/lift_control.c **** /**
-  38:User/Hardware/lift_control.c ****  * @brief  设置下降状态
-  39:User/Hardware/lift_control.c ****  * @param  无
-  40:User/Hardware/lift_control.c ****  * @retval 无
-  41:User/Hardware/lift_control.c ****  */
-  42:User/Hardware/lift_control.c **** void Lift_Down(void)
-  43:User/Hardware/lift_control.c **** {
- 126              		.loc 1 43 1
- 127              		.cfi_startproc
- 128              		@ args = 0, pretend = 0, frame = 0
- 129              		@ frame_needed = 1, uses_anonymous_args = 0
- 130              		@ link register save eliminated.
- 131 0000 80B4     		push	{r7}
- 132              	.LCFI6:
- 133              		.cfi_def_cfa_offset 4
- 134              		.cfi_offset 7, -4
- 135 0002 00AF     		add	r7, sp, #0
- 136              	.LCFI7:
- 137              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 4
+  37:User/Hardware/lift_control.c ****     lift_state = LIFT_UP;
+ 145              		.loc 1 37 16
+ 146 0004 034B     		ldr	r3, .L8
+ 147 0006 0022     		movs	r2, #0
+ 148 0008 1A70     		strb	r2, [r3]
+  38:User/Hardware/lift_control.c **** }
+ 149              		.loc 1 38 1
+ 150 000a 00BF     		nop
+ 151 000c BD46     		mov	sp, r7
+ 152              	.LCFI8:
+ 153              		.cfi_def_cfa_register 13
+ 154              		@ sp needed
+ 155 000e 5DF8047B 		ldr	r7, [sp], #4
+ 156              	.LCFI9:
+ 157              		.cfi_restore 7
+ 158              		.cfi_def_cfa_offset 0
+ 159 0012 7047     		bx	lr
+ 160              	.L9:
+ 161              		.align	2
+ 162              	.L8:
+ 163 0014 00000000 		.word	lift_state
+ 164              		.cfi_endproc
+ 165              	.LFE146:
+ 167              		.section	.text.Lift_Down,"ax",%progbits
+ 168              		.align	1
+ 169              		.global	Lift_Down
+ 170              		.syntax unified
+ 171              		.thumb
+ 172              		.thumb_func
+ 174              	Lift_Down:
+ 175              	.LFB147:
+  39:User/Hardware/lift_control.c **** 
+  40:User/Hardware/lift_control.c **** /**
+  41:User/Hardware/lift_control.c ****  * @brief  设置下降状态
+  42:User/Hardware/lift_control.c ****  * @param  无
+  43:User/Hardware/lift_control.c ****  * @retval 无
+  44:User/Hardware/lift_control.c ****  */
+  45:User/Hardware/lift_control.c **** void Lift_Down(void)
+  46:User/Hardware/lift_control.c **** {
+ 176              		.loc 1 46 1
+ 177              		.cfi_startproc
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 1, uses_anonymous_args = 0
+ 180              		@ link register save eliminated.
+ 181 0000 80B4     		push	{r7}
+ 182              	.LCFI10:
+ 183              		.cfi_def_cfa_offset 4
+ 184              		.cfi_offset 7, -4
+ 185 0002 00AF     		add	r7, sp, #0
+ 186              	.LCFI11:
+ 187              		.cfi_def_cfa_register 7
+  47:User/Hardware/lift_control.c ****     lift_state = LIFT_DOWN;
+ 188              		.loc 1 47 16
+ 189 0004 034B     		ldr	r3, .L11
+ 190 0006 0122     		movs	r2, #1
+ 191 0008 1A70     		strb	r2, [r3]
+  48:User/Hardware/lift_control.c **** }
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 6
 
 
-  44:User/Hardware/lift_control.c ****     lift_state = LIFT_DOWN;
- 138              		.loc 1 44 16
- 139 0004 034B     		ldr	r3, .L8
- 140 0006 0122     		movs	r2, #1
- 141 0008 1A70     		strb	r2, [r3]
-  45:User/Hardware/lift_control.c **** }
- 142              		.loc 1 45 1
- 143 000a 00BF     		nop
- 144 000c BD46     		mov	sp, r7
- 145              	.LCFI8:
- 146              		.cfi_def_cfa_register 13
- 147              		@ sp needed
- 148 000e 5DF8047B 		ldr	r7, [sp], #4
- 149              	.LCFI9:
- 150              		.cfi_restore 7
- 151              		.cfi_def_cfa_offset 0
- 152 0012 7047     		bx	lr
- 153              	.L9:
- 154              		.align	2
- 155              	.L8:
- 156 0014 00000000 		.word	lift_state
- 157              		.cfi_endproc
- 158              	.LFE146:
- 160              		.section	.text.Lift_Stop,"ax",%progbits
- 161              		.align	1
- 162              		.global	Lift_Stop
- 163              		.syntax unified
- 164              		.thumb
- 165              		.thumb_func
- 167              	Lift_Stop:
- 168              	.LFB147:
-  46:User/Hardware/lift_control.c **** 
-  47:User/Hardware/lift_control.c **** /**
-  48:User/Hardware/lift_control.c ****  * @brief  设置停止状态
-  49:User/Hardware/lift_control.c ****  * @param  无
-  50:User/Hardware/lift_control.c ****  * @retval 无
-  51:User/Hardware/lift_control.c ****  */
-  52:User/Hardware/lift_control.c **** void Lift_Stop(void)
-  53:User/Hardware/lift_control.c **** {
- 169              		.loc 1 53 1
- 170              		.cfi_startproc
- 171              		@ args = 0, pretend = 0, frame = 0
- 172              		@ frame_needed = 1, uses_anonymous_args = 0
- 173              		@ link register save eliminated.
- 174 0000 80B4     		push	{r7}
- 175              	.LCFI10:
- 176              		.cfi_def_cfa_offset 4
- 177              		.cfi_offset 7, -4
- 178 0002 00AF     		add	r7, sp, #0
- 179              	.LCFI11:
- 180              		.cfi_def_cfa_register 7
-  54:User/Hardware/lift_control.c ****     lift_state = LIFT_STOP;
- 181              		.loc 1 54 16
- 182 0004 034B     		ldr	r3, .L11
- 183 0006 0222     		movs	r2, #2
- 184 0008 1A70     		strb	r2, [r3]
-  55:User/Hardware/lift_control.c **** }
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 5
+ 192              		.loc 1 48 1
+ 193 000a 00BF     		nop
+ 194 000c BD46     		mov	sp, r7
+ 195              	.LCFI12:
+ 196              		.cfi_def_cfa_register 13
+ 197              		@ sp needed
+ 198 000e 5DF8047B 		ldr	r7, [sp], #4
+ 199              	.LCFI13:
+ 200              		.cfi_restore 7
+ 201              		.cfi_def_cfa_offset 0
+ 202 0012 7047     		bx	lr
+ 203              	.L12:
+ 204              		.align	2
+ 205              	.L11:
+ 206 0014 00000000 		.word	lift_state
+ 207              		.cfi_endproc
+ 208              	.LFE147:
+ 210              		.section	.text.Lift_Stop,"ax",%progbits
+ 211              		.align	1
+ 212              		.global	Lift_Stop
+ 213              		.syntax unified
+ 214              		.thumb
+ 215              		.thumb_func
+ 217              	Lift_Stop:
+ 218              	.LFB148:
+  49:User/Hardware/lift_control.c **** 
+  50:User/Hardware/lift_control.c **** /**
+  51:User/Hardware/lift_control.c ****  * @brief  设置停止状态
+  52:User/Hardware/lift_control.c ****  * @param  无
+  53:User/Hardware/lift_control.c ****  * @retval 无
+  54:User/Hardware/lift_control.c ****  */
+  55:User/Hardware/lift_control.c **** void Lift_Stop(void)
+  56:User/Hardware/lift_control.c **** {
+ 219              		.loc 1 56 1
+ 220              		.cfi_startproc
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 1, uses_anonymous_args = 0
+ 223              		@ link register save eliminated.
+ 224 0000 80B4     		push	{r7}
+ 225              	.LCFI14:
+ 226              		.cfi_def_cfa_offset 4
+ 227              		.cfi_offset 7, -4
+ 228 0002 00AF     		add	r7, sp, #0
+ 229              	.LCFI15:
+ 230              		.cfi_def_cfa_register 7
+  57:User/Hardware/lift_control.c ****     lift_state = LIFT_STOP;
+ 231              		.loc 1 57 16
+ 232 0004 034B     		ldr	r3, .L14
+ 233 0006 0222     		movs	r2, #2
+ 234 0008 1A70     		strb	r2, [r3]
+  58:User/Hardware/lift_control.c **** }
+ 235              		.loc 1 58 1
+ 236 000a 00BF     		nop
+ 237 000c BD46     		mov	sp, r7
+ 238              	.LCFI16:
+ 239              		.cfi_def_cfa_register 13
+ 240              		@ sp needed
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 7
 
 
- 185              		.loc 1 55 1
- 186 000a 00BF     		nop
- 187 000c BD46     		mov	sp, r7
- 188              	.LCFI12:
- 189              		.cfi_def_cfa_register 13
- 190              		@ sp needed
- 191 000e 5DF8047B 		ldr	r7, [sp], #4
- 192              	.LCFI13:
- 193              		.cfi_restore 7
- 194              		.cfi_def_cfa_offset 0
- 195 0012 7047     		bx	lr
- 196              	.L12:
- 197              		.align	2
- 198              	.L11:
- 199 0014 00000000 		.word	lift_state
- 200              		.cfi_endproc
- 201              	.LFE147:
- 203              		.section	.text.Lift_SetState,"ax",%progbits
- 204              		.align	1
- 205              		.global	Lift_SetState
- 206              		.syntax unified
- 207              		.thumb
- 208              		.thumb_func
- 210              	Lift_SetState:
- 211              	.LFB148:
-  56:User/Hardware/lift_control.c **** 
-  57:User/Hardware/lift_control.c **** /**
-  58:User/Hardware/lift_control.c ****  * @brief  设置指定状态
-  59:User/Hardware/lift_control.c ****  * @param  state 要设置的状态
-  60:User/Hardware/lift_control.c ****  * @retval 无
-  61:User/Hardware/lift_control.c ****  */
-  62:User/Hardware/lift_control.c **** void Lift_SetState(LIFT_State state)
-  63:User/Hardware/lift_control.c **** {
- 212              		.loc 1 63 1
- 213              		.cfi_startproc
- 214              		@ args = 0, pretend = 0, frame = 8
- 215              		@ frame_needed = 1, uses_anonymous_args = 0
- 216              		@ link register save eliminated.
- 217 0000 80B4     		push	{r7}
- 218              	.LCFI14:
- 219              		.cfi_def_cfa_offset 4
- 220              		.cfi_offset 7, -4
- 221 0002 83B0     		sub	sp, sp, #12
- 222              	.LCFI15:
- 223              		.cfi_def_cfa_offset 16
- 224 0004 00AF     		add	r7, sp, #0
- 225              	.LCFI16:
- 226              		.cfi_def_cfa_register 7
- 227 0006 0346     		mov	r3, r0
- 228 0008 FB71     		strb	r3, [r7, #7]
-  64:User/Hardware/lift_control.c ****     lift_state = state;
- 229              		.loc 1 64 16
- 230 000a 044A     		ldr	r2, .L14
- 231 000c FB79     		ldrb	r3, [r7, #7]
- 232 000e 1370     		strb	r3, [r2]
-  65:User/Hardware/lift_control.c **** }
- 233              		.loc 1 65 1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 6
+ 241 000e 5DF8047B 		ldr	r7, [sp], #4
+ 242              	.LCFI17:
+ 243              		.cfi_restore 7
+ 244              		.cfi_def_cfa_offset 0
+ 245 0012 7047     		bx	lr
+ 246              	.L15:
+ 247              		.align	2
+ 248              	.L14:
+ 249 0014 00000000 		.word	lift_state
+ 250              		.cfi_endproc
+ 251              	.LFE148:
+ 253              		.section	.text.Lift_SetState,"ax",%progbits
+ 254              		.align	1
+ 255              		.global	Lift_SetState
+ 256              		.syntax unified
+ 257              		.thumb
+ 258              		.thumb_func
+ 260              	Lift_SetState:
+ 261              	.LFB149:
+  59:User/Hardware/lift_control.c **** 
+  60:User/Hardware/lift_control.c **** /**
+  61:User/Hardware/lift_control.c ****  * @brief  设置指定状态
+  62:User/Hardware/lift_control.c ****  * @param  state 要设置的状态
+  63:User/Hardware/lift_control.c ****  * @retval 无
+  64:User/Hardware/lift_control.c ****  */
+  65:User/Hardware/lift_control.c **** void Lift_SetState(LIFT_State state)
+  66:User/Hardware/lift_control.c **** {
+ 262              		.loc 1 66 1
+ 263              		.cfi_startproc
+ 264              		@ args = 0, pretend = 0, frame = 8
+ 265              		@ frame_needed = 1, uses_anonymous_args = 0
+ 266              		@ link register save eliminated.
+ 267 0000 80B4     		push	{r7}
+ 268              	.LCFI18:
+ 269              		.cfi_def_cfa_offset 4
+ 270              		.cfi_offset 7, -4
+ 271 0002 83B0     		sub	sp, sp, #12
+ 272              	.LCFI19:
+ 273              		.cfi_def_cfa_offset 16
+ 274 0004 00AF     		add	r7, sp, #0
+ 275              	.LCFI20:
+ 276              		.cfi_def_cfa_register 7
+ 277 0006 0346     		mov	r3, r0
+ 278 0008 FB71     		strb	r3, [r7, #7]
+  67:User/Hardware/lift_control.c ****     lift_state = state;
+ 279              		.loc 1 67 16
+ 280 000a 044A     		ldr	r2, .L17
+ 281 000c FB79     		ldrb	r3, [r7, #7]
+ 282 000e 1370     		strb	r3, [r2]
+  68:User/Hardware/lift_control.c **** }
+ 283              		.loc 1 68 1
+ 284 0010 00BF     		nop
+ 285 0012 0C37     		adds	r7, r7, #12
+ 286              	.LCFI21:
+ 287              		.cfi_def_cfa_offset 4
+ 288 0014 BD46     		mov	sp, r7
+ 289              	.LCFI22:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 8
 
 
- 234 0010 00BF     		nop
- 235 0012 0C37     		adds	r7, r7, #12
- 236              	.LCFI17:
- 237              		.cfi_def_cfa_offset 4
- 238 0014 BD46     		mov	sp, r7
- 239              	.LCFI18:
- 240              		.cfi_def_cfa_register 13
- 241              		@ sp needed
- 242 0016 5DF8047B 		ldr	r7, [sp], #4
- 243              	.LCFI19:
- 244              		.cfi_restore 7
- 245              		.cfi_def_cfa_offset 0
- 246 001a 7047     		bx	lr
- 247              	.L15:
- 248              		.align	2
- 249              	.L14:
- 250 001c 00000000 		.word	lift_state
- 251              		.cfi_endproc
- 252              	.LFE148:
- 254              		.section	.text.Lift_GetState,"ax",%progbits
- 255              		.align	1
- 256              		.global	Lift_GetState
- 257              		.syntax unified
- 258              		.thumb
- 259              		.thumb_func
- 261              	Lift_GetState:
- 262              	.LFB149:
-  66:User/Hardware/lift_control.c **** 
-  67:User/Hardware/lift_control.c **** /**
-  68:User/Hardware/lift_control.c ****  * @brief  获取当前状态
-  69:User/Hardware/lift_control.c ****  * @retval 当前状态
-  70:User/Hardware/lift_control.c ****  */
-  71:User/Hardware/lift_control.c **** LIFT_State Lift_GetState(void)
-  72:User/Hardware/lift_control.c **** {
- 263              		.loc 1 72 1
- 264              		.cfi_startproc
- 265              		@ args = 0, pretend = 0, frame = 0
- 266              		@ frame_needed = 1, uses_anonymous_args = 0
- 267              		@ link register save eliminated.
- 268 0000 80B4     		push	{r7}
- 269              	.LCFI20:
- 270              		.cfi_def_cfa_offset 4
- 271              		.cfi_offset 7, -4
- 272 0002 00AF     		add	r7, sp, #0
- 273              	.LCFI21:
- 274              		.cfi_def_cfa_register 7
-  73:User/Hardware/lift_control.c ****     return lift_state;
- 275              		.loc 1 73 12
- 276 0004 034B     		ldr	r3, .L18
- 277 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  74:User/Hardware/lift_control.c **** }
- 278              		.loc 1 74 1
- 279 0008 1846     		mov	r0, r3
- 280 000a BD46     		mov	sp, r7
- 281              	.LCFI22:
- 282              		.cfi_def_cfa_register 13
- 283              		@ sp needed
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 7
+ 290              		.cfi_def_cfa_register 13
+ 291              		@ sp needed
+ 292 0016 5DF8047B 		ldr	r7, [sp], #4
+ 293              	.LCFI23:
+ 294              		.cfi_restore 7
+ 295              		.cfi_def_cfa_offset 0
+ 296 001a 7047     		bx	lr
+ 297              	.L18:
+ 298              		.align	2
+ 299              	.L17:
+ 300 001c 00000000 		.word	lift_state
+ 301              		.cfi_endproc
+ 302              	.LFE149:
+ 304              		.section	.text.Lift_GetState,"ax",%progbits
+ 305              		.align	1
+ 306              		.global	Lift_GetState
+ 307              		.syntax unified
+ 308              		.thumb
+ 309              		.thumb_func
+ 311              	Lift_GetState:
+ 312              	.LFB150:
+  69:User/Hardware/lift_control.c **** 
+  70:User/Hardware/lift_control.c **** /**
+  71:User/Hardware/lift_control.c ****  * @brief  获取当前状态
+  72:User/Hardware/lift_control.c ****  * @retval 当前状态
+  73:User/Hardware/lift_control.c ****  */
+  74:User/Hardware/lift_control.c **** LIFT_State Lift_GetState(void)
+  75:User/Hardware/lift_control.c **** {
+ 313              		.loc 1 75 1
+ 314              		.cfi_startproc
+ 315              		@ args = 0, pretend = 0, frame = 0
+ 316              		@ frame_needed = 1, uses_anonymous_args = 0
+ 317              		@ link register save eliminated.
+ 318 0000 80B4     		push	{r7}
+ 319              	.LCFI24:
+ 320              		.cfi_def_cfa_offset 4
+ 321              		.cfi_offset 7, -4
+ 322 0002 00AF     		add	r7, sp, #0
+ 323              	.LCFI25:
+ 324              		.cfi_def_cfa_register 7
+  76:User/Hardware/lift_control.c ****     return lift_state;
+ 325              		.loc 1 76 12
+ 326 0004 034B     		ldr	r3, .L21
+ 327 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  77:User/Hardware/lift_control.c **** }
+ 328              		.loc 1 77 1
+ 329 0008 1846     		mov	r0, r3
+ 330 000a BD46     		mov	sp, r7
+ 331              	.LCFI26:
+ 332              		.cfi_def_cfa_register 13
+ 333              		@ sp needed
+ 334 000c 5DF8047B 		ldr	r7, [sp], #4
+ 335              	.LCFI27:
+ 336              		.cfi_restore 7
+ 337              		.cfi_def_cfa_offset 0
+ 338 0010 7047     		bx	lr
+ 339              	.L22:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 9
 
 
- 284 000c 5DF8047B 		ldr	r7, [sp], #4
- 285              	.LCFI23:
- 286              		.cfi_restore 7
- 287              		.cfi_def_cfa_offset 0
- 288 0010 7047     		bx	lr
- 289              	.L19:
- 290 0012 00BF     		.align	2
- 291              	.L18:
- 292 0014 00000000 		.word	lift_state
- 293              		.cfi_endproc
- 294              	.LFE149:
- 296              		.section	.text.Lift_UpdateMotor,"ax",%progbits
- 297              		.align	1
- 298              		.global	Lift_UpdateMotor
- 299              		.syntax unified
- 300              		.thumb
- 301              		.thumb_func
- 303              	Lift_UpdateMotor:
- 304              	.LFB150:
-  75:User/Hardware/lift_control.c **** 
-  76:User/Hardware/lift_control.c **** /**
-  77:User/Hardware/lift_control.c ****  * @brief  根据当前状态更新电机控制
-  78:User/Hardware/lift_control.c ****  * @note   此函数需周期性调用（例如每10ms），以执行实际控制
-  79:User/Hardware/lift_control.c ****  * @param  无
-  80:User/Hardware/lift_control.c ****  * @retval 无
-  81:User/Hardware/lift_control.c ****  */
-  82:User/Hardware/lift_control.c **** void Lift_UpdateMotor(void)
-  83:User/Hardware/lift_control.c **** {
- 305              		.loc 1 83 1
- 306              		.cfi_startproc
- 307              		@ args = 0, pretend = 0, frame = 0
- 308              		@ frame_needed = 1, uses_anonymous_args = 0
- 309 0000 80B5     		push	{r7, lr}
- 310              	.LCFI24:
- 311              		.cfi_def_cfa_offset 8
- 312              		.cfi_offset 7, -8
- 313              		.cfi_offset 14, -4
- 314 0002 00AF     		add	r7, sp, #0
- 315              	.LCFI25:
- 316              		.cfi_def_cfa_register 7
-  84:User/Hardware/lift_control.c ****     switch (lift_state)
- 317              		.loc 1 84 5
- 318 0004 084B     		ldr	r3, .L26
- 319 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 320 0008 002B     		cmp	r3, #0
- 321 000a 02D0     		beq	.L21
- 322 000c 012B     		cmp	r3, #1
- 323 000e 03D0     		beq	.L22
- 324 0010 05E0     		b	.L25
- 325              	.L21:
-  85:User/Hardware/lift_control.c ****     {
-  86:User/Hardware/lift_control.c ****     case LIFT_UP:
-  87:User/Hardware/lift_control.c ****         Motor_Forward();
- 326              		.loc 1 87 9
- 327 0012 FFF7FEFF 		bl	Motor_Forward
-  88:User/Hardware/lift_control.c ****         break;
- 328              		.loc 1 88 9
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 8
-
-
- 329 0016 05E0     		b	.L24
- 330              	.L22:
-  89:User/Hardware/lift_control.c ****     case LIFT_DOWN:
-  90:User/Hardware/lift_control.c ****         Motor_Reverse();
- 331              		.loc 1 90 9
- 332 0018 FFF7FEFF 		bl	Motor_Reverse
+ 340 0012 00BF     		.align	2
+ 341              	.L21:
+ 342 0014 00000000 		.word	lift_state
+ 343              		.cfi_endproc
+ 344              	.LFE150:
+ 346              		.section	.text.Lift_UpdateMotor,"ax",%progbits
+ 347              		.align	1
+ 348              		.global	Lift_UpdateMotor
+ 349              		.syntax unified
+ 350              		.thumb
+ 351              		.thumb_func
+ 353              	Lift_UpdateMotor:
+ 354              	.LFB151:
+  78:User/Hardware/lift_control.c **** 
+  79:User/Hardware/lift_control.c **** /**
+  80:User/Hardware/lift_control.c ****  * @brief  根据当前状态更新电机控制
+  81:User/Hardware/lift_control.c ****  * @note   此函数需周期性调用（例如每10ms），以执行实际控制
+  82:User/Hardware/lift_control.c ****  * @param  无
+  83:User/Hardware/lift_control.c ****  * @retval 无
+  84:User/Hardware/lift_control.c ****  */
+  85:User/Hardware/lift_control.c **** void Lift_UpdateMotor(void)
+  86:User/Hardware/lift_control.c **** {
+ 355              		.loc 1 86 1
+ 356              		.cfi_startproc
+ 357              		@ args = 0, pretend = 0, frame = 0
+ 358              		@ frame_needed = 1, uses_anonymous_args = 0
+ 359 0000 80B5     		push	{r7, lr}
+ 360              	.LCFI28:
+ 361              		.cfi_def_cfa_offset 8
+ 362              		.cfi_offset 7, -8
+ 363              		.cfi_offset 14, -4
+ 364 0002 00AF     		add	r7, sp, #0
+ 365              	.LCFI29:
+ 366              		.cfi_def_cfa_register 7
+  87:User/Hardware/lift_control.c ****     switch (lift_state)
+ 367              		.loc 1 87 5
+ 368 0004 084B     		ldr	r3, .L29
+ 369 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 370 0008 002B     		cmp	r3, #0
+ 371 000a 02D0     		beq	.L24
+ 372 000c 012B     		cmp	r3, #1
+ 373 000e 03D0     		beq	.L25
+ 374 0010 05E0     		b	.L28
+ 375              	.L24:
+  88:User/Hardware/lift_control.c ****     {
+  89:User/Hardware/lift_control.c ****     case LIFT_UP:
+  90:User/Hardware/lift_control.c ****         Motor_Forward();
+ 376              		.loc 1 90 9
+ 377 0012 FFF7FEFF 		bl	Motor_Forward
   91:User/Hardware/lift_control.c ****         break;
- 333              		.loc 1 91 9
- 334 001c 02E0     		b	.L24
- 335              	.L25:
-  92:User/Hardware/lift_control.c ****     case LIFT_STOP:
-  93:User/Hardware/lift_control.c ****     default:
-  94:User/Hardware/lift_control.c ****         Motor_Stop();
- 336              		.loc 1 94 9
- 337 001e FFF7FEFF 		bl	Motor_Stop
-  95:User/Hardware/lift_control.c ****         break;
- 338              		.loc 1 95 9
- 339 0022 00BF     		nop
- 340              	.L24:
-  96:User/Hardware/lift_control.c ****     }
-  97:User/Hardware/lift_control.c **** }
- 341              		.loc 1 97 1
- 342 0024 00BF     		nop
- 343 0026 80BD     		pop	{r7, pc}
- 344              	.L27:
- 345              		.align	2
- 346              	.L26:
- 347 0028 00000000 		.word	lift_state
- 348              		.cfi_endproc
- 349              	.LFE150:
- 351              		.section	.text.Lift_RefreshHeight,"ax",%progbits
- 352              		.align	1
- 353              		.global	Lift_RefreshHeight
- 354              		.syntax unified
- 355              		.thumb
- 356              		.thumb_func
- 358              	Lift_RefreshHeight:
- 359              	.LFB151:
-  98:User/Hardware/lift_control.c **** 
-  99:User/Hardware/lift_control.c **** /**
- 100:User/Hardware/lift_control.c ****  * @brief  刷新高度值（从传感器读取）
- 101:User/Hardware/lift_control.c ****  * @note   用户需根据实际硬件在此添加读取代码，例如ADC或编码器
- 102:User/Hardware/lift_control.c ****  * @param  无
- 103:User/Hardware/lift_control.c ****  * @retval 无
- 104:User/Hardware/lift_control.c ****  */
- 105:User/Hardware/lift_control.c **** void Lift_RefreshHeight(void)
- 106:User/Hardware/lift_control.c **** {
- 360              		.loc 1 106 1
- 361              		.cfi_startproc
- 362              		@ args = 0, pretend = 0, frame = 0
- 363              		@ frame_needed = 1, uses_anonymous_args = 0
- 364              		@ link register save eliminated.
- 365 0000 80B4     		push	{r7}
- 366              	.LCFI26:
- 367              		.cfi_def_cfa_offset 4
- 368              		.cfi_offset 7, -4
- 369 0002 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 9
+ 378              		.loc 1 91 9
+ 379 0016 05E0     		b	.L27
+ 380              	.L25:
+  92:User/Hardware/lift_control.c ****     case LIFT_DOWN:
+  93:User/Hardware/lift_control.c ****         Motor_Reverse();
+ 381              		.loc 1 93 9
+ 382 0018 FFF7FEFF 		bl	Motor_Reverse
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 10
 
 
- 370              	.LCFI27:
- 371              		.cfi_def_cfa_register 7
- 107:User/Hardware/lift_control.c ****     // 示例：假设高度由ADC采集，通道1
- 108:User/Hardware/lift_control.c ****     // lift_current_height = HAL_ADC_GetValue(&hadc1);
- 109:User/Hardware/lift_control.c ****     // 此处留空，请根据实际硬件实现
- 110:User/Hardware/lift_control.c **** }
- 372              		.loc 1 110 1
- 373 0004 00BF     		nop
- 374 0006 BD46     		mov	sp, r7
- 375              	.LCFI28:
- 376              		.cfi_def_cfa_register 13
- 377              		@ sp needed
- 378 0008 5DF8047B 		ldr	r7, [sp], #4
- 379              	.LCFI29:
- 380              		.cfi_restore 7
- 381              		.cfi_def_cfa_offset 0
- 382 000c 7047     		bx	lr
- 383              		.cfi_endproc
- 384              	.LFE151:
- 386              		.section	.text.Lift_GetHeight,"ax",%progbits
- 387              		.align	1
- 388              		.global	Lift_GetHeight
- 389              		.syntax unified
- 390              		.thumb
- 391              		.thumb_func
- 393              	Lift_GetHeight:
- 394              	.LFB152:
- 111:User/Hardware/lift_control.c **** 
- 112:User/Hardware/lift_control.c **** /**
- 113:User/Hardware/lift_control.c ****  * @brief  获取当前高度
- 114:User/Hardware/lift_control.c ****  * @retval 当前高度值
- 115:User/Hardware/lift_control.c ****  */
- 116:User/Hardware/lift_control.c **** uint16_t Lift_GetHeight(void)
- 117:User/Hardware/lift_control.c **** {
- 395              		.loc 1 117 1
- 396              		.cfi_startproc
- 397              		@ args = 0, pretend = 0, frame = 0
- 398              		@ frame_needed = 1, uses_anonymous_args = 0
- 399              		@ link register save eliminated.
- 400 0000 80B4     		push	{r7}
- 401              	.LCFI30:
- 402              		.cfi_def_cfa_offset 4
- 403              		.cfi_offset 7, -4
- 404 0002 00AF     		add	r7, sp, #0
- 405              	.LCFI31:
- 406              		.cfi_def_cfa_register 7
- 118:User/Hardware/lift_control.c ****     return lift_current_height;
- 407              		.loc 1 118 12
- 408 0004 034B     		ldr	r3, .L31
- 409 0006 1B88     		ldrh	r3, [r3]
+  94:User/Hardware/lift_control.c ****         break;
+ 383              		.loc 1 94 9
+ 384 001c 02E0     		b	.L27
+ 385              	.L28:
+  95:User/Hardware/lift_control.c ****     case LIFT_STOP:
+  96:User/Hardware/lift_control.c ****     default:
+  97:User/Hardware/lift_control.c ****         Motor_Stop();
+ 386              		.loc 1 97 9
+ 387 001e FFF7FEFF 		bl	Motor_Stop
+  98:User/Hardware/lift_control.c ****         break;
+ 388              		.loc 1 98 9
+ 389 0022 00BF     		nop
+ 390              	.L27:
+  99:User/Hardware/lift_control.c ****     }
+ 100:User/Hardware/lift_control.c **** }
+ 391              		.loc 1 100 1
+ 392 0024 00BF     		nop
+ 393 0026 80BD     		pop	{r7, pc}
+ 394              	.L30:
+ 395              		.align	2
+ 396              	.L29:
+ 397 0028 00000000 		.word	lift_state
+ 398              		.cfi_endproc
+ 399              	.LFE151:
+ 401              		.section	.text.Lift_RefreshHeight,"ax",%progbits
+ 402              		.align	1
+ 403              		.global	Lift_RefreshHeight
+ 404              		.syntax unified
+ 405              		.thumb
+ 406              		.thumb_func
+ 408              	Lift_RefreshHeight:
+ 409              	.LFB152:
+ 101:User/Hardware/lift_control.c **** 
+ 102:User/Hardware/lift_control.c **** /**
+ 103:User/Hardware/lift_control.c ****  * @brief  刷新高度值（从传感器读取）
+ 104:User/Hardware/lift_control.c ****  * @note   用户需根据实际硬件在此添加读取代码，例如ADC或编码器
+ 105:User/Hardware/lift_control.c ****  * @param  无
+ 106:User/Hardware/lift_control.c ****  * @retval 无
+ 107:User/Hardware/lift_control.c ****  */
+ 108:User/Hardware/lift_control.c **** void Lift_RefreshHeight(void)
+ 109:User/Hardware/lift_control.c **** {
+ 410              		.loc 1 109 1
+ 411              		.cfi_startproc
+ 412              		@ args = 0, pretend = 0, frame = 0
+ 413              		@ frame_needed = 1, uses_anonymous_args = 0
+ 414 0000 80B5     		push	{r7, lr}
+ 415              	.LCFI30:
+ 416              		.cfi_def_cfa_offset 8
+ 417              		.cfi_offset 7, -8
+ 418              		.cfi_offset 14, -4
+ 419 0002 00AF     		add	r7, sp, #0
+ 420              	.LCFI31:
+ 421              		.cfi_def_cfa_register 7
+ 110:User/Hardware/lift_control.c **** 
+ 111:User/Hardware/lift_control.c ****             if(stp23l_data.parse_ok == 1)
+ 422              		.loc 1 111 27
+ 423 0004 064B     		ldr	r3, .L34
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 11
+
+
+ 424 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 425              		.loc 1 111 15
+ 426 0008 012B     		cmp	r3, #1
+ 427 000a 07D1     		bne	.L33
+ 112:User/Hardware/lift_control.c ****         {
+ 113:User/Hardware/lift_control.c ****             lift_height_final = STP23L_GetFinalDistPerFrame(); // 核心调用
+ 428              		.loc 1 113 33
+ 429 000c FFF7FEFF 		bl	STP23L_GetFinalDistPerFrame
+ 430 0010 0346     		mov	r3, r0
+ 431 0012 1A46     		mov	r2, r3
+ 432              		.loc 1 113 31 discriminator 1
+ 433 0014 034B     		ldr	r3, .L34+4
+ 434 0016 1A80     		strh	r2, [r3]	@ movhi
+ 114:User/Hardware/lift_control.c ****             STP23L_ClearOkFlag(); // 清除标志，准备下一帧解析
+ 435              		.loc 1 114 13
+ 436 0018 FFF7FEFF 		bl	STP23L_ClearOkFlag
+ 437              	.L33:
+ 115:User/Hardware/lift_control.c ****         }
+ 116:User/Hardware/lift_control.c ****     // 示例：假设高度由ADC采集，通道1
+ 117:User/Hardware/lift_control.c ****     // lift_current_height = HAL_ADC_GetValue(&hadc1);
+ 118:User/Hardware/lift_control.c ****     // 此处留空，请根据实际硬件实现
  119:User/Hardware/lift_control.c **** }
- 410              		.loc 1 119 1
- 411 0008 1846     		mov	r0, r3
- 412 000a BD46     		mov	sp, r7
- 413              	.LCFI32:
- 414              		.cfi_def_cfa_register 13
- 415              		@ sp needed
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 10
-
-
- 416 000c 5DF8047B 		ldr	r7, [sp], #4
- 417              	.LCFI33:
- 418              		.cfi_restore 7
- 419              		.cfi_def_cfa_offset 0
- 420 0010 7047     		bx	lr
- 421              	.L32:
- 422 0012 00BF     		.align	2
- 423              	.L31:
- 424 0014 00000000 		.word	lift_current_height
- 425              		.cfi_endproc
- 426              	.LFE152:
- 428              		.section	.text.Motor_Forward,"ax",%progbits
- 429              		.align	1
- 430              		.syntax unified
- 431              		.thumb
- 432              		.thumb_func
- 434              	Motor_Forward:
- 435              	.LFB153:
+ 438              		.loc 1 119 1
+ 439 001c 00BF     		nop
+ 440 001e 80BD     		pop	{r7, pc}
+ 441              	.L35:
+ 442              		.align	2
+ 443              	.L34:
+ 444 0020 00000000 		.word	stp23l_data
+ 445 0024 00000000 		.word	lift_height_final
+ 446              		.cfi_endproc
+ 447              	.LFE152:
+ 449              		.section	.text.Lift_GetHeight,"ax",%progbits
+ 450              		.align	1
+ 451              		.global	Lift_GetHeight
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 456              	Lift_GetHeight:
+ 457              	.LFB153:
  120:User/Hardware/lift_control.c **** 
- 121:User/Hardware/lift_control.c **** /* **************** 底层电机控制（与您提供的代码一致） **************** */
- 122:User/Hardware/lift_control.c **** 
- 123:User/Hardware/lift_control.c **** /**
- 124:User/Hardware/lift_control.c ****  * @brief  电机正转（上升）
- 125:User/Hardware/lift_control.c ****  * @note   IN1(PA0)=低电平吸合，IN2(PA2)=高电平断开 → 电机正转
- 126:User/Hardware/lift_control.c ****  * @param  无
- 127:User/Hardware/lift_control.c ****  * @retval 无
- 128:User/Hardware/lift_control.c ****  */
- 129:User/Hardware/lift_control.c **** static void Motor_Forward(void)
- 130:User/Hardware/lift_control.c **** {
- 436              		.loc 1 130 1
- 437              		.cfi_startproc
- 438              		@ args = 0, pretend = 0, frame = 0
- 439              		@ frame_needed = 1, uses_anonymous_args = 0
- 440 0000 80B5     		push	{r7, lr}
- 441              	.LCFI34:
- 442              		.cfi_def_cfa_offset 8
- 443              		.cfi_offset 7, -8
- 444              		.cfi_offset 14, -4
- 445 0002 00AF     		add	r7, sp, #0
- 446              	.LCFI35:
- 447              		.cfi_def_cfa_register 7
- 131:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_ON);
- 448              		.loc 1 131 5
- 449 0004 0022     		movs	r2, #0
- 450 0006 0121     		movs	r1, #1
- 451 0008 0448     		ldr	r0, .L34
- 452 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 132:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
- 453              		.loc 1 132 5
- 454 000e 0122     		movs	r2, #1
- 455 0010 0421     		movs	r1, #4
- 456 0012 0248     		ldr	r0, .L34
- 457 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 133:User/Hardware/lift_control.c **** }
- 458              		.loc 1 133 1
- 459 0018 00BF     		nop
- 460 001a 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 11
+ 121:User/Hardware/lift_control.c **** /**
+ 122:User/Hardware/lift_control.c ****  * @brief  获取当前高度
+ 123:User/Hardware/lift_control.c ****  * @retval 当前高度值
+ 124:User/Hardware/lift_control.c ****  */
+ 125:User/Hardware/lift_control.c **** uint16_t Lift_GetHeight(void)
+ 126:User/Hardware/lift_control.c **** {
+ 458              		.loc 1 126 1
+ 459              		.cfi_startproc
+ 460              		@ args = 0, pretend = 0, frame = 0
+ 461              		@ frame_needed = 1, uses_anonymous_args = 0
+ 462              		@ link register save eliminated.
+ 463 0000 80B4     		push	{r7}
+ 464              	.LCFI32:
+ 465              		.cfi_def_cfa_offset 4
+ 466              		.cfi_offset 7, -4
+ 467 0002 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 12
 
 
- 461              	.L35:
- 462              		.align	2
- 463              	.L34:
- 464 001c 00000258 		.word	1476526080
- 465              		.cfi_endproc
- 466              	.LFE153:
- 468              		.section	.text.Motor_Reverse,"ax",%progbits
- 469              		.align	1
- 470              		.syntax unified
- 471              		.thumb
- 472              		.thumb_func
- 474              	Motor_Reverse:
- 475              	.LFB154:
- 134:User/Hardware/lift_control.c **** 
- 135:User/Hardware/lift_control.c **** /**
- 136:User/Hardware/lift_control.c ****  * @brief  电机反转（下降）
- 137:User/Hardware/lift_control.c ****  * @note   IN1(PA0)=高电平断开，IN2(PA2)=低电平吸合 → 电机反转
- 138:User/Hardware/lift_control.c ****  * @param  无
- 139:User/Hardware/lift_control.c ****  * @retval 无
- 140:User/Hardware/lift_control.c ****  */
- 141:User/Hardware/lift_control.c **** static void Motor_Reverse(void)
- 142:User/Hardware/lift_control.c **** {
- 476              		.loc 1 142 1
- 477              		.cfi_startproc
- 478              		@ args = 0, pretend = 0, frame = 0
- 479              		@ frame_needed = 1, uses_anonymous_args = 0
- 480 0000 80B5     		push	{r7, lr}
- 481              	.LCFI36:
- 482              		.cfi_def_cfa_offset 8
- 483              		.cfi_offset 7, -8
- 484              		.cfi_offset 14, -4
- 485 0002 00AF     		add	r7, sp, #0
- 486              	.LCFI37:
- 487              		.cfi_def_cfa_register 7
- 143:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
- 488              		.loc 1 143 5
- 489 0004 0122     		movs	r2, #1
- 490 0006 0121     		movs	r1, #1
- 491 0008 0448     		ldr	r0, .L37
- 492 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 144:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_ON);
- 493              		.loc 1 144 5
- 494 000e 0022     		movs	r2, #0
- 495 0010 0421     		movs	r1, #4
- 496 0012 0248     		ldr	r0, .L37
- 497 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 145:User/Hardware/lift_control.c **** }
- 498              		.loc 1 145 1
- 499 0018 00BF     		nop
- 500 001a 80BD     		pop	{r7, pc}
- 501              	.L38:
- 502              		.align	2
- 503              	.L37:
- 504 001c 00000258 		.word	1476526080
- 505              		.cfi_endproc
- 506              	.LFE154:
- 508              		.section	.text.Motor_Stop,"ax",%progbits
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 12
+ 468              	.LCFI33:
+ 469              		.cfi_def_cfa_register 7
+ 127:User/Hardware/lift_control.c ****     return lift_current_height;
+ 470              		.loc 1 127 12
+ 471 0004 034B     		ldr	r3, .L38
+ 472 0006 1B88     		ldrh	r3, [r3]
+ 128:User/Hardware/lift_control.c **** }
+ 473              		.loc 1 128 1
+ 474 0008 1846     		mov	r0, r3
+ 475 000a BD46     		mov	sp, r7
+ 476              	.LCFI34:
+ 477              		.cfi_def_cfa_register 13
+ 478              		@ sp needed
+ 479 000c 5DF8047B 		ldr	r7, [sp], #4
+ 480              	.LCFI35:
+ 481              		.cfi_restore 7
+ 482              		.cfi_def_cfa_offset 0
+ 483 0010 7047     		bx	lr
+ 484              	.L39:
+ 485 0012 00BF     		.align	2
+ 486              	.L38:
+ 487 0014 00000000 		.word	lift_current_height
+ 488              		.cfi_endproc
+ 489              	.LFE153:
+ 491              		.section	.text.Motor_Forward,"ax",%progbits
+ 492              		.align	1
+ 493              		.syntax unified
+ 494              		.thumb
+ 495              		.thumb_func
+ 497              	Motor_Forward:
+ 498              	.LFB154:
+ 129:User/Hardware/lift_control.c **** 
+ 130:User/Hardware/lift_control.c **** /* **************** 底层电机控制（与您提供的代码一致） **************** */
+ 131:User/Hardware/lift_control.c **** 
+ 132:User/Hardware/lift_control.c **** /**
+ 133:User/Hardware/lift_control.c ****  * @brief  电机正转（上升）
+ 134:User/Hardware/lift_control.c ****  * @note   IN1(PA0)=低电平吸合，IN2(PA2)=高电平断开 → 电机正转
+ 135:User/Hardware/lift_control.c ****  * @param  无
+ 136:User/Hardware/lift_control.c ****  * @retval 无
+ 137:User/Hardware/lift_control.c ****  */
+ 138:User/Hardware/lift_control.c **** static void Motor_Forward(void)
+ 139:User/Hardware/lift_control.c **** {
+ 499              		.loc 1 139 1
+ 500              		.cfi_startproc
+ 501              		@ args = 0, pretend = 0, frame = 0
+ 502              		@ frame_needed = 1, uses_anonymous_args = 0
+ 503 0000 80B5     		push	{r7, lr}
+ 504              	.LCFI36:
+ 505              		.cfi_def_cfa_offset 8
+ 506              		.cfi_offset 7, -8
+ 507              		.cfi_offset 14, -4
+ 508 0002 00AF     		add	r7, sp, #0
+ 509              	.LCFI37:
+ 510              		.cfi_def_cfa_register 7
+ 140:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_ON);
+ 511              		.loc 1 140 5
+ 512 0004 0022     		movs	r2, #0
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 13
 
 
- 509              		.align	1
- 510              		.syntax unified
- 511              		.thumb
- 512              		.thumb_func
- 514              	Motor_Stop:
- 515              	.LFB155:
- 146:User/Hardware/lift_control.c **** 
- 147:User/Hardware/lift_control.c **** /**
- 148:User/Hardware/lift_control.c ****  * @brief  电机停止
- 149:User/Hardware/lift_control.c ****  * @note   两路继电器均断开（高电平），电机两端悬空
- 150:User/Hardware/lift_control.c ****  * @param  无
- 151:User/Hardware/lift_control.c ****  * @retval 无
- 152:User/Hardware/lift_control.c ****  */
- 153:User/Hardware/lift_control.c **** static void Motor_Stop(void)
- 154:User/Hardware/lift_control.c **** {
- 516              		.loc 1 154 1
- 517              		.cfi_startproc
- 518              		@ args = 0, pretend = 0, frame = 0
- 519              		@ frame_needed = 1, uses_anonymous_args = 0
- 520 0000 80B5     		push	{r7, lr}
- 521              	.LCFI38:
- 522              		.cfi_def_cfa_offset 8
- 523              		.cfi_offset 7, -8
- 524              		.cfi_offset 14, -4
- 525 0002 00AF     		add	r7, sp, #0
- 526              	.LCFI39:
- 527              		.cfi_def_cfa_register 7
- 155:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
- 528              		.loc 1 155 5
- 529 0004 0122     		movs	r2, #1
- 530 0006 0121     		movs	r1, #1
- 531 0008 0448     		ldr	r0, .L40
- 532 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 156:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
- 533              		.loc 1 156 5
- 534 000e 0122     		movs	r2, #1
- 535 0010 0421     		movs	r1, #4
- 536 0012 0248     		ldr	r0, .L40
- 537 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 157:User/Hardware/lift_control.c **** }...
- 538              		.loc 1 157 1
- 539 0018 00BF     		nop
- 540 001a 80BD     		pop	{r7, pc}
- 541              	.L41:
- 542              		.align	2
- 543              	.L40:
- 544 001c 00000258 		.word	1476526080
- 545              		.cfi_endproc
- 546              	.LFE155:
- 548              		.text
- 549              	.Letext0:
- 550              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
- 551              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
- 552              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
- 553              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
- 554              		.file 6 "User/Hardware/lift_control.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s 			page 13
+ 513 0006 0121     		movs	r1, #1
+ 514 0008 0448     		ldr	r0, .L41
+ 515 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 141:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
+ 516              		.loc 1 141 5
+ 517 000e 0122     		movs	r2, #1
+ 518 0010 0421     		movs	r1, #4
+ 519 0012 0248     		ldr	r0, .L41
+ 520 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 142:User/Hardware/lift_control.c **** }
+ 521              		.loc 1 142 1
+ 522 0018 00BF     		nop
+ 523 001a 80BD     		pop	{r7, pc}
+ 524              	.L42:
+ 525              		.align	2
+ 526              	.L41:
+ 527 001c 00000258 		.word	1476526080
+ 528              		.cfi_endproc
+ 529              	.LFE154:
+ 531              		.section	.text.Motor_Reverse,"ax",%progbits
+ 532              		.align	1
+ 533              		.syntax unified
+ 534              		.thumb
+ 535              		.thumb_func
+ 537              	Motor_Reverse:
+ 538              	.LFB155:
+ 143:User/Hardware/lift_control.c **** 
+ 144:User/Hardware/lift_control.c **** /**
+ 145:User/Hardware/lift_control.c ****  * @brief  电机反转（下降）
+ 146:User/Hardware/lift_control.c ****  * @note   IN1(PA0)=高电平断开，IN2(PA2)=低电平吸合 → 电机反转
+ 147:User/Hardware/lift_control.c ****  * @param  无
+ 148:User/Hardware/lift_control.c ****  * @retval 无
+ 149:User/Hardware/lift_control.c ****  */
+ 150:User/Hardware/lift_control.c **** static void Motor_Reverse(void)
+ 151:User/Hardware/lift_control.c **** {
+ 539              		.loc 1 151 1
+ 540              		.cfi_startproc
+ 541              		@ args = 0, pretend = 0, frame = 0
+ 542              		@ frame_needed = 1, uses_anonymous_args = 0
+ 543 0000 80B5     		push	{r7, lr}
+ 544              	.LCFI38:
+ 545              		.cfi_def_cfa_offset 8
+ 546              		.cfi_offset 7, -8
+ 547              		.cfi_offset 14, -4
+ 548 0002 00AF     		add	r7, sp, #0
+ 549              	.LCFI39:
+ 550              		.cfi_def_cfa_register 7
+ 152:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
+ 551              		.loc 1 152 5
+ 552 0004 0122     		movs	r2, #1
+ 553 0006 0121     		movs	r1, #1
+ 554 0008 0448     		ldr	r0, .L44
+ 555 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 153:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_ON);
+ 556              		.loc 1 153 5
+ 557 000e 0022     		movs	r2, #0
+ 558 0010 0421     		movs	r1, #4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 14
+
+
+ 559 0012 0248     		ldr	r0, .L44
+ 560 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 154:User/Hardware/lift_control.c **** }
+ 561              		.loc 1 154 1
+ 562 0018 00BF     		nop
+ 563 001a 80BD     		pop	{r7, pc}
+ 564              	.L45:
+ 565              		.align	2
+ 566              	.L44:
+ 567 001c 00000258 		.word	1476526080
+ 568              		.cfi_endproc
+ 569              	.LFE155:
+ 571              		.section	.text.Motor_Stop,"ax",%progbits
+ 572              		.align	1
+ 573              		.syntax unified
+ 574              		.thumb
+ 575              		.thumb_func
+ 577              	Motor_Stop:
+ 578              	.LFB156:
+ 155:User/Hardware/lift_control.c **** 
+ 156:User/Hardware/lift_control.c **** /**
+ 157:User/Hardware/lift_control.c ****  * @brief  电机停止
+ 158:User/Hardware/lift_control.c ****  * @note   两路继电器均断开（高电平），电机两端悬空
+ 159:User/Hardware/lift_control.c ****  * @param  无
+ 160:User/Hardware/lift_control.c ****  * @retval 无
+ 161:User/Hardware/lift_control.c ****  */
+ 162:User/Hardware/lift_control.c **** static void Motor_Stop(void)
+ 163:User/Hardware/lift_control.c **** {
+ 579              		.loc 1 163 1
+ 580              		.cfi_startproc
+ 581              		@ args = 0, pretend = 0, frame = 0
+ 582              		@ frame_needed = 1, uses_anonymous_args = 0
+ 583 0000 80B5     		push	{r7, lr}
+ 584              	.LCFI40:
+ 585              		.cfi_def_cfa_offset 8
+ 586              		.cfi_offset 7, -8
+ 587              		.cfi_offset 14, -4
+ 588 0002 00AF     		add	r7, sp, #0
+ 589              	.LCFI41:
+ 590              		.cfi_def_cfa_register 7
+ 164:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
+ 591              		.loc 1 164 5
+ 592 0004 0122     		movs	r2, #1
+ 593 0006 0121     		movs	r1, #1
+ 594 0008 0448     		ldr	r0, .L47
+ 595 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 165:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
+ 596              		.loc 1 165 5
+ 597 000e 0122     		movs	r2, #1
+ 598 0010 0421     		movs	r1, #4
+ 599 0012 0248     		ldr	r0, .L47
+ 600 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 166:User/Hardware/lift_control.c **** }...
+ 601              		.loc 1 166 1
+ 602 0018 00BF     		nop
+ 603 001a 80BD     		pop	{r7, pc}
+ 604              	.L48:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 15
+
+
+ 605              		.align	2
+ 606              	.L47:
+ 607 001c 00000258 		.word	1476526080
+ 608              		.cfi_endproc
+ 609              	.LFE156:
+ 611              		.text
+ 612              	.Letext0:
+ 613              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
+ 614              		.file 4 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
+ 615              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
+ 616              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ 617              		.file 7 "User/Hardware/lift_control.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 lift_control.c
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:23     .data.lift_state:00000000 lift_state
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:30     .bss.lift_current_height:00000000 lift_current_height
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:27     .bss.lift_current_height:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:33     .text.Lift_Init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:39     .text.Lift_Init:00000000 Lift_Init
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:514    .text.Motor_Stop:00000000 Motor_Stop
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:69     .text.Lift_Init:00000018 $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:75     .text.Lift_Up:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:81     .text.Lift_Up:00000000 Lift_Up
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:113    .text.Lift_Up:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:118    .text.Lift_Down:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:124    .text.Lift_Down:00000000 Lift_Down
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:156    .text.Lift_Down:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:161    .text.Lift_Stop:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:167    .text.Lift_Stop:00000000 Lift_Stop
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:199    .text.Lift_Stop:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:204    .text.Lift_SetState:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:210    .text.Lift_SetState:00000000 Lift_SetState
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:250    .text.Lift_SetState:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:255    .text.Lift_GetState:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:261    .text.Lift_GetState:00000000 Lift_GetState
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:292    .text.Lift_GetState:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:297    .text.Lift_UpdateMotor:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:303    .text.Lift_UpdateMotor:00000000 Lift_UpdateMotor
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:434    .text.Motor_Forward:00000000 Motor_Forward
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:474    .text.Motor_Reverse:00000000 Motor_Reverse
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:347    .text.Lift_UpdateMotor:00000028 $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:352    .text.Lift_RefreshHeight:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:358    .text.Lift_RefreshHeight:00000000 Lift_RefreshHeight
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:387    .text.Lift_GetHeight:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:393    .text.Lift_GetHeight:00000000 Lift_GetHeight
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:424    .text.Lift_GetHeight:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:429    .text.Motor_Forward:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:464    .text.Motor_Forward:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:469    .text.Motor_Reverse:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:504    .text.Motor_Reverse:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:509    .text.Motor_Stop:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccjTQpon.s:544    .text.Motor_Stop:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:20     .text.STP23L_ClearOkFlag:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:25     .text.STP23L_ClearOkFlag:00000000 STP23L_ClearOkFlag
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:58     .text.STP23L_ClearOkFlag:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:66     .data.lift_state:00000000 lift_state
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:73     .bss.lift_current_height:00000000 lift_current_height
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:70     .bss.lift_current_height:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:80     .bss.lift_height_final:00000000 lift_height_final
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:77     .bss.lift_height_final:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:83     .text.Lift_Init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:89     .text.Lift_Init:00000000 Lift_Init
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:577    .text.Motor_Stop:00000000 Motor_Stop
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:119    .text.Lift_Init:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:125    .text.Lift_Up:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:131    .text.Lift_Up:00000000 Lift_Up
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:163    .text.Lift_Up:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:168    .text.Lift_Down:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:174    .text.Lift_Down:00000000 Lift_Down
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:206    .text.Lift_Down:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:211    .text.Lift_Stop:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:217    .text.Lift_Stop:00000000 Lift_Stop
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:249    .text.Lift_Stop:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:254    .text.Lift_SetState:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:260    .text.Lift_SetState:00000000 Lift_SetState
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:300    .text.Lift_SetState:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:305    .text.Lift_GetState:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:311    .text.Lift_GetState:00000000 Lift_GetState
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:342    .text.Lift_GetState:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:347    .text.Lift_UpdateMotor:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:353    .text.Lift_UpdateMotor:00000000 Lift_UpdateMotor
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:497    .text.Motor_Forward:00000000 Motor_Forward
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:537    .text.Motor_Reverse:00000000 Motor_Reverse
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:397    .text.Lift_UpdateMotor:00000028 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:402    .text.Lift_RefreshHeight:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:408    .text.Lift_RefreshHeight:00000000 Lift_RefreshHeight
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:444    .text.Lift_RefreshHeight:00000020 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:450    .text.Lift_GetHeight:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:456    .text.Lift_GetHeight:00000000 Lift_GetHeight
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:487    .text.Lift_GetHeight:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:492    .text.Motor_Forward:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:527    .text.Motor_Forward:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:532    .text.Motor_Reverse:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:567    .text.Motor_Reverse:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:572    .text.Motor_Stop:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:607    .text.Motor_Stop:0000001c $d
 
 UNDEFINED SYMBOLS
+stp23l_data
+STP23L_GetFinalDistPerFrame
 HAL_GPIO_WritePin

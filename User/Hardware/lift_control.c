@@ -2,10 +2,13 @@
 #include "remote_control.h"
 #include "usart.h"
 #include "UART_data_txrx.h"
+#include "stp23l.h"
 // 定义全局变量
 LIFT_State lift_state = LIFT_STOP;      // 初始为停止
 uint16_t lift_current_height = 0;       // 初始高度0
 
+//定义局部变量
+int16_t lift_height_final = 0; // 升降杆最终高度值（每帧更新一次）
 // 底层电机控制函数（内部使用）
 static void Motor_Forward(void);
 static void Motor_Reverse(void);
@@ -104,6 +107,12 @@ void Lift_UpdateMotor(void)
  */
 void Lift_RefreshHeight(void)
 {
+
+            if(stp23l_data.parse_ok == 1)
+        {
+            lift_height_final = STP23L_GetFinalDistPerFrame(); // 核心调用
+            STP23L_ClearOkFlag(); // 清除标志，准备下一帧解析
+        }
     // 示例：假设高度由ADC采集，通道1
     // lift_current_height = HAL_ADC_GetValue(&hadc1);
     // 此处留空，请根据实际硬件实现

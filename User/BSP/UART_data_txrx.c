@@ -56,7 +56,7 @@ transmit_data UART10_data;
 void uart_init(void)
 {
   UART_DMA_rxtx_start(&UART1_data, &huart1, &hdma_usart1_rx, &hdma_usart1_rx);
- // UART_DMA_rxtx_start(&UART2_data, &huart2, &hdma_usart2_rx, &hdma_usart2_rx);
+  // UART_DMA_rxtx_start(&UART2_data, &huart2, &hdma_usart2_rx, &hdma_usart2_rx);
   UART_DMA_rxtx_start(&UART3_data, &huart3, &hdma_usart3_rx, &hdma_usart3_rx);
   UART_DMA_rxtx_start(&UART5_data, &huart5, &hdma_uart5_rx, &hdma_uart5_rx);
   UART_DMA_rxtx_start(&UART7_data, &huart7, &hdma_uart7_rx, &hdma_uart7_tx);
@@ -90,7 +90,7 @@ void UART_DMA_rxtx_start(transmit_data *data, UART_HandleTypeDef *huart, DMA_Han
 void UART_send_data(transmit_data uart, uint8_t data[], uint16_t size)
 {
   //+++++++++++++++//while(HAL_DMA_GetState(UART6_data.hdma_usart_tx) != HAL_DMA_STATE_READY)
-  HAL_UART_Transmit_DMA(uart.huart, data, size); // 套娃ヾ(?ω?`)o
+  HAL_UART_Transmit_DMA(uart.huart, data, size); // 开启DMA批量数据发送
 }
 
 /**
@@ -108,27 +108,20 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
     HAL_UARTEx_ReceiveToIdle_DMA(huart, UART5_data.rev_data, UART_BUFFER_SIZE);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
-  else if (huart == &huart7) //升降杆高度读取
+  else if (huart == &huart7) // 升降杆高度读取
   {
-    if(Size > 0 && Size <= UART_BUFFER_SIZE) // 防止越界
-    {
-        for(uint16_t i = 0; i < Size; i++)
-        {
-            STP23L_ParseByte(UART7_data.rev_data[i]); // 逐个字节传入解析函数
-        }
-    }
-      HAL_UARTEx_ReceiveToIdle_DMA(huart, UART7_data.rev_data, UART_BUFFER_SIZE);
+    STP23L_ParseData(UART7_data.rev_data, Size);
+    HAL_UARTEx_ReceiveToIdle_DMA(huart, UART7_data.rev_data, UART_BUFFER_SIZE);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
   else if (huart == &huart10) // 图传链路裁判系统
   {
-
+    
   }
   else if (huart == &huart1)
   {
     if (UART1_data.rev_data[0] == 0xA5)
     {
-     
     }
     HAL_UARTEx_ReceiveToIdle_DMA(huart, UART1_data.rev_data, UART_BUFFER_SIZE);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
@@ -140,8 +133,8 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
   // }
   else if (huart == &huart3)
   {
-  //  HAL_UART_Receive(&huart1, (uint8_t *)&data.motor_recv_data, sizeof(data.motor_recv_data), 1);
-  //      __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
+    //  HAL_UART_Receive(&huart1, (uint8_t *)&data.motor_recv_data, sizeof(data.motor_recv_data), 1);
+    //      __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
 }
 

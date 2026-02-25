@@ -38,7 +38,8 @@ build/lift_control.o: User/Hardware/lift_control.c \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  User/Software/remote_control.h Core/Inc/usart.h Core/Inc/main.h \
- User/BSP/UART_data_txrx.h Core/Inc/struct_typedef.h
+ User/BSP/UART_data_txrx.h Core/Inc/struct_typedef.h \
+ User/Hardware/stp23l.h
 User/Hardware/lift_control.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
@@ -85,3 +86,4 @@ Core/Inc/usart.h:
 Core/Inc/main.h:
 User/BSP/UART_data_txrx.h:
 Core/Inc/struct_typedef.h:
+User/Hardware/stp23l.h:
