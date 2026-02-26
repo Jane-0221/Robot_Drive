@@ -10,6 +10,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "DrEmpower_can.h"
+#include "stdio.h"
 ShoulderType_t g_ShoulderType; // 肩部类型
 
 struct servo_state servo_state_daran[3];
@@ -67,10 +68,15 @@ void Arm_Init()
     /* 大然电机初始化（使用 CAN2）*/
     clear_error(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
     set_mode(CAN_HANDLE_2, MOTOR_DARAN_1_ID, 2);
+    write_property(CAN_HANDLE_2, MOTOR_DARAN_1_ID, 22001, 3, 1.0f);
+
     clear_error(CAN_HANDLE_2, MOTOR_DARAN_2_ID);
     set_mode(CAN_HANDLE_2, MOTOR_DARAN_2_ID, 2);
+    write_property(CAN_HANDLE_2, MOTOR_DARAN_2_ID, 22001, 3, 1.0f);
+    
     clear_error(CAN_HANDLE_2, MOTOR_DARAN_3_ID);
     set_mode(CAN_HANDLE_2, MOTOR_DARAN_3_ID, 2);
+    write_property(CAN_HANDLE_2, MOTOR_DARAN_3_ID, 22001, 3, 1.0f);
 
     /* 达妙电机初始化（使用 CAN2）*/
     arm_motor_init(&arm_motor[Motor4], MOTOR_DAMIAO_4_ID, POS_MODE);
@@ -92,7 +98,7 @@ void Arm_Init()
     Daran_motor_data[1].target_angle = 10.0f;
     Daran_motor_data[2].target_angle = 10.0f;
 
-    Daran_motor_data[0].target_velocity = 200.0f;
+    Daran_motor_data[0].target_velocity = 90.0f;
     Daran_motor_data[1].target_velocity = 20.0f;
     Daran_motor_data[2].target_velocity = 20.0f;
 }
@@ -115,20 +121,21 @@ void Arm_Linzu_motor3()
 
 void Arm_Daran_motor1()
 {
-//get_state(CAN_HANDLE_2, MOTOR_DARAN_1_ID);
-    read_property(CAN_HANDLE_2, MOTOR_DARAN_1_ID,38007, 0);
+    reply_state( MOTOR_DARAN_1_ID);
     HAL_Delay(1);
     set_angle(CAN_HANDLE_2, MOTOR_DARAN_1_ID, Daran_motor_data[0].target_angle, Daran_motor_data[0].target_velocity, 10.0f, 1);
 }
 void Arm_Daran_motor2()
 {
-    // get_volcur(CAN_HANDLE_2, MOTOR_DARAN_2_ID);
-    // servo_state_daran[1] = get_state(CAN_HANDLE_2, MOTOR_DARAN_2_ID);
-    // set_angle(CAN_HANDLE_2, MOTOR_DARAN_2_ID, Daran_motor_data[1].target_angle, Daran_motor_data[1].target_velocity, 10.0f, 1);
+    reply_state( MOTOR_DARAN_2_ID);
+    HAL_Delay(1);
+    set_angle(CAN_HANDLE_2, MOTOR_DARAN_2_ID, Daran_motor_data[1].target_angle, Daran_motor_data[1].target_velocity, 10.0f, 1);
 }
 
 void Arm_Daran_motor3()
 {
+    reply_state( MOTOR_DARAN_3_ID);
+    HAL_Delay(1);
     set_angle(CAN_HANDLE_2, MOTOR_DARAN_3_ID, Daran_motor_data[2].target_angle, Daran_motor_data[2].target_velocity, 10.0f, 1);
 }
 
@@ -164,10 +171,23 @@ void Arm_Linzu_Data_update()
     Linzu_motor_data[1].current_velocity = motor2.Pos_Info.Speed;
     Linzu_motor_data[2].current_velocity = motor3.Pos_Info.Speed;
 }
+void Arm_Daran_Data_update()
+{
+    Daran_motor_data[0].current_angle = motor_state[10][0];
+    Daran_motor_data[1].current_angle = motor_state[11][0];
+    Daran_motor_data[2].current_angle = motor_state[12][0];
+    Daran_motor_data[0].current_velocity = motor_state[10][1];
+    Daran_motor_data[1].current_velocity = motor_state[11][1];
+    Daran_motor_data[2].current_velocity = motor_state[12][1];
+}
+
+
 // 所有电机数据更新
 void Arm_All_Data_update()
 {
     Arm_Linzu_Data_update();
+    HAL_Delay(1);
+    Arm_Daran_Data_update();
 }
 
 void Arm_all_tx()

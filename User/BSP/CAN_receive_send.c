@@ -31,18 +31,7 @@
 #include "DrEmpower_can.h" // 必须包含大然电机驱动头文件‘
 #include "ktech_motor.h"
 #include "head.h"
-/* USER CODE END Includes */
-// 注意：过滤器配置已在 fdcan.c 中由 CubeMX 完成，此处不再重复配置
-// 本文件只负责数据收发处理和用户层初始化
-
-FDCAN_RxHeaderTypeDef RxHeader1; // 可能用于其他用途，保留
-uint8_t g_Can1RxData[64];        // 保留但建议不再使用（改用局部变量）
-float daibaoshan[3];
-motor_measure_t motor_data[33];
-
-extern uint8_t rx_buffer[8];
-extern int8_t READ_FLAG;
-extern uint16_t can_id;
+#include "DrEmpower_can.h"
 
 extern FDCAN_HandleTypeDef hfdcan1;
 extern FDCAN_HandleTypeDef hfdcan2;
@@ -57,16 +46,6 @@ void can_init(void)
 {
   // 所有 HAL 相关的配置已由 MX_FDCANx_Init 完成，此处不再重复
   // 可添加用户初始化代码，例如清零标志数组
-}
-
-// damiao 电机数据解析（保持不变）
-void get_motor_measure(motor_measure_t *ptr, uint8_t data[])
-{
-  (ptr)->last_ecd = (ptr)->ecd;
-  (ptr)->ecd = (uint16_t)((data)[0] << 8 | (data)[1]);
-  (ptr)->speed_rpm = (uint16_t)((data)[2] << 8 | (data)[3]);
-  (ptr)->given_current = (uint16_t)((data)[4] << 8 | (data)[5]);
-  (ptr)->temperate = (data)[6];
 }
 
 /**
@@ -164,19 +143,6 @@ uint8_t fdcanx_receive(FDCAN_HandleTypeDef *hfdcan, uint32_t RXFIFO, FDCAN_RxHea
 }
 
 /**
- * @brief 电机数据处理（圈数累加）
- */
-void process_motor_data(motor_measure_t *motor_data)
-{
-  if (motor_data->last_ecd > 7000 && motor_data->ecd < 1000)
-    motor_data->ecd_cnt += ((ECD_MAX - motor_data->last_ecd) + motor_data->ecd);
-  else if (motor_data->last_ecd < 1000 && motor_data->ecd > 7000)
-    motor_data->ecd_cnt -= ((ECD_MAX - motor_data->ecd) + motor_data->last_ecd);
-  else
-    motor_data->ecd_cnt += (motor_data->ecd - motor_data->last_ecd);
-}
-
-/**
  * @brief CAN接收回调（FDCAN IT0 中断）
  *        核心修改：循环读取 FIFO 直到空，避免溢出
  */
@@ -200,8 +166,6 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
       {
         ktech_parse_motor_fb(&motor_linkong[1], rx_data);
       }
-
-
     }
     else if (hfdcan->Instance == FDCAN2)
     {
@@ -225,15 +189,24 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
           uint8_t motor_id = (rx_header.Identifier >> 5) & 0x3F;
           if (motor_id == 11) // 您使用的大然电机ID
           {
-            // 将接收到的数据存入驱动库全局变量
+            for (int i = 0; i < 8; i++)
+            {
+              rx_buffer[i] = rx_data[i];
+            }
+            can_id = motor_id; // 保存 CAN ID
+            READ_FLAG = 1;
           }
           else if (motor_id == 12)
           {
-
+            for (int i = 0; i < 8; i++)
+            {
+              rx_buffer[i] = rx_data[i];
+            }
+            can_id = motor_id; // 保存 CAN ID
+            READ_FLAG = 1;
           }
           else if (motor_id == 13)
           {
-            
           }
 
           // 若还有其他标准帧电机，可在此扩展

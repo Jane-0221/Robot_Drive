@@ -17,9 +17,12 @@ struct servo_volcur
     float cur;
 };
 typedef FDCAN_HandleTypeDef hcan_t;//
-
+extern int8_t READ_FLAG;
+extern uint8_t rx_buffer[8];
+extern uint16_t can_id;
+extern float motor_state[20][5];
 void format_data( float *value_data, int *type_data,int length, char * str);
-void reply_state(uint8_t id_num);
+extern void reply_state(uint8_t id_num);
 void preset_angle(hcan_t* hcan, uint8_t id_num, float angle, float t, float param, int mode);
 void preset_speed(hcan_t* hcan, uint8_t id_num, float speed, float param, int mode);
 void preset_torque(hcan_t* hcan, uint8_t id_num, float torque, float param, int mode);

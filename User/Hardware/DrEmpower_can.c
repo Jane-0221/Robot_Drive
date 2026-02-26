@@ -40,8 +40,8 @@ int8_t READ_FLAG = 0;  // 读取结果标志位
 
 int8_t TRAJ_MODE = 1;  //速度轨迹模式选择控制，1表示梯形轨迹模式，2表示S形轨迹模式（指的是速度曲线形状，适用于位置控制-梯形轨迹模式）
 
-int8_t enable_replay_state = 0;  //如需要打开运动控制指令实时状态返回功能，请将该变量改为1，并将下面的MOTOR_NUM设置为总线上的最大电机ID号
-#define MOTOR_NUM  16
+int8_t enable_replay_state = 1;  //如需要打开运动控制指令实时状态返回功能，请将该变量改为1，并将下面的MOTOR_NUM设置为总线上的最大电机ID号
+#define MOTOR_NUM  20
 float motor_state[MOTOR_NUM][5];    //电机状态二维数组，通过motor_state[id_num-1]获取电机id_num的实时返回状态[angle,speed,torque,traj_done,axis_error]，单位分别为degree，r/min,Nm，三个变量值均指的是电机输出轴
 // # 其中motor_state[id_num-1][0]表示id_num号电机的角度，motor_state[id_num-1][1]表示id_num号电机的速度，motor_state[id_num-1][2]表示id_num号电机的输出扭矩
 uint32_t reply_state_error = 0;   // reply_state错误次数累积标志
