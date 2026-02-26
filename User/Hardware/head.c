@@ -98,7 +98,7 @@ HAL_Delay(1);
 Head_Lk_motor2();
 
 }
-void Arm_Lk_Data_update()
+void Head_Lk_Data_update()
 {
 
 head_motor_data[0].current_angle=motor_linkong[0].fb.encoder/65536.0f * 360.0f;     // 反馈编码器值转换为角度值

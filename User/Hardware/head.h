@@ -26,5 +26,5 @@ extern void Head_Lk_motor1(void);
 extern void Head_all_tx(void);
 
 
-extern void Arm_Lk_Data_update(void);
+extern void Head_Lk_Data_update(void);
 #endif

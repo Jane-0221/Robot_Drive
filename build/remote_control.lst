@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 1
   34              	.LCFI0:
   35              		.cfi_def_cfa_offset 4
   36              		.cfi_offset 7, -4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s 			page 2
 
 
   37 0002 00AF     		add	r7, sp, #0
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 1
   84 0012 4FF00002 		mov	r2, #0
   85 0016 9A60     		str	r2, [r3, #8]	@ float
   32:User/Software/remote_control.c **** }
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s 			page 3
 
 
   33:User/Software/remote_control.c **** else if(SBUS_CH.CH6==MID_VALUE)
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 1
  124 0046 7047     		bx	lr
  125              	.L8:
  126              		.align	2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s 			page 4
 
 
  127              	.L7:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 1
   53:User/Software/remote_control.c ****         lift_state = LIFT_DOWN;
  173              		.loc 1 53 20
  174 0020 074B     		ldr	r3, .L13+4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 5
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s 			page 5
 
 
  175 0022 0122     		movs	r2, #1
@@ -285,19 +285,19 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 1
  210              		.file 4 "User/Hardware/Sbus.h"
  211              		.file 5 "User/Hardware/arm.h"
  212              		.file 6 "User/Hardware/lift_control.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s 			page 6
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 remote_control.c
-C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s:20     .text.remote_control_init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s:26     .text.remote_control_init:00000000 remote_control_init
-C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s:55     .text.Head_Motor_Control_Updata:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s:61     .text.Head_Motor_Control_Updata:00000000 Head_Motor_Control_Updata
-C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s:128    .text.Head_Motor_Control_Updata:00000048 $d
-C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s:136    .text.Up_Down_Motor_Control:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s:142    .text.Up_Down_Motor_Control:00000000 Up_Down_Motor_Control
-C:\Users\Godwin\AppData\Local\Temp\ccr7W3lE.s:201    .text.Up_Down_Motor_Control:0000003c $d
+C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s:20     .text.remote_control_init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s:26     .text.remote_control_init:00000000 remote_control_init
+C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s:55     .text.Head_Motor_Control_Updata:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s:61     .text.Head_Motor_Control_Updata:00000000 Head_Motor_Control_Updata
+C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s:128    .text.Head_Motor_Control_Updata:00000048 $d
+C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s:136    .text.Up_Down_Motor_Control:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s:142    .text.Up_Down_Motor_Control:00000000 Up_Down_Motor_Control
+C:\Users\Godwin\AppData\Local\Temp\cclbd69m.s:201    .text.Up_Down_Motor_Control:0000003c $d
 
 UNDEFINED SYMBOLS
 SBUS_CH

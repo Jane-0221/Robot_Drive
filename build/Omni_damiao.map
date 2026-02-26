@@ -5316,9 +5316,9 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
                 0x0801b35c       0x16 build/head.o
                 0x0801b35c                Head_all_tx
  *fill*         0x0801b372        0x2 
- .text.Arm_Lk_Data_update
+ .text.Head_Lk_Data_update
                 0x0801b374       0x8c build/head.o
-                0x0801b374                Arm_Lk_Data_update
+                0x0801b374                Head_Lk_Data_update
  .text.IMU_init
                 0x0801b400       0xb8 build/IMU_updata.o
                 0x0801b400                IMU_init
@@ -7385,81 +7385,81 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .debug_line    0x00028788       0x64 Algorithm/AHRS.lib(ahrs.o)
                 0x00028788                __ARM_grp..debug_line$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
 
-.debug_str      0x00000000    0x10380
- .debug_str     0x00000000    0x10380 build/main.o
+.debug_str      0x00000000    0x10381
+ .debug_str     0x00000000    0x10381 build/main.o
                                 0xdf0 (size before relaxing)
- .debug_str     0x00010380      0x24a build/iwdg.o
- .debug_str     0x00010380     0x196d build/stm32h7xx_it.o
- .debug_str     0x00010380      0xbc5 build/stm32h7xx_hal_msp.o
- .debug_str     0x00010380     0x1392 build/stm32h7xx_hal_timebase_tim.o
- .debug_str     0x00010380      0x6da build/usb_device.o
- .debug_str     0x00010380      0x47a build/usbd_desc.o
- .debug_str     0x00010380      0x819 build/usbd_cdc_if.o
- .debug_str     0x00010380     0x1dd4 build/usbd_conf.o
- .debug_str     0x00010380      0xe22 build/stm32h7xx_hal_pcd.o
- .debug_str     0x00010380      0x80e build/stm32h7xx_hal_pcd_ex.o
- .debug_str     0x00010380      0xd6a build/stm32h7xx_ll_usb.o
- .debug_str     0x00010380      0x991 build/stm32h7xx_hal_rcc.o
- .debug_str     0x00010380      0xed3 build/stm32h7xx_hal_rcc_ex.o
- .debug_str     0x00010380      0x6ac build/stm32h7xx_hal_gpio.o
- .debug_str     0x00010380      0x92f build/stm32h7xx_hal_dma.o
- .debug_str     0x00010380      0x98a build/stm32h7xx_hal_pwr_ex.o
- .debug_str     0x00010380     0x1017 build/stm32h7xx_hal_cortex.o
- .debug_str     0x00010380     0x1572 build/stm32h7xx_hal.o
- .debug_str     0x00010380     0x1d6a build/stm32h7xx_hal_fdcan.o
- .debug_str     0x00010380      0xdaa build/stm32h7xx_hal_spi.o
- .debug_str     0x00010380     0x183f build/stm32h7xx_hal_tim.o
- .debug_str     0x00010380     0x11cb build/stm32h7xx_hal_tim_ex.o
- .debug_str     0x00010380     0x1478 build/stm32h7xx_hal_uart.o
- .debug_str     0x00010380      0xb7d build/stm32h7xx_hal_uart_ex.o
- .debug_str     0x00010380      0x27a build/stm32h7xx_hal_iwdg.o
- .debug_str     0x00010380      0x673 build/system_stm32h7xx.o
- .debug_str     0x00010380      0x9c9 build/usbd_core.o
- .debug_str     0x00010380      0x7f4 build/usbd_ctlreq.o
- .debug_str     0x00010380      0x6c9 build/usbd_ioreq.o
- .debug_str     0x00010380      0xdc3 build/usbd_cdc.o
- .debug_str     0x00010380      0x9da build/freertos.o
- .debug_str     0x00010380      0x2d6 build/list.o
- .debug_str     0x00010380      0xcdb build/queue.o
- .debug_str     0x00010380     0x12d0 build/tasks.o
- .debug_str     0x00010380      0xc1c build/timers.o
- .debug_str     0x00010380     0x2566 build/cmsis_os2.o
- .debug_str     0x00010380      0x4ef build/heap_4.o
- .debug_str     0x00010380      0x456 build/port.o
- .debug_str     0x00010380      0x1f9 build/sysmem.o
- .debug_str     0x00010380      0x3cd build/syscalls.o
- .debug_str     0x00010380      0x4b7 build/gpio.o
- .debug_str     0x00010380      0xbca build/dma.o
- .debug_str     0x00010380     0x162c build/fdcan.o
- .debug_str     0x00010380     0x1698 build/spi.o
- .debug_str     0x00010380     0x167a build/tim.o
- .debug_str     0x00010380     0x1771 build/usart.o
- .debug_str     0x00010380      0x53a build/BMI088driver.o
- .debug_str     0x00010380      0x923 build/BMI088Middleware.o
- .debug_str     0x00010380      0x7ff build/ws2812.o
- .debug_str     0x00010380      0x223 build/AHRS_middleware.o
- .debug_str     0x00010380      0x469 build/fifo.o
- .debug_str     0x00010380      0x1fd build/pid.o
- .debug_str     0x00010380      0x9f4 build/UART_data_txrx.o
- .debug_str     0x00010380     0x107b build/CAN_receive_send.o
- .debug_str     0x00010380      0x1d7 build/Stm32_time.o
- .debug_str     0x00010380      0xc4c build/dm4310_drv.o
- .debug_str     0x00010380      0xa7c build/ktech_motor.o
- .debug_str     0x00010380      0xe70 build/Robstride04.o
- .debug_str     0x00010380      0xcec build/DrEmpower_can.o
- .debug_str     0x00010380      0xe58 build/arm.o
- .debug_str     0x00010380      0x3ed build/lift_control.o
- .debug_str     0x00010380      0x284 build/pump_control.o
- .debug_str     0x00010380      0x924 build/head.o
- .debug_str     0x00010380      0xb48 build/IMU_updata.o
- .debug_str     0x00010380      0x1ec build/Sbus.o
- .debug_str     0x00010380      0x32f build/stp23l.o
- .debug_str     0x00010380      0x1c3 build/LED.o
- .debug_str     0x00010380      0x862 build/buzzer.o
- .debug_str     0x00010380      0x2c5 build/remote_control.o
- .debug_str     0x00010380      0x23c build/USB_VirCom.o
- .debug_str     0x00010380      0x27d build/music.o
- .debug_str     0x00010380       0x56 build/startup_stm32h723xx.o
+ .debug_str     0x00010381      0x24a build/iwdg.o
+ .debug_str     0x00010381     0x196d build/stm32h7xx_it.o
+ .debug_str     0x00010381      0xbc5 build/stm32h7xx_hal_msp.o
+ .debug_str     0x00010381     0x1392 build/stm32h7xx_hal_timebase_tim.o
+ .debug_str     0x00010381      0x6da build/usb_device.o
+ .debug_str     0x00010381      0x47a build/usbd_desc.o
+ .debug_str     0x00010381      0x819 build/usbd_cdc_if.o
+ .debug_str     0x00010381     0x1dd4 build/usbd_conf.o
+ .debug_str     0x00010381      0xe22 build/stm32h7xx_hal_pcd.o
+ .debug_str     0x00010381      0x80e build/stm32h7xx_hal_pcd_ex.o
+ .debug_str     0x00010381      0xd6a build/stm32h7xx_ll_usb.o
+ .debug_str     0x00010381      0x991 build/stm32h7xx_hal_rcc.o
+ .debug_str     0x00010381      0xed3 build/stm32h7xx_hal_rcc_ex.o
+ .debug_str     0x00010381      0x6ac build/stm32h7xx_hal_gpio.o
+ .debug_str     0x00010381      0x92f build/stm32h7xx_hal_dma.o
+ .debug_str     0x00010381      0x98a build/stm32h7xx_hal_pwr_ex.o
+ .debug_str     0x00010381     0x1017 build/stm32h7xx_hal_cortex.o
+ .debug_str     0x00010381     0x1572 build/stm32h7xx_hal.o
+ .debug_str     0x00010381     0x1d6a build/stm32h7xx_hal_fdcan.o
+ .debug_str     0x00010381      0xdaa build/stm32h7xx_hal_spi.o
+ .debug_str     0x00010381     0x183f build/stm32h7xx_hal_tim.o
+ .debug_str     0x00010381     0x11cb build/stm32h7xx_hal_tim_ex.o
+ .debug_str     0x00010381     0x1478 build/stm32h7xx_hal_uart.o
+ .debug_str     0x00010381      0xb7d build/stm32h7xx_hal_uart_ex.o
+ .debug_str     0x00010381      0x27a build/stm32h7xx_hal_iwdg.o
+ .debug_str     0x00010381      0x673 build/system_stm32h7xx.o
+ .debug_str     0x00010381      0x9c9 build/usbd_core.o
+ .debug_str     0x00010381      0x7f4 build/usbd_ctlreq.o
+ .debug_str     0x00010381      0x6c9 build/usbd_ioreq.o
+ .debug_str     0x00010381      0xdc3 build/usbd_cdc.o
+ .debug_str     0x00010381      0x9db build/freertos.o
+ .debug_str     0x00010381      0x2d6 build/list.o
+ .debug_str     0x00010381      0xcdb build/queue.o
+ .debug_str     0x00010381     0x12d0 build/tasks.o
+ .debug_str     0x00010381      0xc1c build/timers.o
+ .debug_str     0x00010381     0x2566 build/cmsis_os2.o
+ .debug_str     0x00010381      0x4ef build/heap_4.o
+ .debug_str     0x00010381      0x456 build/port.o
+ .debug_str     0x00010381      0x1f9 build/sysmem.o
+ .debug_str     0x00010381      0x3cd build/syscalls.o
+ .debug_str     0x00010381      0x4b7 build/gpio.o
+ .debug_str     0x00010381      0xbca build/dma.o
+ .debug_str     0x00010381     0x162c build/fdcan.o
+ .debug_str     0x00010381     0x1698 build/spi.o
+ .debug_str     0x00010381     0x167a build/tim.o
+ .debug_str     0x00010381     0x1771 build/usart.o
+ .debug_str     0x00010381      0x53a build/BMI088driver.o
+ .debug_str     0x00010381      0x923 build/BMI088Middleware.o
+ .debug_str     0x00010381      0x7ff build/ws2812.o
+ .debug_str     0x00010381      0x223 build/AHRS_middleware.o
+ .debug_str     0x00010381      0x469 build/fifo.o
+ .debug_str     0x00010381      0x1fd build/pid.o
+ .debug_str     0x00010381      0x9f4 build/UART_data_txrx.o
+ .debug_str     0x00010381     0x107b build/CAN_receive_send.o
+ .debug_str     0x00010381      0x1d7 build/Stm32_time.o
+ .debug_str     0x00010381      0xc4c build/dm4310_drv.o
+ .debug_str     0x00010381      0xa7c build/ktech_motor.o
+ .debug_str     0x00010381      0xe70 build/Robstride04.o
+ .debug_str     0x00010381      0xcec build/DrEmpower_can.o
+ .debug_str     0x00010381      0xe58 build/arm.o
+ .debug_str     0x00010381      0x3ed build/lift_control.o
+ .debug_str     0x00010381      0x284 build/pump_control.o
+ .debug_str     0x00010381      0x925 build/head.o
+ .debug_str     0x00010381      0xb48 build/IMU_updata.o
+ .debug_str     0x00010381      0x1ec build/Sbus.o
+ .debug_str     0x00010381      0x32f build/stp23l.o
+ .debug_str     0x00010381      0x1c3 build/LED.o
+ .debug_str     0x00010381      0x862 build/buzzer.o
+ .debug_str     0x00010381      0x2c5 build/remote_control.o
+ .debug_str     0x00010381      0x23c build/USB_VirCom.o
+ .debug_str     0x00010381      0x27d build/music.o
+ .debug_str     0x00010381       0x56 build/startup_stm32h723xx.o
 
 .debug_frame    0x00000000     0xec04
  .debug_frame   0x00000000       0xb0 build/main.o
@@ -7694,8 +7694,6 @@ Arm_Linzu_Data_update                             build/arm.o
 Arm_Linzu_motor1                                  build/arm.o
 Arm_Linzu_motor2                                  build/arm.o
 Arm_Linzu_motor3                                  build/arm.o
-Arm_Lk_Data_update                                build/head.o
-                                                  build/freertos.o
 Arm_all_tx                                        build/arm.o
                                                   build/freertos.o
 AutoAim_Algorithm                                 build/Kalman_Filter_c.o
@@ -8736,6 +8734,8 @@ HS_Desc                                           build/usbd_desc.o
 HardFault_Handler                                 build/stm32h7xx_it.o
 Head_Init                                         build/head.o
                                                   build/main.o
+Head_Lk_Data_update                               build/head.o
+                                                  build/freertos.o
 Head_Lk_motor1                                    build/head.o
 Head_Lk_motor2                                    build/head.o
 Head_Motor_Control_Updata                         build/remote_control.o

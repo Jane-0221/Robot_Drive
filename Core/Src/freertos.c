@@ -272,6 +272,7 @@ void Motor_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
+
   }
   /* USER CODE END Motor_control_Task */
 }
@@ -291,7 +292,7 @@ void Yaw_Task(void *argument)
   {
     Head_all_tx();
 
-    Arm_Lk_Data_update();
+    Head_Lk_Data_update();
 
     osDelay(1);
   }
