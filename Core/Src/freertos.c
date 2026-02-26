@@ -59,51 +59,65 @@ uint32_t color = 0;
 /* Definitions for Remote_control */
 osThreadId_t Remote_controlHandle;
 const osThreadAttr_t Remote_control_attributes = {
-    .name = "Remote_control",
-    .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityNormal1,
+  .name = "Remote_control",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityNormal1,
 };
-/* Definitions for Eng_arm */
-osThreadId_t Eng_armHandle;
-const osThreadAttr_t Eng_arm_attributes = {
-    .name = "Eng_arm",
-    .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityNormal,
+/* Definitions for Arm_MT */
+osThreadId_t Arm_MTHandle;
+const osThreadAttr_t Arm_MT_attributes = {
+  .name = "Arm_MT",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
 };
-/* Definitions for Chassis */
-osThreadId_t ChassisHandle;
-const osThreadAttr_t Chassis_attributes = {
-    .name = "Chassis",
-    .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+/* Definitions for Lift_control */
+osThreadId_t Lift_controlHandle;
+const osThreadAttr_t Lift_control_attributes = {
+  .name = "Lift_control",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for Motor_control */
 osThreadId_t Motor_controlHandle;
 const osThreadAttr_t Motor_control_attributes = {
-    .name = "Motor_control",
-    .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+  .name = "Motor_control",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityLow,
 };
-/* Definitions for Yaw */
-osThreadId_t YawHandle;
-const osThreadAttr_t Yaw_attributes = {
-    .name = "Yaw",
-    .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+/* Definitions for Head */
+osThreadId_t HeadHandle;
+const osThreadAttr_t Head_attributes = {
+  .name = "Head",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
 };
-/* Definitions for Referee */
-osThreadId_t RefereeHandle;
-const osThreadAttr_t Referee_attributes = {
-    .name = "Referee",
-    .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+/* Definitions for Arm_update */
+osThreadId_t Arm_updateHandle;
+const osThreadAttr_t Arm_update_attributes = {
+  .name = "Arm_update",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for Log_and_debug */
 osThreadId_t Log_and_debugHandle;
 const osThreadAttr_t Log_and_debug_attributes = {
-    .name = "Log_and_debug",
-    .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+  .name = "Log_and_debug",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
+/* Definitions for Arm_SV */
+osThreadId_t Arm_SVHandle;
+const osThreadAttr_t Arm_SV_attributes = {
+  .name = "Arm_SV",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityNormal3,
+};
+/* Definitions for PC_Comm */
+osThreadId_t PC_CommHandle;
+const osThreadAttr_t PC_Comm_attributes = {
+  .name = "PC_Comm",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -112,12 +126,14 @@ const osThreadAttr_t Log_and_debug_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void Remote_control_Task(void *argument);
-void Eng_arm_Task(void *argument);
-void Chassis_Task(void *argument);
+void Arm_MT_Task(void *argument);
+void Lift_control_Task(void *argument);
 void Motor_control_Task(void *argument);
-void Yaw_Task(void *argument);
-void Referee_Task(void *argument);
+void Head_Task(void *argument);
+void Arm_update_Task(void *argument);
 void Log_and_debug_Task(void *argument);
+void Arm_SV_Task(void *argument);
+void PC_Comm_Task(void *argument);
 
 extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -141,12 +157,11 @@ void vApplicationIdleHook(void)
 /* USER CODE END 2 */
 
 /**
- * @brief  FreeRTOS initialization
- * @param  None
- * @retval None
- */
-void MX_FREERTOS_Init(void)
-{
+  * @brief  FreeRTOS initialization
+  * @param  None
+  * @retval None
+  */
+void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
@@ -171,23 +186,29 @@ void MX_FREERTOS_Init(void)
   /* creation of Remote_control */
   Remote_controlHandle = osThreadNew(Remote_control_Task, NULL, &Remote_control_attributes);
 
-  /* creation of Eng_arm */
-  Eng_armHandle = osThreadNew(Eng_arm_Task, NULL, &Eng_arm_attributes);
+  /* creation of Arm_MT */
+  Arm_MTHandle = osThreadNew(Arm_MT_Task, NULL, &Arm_MT_attributes);
 
-  /* creation of Chassis */
-  ChassisHandle = osThreadNew(Chassis_Task, NULL, &Chassis_attributes);
+  /* creation of Lift_control */
+  Lift_controlHandle = osThreadNew(Lift_control_Task, NULL, &Lift_control_attributes);
 
   /* creation of Motor_control */
   Motor_controlHandle = osThreadNew(Motor_control_Task, NULL, &Motor_control_attributes);
 
-  /* creation of Yaw */
-  YawHandle = osThreadNew(Yaw_Task, NULL, &Yaw_attributes);
+  /* creation of Head */
+  HeadHandle = osThreadNew(Head_Task, NULL, &Head_attributes);
 
-  /* creation of Referee */
-  RefereeHandle = osThreadNew(Referee_Task, NULL, &Referee_attributes);
+  /* creation of Arm_update */
+  Arm_updateHandle = osThreadNew(Arm_update_Task, NULL, &Arm_update_attributes);
 
   /* creation of Log_and_debug */
   Log_and_debugHandle = osThreadNew(Log_and_debug_Task, NULL, &Log_and_debug_attributes);
+
+  /* creation of Arm_SV */
+  Arm_SVHandle = osThreadNew(Arm_SV_Task, NULL, &Arm_SV_attributes);
+
+  /* creation of PC_Comm */
+  PC_CommHandle = osThreadNew(PC_Comm_Task, NULL, &PC_Comm_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -196,6 +217,7 @@ void MX_FREERTOS_Init(void)
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
   /* USER CODE END RTOS_EVENTS */
+
 }
 
 /* USER CODE BEGIN Header_Remote_control_Task */
@@ -220,43 +242,43 @@ void Remote_control_Task(void *argument)
   /* USER CODE END Remote_control_Task */
 }
 
-/* USER CODE BEGIN Header_Eng_arm_Task */
+/* USER CODE BEGIN Header_Arm_MT_Task */
 /**
- * @brief Function implementing the Eng_arm thread.
- * @param argument: Not used
- * @retval None
- */
-/* USER CODE END Header_Eng_arm_Task */
-void Eng_arm_Task(void *argument)
+* @brief Function implementing the Arm_MT thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Arm_MT_Task */
+void Arm_MT_Task(void *argument)
 {
-  /* USER CODE BEGIN Eng_arm_Task */
+  /* USER CODE BEGIN Arm_MT_Task */
   /* Infinite loop */
-  for (;;)
+  for(;;)
   {
-    Arm_all_tx();
-    // printf("666\n");
+    osDelay(1);
+ Arm_all_tx();
   }
-  /* USER CODE END Eng_arm_Task */
+  /* USER CODE END Arm_MT_Task */
 }
 
-/* USER CODE BEGIN Header_Chassis_Task */
+/* USER CODE BEGIN Header_Lift_control_Task */
 /**
- * @brief Function implementing the Chassis thread.
- * @param argument: Not used
- * @retval None
- */
-/* USER CODE END Header_Chassis_Task */
-void Chassis_Task(void *argument) // 升降
+* @brief Function implementing the Lift_control thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Lift_control_Task */
+void Lift_control_Task(void *argument)
 {
-  /* USER CODE BEGIN Chassis_Task */
+  /* USER CODE BEGIN Lift_control_Task */
   /* Infinite loop */
-  for (;;)
+  for(;;)
   {
-    Lift_RefreshHeight();
+        Lift_RefreshHeight();
     HAL_IWDG_Refresh(&hiwdg1);
     osDelay(1);
   }
-  /* USER CODE END Chassis_Task */
+  /* USER CODE END Lift_control_Task */
 }
 
 /* USER CODE BEGIN Header_Motor_control_Task */
@@ -277,18 +299,18 @@ void Motor_control_Task(void *argument)
   /* USER CODE END Motor_control_Task */
 }
 
-/* USER CODE BEGIN Header_Yaw_Task */
+/* USER CODE BEGIN Header_Head_Task */
 /**
- * @brief Function implementing the Yaw thread.
- * @param argument: Not used
- * @retval None
- */
-/* USER CODE END Header_Yaw_Task */
-void Yaw_Task(void *argument)
+* @brief Function implementing the Head thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Head_Task */
+void Head_Task(void *argument)
 {
-  /* USER CODE BEGIN Yaw_Task */
+  /* USER CODE BEGIN Head_Task */
   /* Infinite loop */
-  for (;;)
+  for(;;)
   {
     Head_all_tx();
 
@@ -296,26 +318,26 @@ void Yaw_Task(void *argument)
 
     osDelay(1);
   }
-  /* USER CODE END Yaw_Task */
+  /* USER CODE END Head_Task */
 }
 
-/* USER CODE BEGIN Header_Referee_Task */
+/* USER CODE BEGIN Header_Arm_update_Task */
 /**
- * @brief Function implementing the Referee thread.
- * @param argument: Not used
- * @retval None
- */
-/* USER CODE END Header_Referee_Task */
-void Referee_Task(void *argument)
+* @brief Function implementing the Arm_update thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Arm_update_Task */
+void Arm_update_Task(void *argument)
 {
-  /* USER CODE BEGIN Referee_Task */
+  /* USER CODE BEGIN Arm_update_Task */
   /* Infinite loop */
-  for (;;)
+  for(;;)
   {
-    Arm_All_Data_update();
-    osDelay(1);
+        Arm_All_Data_update();
+            osDelay(1);
   }
-  /* USER CODE END Referee_Task */
+  /* USER CODE END Arm_update_Task */
 }
 
 /* USER CODE BEGIN Header_Log_and_debug_Task */
@@ -345,7 +367,44 @@ void Log_and_debug_Task(void *argument)
   /* USER CODE END Log_and_debug_Task */
 }
 
+/* USER CODE BEGIN Header_Arm_SV_Task */
+/**
+* @brief Function implementing the Arm_SV thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Arm_SV_Task */
+void Arm_SV_Task(void *argument)
+{
+  /* USER CODE BEGIN Arm_SV_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END Arm_SV_Task */
+}
+
+/* USER CODE BEGIN Header_PC_Comm_Task */
+/**
+* @brief Function implementing the PC_Comm thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_PC_Comm_Task */
+void PC_Comm_Task(void *argument)
+{
+  /* USER CODE BEGIN PC_Comm_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END PC_Comm_Task */
+}
+
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
+

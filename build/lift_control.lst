@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
   29:User/Hardware/stp23l.h **** /************************* 测点结构体（严格匹配手册） *************************/
   30:User/Hardware/stp23l.h **** typedef struct
   31:User/Hardware/stp23l.h **** {
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 2
 
 
   32:User/Hardware/stp23l.h ****     int16_t  distance;   // 距离(mm) 2B小端
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
   54 0012 7047     		bx	lr
   55              	.L3:
   56              		.align	2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 3
 
 
   57              	.L2:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
   95 0000 80B5     		push	{r7, lr}
   96              	.LCFI4:
   97              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 4
 
 
   98              		.cfi_offset 7, -8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  142 0002 00AF     		add	r7, sp, #0
  143              	.LCFI7:
  144              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 5
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 5
 
 
   37:User/Hardware/lift_control.c ****     lift_state = LIFT_UP;
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  190 0006 0122     		movs	r2, #1
  191 0008 1A70     		strb	r2, [r3]
   48:User/Hardware/lift_control.c **** }
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 6
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 6
 
 
  192              		.loc 1 48 1
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  238              	.LCFI16:
  239              		.cfi_def_cfa_register 13
  240              		@ sp needed
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 7
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 7
 
 
  241 000e 5DF8047B 		ldr	r7, [sp], #4
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  287              		.cfi_def_cfa_offset 4
  288 0014 BD46     		mov	sp, r7
  289              	.LCFI22:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 8
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 8
 
 
  290              		.cfi_def_cfa_register 13
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  337              		.cfi_def_cfa_offset 0
  338 0010 7047     		bx	lr
  339              	.L22:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 9
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 9
 
 
  340 0012 00BF     		.align	2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
   93:User/Hardware/lift_control.c ****         Motor_Reverse();
  381              		.loc 1 93 9
  382 0018 FFF7FEFF 		bl	Motor_Reverse
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 10
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 10
 
 
   94:User/Hardware/lift_control.c ****         break;
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  111:User/Hardware/lift_control.c ****             if(stp23l_data.parse_ok == 1)
  422              		.loc 1 111 27
  423 0004 064B     		ldr	r3, .L34
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 11
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 11
 
 
  424 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  465              		.cfi_def_cfa_offset 4
  466              		.cfi_offset 7, -4
  467 0002 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 12
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 12
 
 
  468              	.LCFI33:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  140:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_ON);
  511              		.loc 1 140 5
  512 0004 0022     		movs	r2, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 13
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 13
 
 
  513 0006 0121     		movs	r1, #1
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  556              		.loc 1 153 5
  557 000e 0022     		movs	r2, #0
  558 0010 0421     		movs	r1, #4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 14
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 14
 
 
  559 0012 0248     		ldr	r0, .L44
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  602 0018 00BF     		nop
  603 001a 80BD     		pop	{r7, pc}
  604              	.L48:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 15
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 15
 
 
  605              		.align	2
@@ -853,55 +853,55 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 1
  615              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
  616              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
  617              		.file 7 "User/Hardware/lift_control.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s 			page 16
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 lift_control.c
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:20     .text.STP23L_ClearOkFlag:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:25     .text.STP23L_ClearOkFlag:00000000 STP23L_ClearOkFlag
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:58     .text.STP23L_ClearOkFlag:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:66     .data.lift_state:00000000 lift_state
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:73     .bss.lift_current_height:00000000 lift_current_height
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:70     .bss.lift_current_height:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:80     .bss.lift_height_final:00000000 lift_height_final
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:77     .bss.lift_height_final:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:83     .text.Lift_Init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:89     .text.Lift_Init:00000000 Lift_Init
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:577    .text.Motor_Stop:00000000 Motor_Stop
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:119    .text.Lift_Init:00000018 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:125    .text.Lift_Up:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:131    .text.Lift_Up:00000000 Lift_Up
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:163    .text.Lift_Up:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:168    .text.Lift_Down:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:174    .text.Lift_Down:00000000 Lift_Down
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:206    .text.Lift_Down:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:211    .text.Lift_Stop:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:217    .text.Lift_Stop:00000000 Lift_Stop
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:249    .text.Lift_Stop:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:254    .text.Lift_SetState:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:260    .text.Lift_SetState:00000000 Lift_SetState
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:300    .text.Lift_SetState:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:305    .text.Lift_GetState:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:311    .text.Lift_GetState:00000000 Lift_GetState
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:342    .text.Lift_GetState:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:347    .text.Lift_UpdateMotor:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:353    .text.Lift_UpdateMotor:00000000 Lift_UpdateMotor
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:497    .text.Motor_Forward:00000000 Motor_Forward
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:537    .text.Motor_Reverse:00000000 Motor_Reverse
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:397    .text.Lift_UpdateMotor:00000028 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:402    .text.Lift_RefreshHeight:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:408    .text.Lift_RefreshHeight:00000000 Lift_RefreshHeight
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:444    .text.Lift_RefreshHeight:00000020 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:450    .text.Lift_GetHeight:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:456    .text.Lift_GetHeight:00000000 Lift_GetHeight
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:487    .text.Lift_GetHeight:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:492    .text.Motor_Forward:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:527    .text.Motor_Forward:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:532    .text.Motor_Reverse:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:567    .text.Motor_Reverse:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:572    .text.Motor_Stop:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cctFACpf.s:607    .text.Motor_Stop:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:20     .text.STP23L_ClearOkFlag:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:25     .text.STP23L_ClearOkFlag:00000000 STP23L_ClearOkFlag
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:58     .text.STP23L_ClearOkFlag:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:66     .data.lift_state:00000000 lift_state
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:73     .bss.lift_current_height:00000000 lift_current_height
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:70     .bss.lift_current_height:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:80     .bss.lift_height_final:00000000 lift_height_final
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:77     .bss.lift_height_final:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:83     .text.Lift_Init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:89     .text.Lift_Init:00000000 Lift_Init
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:577    .text.Motor_Stop:00000000 Motor_Stop
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:119    .text.Lift_Init:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:125    .text.Lift_Up:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:131    .text.Lift_Up:00000000 Lift_Up
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:163    .text.Lift_Up:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:168    .text.Lift_Down:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:174    .text.Lift_Down:00000000 Lift_Down
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:206    .text.Lift_Down:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:211    .text.Lift_Stop:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:217    .text.Lift_Stop:00000000 Lift_Stop
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:249    .text.Lift_Stop:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:254    .text.Lift_SetState:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:260    .text.Lift_SetState:00000000 Lift_SetState
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:300    .text.Lift_SetState:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:305    .text.Lift_GetState:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:311    .text.Lift_GetState:00000000 Lift_GetState
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:342    .text.Lift_GetState:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:347    .text.Lift_UpdateMotor:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:353    .text.Lift_UpdateMotor:00000000 Lift_UpdateMotor
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:497    .text.Motor_Forward:00000000 Motor_Forward
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:537    .text.Motor_Reverse:00000000 Motor_Reverse
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:397    .text.Lift_UpdateMotor:00000028 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:402    .text.Lift_RefreshHeight:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:408    .text.Lift_RefreshHeight:00000000 Lift_RefreshHeight
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:444    .text.Lift_RefreshHeight:00000020 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:450    .text.Lift_GetHeight:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:456    .text.Lift_GetHeight:00000000 Lift_GetHeight
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:487    .text.Lift_GetHeight:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:492    .text.Motor_Forward:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:527    .text.Motor_Forward:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:532    .text.Motor_Reverse:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:567    .text.Motor_Reverse:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:572    .text.Motor_Stop:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccAWAhjr.s:607    .text.Motor_Stop:0000001c $d
 
 UNDEFINED SYMBOLS
 stp23l_data
