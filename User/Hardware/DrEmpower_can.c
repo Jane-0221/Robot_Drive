@@ -20,7 +20,10 @@
 #define AXIS_STATE_IDLE 1
 #define AXIS_STATE_CLOSED_LOOP_CONTROL 8
 #define INPUT_MODE_TORQUE_RAMP  6
-
+// 大然电机主动上报 转速/力矩 量纲系数（协议规定：传输值×0.01=实际值）
+#define DR_ROBOT_SCALE      0.01f
+// CAN数据帧长度（协议规定固定8字节）
+#define DR_ROBOT_RX_LEN     8
 //#define SERVO_USART huart1              /* 驱动电机使用的串口 */
 #define SERVO_RECEIVE_TIMEOUT 1000        /* 串口接收超时(ms) */
 #define ENABLE_INPUT_VALIDITY_CHECK 1   /* 输入合法性检查。为 0 时不编译空指针判断等检查，可减小程序体积、加快处理速度。 */
@@ -51,7 +54,7 @@ uint32_t reply_state_error = 0;   // reply_state错误次数累积标志
 //"""
 //内部辅助函数，用户无需使用
 //"""
-
+ DrRobot_MotorState_t daran_motor_state[3];
 // CAN发送函数
 void send_command(hcan_t* hcan,uint8_t id_num, char cmd, unsigned char *data,uint8_t rt )
 {
@@ -59,7 +62,34 @@ void send_command(hcan_t* hcan,uint8_t id_num, char cmd, unsigned char *data,uin
     // Can_Send_Msg(id_list, 8, data);
     canx_send_data(hcan, id_list, data, 8);
 }
+void DrRobot_ParseFbData(DrRobot_MotorState_t *motor_state, uint8_t *rx_data)
+{
+    // 1. 入参校验：空指针直接标记解析失败
+    if(motor_state == NULL || rx_data == NULL)
+    {
+        if(motor_state != NULL) // 防止motor_state也为空时的野指针
+        {
+            motor_state->valid = 0;
+        }
+        return;
+    }
 
+    // 2. 解析输出轴角度：rx_data[0-3] → float32（小端序），单位°，量纲1无需换算
+    float angle_temp = 0.0f;
+    memcpy(&angle_temp, rx_data, 4); // 直接拷贝4字节，天然适配小端序，避免字节序问题
+    motor_state->angle = angle_temp;
+
+    // 3. 解析输出轴转速：rx_data[4-5] → int16小端序（有符号，核心修正）
+    int16_t speed_int = (int16_t)(rx_data[4] | (rx_data[5] << 8)); // 强制转为有符号int16
+    motor_state->speed = (float)speed_int * DR_ROBOT_SCALE;
+
+    // 4. 解析输出轴力矩：rx_data[6-7] → int16小端序（有符号，核心修正）
+    int16_t torque_int = (int16_t)(rx_data[6] | (rx_data[7] << 8)); // 强制转为有符号int16
+    motor_state->torque = (float)torque_int * DR_ROBOT_SCALE;
+
+    // 5. 标记解析有效
+    motor_state->valid = 1;
+}
 void SERVO_DELAY_US(uint8_t tick)
 {
     for(uint8_t t = 0; t<tick; t++);

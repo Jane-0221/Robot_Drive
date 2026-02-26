@@ -167,6 +167,12 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
         ktech_parse_motor_fb(&motor_linkong[1], rx_data);
       }
     }
+
+
+
+
+
+    
     else if (hfdcan->Instance == FDCAN2)
     {
       if (rx_header.IdType == FDCAN_STANDARD_ID)
@@ -187,26 +193,28 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
           // --- 新增：大然电机处理 ---
           // 提取电机ID（ID的高5位）
           uint8_t motor_id = (rx_header.Identifier >> 5) & 0x3F;
-          if (motor_id == 11) // 您使用的大然电机ID
+          switch (motor_id)
           {
-            for (int i = 0; i < 8; i++)
-            {
-              rx_buffer[i] = rx_data[i];
-            }
-            can_id = motor_id; // 保存 CAN ID
-            READ_FLAG = 1;
-          }
-          else if (motor_id == 12)
-          {
-            for (int i = 0; i < 8; i++)
-            {
-              rx_buffer[i] = rx_data[i];
-            }
-            can_id = motor_id; // 保存 CAN ID
-            READ_FLAG = 1;
-          }
-          else if (motor_id == 13)
-          {
+          // 处理电机ID为11的情况
+          case 11:
+            DrRobot_ParseFbData(&daran_motor_state[0], rx_data);
+            break; // 跳出switch，避免执行后续case
+
+          // 处理电机ID为12的情况
+          case 12:
+            // 将rx_data的前8个字节复制到rx_buffer中
+            DrRobot_ParseFbData(&daran_motor_state[1], rx_data);
+            break; // 跳出switch
+
+          // 处理电机ID为13的情况（空处理）
+          case 13:
+            // 原代码中ID13无任何处理逻辑，此处留空
+            break;
+
+          // 处理其他未定义的motor_id（可选，建议保留）
+          default:
+
+            break;
           }
 
           // 若还有其他标准帧电机，可在此扩展

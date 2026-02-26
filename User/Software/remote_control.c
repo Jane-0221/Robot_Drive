@@ -16,29 +16,27 @@
 #define HIGH_VALUE 1694
 #define RANGE 50
 
-
-
 void remote_control_init()
 {
-
 }
-
 
 void Head_Motor_Control_Updata(void)
 {
-if(SBUS_CH.CH6==HIGH_VALUE)
-{
-    Daran_motor_data[0].target_angle=0;
-}
-else if(SBUS_CH.CH6==MID_VALUE)
-{
-    Daran_motor_data[0].target_angle=90;
-}
-else if(SBUS_CH.CH6==LOW_VALUE)
-{
-    Daran_motor_data[0].target_angle=180;
-}
-
+    if (SBUS_CH.CH6 == HIGH_VALUE)
+    {
+        Daran_motor_data[0].target_angle = 0;
+        Daran_motor_data[1].target_angle = 0;
+    }
+    else if (SBUS_CH.CH6 == MID_VALUE)
+    {
+        Daran_motor_data[0].target_angle = 90;
+        Daran_motor_data[1].target_angle = 90;
+    }
+    else if (SBUS_CH.CH6 == LOW_VALUE)
+    {
+        Daran_motor_data[0].target_angle = 180;
+        Daran_motor_data[1].target_angle = 180;
+    }
 }
 
 void Up_Down_Motor_Control(void)
@@ -51,13 +49,10 @@ void Up_Down_Motor_Control(void)
         break;
     case LOW_VALUE:
         lift_state = LIFT_DOWN;
-         break;
+        break;
     case MID_VALUE:
     default: // 兜底，确保任何情况都有处理
         lift_state = LIFT_STOP;
         break;
     }
 }
-
-
-
