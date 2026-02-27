@@ -1,0 +1,1346 @@
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 6
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"arm_sv.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "User/Hardware/arm_sv.c"
+  19              		.section	.bss.current_duties,"aw",%nobits
+  20              		.align	2
+  23              	current_duties:
+  24 0000 00000000 		.space	24
+  24      00000000 
+  24      00000000 
+  24      00000000 
+  24      00000000 
+  25              		.global	duties_rx
+  26              		.section	.bss.duties_rx,"aw",%nobits
+  27              		.align	2
+  30              	duties_rx:
+  31 0000 00000000 		.space	24
+  31      00000000 
+  31      00000000 
+  31      00000000 
+  31      00000000 
+  32              		.section	.text.set_sv_duty,"ax",%progbits
+  33              		.align	1
+  34              		.syntax unified
+  35              		.thumb
+  36              		.thumb_func
+  38              	set_sv_duty:
+  39              	.LFB147:
+   1:User/Hardware/arm_sv.c **** #include "arm_sv.h"
+   2:User/Hardware/arm_sv.c **** #include "bsp_pca9685.h"
+   3:User/Hardware/arm_sv.c **** #include "stdio.h"
+   4:User/Hardware/arm_sv.c **** // 记录每个舵机的当前占空比
+   5:User/Hardware/arm_sv.c **** static float current_duties[ARM_SV_COUNT];
+   6:User/Hardware/arm_sv.c **** ARM_SV_Duties_t duties_rx;
+   7:User/Hardware/arm_sv.c **** // 内部通用设置函数
+   8:User/Hardware/arm_sv.c **** static void set_sv_duty(uint8_t id, float duty)
+   9:User/Hardware/arm_sv.c **** {
+  40              		.loc 1 9 1
+  41              		.cfi_startproc
+  42              		@ args = 0, pretend = 0, frame = 8
+  43              		@ frame_needed = 1, uses_anonymous_args = 0
+  44 0000 80B5     		push	{r7, lr}
+  45              	.LCFI0:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 2
+
+
+  46              		.cfi_def_cfa_offset 8
+  47              		.cfi_offset 7, -8
+  48              		.cfi_offset 14, -4
+  49 0002 82B0     		sub	sp, sp, #8
+  50              	.LCFI1:
+  51              		.cfi_def_cfa_offset 16
+  52 0004 00AF     		add	r7, sp, #0
+  53              	.LCFI2:
+  54              		.cfi_def_cfa_register 7
+  55 0006 0346     		mov	r3, r0
+  56 0008 87ED000A 		vstr.32	s0, [r7]
+  57 000c FB71     		strb	r3, [r7, #7]
+  10:User/Hardware/arm_sv.c ****     if (id >= ARM_SV_COUNT)
+  58              		.loc 1 10 8
+  59 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  60 0010 052B     		cmp	r3, #5
+  61 0012 0CD8     		bhi	.L4
+  11:User/Hardware/arm_sv.c ****         return;
+  12:User/Hardware/arm_sv.c ****     PCA9685_SetDuty(id, duty); // 底层占空比设置
+  62              		.loc 1 12 5
+  63 0014 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  64 0016 97ED000A 		vldr.32	s0, [r7]
+  65 001a 1846     		mov	r0, r3
+  66 001c FFF7FEFF 		bl	PCA9685_SetDuty
+  13:User/Hardware/arm_sv.c ****     current_duties[id] = duty;
+  67              		.loc 1 13 19
+  68 0020 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  69              		.loc 1 13 24
+  70 0022 054A     		ldr	r2, .L5
+  71 0024 9B00     		lsls	r3, r3, #2
+  72 0026 1344     		add	r3, r3, r2
+  73 0028 3A68     		ldr	r2, [r7]	@ float
+  74 002a 1A60     		str	r2, [r3]	@ float
+  75 002c 00E0     		b	.L1
+  76              	.L4:
+  11:User/Hardware/arm_sv.c ****         return;
+  77              		.loc 1 11 9
+  78 002e 00BF     		nop
+  79              	.L1:
+  14:User/Hardware/arm_sv.c **** }
+  80              		.loc 1 14 1
+  81 0030 0837     		adds	r7, r7, #8
+  82              	.LCFI3:
+  83              		.cfi_def_cfa_offset 8
+  84 0032 BD46     		mov	sp, r7
+  85              	.LCFI4:
+  86              		.cfi_def_cfa_register 13
+  87              		@ sp needed
+  88 0034 80BD     		pop	{r7, pc}
+  89              	.L6:
+  90 0036 00BF     		.align	2
+  91              	.L5:
+  92 0038 00000000 		.word	current_duties
+  93              		.cfi_endproc
+  94              	.LFE147:
+  96              		.section	.text.ARM_SV_Init,"ax",%progbits
+  97              		.align	1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 3
+
+
+  98              		.global	ARM_SV_Init
+  99              		.syntax unified
+ 100              		.thumb
+ 101              		.thumb_func
+ 103              	ARM_SV_Init:
+ 104              	.LFB148:
+  15:User/Hardware/arm_sv.c **** 
+  16:User/Hardware/arm_sv.c **** void ARM_SV_Init(float freq)
+  17:User/Hardware/arm_sv.c **** {
+ 105              		.loc 1 17 1
+ 106              		.cfi_startproc
+ 107              		@ args = 0, pretend = 0, frame = 16
+ 108              		@ frame_needed = 1, uses_anonymous_args = 0
+ 109 0000 80B5     		push	{r7, lr}
+ 110              	.LCFI5:
+ 111              		.cfi_def_cfa_offset 8
+ 112              		.cfi_offset 7, -8
+ 113              		.cfi_offset 14, -4
+ 114 0002 84B0     		sub	sp, sp, #16
+ 115              	.LCFI6:
+ 116              		.cfi_def_cfa_offset 24
+ 117 0004 00AF     		add	r7, sp, #0
+ 118              	.LCFI7:
+ 119              		.cfi_def_cfa_register 7
+ 120 0006 87ED010A 		vstr.32	s0, [r7, #4]
+  18:User/Hardware/arm_sv.c ****     // 初始化PCA9685底层，设置频率，所有通道占空比为0
+  19:User/Hardware/arm_sv.c ****     PCA9685_Init(freq);
+ 121              		.loc 1 19 5
+ 122 000a 97ED010A 		vldr.32	s0, [r7, #4]
+ 123 000e FFF7FEFF 		bl	PCA9685_Init
+ 124              	.LBB2:
+  20:User/Hardware/arm_sv.c **** 
+  21:User/Hardware/arm_sv.c ****     // 初始化记录数组为0
+  22:User/Hardware/arm_sv.c ****     for (uint8_t i = 0; i < ARM_SV_COUNT; i++)
+ 125              		.loc 1 22 18
+ 126 0012 0023     		movs	r3, #0
+ 127 0014 FB73     		strb	r3, [r7, #15]
+ 128              		.loc 1 22 5
+ 129 0016 09E0     		b	.L8
+ 130              	.L9:
+  23:User/Hardware/arm_sv.c ****     {
+  24:User/Hardware/arm_sv.c ****         current_duties[i] = 0.0f;
+ 131              		.loc 1 24 23
+ 132 0018 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 133              		.loc 1 24 27
+ 134 001a 084A     		ldr	r2, .L10
+ 135 001c 9B00     		lsls	r3, r3, #2
+ 136 001e 1344     		add	r3, r3, r2
+ 137 0020 4FF00002 		mov	r2, #0
+ 138 0024 1A60     		str	r2, [r3]	@ float
+  22:User/Hardware/arm_sv.c ****     {
+ 139              		.loc 1 22 44 discriminator 3
+ 140 0026 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 141 0028 0133     		adds	r3, r3, #1
+ 142 002a FB73     		strb	r3, [r7, #15]
+ 143              	.L8:
+  22:User/Hardware/arm_sv.c ****     {
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 4
+
+
+ 144              		.loc 1 22 27 discriminator 1
+ 145 002c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 146 002e 052B     		cmp	r3, #5
+ 147 0030 F2D9     		bls	.L9
+ 148              	.LBE2:
+  25:User/Hardware/arm_sv.c ****     }
+  26:User/Hardware/arm_sv.c **** }
+ 149              		.loc 1 26 1
+ 150 0032 00BF     		nop
+ 151 0034 00BF     		nop
+ 152 0036 1037     		adds	r7, r7, #16
+ 153              	.LCFI8:
+ 154              		.cfi_def_cfa_offset 8
+ 155 0038 BD46     		mov	sp, r7
+ 156              	.LCFI9:
+ 157              		.cfi_def_cfa_register 13
+ 158              		@ sp needed
+ 159 003a 80BD     		pop	{r7, pc}
+ 160              	.L11:
+ 161              		.align	2
+ 162              	.L10:
+ 163 003c 00000000 		.word	current_duties
+ 164              		.cfi_endproc
+ 165              	.LFE148:
+ 167              		.section	.text.ARM_SV_SetDuty,"ax",%progbits
+ 168              		.align	1
+ 169              		.global	ARM_SV_SetDuty
+ 170              		.syntax unified
+ 171              		.thumb
+ 172              		.thumb_func
+ 174              	ARM_SV_SetDuty:
+ 175              	.LFB149:
+  27:User/Hardware/arm_sv.c **** 
+  28:User/Hardware/arm_sv.c **** void ARM_SV_SetDuty(uint8_t sv_id, float duty)
+  29:User/Hardware/arm_sv.c **** {
+ 176              		.loc 1 29 1
+ 177              		.cfi_startproc
+ 178              		@ args = 0, pretend = 0, frame = 8
+ 179              		@ frame_needed = 1, uses_anonymous_args = 0
+ 180 0000 80B5     		push	{r7, lr}
+ 181              	.LCFI10:
+ 182              		.cfi_def_cfa_offset 8
+ 183              		.cfi_offset 7, -8
+ 184              		.cfi_offset 14, -4
+ 185 0002 82B0     		sub	sp, sp, #8
+ 186              	.LCFI11:
+ 187              		.cfi_def_cfa_offset 16
+ 188 0004 00AF     		add	r7, sp, #0
+ 189              	.LCFI12:
+ 190              		.cfi_def_cfa_register 7
+ 191 0006 0346     		mov	r3, r0
+ 192 0008 87ED000A 		vstr.32	s0, [r7]
+ 193 000c FB71     		strb	r3, [r7, #7]
+  30:User/Hardware/arm_sv.c ****     set_sv_duty(sv_id, duty);
+ 194              		.loc 1 30 5
+ 195 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 196 0010 97ED000A 		vldr.32	s0, [r7]
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 5
+
+
+ 197 0014 1846     		mov	r0, r3
+ 198 0016 FFF7FEFF 		bl	set_sv_duty
+  31:User/Hardware/arm_sv.c **** }
+ 199              		.loc 1 31 1
+ 200 001a 00BF     		nop
+ 201 001c 0837     		adds	r7, r7, #8
+ 202              	.LCFI13:
+ 203              		.cfi_def_cfa_offset 8
+ 204 001e BD46     		mov	sp, r7
+ 205              	.LCFI14:
+ 206              		.cfi_def_cfa_register 13
+ 207              		@ sp needed
+ 208 0020 80BD     		pop	{r7, pc}
+ 209              		.cfi_endproc
+ 210              	.LFE149:
+ 212              		.section	.text.ARM_SV_SetDuty0,"ax",%progbits
+ 213              		.align	1
+ 214              		.global	ARM_SV_SetDuty0
+ 215              		.syntax unified
+ 216              		.thumb
+ 217              		.thumb_func
+ 219              	ARM_SV_SetDuty0:
+ 220              	.LFB150:
+  32:User/Hardware/arm_sv.c **** 
+  33:User/Hardware/arm_sv.c **** void ARM_SV_SetDuty0(float duty) { set_sv_duty(0, duty); }
+ 221              		.loc 1 33 34
+ 222              		.cfi_startproc
+ 223              		@ args = 0, pretend = 0, frame = 8
+ 224              		@ frame_needed = 1, uses_anonymous_args = 0
+ 225 0000 80B5     		push	{r7, lr}
+ 226              	.LCFI15:
+ 227              		.cfi_def_cfa_offset 8
+ 228              		.cfi_offset 7, -8
+ 229              		.cfi_offset 14, -4
+ 230 0002 82B0     		sub	sp, sp, #8
+ 231              	.LCFI16:
+ 232              		.cfi_def_cfa_offset 16
+ 233 0004 00AF     		add	r7, sp, #0
+ 234              	.LCFI17:
+ 235              		.cfi_def_cfa_register 7
+ 236 0006 87ED010A 		vstr.32	s0, [r7, #4]
+ 237              		.loc 1 33 36
+ 238 000a 97ED010A 		vldr.32	s0, [r7, #4]
+ 239 000e 0020     		movs	r0, #0
+ 240 0010 FFF7FEFF 		bl	set_sv_duty
+ 241              		.loc 1 33 58
+ 242 0014 00BF     		nop
+ 243 0016 0837     		adds	r7, r7, #8
+ 244              	.LCFI18:
+ 245              		.cfi_def_cfa_offset 8
+ 246 0018 BD46     		mov	sp, r7
+ 247              	.LCFI19:
+ 248              		.cfi_def_cfa_register 13
+ 249              		@ sp needed
+ 250 001a 80BD     		pop	{r7, pc}
+ 251              		.cfi_endproc
+ 252              	.LFE150:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 6
+
+
+ 254              		.section	.text.ARM_SV_SetDuty1,"ax",%progbits
+ 255              		.align	1
+ 256              		.global	ARM_SV_SetDuty1
+ 257              		.syntax unified
+ 258              		.thumb
+ 259              		.thumb_func
+ 261              	ARM_SV_SetDuty1:
+ 262              	.LFB151:
+  34:User/Hardware/arm_sv.c **** void ARM_SV_SetDuty1(float duty) { set_sv_duty(1, duty); }
+ 263              		.loc 1 34 34
+ 264              		.cfi_startproc
+ 265              		@ args = 0, pretend = 0, frame = 8
+ 266              		@ frame_needed = 1, uses_anonymous_args = 0
+ 267 0000 80B5     		push	{r7, lr}
+ 268              	.LCFI20:
+ 269              		.cfi_def_cfa_offset 8
+ 270              		.cfi_offset 7, -8
+ 271              		.cfi_offset 14, -4
+ 272 0002 82B0     		sub	sp, sp, #8
+ 273              	.LCFI21:
+ 274              		.cfi_def_cfa_offset 16
+ 275 0004 00AF     		add	r7, sp, #0
+ 276              	.LCFI22:
+ 277              		.cfi_def_cfa_register 7
+ 278 0006 87ED010A 		vstr.32	s0, [r7, #4]
+ 279              		.loc 1 34 36
+ 280 000a 97ED010A 		vldr.32	s0, [r7, #4]
+ 281 000e 0120     		movs	r0, #1
+ 282 0010 FFF7FEFF 		bl	set_sv_duty
+ 283              		.loc 1 34 58
+ 284 0014 00BF     		nop
+ 285 0016 0837     		adds	r7, r7, #8
+ 286              	.LCFI23:
+ 287              		.cfi_def_cfa_offset 8
+ 288 0018 BD46     		mov	sp, r7
+ 289              	.LCFI24:
+ 290              		.cfi_def_cfa_register 13
+ 291              		@ sp needed
+ 292 001a 80BD     		pop	{r7, pc}
+ 293              		.cfi_endproc
+ 294              	.LFE151:
+ 296              		.section	.text.ARM_SV_SetDuty2,"ax",%progbits
+ 297              		.align	1
+ 298              		.global	ARM_SV_SetDuty2
+ 299              		.syntax unified
+ 300              		.thumb
+ 301              		.thumb_func
+ 303              	ARM_SV_SetDuty2:
+ 304              	.LFB152:
+  35:User/Hardware/arm_sv.c **** void ARM_SV_SetDuty2(float duty) { set_sv_duty(2, duty); }
+ 305              		.loc 1 35 34
+ 306              		.cfi_startproc
+ 307              		@ args = 0, pretend = 0, frame = 8
+ 308              		@ frame_needed = 1, uses_anonymous_args = 0
+ 309 0000 80B5     		push	{r7, lr}
+ 310              	.LCFI25:
+ 311              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 7
+
+
+ 312              		.cfi_offset 7, -8
+ 313              		.cfi_offset 14, -4
+ 314 0002 82B0     		sub	sp, sp, #8
+ 315              	.LCFI26:
+ 316              		.cfi_def_cfa_offset 16
+ 317 0004 00AF     		add	r7, sp, #0
+ 318              	.LCFI27:
+ 319              		.cfi_def_cfa_register 7
+ 320 0006 87ED010A 		vstr.32	s0, [r7, #4]
+ 321              		.loc 1 35 36
+ 322 000a 97ED010A 		vldr.32	s0, [r7, #4]
+ 323 000e 0220     		movs	r0, #2
+ 324 0010 FFF7FEFF 		bl	set_sv_duty
+ 325              		.loc 1 35 58
+ 326 0014 00BF     		nop
+ 327 0016 0837     		adds	r7, r7, #8
+ 328              	.LCFI28:
+ 329              		.cfi_def_cfa_offset 8
+ 330 0018 BD46     		mov	sp, r7
+ 331              	.LCFI29:
+ 332              		.cfi_def_cfa_register 13
+ 333              		@ sp needed
+ 334 001a 80BD     		pop	{r7, pc}
+ 335              		.cfi_endproc
+ 336              	.LFE152:
+ 338              		.section	.text.ARM_SV_SetDuty3,"ax",%progbits
+ 339              		.align	1
+ 340              		.global	ARM_SV_SetDuty3
+ 341              		.syntax unified
+ 342              		.thumb
+ 343              		.thumb_func
+ 345              	ARM_SV_SetDuty3:
+ 346              	.LFB153:
+  36:User/Hardware/arm_sv.c **** void ARM_SV_SetDuty3(float duty) { set_sv_duty(3, duty); }
+ 347              		.loc 1 36 34
+ 348              		.cfi_startproc
+ 349              		@ args = 0, pretend = 0, frame = 8
+ 350              		@ frame_needed = 1, uses_anonymous_args = 0
+ 351 0000 80B5     		push	{r7, lr}
+ 352              	.LCFI30:
+ 353              		.cfi_def_cfa_offset 8
+ 354              		.cfi_offset 7, -8
+ 355              		.cfi_offset 14, -4
+ 356 0002 82B0     		sub	sp, sp, #8
+ 357              	.LCFI31:
+ 358              		.cfi_def_cfa_offset 16
+ 359 0004 00AF     		add	r7, sp, #0
+ 360              	.LCFI32:
+ 361              		.cfi_def_cfa_register 7
+ 362 0006 87ED010A 		vstr.32	s0, [r7, #4]
+ 363              		.loc 1 36 36
+ 364 000a 97ED010A 		vldr.32	s0, [r7, #4]
+ 365 000e 0320     		movs	r0, #3
+ 366 0010 FFF7FEFF 		bl	set_sv_duty
+ 367              		.loc 1 36 58
+ 368 0014 00BF     		nop
+ 369 0016 0837     		adds	r7, r7, #8
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 8
+
+
+ 370              	.LCFI33:
+ 371              		.cfi_def_cfa_offset 8
+ 372 0018 BD46     		mov	sp, r7
+ 373              	.LCFI34:
+ 374              		.cfi_def_cfa_register 13
+ 375              		@ sp needed
+ 376 001a 80BD     		pop	{r7, pc}
+ 377              		.cfi_endproc
+ 378              	.LFE153:
+ 380              		.section	.text.ARM_SV_SetDuty4,"ax",%progbits
+ 381              		.align	1
+ 382              		.global	ARM_SV_SetDuty4
+ 383              		.syntax unified
+ 384              		.thumb
+ 385              		.thumb_func
+ 387              	ARM_SV_SetDuty4:
+ 388              	.LFB154:
+  37:User/Hardware/arm_sv.c **** void ARM_SV_SetDuty4(float duty) { set_sv_duty(4, duty); }
+ 389              		.loc 1 37 34
+ 390              		.cfi_startproc
+ 391              		@ args = 0, pretend = 0, frame = 8
+ 392              		@ frame_needed = 1, uses_anonymous_args = 0
+ 393 0000 80B5     		push	{r7, lr}
+ 394              	.LCFI35:
+ 395              		.cfi_def_cfa_offset 8
+ 396              		.cfi_offset 7, -8
+ 397              		.cfi_offset 14, -4
+ 398 0002 82B0     		sub	sp, sp, #8
+ 399              	.LCFI36:
+ 400              		.cfi_def_cfa_offset 16
+ 401 0004 00AF     		add	r7, sp, #0
+ 402              	.LCFI37:
+ 403              		.cfi_def_cfa_register 7
+ 404 0006 87ED010A 		vstr.32	s0, [r7, #4]
+ 405              		.loc 1 37 36
+ 406 000a 97ED010A 		vldr.32	s0, [r7, #4]
+ 407 000e 0420     		movs	r0, #4
+ 408 0010 FFF7FEFF 		bl	set_sv_duty
+ 409              		.loc 1 37 58
+ 410 0014 00BF     		nop
+ 411 0016 0837     		adds	r7, r7, #8
+ 412              	.LCFI38:
+ 413              		.cfi_def_cfa_offset 8
+ 414 0018 BD46     		mov	sp, r7
+ 415              	.LCFI39:
+ 416              		.cfi_def_cfa_register 13
+ 417              		@ sp needed
+ 418 001a 80BD     		pop	{r7, pc}
+ 419              		.cfi_endproc
+ 420              	.LFE154:
+ 422              		.section	.text.ARM_SV_SetDuty5,"ax",%progbits
+ 423              		.align	1
+ 424              		.global	ARM_SV_SetDuty5
+ 425              		.syntax unified
+ 426              		.thumb
+ 427              		.thumb_func
+ 429              	ARM_SV_SetDuty5:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 9
+
+
+ 430              	.LFB155:
+  38:User/Hardware/arm_sv.c **** void ARM_SV_SetDuty5(float duty) { set_sv_duty(5, duty); }
+ 431              		.loc 1 38 34
+ 432              		.cfi_startproc
+ 433              		@ args = 0, pretend = 0, frame = 8
+ 434              		@ frame_needed = 1, uses_anonymous_args = 0
+ 435 0000 80B5     		push	{r7, lr}
+ 436              	.LCFI40:
+ 437              		.cfi_def_cfa_offset 8
+ 438              		.cfi_offset 7, -8
+ 439              		.cfi_offset 14, -4
+ 440 0002 82B0     		sub	sp, sp, #8
+ 441              	.LCFI41:
+ 442              		.cfi_def_cfa_offset 16
+ 443 0004 00AF     		add	r7, sp, #0
+ 444              	.LCFI42:
+ 445              		.cfi_def_cfa_register 7
+ 446 0006 87ED010A 		vstr.32	s0, [r7, #4]
+ 447              		.loc 1 38 36
+ 448 000a 97ED010A 		vldr.32	s0, [r7, #4]
+ 449 000e 0520     		movs	r0, #5
+ 450 0010 FFF7FEFF 		bl	set_sv_duty
+ 451              		.loc 1 38 58
+ 452 0014 00BF     		nop
+ 453 0016 0837     		adds	r7, r7, #8
+ 454              	.LCFI43:
+ 455              		.cfi_def_cfa_offset 8
+ 456 0018 BD46     		mov	sp, r7
+ 457              	.LCFI44:
+ 458              		.cfi_def_cfa_register 13
+ 459              		@ sp needed
+ 460 001a 80BD     		pop	{r7, pc}
+ 461              		.cfi_endproc
+ 462              	.LFE155:
+ 464              		.section	.text.ARM_SV_GetDuty,"ax",%progbits
+ 465              		.align	1
+ 466              		.global	ARM_SV_GetDuty
+ 467              		.syntax unified
+ 468              		.thumb
+ 469              		.thumb_func
+ 471              	ARM_SV_GetDuty:
+ 472              	.LFB156:
+  39:User/Hardware/arm_sv.c **** 
+  40:User/Hardware/arm_sv.c **** float ARM_SV_GetDuty(uint8_t sv_id)
+  41:User/Hardware/arm_sv.c **** {
+ 473              		.loc 1 41 1
+ 474              		.cfi_startproc
+ 475              		@ args = 0, pretend = 0, frame = 8
+ 476              		@ frame_needed = 1, uses_anonymous_args = 0
+ 477              		@ link register save eliminated.
+ 478 0000 80B4     		push	{r7}
+ 479              	.LCFI45:
+ 480              		.cfi_def_cfa_offset 4
+ 481              		.cfi_offset 7, -4
+ 482 0002 83B0     		sub	sp, sp, #12
+ 483              	.LCFI46:
+ 484              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 10
+
+
+ 485 0004 00AF     		add	r7, sp, #0
+ 486              	.LCFI47:
+ 487              		.cfi_def_cfa_register 7
+ 488 0006 0346     		mov	r3, r0
+ 489 0008 FB71     		strb	r3, [r7, #7]
+  42:User/Hardware/arm_sv.c ****     if (sv_id >= ARM_SV_COUNT)
+ 490              		.loc 1 42 8
+ 491 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 492 000c 052B     		cmp	r3, #5
+ 493 000e 02D9     		bls	.L20
+  43:User/Hardware/arm_sv.c ****         return 0.0f;
+ 494              		.loc 1 43 16
+ 495 0010 4FF00003 		mov	r3, #0
+ 496 0014 04E0     		b	.L21
+ 497              	.L20:
+  44:User/Hardware/arm_sv.c ****     return current_duties[sv_id];
+ 498              		.loc 1 44 26
+ 499 0016 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 500 0018 064A     		ldr	r2, .L22
+ 501 001a 9B00     		lsls	r3, r3, #2
+ 502 001c 1344     		add	r3, r3, r2
+ 503 001e 1B68     		ldr	r3, [r3]	@ float
+ 504              	.L21:
+  45:User/Hardware/arm_sv.c **** }
+ 505              		.loc 1 45 1
+ 506 0020 07EE903A 		vmov	s15, r3
+ 507 0024 B0EE670A 		vmov.f32	s0, s15
+ 508 0028 0C37     		adds	r7, r7, #12
+ 509              	.LCFI48:
+ 510              		.cfi_def_cfa_offset 4
+ 511 002a BD46     		mov	sp, r7
+ 512              	.LCFI49:
+ 513              		.cfi_def_cfa_register 13
+ 514              		@ sp needed
+ 515 002c 5DF8047B 		ldr	r7, [sp], #4
+ 516              	.LCFI50:
+ 517              		.cfi_restore 7
+ 518              		.cfi_def_cfa_offset 0
+ 519 0030 7047     		bx	lr
+ 520              	.L23:
+ 521 0032 00BF     		.align	2
+ 522              	.L22:
+ 523 0034 00000000 		.word	current_duties
+ 524              		.cfi_endproc
+ 525              	.LFE156:
+ 527              		.section	.text.ARM_SV_GetDuty0,"ax",%progbits
+ 528              		.align	1
+ 529              		.global	ARM_SV_GetDuty0
+ 530              		.syntax unified
+ 531              		.thumb
+ 532              		.thumb_func
+ 534              	ARM_SV_GetDuty0:
+ 535              	.LFB157:
+  46:User/Hardware/arm_sv.c **** 
+  47:User/Hardware/arm_sv.c **** float ARM_SV_GetDuty0(void) { return current_duties[0]; }
+ 536              		.loc 1 47 29
+ 537              		.cfi_startproc
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 11
+
+
+ 538              		@ args = 0, pretend = 0, frame = 0
+ 539              		@ frame_needed = 1, uses_anonymous_args = 0
+ 540              		@ link register save eliminated.
+ 541 0000 80B4     		push	{r7}
+ 542              	.LCFI51:
+ 543              		.cfi_def_cfa_offset 4
+ 544              		.cfi_offset 7, -4
+ 545 0002 00AF     		add	r7, sp, #0
+ 546              	.LCFI52:
+ 547              		.cfi_def_cfa_register 7
+ 548              		.loc 1 47 52
+ 549 0004 044B     		ldr	r3, .L26
+ 550 0006 1B68     		ldr	r3, [r3]	@ float
+ 551              		.loc 1 47 52 is_stmt 0 discriminator 1
+ 552 0008 07EE903A 		vmov	s15, r3
+ 553              		.loc 1 47 57 is_stmt 1
+ 554 000c B0EE670A 		vmov.f32	s0, s15
+ 555 0010 BD46     		mov	sp, r7
+ 556              	.LCFI53:
+ 557              		.cfi_def_cfa_register 13
+ 558              		@ sp needed
+ 559 0012 5DF8047B 		ldr	r7, [sp], #4
+ 560              	.LCFI54:
+ 561              		.cfi_restore 7
+ 562              		.cfi_def_cfa_offset 0
+ 563 0016 7047     		bx	lr
+ 564              	.L27:
+ 565              		.align	2
+ 566              	.L26:
+ 567 0018 00000000 		.word	current_duties
+ 568              		.cfi_endproc
+ 569              	.LFE157:
+ 571              		.section	.text.ARM_SV_GetDuty1,"ax",%progbits
+ 572              		.align	1
+ 573              		.global	ARM_SV_GetDuty1
+ 574              		.syntax unified
+ 575              		.thumb
+ 576              		.thumb_func
+ 578              	ARM_SV_GetDuty1:
+ 579              	.LFB158:
+  48:User/Hardware/arm_sv.c **** float ARM_SV_GetDuty1(void) { return current_duties[1]; }
+ 580              		.loc 1 48 29
+ 581              		.cfi_startproc
+ 582              		@ args = 0, pretend = 0, frame = 0
+ 583              		@ frame_needed = 1, uses_anonymous_args = 0
+ 584              		@ link register save eliminated.
+ 585 0000 80B4     		push	{r7}
+ 586              	.LCFI55:
+ 587              		.cfi_def_cfa_offset 4
+ 588              		.cfi_offset 7, -4
+ 589 0002 00AF     		add	r7, sp, #0
+ 590              	.LCFI56:
+ 591              		.cfi_def_cfa_register 7
+ 592              		.loc 1 48 52
+ 593 0004 044B     		ldr	r3, .L30
+ 594 0006 5B68     		ldr	r3, [r3, #4]	@ float
+ 595              		.loc 1 48 52 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 12
+
+
+ 596 0008 07EE903A 		vmov	s15, r3
+ 597              		.loc 1 48 57 is_stmt 1
+ 598 000c B0EE670A 		vmov.f32	s0, s15
+ 599 0010 BD46     		mov	sp, r7
+ 600              	.LCFI57:
+ 601              		.cfi_def_cfa_register 13
+ 602              		@ sp needed
+ 603 0012 5DF8047B 		ldr	r7, [sp], #4
+ 604              	.LCFI58:
+ 605              		.cfi_restore 7
+ 606              		.cfi_def_cfa_offset 0
+ 607 0016 7047     		bx	lr
+ 608              	.L31:
+ 609              		.align	2
+ 610              	.L30:
+ 611 0018 00000000 		.word	current_duties
+ 612              		.cfi_endproc
+ 613              	.LFE158:
+ 615              		.section	.text.ARM_SV_GetDuty2,"ax",%progbits
+ 616              		.align	1
+ 617              		.global	ARM_SV_GetDuty2
+ 618              		.syntax unified
+ 619              		.thumb
+ 620              		.thumb_func
+ 622              	ARM_SV_GetDuty2:
+ 623              	.LFB159:
+  49:User/Hardware/arm_sv.c **** float ARM_SV_GetDuty2(void) { return current_duties[2]; }
+ 624              		.loc 1 49 29
+ 625              		.cfi_startproc
+ 626              		@ args = 0, pretend = 0, frame = 0
+ 627              		@ frame_needed = 1, uses_anonymous_args = 0
+ 628              		@ link register save eliminated.
+ 629 0000 80B4     		push	{r7}
+ 630              	.LCFI59:
+ 631              		.cfi_def_cfa_offset 4
+ 632              		.cfi_offset 7, -4
+ 633 0002 00AF     		add	r7, sp, #0
+ 634              	.LCFI60:
+ 635              		.cfi_def_cfa_register 7
+ 636              		.loc 1 49 52
+ 637 0004 044B     		ldr	r3, .L34
+ 638 0006 9B68     		ldr	r3, [r3, #8]	@ float
+ 639              		.loc 1 49 52 is_stmt 0 discriminator 1
+ 640 0008 07EE903A 		vmov	s15, r3
+ 641              		.loc 1 49 57 is_stmt 1
+ 642 000c B0EE670A 		vmov.f32	s0, s15
+ 643 0010 BD46     		mov	sp, r7
+ 644              	.LCFI61:
+ 645              		.cfi_def_cfa_register 13
+ 646              		@ sp needed
+ 647 0012 5DF8047B 		ldr	r7, [sp], #4
+ 648              	.LCFI62:
+ 649              		.cfi_restore 7
+ 650              		.cfi_def_cfa_offset 0
+ 651 0016 7047     		bx	lr
+ 652              	.L35:
+ 653              		.align	2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 13
+
+
+ 654              	.L34:
+ 655 0018 00000000 		.word	current_duties
+ 656              		.cfi_endproc
+ 657              	.LFE159:
+ 659              		.section	.text.ARM_SV_GetDuty3,"ax",%progbits
+ 660              		.align	1
+ 661              		.global	ARM_SV_GetDuty3
+ 662              		.syntax unified
+ 663              		.thumb
+ 664              		.thumb_func
+ 666              	ARM_SV_GetDuty3:
+ 667              	.LFB160:
+  50:User/Hardware/arm_sv.c **** float ARM_SV_GetDuty3(void) { return current_duties[3]; }
+ 668              		.loc 1 50 29
+ 669              		.cfi_startproc
+ 670              		@ args = 0, pretend = 0, frame = 0
+ 671              		@ frame_needed = 1, uses_anonymous_args = 0
+ 672              		@ link register save eliminated.
+ 673 0000 80B4     		push	{r7}
+ 674              	.LCFI63:
+ 675              		.cfi_def_cfa_offset 4
+ 676              		.cfi_offset 7, -4
+ 677 0002 00AF     		add	r7, sp, #0
+ 678              	.LCFI64:
+ 679              		.cfi_def_cfa_register 7
+ 680              		.loc 1 50 52
+ 681 0004 044B     		ldr	r3, .L38
+ 682 0006 DB68     		ldr	r3, [r3, #12]	@ float
+ 683              		.loc 1 50 52 is_stmt 0 discriminator 1
+ 684 0008 07EE903A 		vmov	s15, r3
+ 685              		.loc 1 50 57 is_stmt 1
+ 686 000c B0EE670A 		vmov.f32	s0, s15
+ 687 0010 BD46     		mov	sp, r7
+ 688              	.LCFI65:
+ 689              		.cfi_def_cfa_register 13
+ 690              		@ sp needed
+ 691 0012 5DF8047B 		ldr	r7, [sp], #4
+ 692              	.LCFI66:
+ 693              		.cfi_restore 7
+ 694              		.cfi_def_cfa_offset 0
+ 695 0016 7047     		bx	lr
+ 696              	.L39:
+ 697              		.align	2
+ 698              	.L38:
+ 699 0018 00000000 		.word	current_duties
+ 700              		.cfi_endproc
+ 701              	.LFE160:
+ 703              		.section	.text.ARM_SV_GetDuty4,"ax",%progbits
+ 704              		.align	1
+ 705              		.global	ARM_SV_GetDuty4
+ 706              		.syntax unified
+ 707              		.thumb
+ 708              		.thumb_func
+ 710              	ARM_SV_GetDuty4:
+ 711              	.LFB161:
+  51:User/Hardware/arm_sv.c **** float ARM_SV_GetDuty4(void) { return current_duties[4]; }
+ 712              		.loc 1 51 29
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 14
+
+
+ 713              		.cfi_startproc
+ 714              		@ args = 0, pretend = 0, frame = 0
+ 715              		@ frame_needed = 1, uses_anonymous_args = 0
+ 716              		@ link register save eliminated.
+ 717 0000 80B4     		push	{r7}
+ 718              	.LCFI67:
+ 719              		.cfi_def_cfa_offset 4
+ 720              		.cfi_offset 7, -4
+ 721 0002 00AF     		add	r7, sp, #0
+ 722              	.LCFI68:
+ 723              		.cfi_def_cfa_register 7
+ 724              		.loc 1 51 52
+ 725 0004 044B     		ldr	r3, .L42
+ 726 0006 1B69     		ldr	r3, [r3, #16]	@ float
+ 727              		.loc 1 51 52 is_stmt 0 discriminator 1
+ 728 0008 07EE903A 		vmov	s15, r3
+ 729              		.loc 1 51 57 is_stmt 1
+ 730 000c B0EE670A 		vmov.f32	s0, s15
+ 731 0010 BD46     		mov	sp, r7
+ 732              	.LCFI69:
+ 733              		.cfi_def_cfa_register 13
+ 734              		@ sp needed
+ 735 0012 5DF8047B 		ldr	r7, [sp], #4
+ 736              	.LCFI70:
+ 737              		.cfi_restore 7
+ 738              		.cfi_def_cfa_offset 0
+ 739 0016 7047     		bx	lr
+ 740              	.L43:
+ 741              		.align	2
+ 742              	.L42:
+ 743 0018 00000000 		.word	current_duties
+ 744              		.cfi_endproc
+ 745              	.LFE161:
+ 747              		.section	.text.ARM_SV_GetDuty5,"ax",%progbits
+ 748              		.align	1
+ 749              		.global	ARM_SV_GetDuty5
+ 750              		.syntax unified
+ 751              		.thumb
+ 752              		.thumb_func
+ 754              	ARM_SV_GetDuty5:
+ 755              	.LFB162:
+  52:User/Hardware/arm_sv.c **** float ARM_SV_GetDuty5(void) { return current_duties[5]; }
+ 756              		.loc 1 52 29
+ 757              		.cfi_startproc
+ 758              		@ args = 0, pretend = 0, frame = 0
+ 759              		@ frame_needed = 1, uses_anonymous_args = 0
+ 760              		@ link register save eliminated.
+ 761 0000 80B4     		push	{r7}
+ 762              	.LCFI71:
+ 763              		.cfi_def_cfa_offset 4
+ 764              		.cfi_offset 7, -4
+ 765 0002 00AF     		add	r7, sp, #0
+ 766              	.LCFI72:
+ 767              		.cfi_def_cfa_register 7
+ 768              		.loc 1 52 52
+ 769 0004 044B     		ldr	r3, .L46
+ 770 0006 5B69     		ldr	r3, [r3, #20]	@ float
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 15
+
+
+ 771              		.loc 1 52 52 is_stmt 0 discriminator 1
+ 772 0008 07EE903A 		vmov	s15, r3
+ 773              		.loc 1 52 57 is_stmt 1
+ 774 000c B0EE670A 		vmov.f32	s0, s15
+ 775 0010 BD46     		mov	sp, r7
+ 776              	.LCFI73:
+ 777              		.cfi_def_cfa_register 13
+ 778              		@ sp needed
+ 779 0012 5DF8047B 		ldr	r7, [sp], #4
+ 780              	.LCFI74:
+ 781              		.cfi_restore 7
+ 782              		.cfi_def_cfa_offset 0
+ 783 0016 7047     		bx	lr
+ 784              	.L47:
+ 785              		.align	2
+ 786              	.L46:
+ 787 0018 00000000 		.word	current_duties
+ 788              		.cfi_endproc
+ 789              	.LFE162:
+ 791              		.section	.text.ARM_SV_SetAllDuties,"ax",%progbits
+ 792              		.align	1
+ 793              		.global	ARM_SV_SetAllDuties
+ 794              		.syntax unified
+ 795              		.thumb
+ 796              		.thumb_func
+ 798              	ARM_SV_SetAllDuties:
+ 799              	.LFB163:
+  53:User/Hardware/arm_sv.c **** 
+  54:User/Hardware/arm_sv.c **** void ARM_SV_SetAllDuties(const float *duties)
+  55:User/Hardware/arm_sv.c **** {
+ 800              		.loc 1 55 1
+ 801              		.cfi_startproc
+ 802              		@ args = 0, pretend = 0, frame = 16
+ 803              		@ frame_needed = 1, uses_anonymous_args = 0
+ 804 0000 80B5     		push	{r7, lr}
+ 805              	.LCFI75:
+ 806              		.cfi_def_cfa_offset 8
+ 807              		.cfi_offset 7, -8
+ 808              		.cfi_offset 14, -4
+ 809 0002 84B0     		sub	sp, sp, #16
+ 810              	.LCFI76:
+ 811              		.cfi_def_cfa_offset 24
+ 812 0004 00AF     		add	r7, sp, #0
+ 813              	.LCFI77:
+ 814              		.cfi_def_cfa_register 7
+ 815 0006 7860     		str	r0, [r7, #4]
+ 816              	.LBB3:
+  56:User/Hardware/arm_sv.c ****     for (uint8_t i = 0; i < ARM_SV_COUNT; i++)
+ 817              		.loc 1 56 18
+ 818 0008 0023     		movs	r3, #0
+ 819 000a FB73     		strb	r3, [r7, #15]
+ 820              		.loc 1 56 5
+ 821 000c 0EE0     		b	.L49
+ 822              	.L50:
+  57:User/Hardware/arm_sv.c ****     {
+  58:User/Hardware/arm_sv.c ****         ARM_SV_SetDuty(i, duties[i]);
+ 823              		.loc 1 58 33
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 16
+
+
+ 824 000e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 825 0010 9B00     		lsls	r3, r3, #2
+ 826 0012 7A68     		ldr	r2, [r7, #4]
+ 827 0014 1344     		add	r3, r3, r2
+ 828              		.loc 1 58 9
+ 829 0016 D3ED007A 		vldr.32	s15, [r3]
+ 830 001a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 831 001c B0EE670A 		vmov.f32	s0, s15
+ 832 0020 1846     		mov	r0, r3
+ 833 0022 FFF7FEFF 		bl	ARM_SV_SetDuty
+  56:User/Hardware/arm_sv.c ****     for (uint8_t i = 0; i < ARM_SV_COUNT; i++)
+ 834              		.loc 1 56 44 discriminator 3
+ 835 0026 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 836 0028 0133     		adds	r3, r3, #1
+ 837 002a FB73     		strb	r3, [r7, #15]
+ 838              	.L49:
+  56:User/Hardware/arm_sv.c ****     for (uint8_t i = 0; i < ARM_SV_COUNT; i++)
+ 839              		.loc 1 56 27 discriminator 1
+ 840 002c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 841 002e 052B     		cmp	r3, #5
+ 842 0030 EDD9     		bls	.L50
+ 843              	.LBE3:
+  59:User/Hardware/arm_sv.c ****     }
+  60:User/Hardware/arm_sv.c **** }
+ 844              		.loc 1 60 1
+ 845 0032 00BF     		nop
+ 846 0034 00BF     		nop
+ 847 0036 1037     		adds	r7, r7, #16
+ 848              	.LCFI78:
+ 849              		.cfi_def_cfa_offset 8
+ 850 0038 BD46     		mov	sp, r7
+ 851              	.LCFI79:
+ 852              		.cfi_def_cfa_register 13
+ 853              		@ sp needed
+ 854 003a 80BD     		pop	{r7, pc}
+ 855              		.cfi_endproc
+ 856              	.LFE163:
+ 858              		.section	.text.ARM_SV_GetAllDuties,"ax",%progbits
+ 859              		.align	1
+ 860              		.global	ARM_SV_GetAllDuties
+ 861              		.syntax unified
+ 862              		.thumb
+ 863              		.thumb_func
+ 865              	ARM_SV_GetAllDuties:
+ 866              	.LFB164:
+  61:User/Hardware/arm_sv.c **** 
+  62:User/Hardware/arm_sv.c **** ARM_SV_Duties_t ARM_SV_GetAllDuties(void)
+  63:User/Hardware/arm_sv.c **** {
+ 867              		.loc 1 63 1
+ 868              		.cfi_startproc
+ 869              		@ args = 0, pretend = 0, frame = 32
+ 870              		@ frame_needed = 1, uses_anonymous_args = 0
+ 871              		@ link register save eliminated.
+ 872 0000 B0B4     		push	{r4, r5, r7}
+ 873              	.LCFI80:
+ 874              		.cfi_def_cfa_offset 12
+ 875              		.cfi_offset 4, -12
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 17
+
+
+ 876              		.cfi_offset 5, -8
+ 877              		.cfi_offset 7, -4
+ 878 0002 89B0     		sub	sp, sp, #36
+ 879              	.LCFI81:
+ 880              		.cfi_def_cfa_offset 48
+ 881 0004 00AF     		add	r7, sp, #0
+ 882              	.LCFI82:
+ 883              		.cfi_def_cfa_register 7
+ 884 0006 7860     		str	r0, [r7, #4]
+  64:User/Hardware/arm_sv.c ****     ARM_SV_Duties_t duties;
+  65:User/Hardware/arm_sv.c **** 
+  66:User/Hardware/arm_sv.c ****     duties.duty0 = current_duties[0];
+ 885              		.loc 1 66 34
+ 886 0008 104B     		ldr	r3, .L53
+ 887 000a 1B68     		ldr	r3, [r3]	@ float
+ 888              		.loc 1 66 18
+ 889 000c BB60     		str	r3, [r7, #8]	@ float
+  67:User/Hardware/arm_sv.c ****     duties.duty1 = current_duties[1];
+ 890              		.loc 1 67 34
+ 891 000e 0F4B     		ldr	r3, .L53
+ 892 0010 5B68     		ldr	r3, [r3, #4]	@ float
+ 893              		.loc 1 67 18
+ 894 0012 FB60     		str	r3, [r7, #12]	@ float
+  68:User/Hardware/arm_sv.c ****     duties.duty2 = current_duties[2];
+ 895              		.loc 1 68 34
+ 896 0014 0D4B     		ldr	r3, .L53
+ 897 0016 9B68     		ldr	r3, [r3, #8]	@ float
+ 898              		.loc 1 68 18
+ 899 0018 3B61     		str	r3, [r7, #16]	@ float
+  69:User/Hardware/arm_sv.c ****     duties.duty3 = current_duties[3];
+ 900              		.loc 1 69 34
+ 901 001a 0C4B     		ldr	r3, .L53
+ 902 001c DB68     		ldr	r3, [r3, #12]	@ float
+ 903              		.loc 1 69 18
+ 904 001e 7B61     		str	r3, [r7, #20]	@ float
+  70:User/Hardware/arm_sv.c ****     duties.duty4 = current_duties[4];
+ 905              		.loc 1 70 34
+ 906 0020 0A4B     		ldr	r3, .L53
+ 907 0022 1B69     		ldr	r3, [r3, #16]	@ float
+ 908              		.loc 1 70 18
+ 909 0024 BB61     		str	r3, [r7, #24]	@ float
+  71:User/Hardware/arm_sv.c ****     duties.duty5 = current_duties[5];
+ 910              		.loc 1 71 34
+ 911 0026 094B     		ldr	r3, .L53
+ 912 0028 5B69     		ldr	r3, [r3, #20]	@ float
+ 913              		.loc 1 71 18
+ 914 002a FB61     		str	r3, [r7, #28]	@ float
+  72:User/Hardware/arm_sv.c **** 
+  73:User/Hardware/arm_sv.c ****     return duties;
+ 915              		.loc 1 73 12
+ 916 002c 7B68     		ldr	r3, [r7, #4]
+ 917 002e 1D46     		mov	r5, r3
+ 918 0030 07F10804 		add	r4, r7, #8
+ 919 0034 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 920 0036 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 921 0038 94E80300 		ldm	r4, {r0, r1}
+ 922 003c 85E80300 		stm	r5, {r0, r1}
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 18
+
+
+  74:User/Hardware/arm_sv.c **** }
+ 923              		.loc 1 74 1
+ 924 0040 7868     		ldr	r0, [r7, #4]
+ 925 0042 2437     		adds	r7, r7, #36
+ 926              	.LCFI83:
+ 927              		.cfi_def_cfa_offset 12
+ 928 0044 BD46     		mov	sp, r7
+ 929              	.LCFI84:
+ 930              		.cfi_def_cfa_register 13
+ 931              		@ sp needed
+ 932 0046 B0BC     		pop	{r4, r5, r7}
+ 933              	.LCFI85:
+ 934              		.cfi_restore 7
+ 935              		.cfi_restore 5
+ 936              		.cfi_restore 4
+ 937              		.cfi_def_cfa_offset 0
+ 938 0048 7047     		bx	lr
+ 939              	.L54:
+ 940 004a 00BF     		.align	2
+ 941              	.L53:
+ 942 004c 00000000 		.word	current_duties
+ 943              		.cfi_endproc
+ 944              	.LFE164:
+ 946              		.section	.rodata
+ 947              		.align	2
+ 948              	.LC1:
+ 949 0000 3D3D3D3D 		.ascii	"===== Current PWM Duties =====\000"
+ 949      3D204375 
+ 949      7272656E 
+ 949      74205057 
+ 949      4D204475 
+ 950 001f 00       		.align	2
+ 951              	.LC2:
+ 952 0020 53657276 		.ascii	"Servo 0: %.2f%%\012\000"
+ 952      6F20303A 
+ 952      20252E32 
+ 952      6625250A 
+ 952      00
+ 953 0031 000000   		.align	2
+ 954              	.LC3:
+ 955 0034 53657276 		.ascii	"Servo 1: %.2f%%\012\000"
+ 955      6F20313A 
+ 955      20252E32 
+ 955      6625250A 
+ 955      00
+ 956 0045 000000   		.align	2
+ 957              	.LC4:
+ 958 0048 53657276 		.ascii	"Servo 2: %.2f%%\012\000"
+ 958      6F20323A 
+ 958      20252E32 
+ 958      6625250A 
+ 958      00
+ 959 0059 000000   		.align	2
+ 960              	.LC5:
+ 961 005c 53657276 		.ascii	"Servo 3: %.2f%%\012\000"
+ 961      6F20333A 
+ 961      20252E32 
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 19
+
+
+ 961      6625250A 
+ 961      00
+ 962 006d 000000   		.align	2
+ 963              	.LC6:
+ 964 0070 53657276 		.ascii	"Servo 4: %.2f%%\012\000"
+ 964      6F20343A 
+ 964      20252E32 
+ 964      6625250A 
+ 964      00
+ 965 0081 000000   		.align	2
+ 966              	.LC7:
+ 967 0084 53657276 		.ascii	"Servo 5: %.2f%%\012\000"
+ 967      6F20353A 
+ 967      20252E32 
+ 967      6625250A 
+ 967      00
+ 968 0095 000000   		.align	2
+ 969              	.LC0:
+ 970 0098 0000803F 		.word	1065353216
+ 971 009c 0000803F 		.word	1065353216
+ 972 00a0 0000803F 		.word	1065353216
+ 973 00a4 0000803F 		.word	1065353216
+ 974 00a8 0000803F 		.word	1065353216
+ 975 00ac 0000803F 		.word	1065353216
+ 976              		.section	.text.ARM_SV_Tx_Rx,"ax",%progbits
+ 977              		.align	1
+ 978              		.global	ARM_SV_Tx_Rx
+ 979              		.syntax unified
+ 980              		.thumb
+ 981              		.thumb_func
+ 983              	ARM_SV_Tx_Rx:
+ 984              	.LFB165:
+  75:User/Hardware/arm_sv.c **** void ARM_SV_Tx_Rx()
+  76:User/Hardware/arm_sv.c **** {
+ 985              		.loc 1 76 1
+ 986              		.cfi_startproc
+ 987              		@ args = 0, pretend = 0, frame = 48
+ 988              		@ frame_needed = 1, uses_anonymous_args = 0
+ 989 0000 B0B5     		push	{r4, r5, r7, lr}
+ 990              	.LCFI86:
+ 991              		.cfi_def_cfa_offset 16
+ 992              		.cfi_offset 4, -16
+ 993              		.cfi_offset 5, -12
+ 994              		.cfi_offset 7, -8
+ 995              		.cfi_offset 14, -4
+ 996 0002 8CB0     		sub	sp, sp, #48
+ 997              	.LCFI87:
+ 998              		.cfi_def_cfa_offset 64
+ 999 0004 00AF     		add	r7, sp, #0
+ 1000              	.LCFI88:
+ 1001              		.cfi_def_cfa_register 7
+  77:User/Hardware/arm_sv.c ****     float duties[6] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
+ 1002              		.loc 1 77 11
+ 1003 0006 3B4B     		ldr	r3, .L56
+ 1004 0008 07F11804 		add	r4, r7, #24
+ 1005 000c 1D46     		mov	r5, r3
+ 1006 000e 0FCD     		ldmia	r5!, {r0, r1, r2, r3}
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 20
+
+
+ 1007 0010 0FC4     		stmia	r4!, {r0, r1, r2, r3}
+ 1008 0012 95E80300 		ldm	r5, {r0, r1}
+ 1009 0016 84E80300 		stm	r4, {r0, r1}
+  78:User/Hardware/arm_sv.c ****     ARM_SV_SetAllDuties(duties);
+ 1010              		.loc 1 78 5
+ 1011 001a 07F11803 		add	r3, r7, #24
+ 1012 001e 1846     		mov	r0, r3
+ 1013 0020 FFF7FEFF 		bl	ARM_SV_SetAllDuties
+  79:User/Hardware/arm_sv.c ****     duties_rx = ARM_SV_GetAllDuties();
+ 1014              		.loc 1 79 17
+ 1015 0024 344C     		ldr	r4, .L56+4
+ 1016 0026 3B46     		mov	r3, r7
+ 1017 0028 1846     		mov	r0, r3
+ 1018 002a FFF7FEFF 		bl	ARM_SV_GetAllDuties
+ 1019 002e 2546     		mov	r5, r4
+ 1020 0030 3C46     		mov	r4, r7
+ 1021 0032 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 1022 0034 0FC5     		stmia	r5!, {r0, r1, r2, r3}
+ 1023 0036 94E80300 		ldm	r4, {r0, r1}
+ 1024 003a 85E80300 		stm	r5, {r0, r1}
+  80:User/Hardware/arm_sv.c ****         printf("===== Current PWM Duties =====\n");
+ 1025              		.loc 1 80 9
+ 1026 003e 2F48     		ldr	r0, .L56+8
+ 1027 0040 FFF7FEFF 		bl	puts
+  81:User/Hardware/arm_sv.c ****     printf("Servo 0: %.2f%%\n", duties_rx.duty0 * 100);
+ 1028              		.loc 1 81 42
+ 1029 0044 2C4B     		ldr	r3, .L56+4
+ 1030 0046 D3ED007A 		vldr.32	s15, [r3]
+ 1031              		.loc 1 81 49
+ 1032 004a 9FED2D7A 		vldr.32	s14, .L56+12
+ 1033 004e 67EE877A 		vmul.f32	s15, s15, s14
+ 1034              		.loc 1 81 5
+ 1035 0052 B7EEE77A 		vcvt.f64.f32	d7, s15
+ 1036 0056 53EC172B 		vmov	r2, r3, d7
+ 1037 005a 2A48     		ldr	r0, .L56+16
+ 1038 005c FFF7FEFF 		bl	printf
+  82:User/Hardware/arm_sv.c ****     printf("Servo 1: %.2f%%\n", duties_rx.duty1 * 100);
+ 1039              		.loc 1 82 42
+ 1040 0060 254B     		ldr	r3, .L56+4
+ 1041 0062 D3ED017A 		vldr.32	s15, [r3, #4]
+ 1042              		.loc 1 82 49
+ 1043 0066 9FED267A 		vldr.32	s14, .L56+12
+ 1044 006a 67EE877A 		vmul.f32	s15, s15, s14
+ 1045              		.loc 1 82 5
+ 1046 006e B7EEE77A 		vcvt.f64.f32	d7, s15
+ 1047 0072 53EC172B 		vmov	r2, r3, d7
+ 1048 0076 2448     		ldr	r0, .L56+20
+ 1049 0078 FFF7FEFF 		bl	printf
+  83:User/Hardware/arm_sv.c ****     printf("Servo 2: %.2f%%\n", duties_rx.duty2 * 100);
+ 1050              		.loc 1 83 42
+ 1051 007c 1E4B     		ldr	r3, .L56+4
+ 1052 007e D3ED027A 		vldr.32	s15, [r3, #8]
+ 1053              		.loc 1 83 49
+ 1054 0082 9FED1F7A 		vldr.32	s14, .L56+12
+ 1055 0086 67EE877A 		vmul.f32	s15, s15, s14
+ 1056              		.loc 1 83 5
+ 1057 008a B7EEE77A 		vcvt.f64.f32	d7, s15
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 21
+
+
+ 1058 008e 53EC172B 		vmov	r2, r3, d7
+ 1059 0092 1E48     		ldr	r0, .L56+24
+ 1060 0094 FFF7FEFF 		bl	printf
+  84:User/Hardware/arm_sv.c ****     printf("Servo 3: %.2f%%\n", duties_rx.duty3 * 100);
+ 1061              		.loc 1 84 42
+ 1062 0098 174B     		ldr	r3, .L56+4
+ 1063 009a D3ED037A 		vldr.32	s15, [r3, #12]
+ 1064              		.loc 1 84 49
+ 1065 009e 9FED187A 		vldr.32	s14, .L56+12
+ 1066 00a2 67EE877A 		vmul.f32	s15, s15, s14
+ 1067              		.loc 1 84 5
+ 1068 00a6 B7EEE77A 		vcvt.f64.f32	d7, s15
+ 1069 00aa 53EC172B 		vmov	r2, r3, d7
+ 1070 00ae 1848     		ldr	r0, .L56+28
+ 1071 00b0 FFF7FEFF 		bl	printf
+  85:User/Hardware/arm_sv.c ****     printf("Servo 4: %.2f%%\n", duties_rx.duty4 * 100);
+ 1072              		.loc 1 85 42
+ 1073 00b4 104B     		ldr	r3, .L56+4
+ 1074 00b6 D3ED047A 		vldr.32	s15, [r3, #16]
+ 1075              		.loc 1 85 49
+ 1076 00ba 9FED117A 		vldr.32	s14, .L56+12
+ 1077 00be 67EE877A 		vmul.f32	s15, s15, s14
+ 1078              		.loc 1 85 5
+ 1079 00c2 B7EEE77A 		vcvt.f64.f32	d7, s15
+ 1080 00c6 53EC172B 		vmov	r2, r3, d7
+ 1081 00ca 1248     		ldr	r0, .L56+32
+ 1082 00cc FFF7FEFF 		bl	printf
+  86:User/Hardware/arm_sv.c ****     printf("Servo 5: %.2f%%\n", duties_rx.duty5 * 100);
+ 1083              		.loc 1 86 42
+ 1084 00d0 094B     		ldr	r3, .L56+4
+ 1085 00d2 D3ED057A 		vldr.32	s15, [r3, #20]
+ 1086              		.loc 1 86 49
+ 1087 00d6 9FED0A7A 		vldr.32	s14, .L56+12
+ 1088 00da 67EE877A 		vmul.f32	s15, s15, s14
+ 1089              		.loc 1 86 5
+ 1090 00de B7EEE77A 		vcvt.f64.f32	d7, s15
+ 1091 00e2 53EC172B 		vmov	r2, r3, d7
+ 1092 00e6 0C48     		ldr	r0, .L56+36
+ 1093 00e8 FFF7FEFF 		bl	printf
+  87:User/Hardware/arm_sv.c **** }...
+ 1094              		.loc 1 87 1
+ 1095 00ec 00BF     		nop
+ 1096 00ee 3037     		adds	r7, r7, #48
+ 1097              	.LCFI89:
+ 1098              		.cfi_def_cfa_offset 16
+ 1099 00f0 BD46     		mov	sp, r7
+ 1100              	.LCFI90:
+ 1101              		.cfi_def_cfa_register 13
+ 1102              		@ sp needed
+ 1103 00f2 B0BD     		pop	{r4, r5, r7, pc}
+ 1104              	.L57:
+ 1105              		.align	2
+ 1106              	.L56:
+ 1107 00f4 98000000 		.word	.LC0
+ 1108 00f8 00000000 		.word	duties_rx
+ 1109 00fc 00000000 		.word	.LC1
+ 1110 0100 0000C842 		.word	1120403456
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 22
+
+
+ 1111 0104 20000000 		.word	.LC2
+ 1112 0108 34000000 		.word	.LC3
+ 1113 010c 48000000 		.word	.LC4
+ 1114 0110 5C000000 		.word	.LC5
+ 1115 0114 70000000 		.word	.LC6
+ 1116 0118 84000000 		.word	.LC7
+ 1117              		.cfi_endproc
+ 1118              	.LFE165:
+ 1120              		.text
+ 1121              	.Letext0:
+ 1122              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
+ 1123              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
+ 1124              		.file 4 "User/Hardware/arm_sv.h"
+ 1125              		.file 5 "User/Drive/bsp_pca9685.h"
+ 1126              		.file 6 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/stdio.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 arm_sv.c
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:20     .bss.current_duties:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:23     .bss.current_duties:00000000 current_duties
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:30     .bss.duties_rx:00000000 duties_rx
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:27     .bss.duties_rx:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:33     .text.set_sv_duty:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:38     .text.set_sv_duty:00000000 set_sv_duty
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:92     .text.set_sv_duty:00000038 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:97     .text.ARM_SV_Init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:103    .text.ARM_SV_Init:00000000 ARM_SV_Init
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:163    .text.ARM_SV_Init:0000003c $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:168    .text.ARM_SV_SetDuty:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:174    .text.ARM_SV_SetDuty:00000000 ARM_SV_SetDuty
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:213    .text.ARM_SV_SetDuty0:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:219    .text.ARM_SV_SetDuty0:00000000 ARM_SV_SetDuty0
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:255    .text.ARM_SV_SetDuty1:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:261    .text.ARM_SV_SetDuty1:00000000 ARM_SV_SetDuty1
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:297    .text.ARM_SV_SetDuty2:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:303    .text.ARM_SV_SetDuty2:00000000 ARM_SV_SetDuty2
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:339    .text.ARM_SV_SetDuty3:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:345    .text.ARM_SV_SetDuty3:00000000 ARM_SV_SetDuty3
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:381    .text.ARM_SV_SetDuty4:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:387    .text.ARM_SV_SetDuty4:00000000 ARM_SV_SetDuty4
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:423    .text.ARM_SV_SetDuty5:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:429    .text.ARM_SV_SetDuty5:00000000 ARM_SV_SetDuty5
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:465    .text.ARM_SV_GetDuty:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:471    .text.ARM_SV_GetDuty:00000000 ARM_SV_GetDuty
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:523    .text.ARM_SV_GetDuty:00000034 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:528    .text.ARM_SV_GetDuty0:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:534    .text.ARM_SV_GetDuty0:00000000 ARM_SV_GetDuty0
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:567    .text.ARM_SV_GetDuty0:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:572    .text.ARM_SV_GetDuty1:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:578    .text.ARM_SV_GetDuty1:00000000 ARM_SV_GetDuty1
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:611    .text.ARM_SV_GetDuty1:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:616    .text.ARM_SV_GetDuty2:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:622    .text.ARM_SV_GetDuty2:00000000 ARM_SV_GetDuty2
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:655    .text.ARM_SV_GetDuty2:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:660    .text.ARM_SV_GetDuty3:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:666    .text.ARM_SV_GetDuty3:00000000 ARM_SV_GetDuty3
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:699    .text.ARM_SV_GetDuty3:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:704    .text.ARM_SV_GetDuty4:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:710    .text.ARM_SV_GetDuty4:00000000 ARM_SV_GetDuty4
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:743    .text.ARM_SV_GetDuty4:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:748    .text.ARM_SV_GetDuty5:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:754    .text.ARM_SV_GetDuty5:00000000 ARM_SV_GetDuty5
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:787    .text.ARM_SV_GetDuty5:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:792    .text.ARM_SV_SetAllDuties:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:798    .text.ARM_SV_SetAllDuties:00000000 ARM_SV_SetAllDuties
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:859    .text.ARM_SV_GetAllDuties:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:865    .text.ARM_SV_GetAllDuties:00000000 ARM_SV_GetAllDuties
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:942    .text.ARM_SV_GetAllDuties:0000004c $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:947    .rodata:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:977    .text.ARM_SV_Tx_Rx:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:983    .text.ARM_SV_Tx_Rx:00000000 ARM_SV_Tx_Rx
+C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s:1107   .text.ARM_SV_Tx_Rx:000000f4 $d
+
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cclM1rWk.s 			page 24
+
+
+UNDEFINED SYMBOLS
+PCA9685_SetDuty
+PCA9685_Init
+puts
+printf

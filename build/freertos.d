@@ -54,7 +54,7 @@ build/freertos.o: Core/Src/freertos.c \
  User/BSP/can_receive_send.h Core/Inc/fdcan.h User/Drive/dm4310_drv.h \
  User/Drive/Robstride04.h User/Drive/Unitree/crc_ccitt.h \
  User/Drive/DrEmpower_can.h User/Hardware/head.h User/Drive/ktech_motor.h \
- User/Hardware/lift_control.h
+ User/Hardware/lift_control.h User/Hardware/arm_sv.h
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -125,3 +125,4 @@ User/Drive/DrEmpower_can.h:
 User/Hardware/head.h:
 User/Drive/ktech_motor.h:
 User/Hardware/lift_control.h:
+User/Hardware/arm_sv.h:

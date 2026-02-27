@@ -57,7 +57,7 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  User/Hardware/LED.h User/Software/music.h User/Drive/buzzer.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  User/Hardware/head.h User/BSP/can_receive_send.h \
- User/Drive/ktech_motor.h
+ User/Drive/ktech_motor.h User/Hardware/arm_sv.h
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 Core/Inc/stm32h7xx_hal_conf.h:
@@ -133,3 +133,4 @@ Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 User/Hardware/head.h:
 User/BSP/can_receive_send.h:
 User/Drive/ktech_motor.h:
+User/Hardware/arm_sv.h:
