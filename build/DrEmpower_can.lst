@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
   64 0000 01       		.byte	1
   65              		.global	enable_replay_state
   66              		.section	.data.enable_replay_state,"aw"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 2
 
 
   69              	enable_replay_state:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
   22:User/Hardware/DrEmpower_can.c **** #define INPUT_MODE_TORQUE_RAMP  6
   23:User/Hardware/DrEmpower_can.c **** // ´óÈ»µç»úÖ÷¶¯ÉÏ±¨ ×ªËÙ/Á¦¾Ø Á¿¸ÙÏµÊý£¨Ð­Òé¹æ¶¨£º´«ÊäÖµ¡Á0.01=Êµ¼ÊÖµ£©
   24:User/Hardware/DrEmpower_can.c **** #define DR_ROBOT_SCALE      0.01f
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 3
 
 
   25:User/Hardware/DrEmpower_can.c **** // CANÊý¾ÝÖ¡³¤¶È£¨Ð­Òé¹æ¶¨¹Ì¶¨8×Ö½Ú£©
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  119 000c FB72     		strb	r3, [r7, #11]
  120 000e 1346     		mov	r3, r2
  121 0010 BB72     		strb	r3, [r7, #10]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 4
 
 
   61:User/Hardware/DrEmpower_can.c ****     short id_list = (id_num << 5) + cmd;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  172              	.LCFI6:
  173              		.cfi_def_cfa_offset 24
  174 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 5
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 5
 
 
  175              	.LCFI7:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  212 003a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  213 003c 1AB2     		sxth	r2, r3
  214              		.loc 1 83 56
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 6
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 6
 
 
  215 003e 3B68     		ldr	r3, [r7]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  261              		.loc 1 91 24
  262 009a 7B68     		ldr	r3, [r7, #4]
  263 009c 0122     		movs	r2, #1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 7
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 7
 
 
  264 009e 1A73     		strb	r2, [r3, #12]
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  316              	.LBB2:
   95:User/Hardware/DrEmpower_can.c ****     for(uint8_t t = 0; t<tick; t++);
  317              		.loc 1 95 17
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 8
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 8
 
 
  318 000a 0023     		movs	r3, #0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  369              		.cfi_offset 14, -4
  370 0002 82B0     		sub	sp, sp, #8
  371              	.LCFI18:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 9
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 9
 
 
  372              		.cfi_def_cfa_offset 16
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  415              		.loc 1 110 1
  416 003e 00BF     		nop
  417 0040 00BF     		nop
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 10
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 10
 
 
  418 0042 0837     		adds	r7, r7, #8
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  130:User/Hardware/DrEmpower_can.c ****     byte2value()
  131:User/Hardware/DrEmpower_can.c ****     value2byte()
  132:User/Hardware/DrEmpower_can.c **** 
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 11
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 11
 
 
  133:User/Hardware/DrEmpower_can.c **** typeÀàÐÍ£º
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  488 001e 3B68     		ldr	r3, [r7]
  489 0020 1A70     		strb	r2, [r3]
  154:User/Hardware/DrEmpower_can.c **** }
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 12
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 12
 
 
  490              		.loc 1 154 1
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  542 0016 1344     		add	r3, r3, r2
  543 0018 FB81     		strh	r3, [r7, #14]	@ movhi
  159:User/Hardware/DrEmpower_can.c ****     return tmp_uint16;
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 13
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 13
 
 
  544              		.loc 1 159 12
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  596              		.loc 1 163 13
  597 0014 1A70     		strb	r2, [r3]
  164:User/Hardware/DrEmpower_can.c ****     data[2] = (uint8_t)(val >> 16);
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 14
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 14
 
 
  598              		.loc 1 164 29
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  649              		.loc 1 169 1
  650              		.cfi_startproc
  651              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 15
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 15
 
 
  652              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  702              		.cfi_def_cfa_register 13
  703              		@ sp needed
  704 0034 5DF8047B 		ldr	r7, [sp], #4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 16
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 16
 
 
  705              	.LCFI45:
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  756 0020 BD46     		mov	sp, r7
  757              	.LCFI50:
  758              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 17
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 17
 
 
  759              		@ sp needed
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  808              		.loc 1 185 1
  809 0022 1846     		mov	r0, r3
  810 0024 1437     		adds	r7, r7, #20
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 18
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 18
 
 
  811              	.LCFI55:
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  190:User/Hardware/DrEmpower_can.c ****     data[2] = *(((uint8_t*)(&val)) + 2);
  863              		.loc 1 190 9
  864 001a 3B68     		ldr	r3, [r7]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 19
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 19
 
 
  865 001c 0233     		adds	r3, r3, #2
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  196:User/Hardware/DrEmpower_can.c ****     *(((uint8_t*)(&tmp_int)) + 0) = data[0];
  916              		.loc 1 196 19
  917 0008 07F10C03 		add	r3, r7, #12
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 20
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 20
 
 
  918              		.loc 1 196 41
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  969              	float_to_data:
  970              	.LFB159:
  202:User/Hardware/DrEmpower_can.c **** static inline void float_to_data(float val, uint8_t *data)
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 21
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 21
 
 
  203:User/Hardware/DrEmpower_can.c **** {
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1019              	.LCFI74:
  1020              		.cfi_def_cfa_register 13
  1021              		@ sp needed
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 22
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 22
 
 
  1022 0032 5DF8047B 		ldr	r7, [sp], #4
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1072 0024 7A68     		ldr	r2, [r7, #4]
  1073 0026 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
  1074 0028 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 23
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 23
 
 
  215:User/Hardware/DrEmpower_can.c ****     *(((uint8_t*)(&tmp_float)) + 3) = data[3];
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1124              	.LCFI84:
  1125              		.cfi_def_cfa_register 7
  222:User/Hardware/DrEmpower_can.c ****     int value_index = 0;
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 24
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 24
 
 
  1126              		.loc 1 222 9
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1171 005c 3B68     		ldr	r3, [r7]
  1172 005e 0433     		adds	r3, r3, #4
  1173 0060 3B60     		str	r3, [r7]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 25
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 25
 
 
  232:User/Hardware/DrEmpower_can.c ****             value_index++;
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1215 00a4 1344     		add	r3, r3, r2
  1216 00a6 0433     		adds	r3, r3, #4
  1217              		.loc 1 244 56
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 26
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 26
 
 
  1218 00a8 1846     		mov	r0, r3
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1263              		.loc 1 253 24
  1264 00fc 7B68     		ldr	r3, [r7, #4]
  1265 00fe 0133     		adds	r3, r3, #1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 27
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 27
 
 
  1266 0100 7B60     		str	r3, [r7, #4]
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1306              		.loc 1 267 11
  1307 013e 3B68     		ldr	r3, [r7]
  1308 0140 072B     		cmp	r3, #7
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 28
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 28
 
 
  1309 0142 05DC     		bgt	.L48
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1356 0002 82B0     		sub	sp, sp, #8
  1357              	.LCFI88:
  1358              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 29
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 29
 
 
  1359 0004 00AF     		add	r7, sp, #0
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  285:User/Hardware/DrEmpower_can.c ****         }
  286:User/Hardware/DrEmpower_can.c ****         switch(data_list.type_data[value_index])
  1404              		.loc 1 286 35
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 30
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 30
 
 
  1405 004a 534A     		ldr	r2, .L66
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1451              	.L58:
  295:User/Hardware/DrEmpower_can.c ****         case 1:
  296:User/Hardware/DrEmpower_can.c ****         {
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 31
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 31
 
 
  297:User/Hardware/DrEmpower_can.c ****             uint16_to_data(data_list.value_data[value_index],&data_list.byte_data[byte_index]);
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1498 00fa 0433     		adds	r3, r3, #4
  1499              		.loc 1 304 13
  1500 00fc 1946     		mov	r1, r3
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 32
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 32
 
 
  1501 00fe 1046     		mov	r0, r2
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  317:User/Hardware/DrEmpower_can.c ****         {
  318:User/Hardware/DrEmpower_can.c ****             int_to_data(data_list.value_data[value_index],&data_list.byte_data[byte_index]);
  1543              		.loc 1 318 45
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 33
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 33
 
 
  1544 0144 144A     		ldr	r2, .L66
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1589 018c 00DA     		bge	.L65
  280:User/Hardware/DrEmpower_can.c ****         {
  1590              		.loc 1 280 12
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 34
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 34
 
 
  1591 018e 3EE7     		b	.L64
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1636 0002 86B0     		sub	sp, sp, #24
  1637              	.LCFI93:
  1638              		.cfi_def_cfa_offset 32
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 35
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 35
 
 
  1639 0004 00AF     		add	r7, sp, #0
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  338:User/Hardware/DrEmpower_can.c ****     for (int i = 0; i < length; i++)
  1687              		.loc 1 338 23 discriminator 1
  1688 004a 7A69     		ldr	r2, [r7, #20]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 36
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 36
 
 
  1689 004c 7B68     		ldr	r3, [r7, #4]
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1732 008c 3B69     		ldr	r3, [r7, #16]
  1733 008e 0133     		adds	r3, r3, #1
  1734 0090 3B61     		str	r3, [r7, #16]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 37
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 37
 
 
  1735              	.L73:
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  363:User/Hardware/DrEmpower_can.c ****  */
  364:User/Hardware/DrEmpower_can.c **** void reply_state(uint8_t id_num)
  365:User/Hardware/DrEmpower_can.c **** {
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 38
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 38
 
 
  1779              		.loc 1 365 1
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1824 0038 434B     		ldr	r3, .L83+8
  1825 003a 1B88     		ldrh	r3, [r3]
  1826 003c 5B11     		asrs	r3, r3, #5
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 39
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 39
 
 
  1827              		.loc 1 374 50
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1874              		.loc 1 381 61
  1875 0098 D7ED097A 		vldr.32	s15, [r7, #36]
  1876 009c 67EE277A 		vmul.f32	s15, s14, s15
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 40
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 40
 
 
  1877              		.loc 1 381 37
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1928              		.loc 1 384 32
  1929 0108 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
  1930 010a 5A1E     		subs	r2, r3, #1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 41
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 41
 
 
  1931              		.loc 1 384 39
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  1975 0154 08000000 		.word	.LC6
  1976 0158 00000000 		.word	data_list
  1977 015c 00000000 		.word	motor_state
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 42
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 42
 
 
  1978 0160 00000000 		.word	reply_state_error
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2014 001a 804B     		ldr	r3, .L92
  2015 001c C7F88430 		str	r3, [r7, #132]	@ float
  413:User/Hardware/DrEmpower_can.c ****     if (mode == 0)
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 43
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 43
 
 
  2016              		.loc 1 413 8
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  422:User/Hardware/DrEmpower_can.c ****         float value_data[3]= {f_angle, s16_time, s16_width};
  2062              		.loc 1 422 15
  2063 0088 BB6E     		ldr	r3, [r7, #104]	@ float
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 44
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 44
 
 
  2064 008a 7B65     		str	r3, [r7, #84]	@ float
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2108 00ee B8BF     		it	lt
  2109 00f0 5B42     		rsblt	r3, r3, #0
  2110              		.loc 1 432 37
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 45
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 45
 
 
  2111 00f2 07EE903A 		vmov	s15, r3	@ int
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2158 0174 F97C     		ldrb	r1, [r7, #19]	@ zero_extendqisi2
  2159 0176 0023     		movs	r3, #0
  2160 0178 0093     		str	r3, [sp]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 46
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 46
 
 
  2161 017a 2D4B     		ldr	r3, .L92+20
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2206 01e6 07CA     		ldm	r2, {r0, r1, r2}
  2207 01e8 83E80700 		stm	r3, {r0, r1, r2}
  449:User/Hardware/DrEmpower_can.c **** 
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 47
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 47
 
 
  450:User/Hardware/DrEmpower_can.c ****         format_data(value_data,type_data,3,"encode");
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  455:User/Hardware/DrEmpower_can.c **** /**
  456:User/Hardware/DrEmpower_can.c ****  * @brief µ¥¸öµç»úËÙ¶ÈÔ¤Éèº¯Êý¡£
  457:User/Hardware/DrEmpower_can.c ****  * Ô¤ÉèÖ¸¶¨µç»ú±àºÅµÄµç»úµÄÄ¿±êËÙ¶È£¬Ö®ºóÐèÒªÓÃmvÖ¸ÁîÆô¶¯×ª¶¯¡£
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 48
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 48
 
 
  458:User/Hardware/DrEmpower_can.c ****  *
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2297 0034 17EE903A 		vmov	r3, s15	@ int
  2298 0038 FB65     		str	r3, [r7, #92]
  474:User/Hardware/DrEmpower_can.c ****         if (f_speed == 0)
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 49
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 49
 
 
  2299              		.loc 1 474 12
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2342              		.loc 1 485 43
  2343 00a0 D7ED026A 		vldr.32	s13, [r7, #8]
  2344 00a4 97ED167A 		vldr.32	s14, [r7, #88]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 50
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 50
 
 
  2345 00a8 C6EE877A 		vdiv.f32	s15, s13, s14
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2390              		.loc 1 494 5
  2391 0118 FB7C     		ldrb	r3, [r7, #19]	@ zero_extendqisi2
  2392 011a 1846     		mov	r0, r3
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 51
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 51
 
 
  2393 011c FFF7FEFF 		bl	reply_state
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2433              	.LCFI113:
  2434              		.cfi_def_cfa_offset 80
  2435 0004 02AF     		add	r7, sp, #8
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 52
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 52
 
 
  2436              	.LCFI114:
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2477 005a 97ED0D7A 		vldr.32	s14, [r7, #52]
  2478 005e C6EE877A 		vdiv.f32	s15, s13, s14
  2479              		.loc 1 523 23
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 53
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 53
 
 
  2480 0062 FDEEE77A 		vcvt.s32.f32	s15, s15
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2524              	.LCFI116:
  2525              		.cfi_def_cfa_register 13
  2526              		@ sp needed
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 54
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 54
 
 
  2527 00c6 80BD     		pop	{r7, pc}
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2561              		.cfi_def_cfa 7, 144
  2562 0006 7861     		str	r0, [r7, #20]
  2563 0008 0B46     		mov	r3, r1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 55
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 55
 
 
  2564 000a 87ED030A 		vstr.32	s0, [r7, #12]
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2610              		.loc 1 563 25
  2611 0078 FDEEE77A 		vcvt.s32.f32	s15, s15
  2612 007c 17EE903A 		vmov	r3, s15	@ int
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 56
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 56
 
 
  2613              		.loc 1 563 13
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2656 00dc D7ED027A 		vldr.32	s15, [r7, #8]
  2657 00e0 F5EEC07A 		vcmpe.f32	s15, #0
  2658 00e4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 57
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 57
 
 
  2659 00e8 40F3A080 		ble	.L109
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2707 0166 C7ED107A 		vstr.32	s15, [r7, #64]
  2708 016a FB6E     		ldr	r3, [r7, #108]
  2709 016c 07EE903A 		vmov	s15, r3	@ int
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 58
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 58
 
 
  2710 0170 F8EEE77A 		vcvt.f32.s32	s15, s15
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2752 01cc 97ED217A 		vldr.32	s14, [r7, #132]
  2753 01d0 C6EE877A 		vdiv.f32	s15, s13, s14
  2754              		.loc 1 592 13
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 59
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 59
 
 
  2755 01d4 FDEEE77A 		vcvt.s32.f32	s15, s15
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2799 0238 BD46     		mov	sp, r7
  2800              	.LCFI121:
  2801              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 60
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 60
 
 
  2802              		@ sp needed
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2840 0002 A8B0     		sub	sp, sp, #160
  2841              	.LCFI123:
  2842              		.cfi_def_cfa_offset 168
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 61
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 61
 
 
  2843 0004 02AF     		add	r7, sp, #8
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  634:User/Hardware/DrEmpower_can.c ****             state = 1;
  2884              		.loc 1 634 19
  2885 004e 0123     		movs	r3, #1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 62
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 62
 
 
  2886 0050 87F89730 		strb	r3, [r7, #151]
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  644:User/Hardware/DrEmpower_can.c ****         last_id_list = SERVO_MALLOC(n * sizeof(uint8_t));
  2929              		.loc 1 644 24
  2930 009e D7F8A000 		ldr	r0, [r7, #160]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 63
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 63
 
 
  2931 00a2 FFF7FEFF 		bl	malloc
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  2981 0108 3A6E     		ldr	r2, [r7, #96]	@ float
  2982              		.loc 1 648 35 discriminator 1
  2983 010a 1A60     		str	r2, [r3]	@ float
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 64
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 64
 
 
  647:User/Hardware/DrEmpower_can.c ****         for (size_t i = 0; i < n; i++)
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3030 0162 C7F88830 		str	r3, [r7, #136]
  3031              	.L131:
  652:User/Hardware/DrEmpower_can.c ****             preset_angle(hcan, id_list[i],angle_list[i],speed,param,mode);
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 65
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 65
 
 
  3032              		.loc 1 652 30 discriminator 1
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3076              	.LBB18:
  664:User/Hardware/DrEmpower_can.c ****     {
  665:User/Hardware/DrEmpower_can.c ****         if ((speed < 0) ||( param < 0)) return;
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 66
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 66
 
 
  3077              		.loc 1 665 12
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3124              		.loc 1 672 29
  3125 0238 FB6E     		ldr	r3, [r7, #108]	@ float
  3126 023a C7F88430 		str	r3, [r7, #132]	@ float
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 67
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 67
 
 
  3127              	.L140:
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3173 02a6 26EE077B 		vmul.f64	d7, d6, d7
  3174              		.loc 1 678 25
  3175 02aa B2EE085B 		vmov.f64	d5, #1.2e+1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 68
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 68
 
 
  3176 02ae 87EE056B 		vdiv.f64	d6, d7, d5
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3225 0334 1C000000 		.word	.LC1
  3226 0338 00000000 		.word	.LC5
  3227 033c 0C000000 		.word	data_list+12
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 69
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 69
 
 
  3228 0340 00000000 		.word	TRAJ_MODE
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3274 03b8 D7ED027A 		vldr.32	s15, [r7, #8]
  3275 03bc B7EEE75A 		vcvt.f64.f32	d5, s15
  3276              		.loc 1 691 29
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 70
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 70
 
 
  3277 03c0 D7ED017A 		vldr.32	s15, [r7, #4]
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  693:User/Hardware/DrEmpower_can.c ****             preset_angle(hcan, id_list[i],angle_list[i],t,param,mode);
  3327              		.loc 1 693 30 discriminator 1
  3328 0428 BA6F     		ldr	r2, [r7, #120]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 71
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 71
 
 
  3329 042a D7F8A030 		ldr	r3, [r7, #160]
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  705:User/Hardware/DrEmpower_can.c ****         for (size_t i = 0; i < n; i++)
  3373              		.loc 1 705 21
  3374 0488 0023     		movs	r3, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 72
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 72
 
 
  3375 048a 7B67     		str	r3, [r7, #116]
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3422 04e8 124A     		ldr	r2, .L162
  3423 04ea 07F11803 		add	r3, r7, #24
  3424 04ee 07CA     		ldm	r2, {r0, r1, r2}
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 73
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 73
 
 
  3425 04f0 83E80700 		stm	r3, {r0, r1, r2}
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3471              		.align	2
  3472              	.L162:
  3473 0534 1C000000 		.word	.LC1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 74
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 74
 
 
  3474 0538 00000000 		.word	.LC5
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  736:User/Hardware/DrEmpower_can.c ****     step_angles(hcan, &id_num,&angle,speed,param,mode,1);
  3511              		.loc 1 736 5
  3512 001a 07F10C02 		add	r2, r7, #12
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 75
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 75
 
 
  3513 001e 07F11301 		add	r1, r7, #19
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3551              		.cfi_offset 14, -4
  3552 0002 A4B0     		sub	sp, sp, #144
  3553              	.LCFI133:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 76
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 76
 
 
  3554              		.cfi_def_cfa_offset 152
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3601 005a 7869     		ldr	r0, [r7, #20]
  3602 005c FFF7FEFF 		bl	preset_angle
  760:User/Hardware/DrEmpower_can.c ****             preset_angle(hcan, id_list[i], angle_list[i], speed, param, mode);
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 77
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 77
 
 
  3603              		.loc 1 760 36 discriminator 3
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  770:User/Hardware/DrEmpower_can.c ****     else if( mode == 1)
  3648              		.loc 1 770 12
  3649 00c6 3B68     		ldr	r3, [r7]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 78
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 78
 
 
  3650 00c8 012B     		cmp	r3, #1
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  776:User/Hardware/DrEmpower_can.c ****         {
  3695              		.loc 1 776 36 discriminator 2
  3696 012e BB6F     		ldr	r3, [r7, #120]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 79
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 79
 
 
  3697 0130 0133     		adds	r3, r3, #1
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3744 01a2 B0EE460B 		vmov.f64	d0, d6
  3745 01a6 FFF7FEFF 		bl	sqrt
  3746 01aa B0EE407B 		vmov.f64	d7, d0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 80
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 80
 
 
  3747              		.loc 1 785 23 discriminator 1
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3791 021e D7ED027A 		vldr.32	s15, [r7, #8]
  3792 0222 B1EE087A 		vmov.f32	s14, #6.0e+0
  3793 0226 27EE877A 		vmul.f32	s14, s15, s14
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 81
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 81
 
 
  3794              		.loc 1 795 42
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3845 02b2 C5EE877A 		vdiv.f32	s15, s11, s14
  3846 02b6 B7EEE77A 		vcvt.f64.f32	d7, s15
  3847              		.loc 1 798 41
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 82
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 82
 
 
  3848 02ba 36EE077B 		vadd.f64	d7, d6, d7
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3894 030a 97F86E30 		ldrb	r3, [r7, #110]	@ zero_extendqisi2
  3895 030e 07EE903A 		vmov	s15, r3	@ int
  3896 0312 F8EE677A 		vcvt.f32.u32	s15, s15
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 83
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 83
 
 
  3897 0316 C7ED107A 		vstr.32	s15, [r7, #64]
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3942              		.loc 1 813 54
  3943 0368 3B6F     		ldr	r3, [r7, #112]
  3944 036a 9B00     		lsls	r3, r3, #2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 84
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 84
 
 
  3945 036c FA68     		ldr	r2, [r7, #12]
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  3990 03d6 0023     		movs	r3, #0
  3991 03d8 0093     		str	r3, [sp]
  3992 03da 054B     		ldr	r3, .L198+8
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 85
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 85
 
 
  3993 03dc 0822     		movs	r2, #8
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  825:User/Hardware/DrEmpower_can.c ****  * ¿ØÖÆÖ¸¶¨µç»ú±àºÅµÄµç»ú°´ÕÕÖ¸¶¨µÄËÙ¶ÈÁ¬ÐøÕûÖÜ×ª¶¯¡£
  826:User/Hardware/DrEmpower_can.c ****  *
  827:User/Hardware/DrEmpower_can.c ****  * @param hcan CAN¾ä±ú
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 86
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 86
 
 
  828:User/Hardware/DrEmpower_can.c ****  * @param id_num ÐèÒªÉèÖÃµÄµç»úID±àºÅ,Èç¹û²»ÖªµÀµ±Ç°µç»úID£¬¿ÉÒÔÓÃ0¹ã²¥£¬Èç¹û×ÜÏßÉÏÓÐ¶à¸öµç»ú£¬Ôò¶à
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4082 0038 FB65     		str	r3, [r7, #92]
  843:User/Hardware/DrEmpower_can.c ****         if( f_speed == 0)
  4083              		.loc 1 843 11
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 87
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 87
 
 
  4084 003a D7ED157A 		vldr.32	s15, [r7, #84]
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4128 00a6 3B65     		str	r3, [r7, #80]
  854:User/Hardware/DrEmpower_can.c ****         unsigned short u16_input_mode = INPUT_MODE_VEL_RAMP;
  4129              		.loc 1 854 24
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 88
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 88
 
 
  4130 00a8 0223     		movs	r3, #2
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4176              		@ sp needed
  4177 010a 80BD     		pop	{r7, pc}
  4178              	.L205:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 89
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 89
 
 
  4179              		.align	2
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4219 0016 3B69     		ldr	r3, [r7, #16]
  4220 0018 002B     		cmp	r3, #0
  4221 001a 4BD0     		beq	.L213
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 90
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 90
 
 
  4222              		.loc 1 878 25 discriminator 2
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4270 0072 F8EE677A 		vcvt.f32.u32	s15, s15
  4271 0076 C7ED097A 		vstr.32	s15, [r7, #36]
  4272 007a 4FF00003 		mov	r3, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 91
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 91
 
 
  4273 007e BB62     		str	r3, [r7, #40]	@ float
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4323              		.thumb_func
  4325              	set_torque:
  4326              	.LFB174:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 92
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 92
 
 
  887:User/Hardware/DrEmpower_can.c **** 
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  910:User/Hardware/DrEmpower_can.c ****         u16_input_mode = INPUT_MODE_PASSTHROUGH;
  4358              		.loc 1 910 24
  4359 0024 0123     		movs	r3, #1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 93
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 93
 
 
  4360 0026 FB63     		str	r3, [r7, #60]
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4403 0088 0093     		str	r3, [sp]
  4404 008a 094B     		ldr	r3, .L219+12
  4405 008c 1D22     		movs	r2, #29
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 94
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 94
 
 
  4406 008e 7869     		ldr	r0, [r7, #20]
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4445 0000 80B5     		push	{r7, lr}
  4446              	.LCFI152:
  4447              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 95
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 95
 
 
  4448              		.cfi_offset 7, -8
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4498              	.L225:
  940:User/Hardware/DrEmpower_can.c ****     for (size_t i = 0; i < n; i++)
  4499              		.loc 1 940 26 discriminator 1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 96
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 96
 
 
  4500 004e 7A6B     		ldr	r2, [r7, #52]
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4547              		.cfi_def_cfa_register 13
  4548              		@ sp needed
  4549 00ac 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 97
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 97
 
 
  4550              	.L230:
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4589 0006 F861     		str	r0, [r7, #28]
  4590 0008 0B46     		mov	r3, r1
  4591 000a 87ED050A 		vstr.32	s0, [r7, #20]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 98
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 98
 
 
  4592 000e C7ED040A 		vstr.32	s1, [r7, #16]
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4640              		.loc 1 970 5
  4641 008e 07F12001 		add	r1, r7, #32
  4642 0092 07F12C00 		add	r0, r7, #44
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 99
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 99
 
 
  4643 0096 0A4B     		ldr	r3, .L232+8
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4687 0000 80B5     		push	{r7, lr}
  4688              	.LCFI162:
  4689              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 100
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 100
 
 
  4690              		.cfi_offset 7, -8
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4738              	.LCFI166:
  4739              		.cfi_def_cfa_register 13
  4740              		@ sp needed
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 101
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 101
 
 
  4741 0060 80BD     		pop	{r7, pc}
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4784 001a B0EE670A 		vmov.f32	s0, s15
  4785 001e 0323     		movs	r3, #3
  4786 0020 47F61912 		movw	r2, #31001
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 102
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 102
 
 
  4787 0024 F868     		ldr	r0, [r7, #12]
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4830              	.LCFI174:
  4831              		.cfi_def_cfa_register 7
  4832 0006 F860     		str	r0, [r7, #12]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 103
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 103
 
 
  4833 0008 0B46     		mov	r3, r1
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4876              		@ frame_needed = 1, uses_anonymous_args = 0
  4877 0000 80B5     		push	{r7, lr}
  4878              	.LCFI177:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 104
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 104
 
 
  4879              		.cfi_def_cfa_offset 8
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
 1034:User/Hardware/DrEmpower_can.c **** * @param hcan CAN¾ä±ú
 1035:User/Hardware/DrEmpower_can.c **** * @param id_num ÐèÒªÉèÖÃµÄµç»úID±àºÅ,Èç¹û²»ÖªµÀµ±Ç°µç»úID£¬¿ÉÒÔÓÃ0¹ã²¥£¬Èç¹û×ÜÏßÉÏÓÐ¶à¸öµç»ú£¬Ôò¶à¸
 1036:User/Hardware/DrEmpower_can.c **** * @param mode µç»úÄ£Ê½±àºÅ
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 105
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 105
 
 
 1037:User/Hardware/DrEmpower_can.c **** *             mode = 1: IDLE´ý»úÄ£Ê½£¬µç»ú½«¹ØµôPWMÊä³ö£¬µç»úÐ¶ÔØ
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  4970 0036 47F23352 		movw	r2, #30003
  4971 003a F868     		ldr	r0, [r7, #12]
  4972 003c FFF7FEFF 		bl	write_property
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 106
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 106
 
 
  4973              	.L243:
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
 1060:User/Hardware/DrEmpower_can.c ****     float value_data[3]= {order_num,0,0};
  5017              		.loc 1 1060 11
  5018 0012 97F82730 		ldrb	r3, [r7, #39]	@ zero_extendqisi2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 107
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 107
 
 
  5019 0016 07EE903A 		vmov	s15, r3	@ int
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5071              	set_GPIO_mode:
  5072              	.LFB183:
 1065:User/Hardware/DrEmpower_can.c **** /**
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 108
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 108
 
 
 1066:User/Hardware/DrEmpower_can.c ****  * @brief ÉèÖÃGPIO¿ØÖÆ½Ó¿ÚÄ£Ê½
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5110 002c 0020     		movs	r0, #0
  5111 002e 0090     		str	r0, [sp]
  5112 0030 F868     		ldr	r0, [r7, #12]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 109
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 109
 
 
  5113 0032 FFF7FEFF 		bl	get_GPIO_mode
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5159 0084 F97A     		ldrb	r1, [r7, #11]	@ zero_extendqisi2
  5160 0086 B0EE670A 		vmov.f32	s0, s15
  5161 008a 0123     		movs	r3, #1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 110
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 110
 
 
  5162 008c 47F61E12 		movw	r2, #31006
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5209 00f2 7869     		ldr	r0, [r7, #20]
  5210 00f4 FFF7FEFF 		bl	HAL_Delay
 1098:User/Hardware/DrEmpower_can.c ****     reboot(hcan, id_num);
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 111
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 111
 
 
  5211              		.loc 1 1098 5
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5252              		.cfi_def_cfa_offset 8
  5253              		.cfi_offset 7, -8
  5254              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 112
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 112
 
 
  5255 0002 88B0     		sub	sp, sp, #32
@@ -6718,7 +6718,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5304 006a 4FF0FF33 		mov	r3, #-1
  5305              		.loc 1 1117 82 is_stmt 0
  5306 006e 22E0     		b	.L264
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 113
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 113
 
 
  5307              	.L263:
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5350 00bc 80BD     		pop	{r7, pc}
  5351              	.L266:
  5352 00be 00BF     		.align	2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 114
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 114
 
 
  5353              	.L265:
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5396              		.loc 1 1141 15
  5397 002a 7B68     		ldr	r3, [r7, #4]
  5398 002c 5AB2     		sxtb	r2, r3
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 115
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 115
 
 
  5399 002e 034B     		ldr	r3, .L268
@@ -6898,7 +6898,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5442 0006 F860     		str	r0, [r7, #12]
  5443 0008 0846     		mov	r0, r1
  5444 000a 1146     		mov	r1, r2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 116
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 116
 
 
  5445 000c 1A46     		mov	r2, r3
@@ -6958,7 +6958,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5494 0074 80BD     		pop	{r7, pc}
  5495              	.L272:
  5496 0076 00BF     		.align	2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 117
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 117
 
 
  5497              	.L271:
@@ -7018,7 +7018,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5542              		.loc 1 1170 1 is_stmt 1
  5543 002a 1846     		mov	r0, r3
  5544 002c 1037     		adds	r7, r7, #16
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 118
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 118
 
 
  5545              	.LCFI215:
@@ -7078,7 +7078,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5586 0008 0B46     		mov	r3, r1
  5587 000a FB72     		strb	r3, [r7, #11]
 1186:User/Hardware/DrEmpower_can.c ****     struct servo_state state = {0, 0};
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 119
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 119
 
 
  5588              		.loc 1 1186 24
@@ -7138,7 +7138,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5633 006e 012B     		cmp	r3, #1
  5634 0070 40F08780 		bne	.L277
  5635              	.LBB36:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 120
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 120
 
 
 1196:User/Hardware/DrEmpower_can.c **** 			{
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5680 00c6 9B00     		lsls	r3, r3, #2
  5681 00c8 1344     		add	r3, r3, r2
  5682 00ca 9B00     		lsls	r3, r3, #2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 121
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 121
 
 
  5683 00cc 0344     		add	r3, r3, r0
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5734 0132 9B00     		lsls	r3, r3, #2
  5735 0134 1344     		add	r3, r3, r2
  5736 0136 9B00     		lsls	r3, r3, #2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 122
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 122
 
 
  5737 0138 0B44     		add	r3, r3, r1
@@ -7318,7 +7318,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5782 018c 0133     		adds	r3, r3, #1
  5783 018e 154A     		ldr	r2, .L280+40
  5784 0190 1360     		str	r3, [r2]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 123
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 123
 
 
  5785              	.L276:
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
 1227:User/Hardware/DrEmpower_can.c ****  * @param hcan CAN¾ä±ú
 1228:User/Hardware/DrEmpower_can.c ****  * @param id_num ÐèÒª¶ÁÈ¡µÄµç»ú±àºÅ,Èç¹û²»ÖªµÀµ±Ç°µç»ú±àºÅ£¬¿ÉÒÔÓÃ0¹ã²¥£¬µ«ÊÇÕâÊ±×ÜÏßÉÏÖ»ÄÜÁ¬Ò»¸öµç
 1229:User/Hardware/DrEmpower_can.c ****  * @return struct servo_volcur ´¢´æµç»úµçÑ¹ºÍµçÁ÷µÄ½á¹¹Ìå
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 124
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 124
 
 
 1230:User/Hardware/DrEmpower_can.c ****  */
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5879 004c 02E0     		b	.L284
  5880              	.L283:
 1237:User/Hardware/DrEmpower_can.c ****     }
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 125
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 125
 
 
 1238:User/Hardware/DrEmpower_can.c ****     else READ_FLAG=-1;
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
 1253:User/Hardware/DrEmpower_can.c **** {
  5922              		.loc 1 1253 1
  5923              		.cfi_startproc
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 126
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 126
 
 
  5924              		@ args = 4, pretend = 0, frame = 16
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  5975 0052 F0EE407A 		vmov.f32	s15, s0
  5976              		.loc 1 1256 98 discriminator 1
  5977 0056 F5EE407A 		vcmp.f32	s15, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 127
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 127
 
 
  5978 005a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6025 00ac 1FE0     		b	.L294
  6026              	.L292:
 1264:User/Hardware/DrEmpower_can.c ****         }
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 128
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 128
 
 
 1265:User/Hardware/DrEmpower_can.c ****         else if (!*enable_uart && *enable_step_dir)
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6071              		.cfi_def_cfa_offset 8
  6072 00f2 BD46     		mov	sp, r7
  6073              	.LCFI231:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 129
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 129
 
 
  6074              		.cfi_def_cfa_register 13
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6117 001a C7ED0E7A 		vstr.32	s15, [r7, #56]
  6118 001e 3B68     		ldr	r3, [r7]
  6119 0020 07EE903A 		vmov	s15, r3	@ int
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 130
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 130
 
 
  6120 0024 F8EEE77A 		vcvt.f32.s32	s15, s15
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6163              		.loc 1 1298 13
  6164 0084 0123     		movs	r3, #1
  6165 0086 7B61     		str	r3, [r7, #20]
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 131
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 131
 
 
  6166 0088 0123     		movs	r3, #1
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6209 00d0 0C000000 		.word	data_list+12
  6210 00d4 08000000 		.word	.LC6
  6211 00d8 00000000 		.word	data_list
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 132
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 132
 
 
  6212              		.cfi_endproc
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6251 0026 FB61     		str	r3, [r7, #28]	@ float
  6252 0028 4FF00003 		mov	r3, #0
  6253 002c 3B62     		str	r3, [r7, #32]	@ float
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 133
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 133
 
 
 1327:User/Hardware/DrEmpower_can.c ****     int type_data[3]= {3,1,1};
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
 1336:User/Hardware/DrEmpower_can.c ****  *
 1337:User/Hardware/DrEmpower_can.c ****  * @param hcan CAN¾ä±ú
 1338:User/Hardware/DrEmpower_can.c ****  * @param id_num ÐèÒª¶ÁÈ¡µÄµç»ú±àºÅ,Èç¹û²»ÖªµÀµ±Ç°µç»ú±àºÅ£¬¿ÉÒÔÓÃ0¹ã²¥£¬µ«ÊÇÕâÊ±×ÜÏßÉÏÖ»ÄÜÁ¬Ò»¸öµç
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 134
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 134
 
 
 1339:User/Hardware/DrEmpower_can.c ****  * @return µç»úÅ×³öµÄ´íÎóÐÅÏ¢±àºÅ£¬Èç¹ûÎª¸ºÊý±íÊ¾ÔÚ¶ÁÈ¡¶ÔÓ¦´íÎóÐÅÏ¢Ê±Í¨ÐÅÊ§°Ü£¬Î´³É¹¦¶ÁÈ¡µ½Êý¾Ý
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
 1354:User/Hardware/DrEmpower_can.c ****         return 1;
  6340              		.loc 1 1354 16
  6341 0038 0123     		movs	r3, #1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 135
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 135
 
 
  6342 003a C8E0     		b	.L310
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
 1362:User/Hardware/DrEmpower_can.c ****     unsigned int controller_error = read_property(hcan, id_num, 32001,3);
  6389              		.loc 1 1362 37
  6390 008c F978     		ldrb	r1, [r7, #3]	@ zero_extendqisi2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 136
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 136
 
 
  6391 008e 0323     		movs	r3, #3
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6439 00ee 012B     		cmp	r3, #1
  6440 00f0 04D1     		bne	.L316
  6441              		.loc 1 1368 20 discriminator 1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 137
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 137
 
 
  6442 00f2 BB69     		ldr	r3, [r7, #24]
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6489 0144 02D0     		beq	.L319
 1376:User/Hardware/DrEmpower_can.c ****         return -5;
  6490              		.loc 1 1376 16
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 138
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 138
 
 
  6491 0146 6FF00403 		mvn	r3, #4
@@ -8278,7 +8278,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6539 01a6 FB60     		str	r3, [r7, #12]
 1383:User/Hardware/DrEmpower_can.c ****     if(READ_FLAG==1&&motor_thermistor_error!=0)
  6540              		.loc 1 1383 17
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 139
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 139
 
 
  6541 01a8 0B4B     		ldr	r3, .L324
@@ -8338,7 +8338,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6591              	save_config:
  6592              	.LFB194:
 1390:User/Hardware/DrEmpower_can.c **** 
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 140
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 140
 
 
 1391:User/Hardware/DrEmpower_can.c **** /**
@@ -8398,7 +8398,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6632 0044 0322     		movs	r2, #3
  6633 0046 FFF7FEFF 		bl	format_data
 1406:User/Hardware/DrEmpower_can.c **** 
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 141
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 141
 
 
 1407:User/Hardware/DrEmpower_can.c ****     send_command(hcan, id_num,0x08, data_list.byte_data,0);  //ÐèÒªÓÃ±ê×¼Ö¡£¨Êý¾ÝÖ¡£©½øÐÐ·¢ËÍ£¬²»ÄÜ
@@ -8458,7 +8458,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6677              		.cfi_offset 7, -8
  6678              		.cfi_offset 14, -4
  6679 0002 8CB0     		sub	sp, sp, #48
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 142
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 142
 
 
  6680              	.LCFI253:
@@ -8518,7 +8518,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6724 005e BD46     		mov	sp, r7
  6725              	.LCFI256:
  6726              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 143
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 143
 
 
  6727              		@ sp needed
@@ -8578,7 +8578,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
 1442:User/Hardware/DrEmpower_can.c ****     {
 1443:User/Hardware/DrEmpower_can.c ****         traj_done = read_property(hcan, id_num, 32008,3);
  6771              		.loc 1 1443 21
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 144
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 144
 
 
  6772 0012 F978     		ldrb	r1, [r7, #3]	@ zero_extendqisi2
@@ -8638,7 +8638,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
 1449:User/Hardware/DrEmpower_can.c ****  *
 1450:User/Hardware/DrEmpower_can.c ****  * @param hcan CAN¾ä±ú
 1451:User/Hardware/DrEmpower_can.c ****  * @param id_list: µç»ú±àºÅ×é³ÉµÄÁÐ±í
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 145
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 145
 
 
 1452:User/Hardware/DrEmpower_can.c ****  ** @return ÎÞ
@@ -8698,7 +8698,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
 1459:User/Hardware/DrEmpower_can.c ****     }
 1460:User/Hardware/DrEmpower_can.c **** }...
  6865              		.loc 1 1460 1
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 146
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 146
 
 
  6866 0030 00BF     		nop
@@ -8740,192 +8740,192 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 1
  6909              		.file 12 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/stdlib.h"
  6910              		.file 13 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
  6911              		.file 14 "User/BSP/can_receive_send.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 147
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 147
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 DrEmpower_can.c
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:24     .bss.command:00000000 command
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:21     .bss.command:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:31     .bss.DaTemp:00000000 DaTemp
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:28     .bss.DaTemp:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:37     .bss.i:00000000 i
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:38     .bss.i:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:44     .bss.rx_buffer:00000000 rx_buffer
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:41     .bss.rx_buffer:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:51     .bss.can_id:00000000 can_id
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:48     .bss.can_id:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:57     .bss.READ_FLAG:00000000 READ_FLAG
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:58     .bss.READ_FLAG:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:63     .data.TRAJ_MODE:00000000 TRAJ_MODE
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:69     .data.enable_replay_state:00000000 enable_replay_state
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:76     .bss.motor_state:00000000 motor_state
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:73     .bss.motor_state:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:83     .bss.reply_state_error:00000000 reply_state_error
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:80     .bss.reply_state_error:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:90     .bss.daran_motor_state:00000000 daran_motor_state
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:87     .bss.daran_motor_state:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:93     .text.send_command:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:99     .text.send_command:00000000 send_command
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:154    .text.DrRobot_ParseFbData:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:160    .text.DrRobot_ParseFbData:00000000 DrRobot_ParseFbData
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:286    .text.DrRobot_ParseFbData:000000b0 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:291    .text.SERVO_DELAY_US:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:297    .text.SERVO_DELAY_US:00000000 SERVO_DELAY_US
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:353    .text.receive_data:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:359    .text.receive_data:00000000 receive_data
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:429    .text.receive_data:00000048 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:438    .bss.data_struct:00000000 data_struct
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:435    .bss.data_struct:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:445    .bss.data_list:00000000 data_list
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:442    .bss.data_list:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:448    .text.uint16_to_data:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:453    .text.uint16_to_data:00000000 uint16_to_data
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:508    .text.data_to_uint16:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:513    .text.data_to_uint16:00000000 data_to_uint16
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:564    .text.uint_to_data:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:569    .text.uint_to_data:00000000 uint_to_data
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:642    .text.data_to_uint:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:647    .text.data_to_uint:00000000 data_to_uint
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:713    .text.int16_to_data:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:718    .text.int16_to_data:00000000 int16_to_data
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:769    .text.data_to_int16:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:774    .text.data_to_int16:00000000 data_to_int16
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:826    .text.int_to_data:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:831    .text.int_to_data:00000000 int_to_data
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:893    .text.data_to_int:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:898    .text.data_to_int:00000000 data_to_int
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:964    .text.float_to_data:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:969    .text.float_to_data:00000000 float_to_data
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1031   .text.data_to_float:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1036   .text.data_to_float:00000000 data_to_float
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1103   .text.byte2value:00000000 $t
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 148
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:24     .bss.command:00000000 command
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:21     .bss.command:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:31     .bss.DaTemp:00000000 DaTemp
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:28     .bss.DaTemp:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:37     .bss.i:00000000 i
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:38     .bss.i:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:44     .bss.rx_buffer:00000000 rx_buffer
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:41     .bss.rx_buffer:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:51     .bss.can_id:00000000 can_id
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:48     .bss.can_id:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:57     .bss.READ_FLAG:00000000 READ_FLAG
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:58     .bss.READ_FLAG:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:63     .data.TRAJ_MODE:00000000 TRAJ_MODE
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:69     .data.enable_replay_state:00000000 enable_replay_state
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:76     .bss.motor_state:00000000 motor_state
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:73     .bss.motor_state:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:83     .bss.reply_state_error:00000000 reply_state_error
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:80     .bss.reply_state_error:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:90     .bss.daran_motor_state:00000000 daran_motor_state
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:87     .bss.daran_motor_state:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:93     .text.send_command:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:99     .text.send_command:00000000 send_command
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:154    .text.DrRobot_ParseFbData:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:160    .text.DrRobot_ParseFbData:00000000 DrRobot_ParseFbData
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:286    .text.DrRobot_ParseFbData:000000b0 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:291    .text.SERVO_DELAY_US:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:297    .text.SERVO_DELAY_US:00000000 SERVO_DELAY_US
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:353    .text.receive_data:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:359    .text.receive_data:00000000 receive_data
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:429    .text.receive_data:00000048 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:438    .bss.data_struct:00000000 data_struct
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:435    .bss.data_struct:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:445    .bss.data_list:00000000 data_list
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:442    .bss.data_list:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:448    .text.uint16_to_data:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:453    .text.uint16_to_data:00000000 uint16_to_data
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:508    .text.data_to_uint16:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:513    .text.data_to_uint16:00000000 data_to_uint16
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:564    .text.uint_to_data:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:569    .text.uint_to_data:00000000 uint_to_data
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:642    .text.data_to_uint:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:647    .text.data_to_uint:00000000 data_to_uint
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:713    .text.int16_to_data:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:718    .text.int16_to_data:00000000 int16_to_data
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:769    .text.data_to_int16:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:774    .text.data_to_int16:00000000 data_to_int16
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:826    .text.int_to_data:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:831    .text.int_to_data:00000000 int_to_data
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:893    .text.data_to_int:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:898    .text.data_to_int:00000000 data_to_int
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:964    .text.float_to_data:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:969    .text.float_to_data:00000000 float_to_data
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1031   .text.data_to_float:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1036   .text.data_to_float:00000000 data_to_float
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1103   .text.byte2value:00000000 $t
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 148
 
 
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1109   .text.byte2value:00000000 byte2value
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1147   .text.byte2value:00000028 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1152   .text.byte2value:0000003c $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1334   .text.byte2value:00000158 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1339   .text.value2byte:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1345   .text.value2byte:00000000 value2byte
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1418   .text.value2byte:00000064 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1423   .text.value2byte:00000078 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1607   .text.value2byte:00000198 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1612   .rodata:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1619   .text.format_data:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1625   .text.format_data:00000000 format_data
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1757   .text.format_data:000000a4 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1771   .text.reply_state:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1777   .text.reply_state:00000000 reply_state
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1970   .text.reply_state:00000140 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1983   .text.preset_angle:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:1989   .text.preset_angle:00000000 preset_angle
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2241   .text.preset_angle:0000021c $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2251   .text.preset_speed:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2257   .text.preset_speed:00000000 preset_speed
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2407   .text.preset_speed:00000128 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2415   .text.preset_torque:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2421   .text.preset_torque:00000000 preset_torque
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2531   .text.preset_torque:000000c8 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2539   .text.set_angle:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2545   .text.set_angle:00000000 set_angle
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2807   .text.set_angle:0000023c $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2823   .text.set_angles:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:2829   .text.set_angles:00000000 set_angles
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5568   .text.get_state:00000000 get_state
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:3222   .text.set_angles:00000328 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6883   .bss.last_id_list.2:00000000 last_id_list.2
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6889   .bss.last_count.1:00000000 last_count.1
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6895   .bss.current_angle_list.0:00000000 current_angle_list.0
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:3231   .text.set_angles:00000344 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:3473   .text.set_angles:00000534 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:3481   .text.step_angle:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:3487   .text.step_angle:00000000 step_angle
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:3541   .text.step_angles:00000000 step_angles
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:3535   .text.step_angles:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4001   .text.step_angles:000003e8 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4008   .text.step_angles:000003f8 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4035   .text.set_speed:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4041   .text.set_speed:00000000 set_speed
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4181   .text.set_speed:0000010c $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4189   .text.set_speeds:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4195   .text.set_speeds:00000000 set_speeds
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4312   .text.set_speeds:000000bc $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4319   .text.set_torque:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4325   .text.set_torque:00000000 set_torque
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4425   .text.set_torque:000000a4 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4433   .text.set_torques:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4439   .text.set_torques:00000000 set_torques
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4553   .text.set_torques:000000b0 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4566   .text.impedance_control:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4572   .text.impedance_control:00000000 impedance_control
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 149
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1109   .text.byte2value:00000000 byte2value
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1147   .text.byte2value:00000028 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1152   .text.byte2value:0000003c $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1334   .text.byte2value:00000158 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1339   .text.value2byte:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1345   .text.value2byte:00000000 value2byte
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1418   .text.value2byte:00000064 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1423   .text.value2byte:00000078 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1607   .text.value2byte:00000198 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1612   .rodata:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1619   .text.format_data:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1625   .text.format_data:00000000 format_data
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1757   .text.format_data:000000a4 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1771   .text.reply_state:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1777   .text.reply_state:00000000 reply_state
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1970   .text.reply_state:00000140 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1983   .text.preset_angle:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:1989   .text.preset_angle:00000000 preset_angle
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2241   .text.preset_angle:0000021c $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2251   .text.preset_speed:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2257   .text.preset_speed:00000000 preset_speed
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2407   .text.preset_speed:00000128 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2415   .text.preset_torque:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2421   .text.preset_torque:00000000 preset_torque
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2531   .text.preset_torque:000000c8 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2539   .text.set_angle:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2545   .text.set_angle:00000000 set_angle
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2807   .text.set_angle:0000023c $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2823   .text.set_angles:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:2829   .text.set_angles:00000000 set_angles
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5568   .text.get_state:00000000 get_state
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:3222   .text.set_angles:00000328 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6883   .bss.last_id_list.2:00000000 last_id_list.2
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6889   .bss.last_count.1:00000000 last_count.1
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6895   .bss.current_angle_list.0:00000000 current_angle_list.0
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:3231   .text.set_angles:00000344 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:3473   .text.set_angles:00000534 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:3481   .text.step_angle:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:3487   .text.step_angle:00000000 step_angle
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:3541   .text.step_angles:00000000 step_angles
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:3535   .text.step_angles:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4001   .text.step_angles:000003e8 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4008   .text.step_angles:000003f8 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4035   .text.set_speed:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4041   .text.set_speed:00000000 set_speed
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4181   .text.set_speed:0000010c $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4189   .text.set_speeds:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4195   .text.set_speeds:00000000 set_speeds
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4312   .text.set_speeds:000000bc $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4319   .text.set_torque:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4325   .text.set_torque:00000000 set_torque
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4425   .text.set_torque:000000a4 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4433   .text.set_torques:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4439   .text.set_torques:00000000 set_torques
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4553   .text.set_torques:000000b0 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4566   .text.impedance_control:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4572   .text.impedance_control:00000000 impedance_control
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 149
 
 
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4667   .text.impedance_control:000000b8 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4675   .text.estop:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4681   .text.estop:00000000 estop
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4745   .text.estop:00000064 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4752   .text.set_id:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4758   .text.set_id:00000000 set_id
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5425   .text.write_property:00000000 write_property
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6591   .text.save_config:00000000 save_config
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4809   .text.set_uart_baud_rate:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4815   .text.set_uart_baud_rate:00000000 set_uart_baud_rate
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4865   .text.set_can_baud_rate:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4871   .text.set_can_baud_rate:00000000 set_can_baud_rate
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4921   .text.set_mode:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4927   .text.set_mode:00000000 set_mode
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4988   .text.set_zero_position:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:4994   .text.set_zero_position:00000000 set_zero_position
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5058   .text.set_zero_position:00000064 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5065   .text.set_GPIO_mode:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5071   .text.set_GPIO_mode:00000000 set_GPIO_mode
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5920   .text.get_GPIO_mode:00000000 get_GPIO_mode
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6668   .text.reboot:00000000 reboot
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5233   .text.set_GPIO_mode:0000010c $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5238   .text.set_angle_range:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5244   .text.set_angle_range:00000000 set_angle_range
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5354   .text.set_angle_range:000000c0 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5359   .text.set_traj_mode:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5365   .text.set_traj_mode:00000000 set_traj_mode
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5414   .text.set_traj_mode:0000003c $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5419   .text.write_property:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5498   .text.write_property:00000078 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5504   .text.get_id:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5510   .text.get_id:00000000 get_id
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6091   .text.read_property:00000000 read_property
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5562   .text.get_state:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5809   .text.get_state:000001bc $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5824   .text.get_volcur:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5830   .text.get_volcur:00000000 get_volcur
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5909   .text.get_volcur:00000080 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:5914   .text.get_GPIO_mode:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6080   .text.get_GPIO_mode:000000f8 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6085   .text.read_property:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6206   .text.read_property:000000c4 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6216   .text.clear_error:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6222   .text.clear_error:00000000 clear_error
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6286   .text.clear_error:00000064 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6293   .text.dump_error:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6299   .text.dump_error:00000000 dump_error
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6580   .text.dump_error:000001d8 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6585   .text.save_config:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6655   .text.save_config:00000064 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6662   .text.reboot:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6732   .text.reboot:00000064 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6739   .text.position_done:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6745   .text.position_done:00000000 position_done
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6807   .text.position_done:0000004c $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6812   .text.positions_done:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6818   .text.positions_done:00000000 positions_done
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s 			page 150
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4667   .text.impedance_control:000000b8 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4675   .text.estop:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4681   .text.estop:00000000 estop
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4745   .text.estop:00000064 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4752   .text.set_id:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4758   .text.set_id:00000000 set_id
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5425   .text.write_property:00000000 write_property
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6591   .text.save_config:00000000 save_config
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4809   .text.set_uart_baud_rate:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4815   .text.set_uart_baud_rate:00000000 set_uart_baud_rate
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4865   .text.set_can_baud_rate:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4871   .text.set_can_baud_rate:00000000 set_can_baud_rate
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4921   .text.set_mode:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4927   .text.set_mode:00000000 set_mode
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4988   .text.set_zero_position:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:4994   .text.set_zero_position:00000000 set_zero_position
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5058   .text.set_zero_position:00000064 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5065   .text.set_GPIO_mode:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5071   .text.set_GPIO_mode:00000000 set_GPIO_mode
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5920   .text.get_GPIO_mode:00000000 get_GPIO_mode
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6668   .text.reboot:00000000 reboot
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5233   .text.set_GPIO_mode:0000010c $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5238   .text.set_angle_range:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5244   .text.set_angle_range:00000000 set_angle_range
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5354   .text.set_angle_range:000000c0 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5359   .text.set_traj_mode:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5365   .text.set_traj_mode:00000000 set_traj_mode
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5414   .text.set_traj_mode:0000003c $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5419   .text.write_property:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5498   .text.write_property:00000078 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5504   .text.get_id:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5510   .text.get_id:00000000 get_id
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6091   .text.read_property:00000000 read_property
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5562   .text.get_state:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5809   .text.get_state:000001bc $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5824   .text.get_volcur:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5830   .text.get_volcur:00000000 get_volcur
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5909   .text.get_volcur:00000080 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:5914   .text.get_GPIO_mode:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6080   .text.get_GPIO_mode:000000f8 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6085   .text.read_property:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6206   .text.read_property:000000c4 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6216   .text.clear_error:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6222   .text.clear_error:00000000 clear_error
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6286   .text.clear_error:00000064 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6293   .text.dump_error:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6299   .text.dump_error:00000000 dump_error
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6580   .text.dump_error:000001d8 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6585   .text.save_config:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6655   .text.save_config:00000064 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6662   .text.reboot:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6732   .text.reboot:00000064 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6739   .text.position_done:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6745   .text.position_done:00000000 position_done
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6807   .text.position_done:0000004c $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6812   .text.positions_done:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6818   .text.positions_done:00000000 positions_done
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s 			page 150
 
 
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6880   .bss.last_id_list.2:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6886   .bss.last_count.1:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\cc34oM13.s:6892   .bss.current_angle_list.0:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6880   .bss.last_id_list.2:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6886   .bss.last_count.1:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccFU33V0.s:6892   .bss.current_angle_list.0:00000000 $d
 
 UNDEFINED SYMBOLS
 canx_send_data
