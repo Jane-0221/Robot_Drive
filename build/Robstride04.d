@@ -1,5 +1,5 @@
-build/Robstride04.o: User/Hardware/Robstride04.c \
- User/Hardware/Robstride04.h Core/Inc/fdcan.h Core/Inc/main.h \
+build/Robstride04.o: User/Drive/Robstride04.c User/Drive/Robstride04.h \
+ Core/Inc/fdcan.h Core/Inc/main.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  Core/Inc/stm32h7xx_hal_conf.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -38,7 +38,7 @@ build/Robstride04.o: User/Hardware/Robstride04.c \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  User/BSP/can_receive_send.h
-User/Hardware/Robstride04.h:
+User/Drive/Robstride04.h:
 Core/Inc/fdcan.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:

@@ -37,10 +37,9 @@ build/CAN_receive_send.o: User/BSP/CAN_receive_send.c \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
- User/Hardware/dm4310_drv.h Core/Inc/main.h User/BSP/can_receive_send.h \
- User/Hardware/Robstride04.h User/Hardware/arm.h \
- User/Hardware/dm4310_drv.h User/Hardware/Robstride04.h \
- User/Hardware/Unitree/crc_ccitt.h User/Hardware/DrEmpower_can.h \
+ User/Drive/dm4310_drv.h Core/Inc/main.h User/BSP/can_receive_send.h \
+ User/Drive/Robstride04.h User/Hardware/arm.h \
+ User/Drive/Unitree/crc_ccitt.h User/Drive/DrEmpower_can.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  Core/Inc/FreeRTOSConfig.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -52,12 +51,11 @@ build/CAN_receive_send.o: User/BSP/CAN_receive_send.c \
  Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- User/Software/remote_control.h User/Software/music.h \
- User/Hardware/buzzer.h Core/Inc/tim.h Core/Inc/gpio.h \
+ User/Software/remote_control.h User/Software/music.h User/Drive/buzzer.h \
+ Core/Inc/tim.h Core/Inc/gpio.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- User/Hardware/LED.h Core/Inc/iwdg.h User/Hardware/DrEmpower_can.h \
- User/Hardware/ktech_motor.h User/Hardware/head.h \
- User/Hardware/ktech_motor.h
+ User/Hardware/LED.h Core/Inc/iwdg.h User/Drive/ktech_motor.h \
+ User/Hardware/head.h
 User/BSP/can_receive_send.h:
 Core/Inc/fdcan.h:
 Core/Inc/main.h:
@@ -100,15 +98,13 @@ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
-User/Hardware/dm4310_drv.h:
+User/Drive/dm4310_drv.h:
 Core/Inc/main.h:
 User/BSP/can_receive_send.h:
-User/Hardware/Robstride04.h:
+User/Drive/Robstride04.h:
 User/Hardware/arm.h:
-User/Hardware/dm4310_drv.h:
-User/Hardware/Robstride04.h:
-User/Hardware/Unitree/crc_ccitt.h:
-User/Hardware/DrEmpower_can.h:
+User/Drive/Unitree/crc_ccitt.h:
+User/Drive/DrEmpower_can.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -122,13 +118,11 @@ Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 User/Software/remote_control.h:
 User/Software/music.h:
-User/Hardware/buzzer.h:
+User/Drive/buzzer.h:
 Core/Inc/tim.h:
 Core/Inc/gpio.h:
 Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 User/Hardware/LED.h:
 Core/Inc/iwdg.h:
-User/Hardware/DrEmpower_can.h:
-User/Hardware/ktech_motor.h:
+User/Drive/ktech_motor.h:
 User/Hardware/head.h:
-User/Hardware/ktech_motor.h:

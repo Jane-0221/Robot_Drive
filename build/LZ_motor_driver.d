@@ -1,5 +1,5 @@
-build/LZ_motor_driver.o: User/Hardware/LZ_motor_driver.c \
- User/Hardware/LZ_motor_driver.h Core/Inc/main.h \
+build/LZ_motor_driver.o: User/Drive/LZ_motor_driver.c \
+ User/Drive/LZ_motor_driver.h Core/Inc/main.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  Core/Inc/stm32h7xx_hal_conf.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -38,7 +38,7 @@ build/LZ_motor_driver.o: User/Hardware/LZ_motor_driver.c \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h Core/Inc/fdcan.h \
  Core/Inc/main.h User/BSP/CAN_receive_send.h Algorithm/User_math.h
-User/Hardware/LZ_motor_driver.h:
+User/Drive/LZ_motor_driver.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 Core/Inc/stm32h7xx_hal_conf.h:

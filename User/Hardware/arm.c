@@ -121,22 +121,17 @@ void Arm_Linzu_motor3()
 
 void Arm_Daran_motor1()
 {
-    // reply_state(MOTOR_DARAN_1_ID);
-    // printf("111111Angle: %.2f°, Speed: %.2f r/min, Torque: %.2f Nm\r\n",
-    //        motor_state[10][0], motor_state[10][1], motor_state[10][2]);
     HAL_Delay(1);
     set_angle(CAN_HANDLE_2, MOTOR_DARAN_1_ID, Daran_motor_data[0].target_angle, Daran_motor_data[0].target_velocity, 10.0f, 1);
 }
 void Arm_Daran_motor2()
 {
-    // reply_state( MOTOR_DARAN_2_ID);
     HAL_Delay(1);
     set_angle(CAN_HANDLE_2, MOTOR_DARAN_2_ID, Daran_motor_data[1].target_angle, Daran_motor_data[1].target_velocity, 10.0f, 1);
 }
 
 void Arm_Daran_motor3()
 {
-    // reply_state(MOTOR_DARAN_3_ID);
     HAL_Delay(1);
     set_angle(CAN_HANDLE_2, MOTOR_DARAN_3_ID, Daran_motor_data[2].target_angle, Daran_motor_data[2].target_velocity, 10.0f, 1);
 }
@@ -178,12 +173,12 @@ void Arm_Daran_Data_update()
     // printf("Angle: %.2f°, Speed: %.2f r/min, Torque: %.2f Nm\r\n",
     //        daran_motor_state[0].angle, daran_motor_state[0].speed, daran_motor_state[0].torque);
 
-    Daran_motor_data[0].current_angle =  daran_motor_state[0].angle;
-    Daran_motor_data[1].current_angle =  daran_motor_state[1].angle;
-    Daran_motor_data[2].current_angle =  daran_motor_state[2].angle;
-    Daran_motor_data[0].current_velocity =  daran_motor_state[0].speed;
-    Daran_motor_data[1].current_velocity =  daran_motor_state[1].speed;
-    Daran_motor_data[2].current_velocity =  daran_motor_state[2].speed;
+    Daran_motor_data[0].current_angle = daran_motor_state[0].angle;
+    Daran_motor_data[1].current_angle = daran_motor_state[1].angle;
+    Daran_motor_data[2].current_angle = daran_motor_state[2].angle;
+    Daran_motor_data[0].current_velocity = daran_motor_state[0].speed;
+    Daran_motor_data[1].current_velocity = daran_motor_state[1].speed;
+    Daran_motor_data[2].current_velocity = daran_motor_state[2].speed;
 }
 
 // 所有电机数据更新
@@ -208,6 +203,7 @@ void Arm_all_tx()
     }
     else if (g_ShoulderType == SHOULDER_TYPE_DARAN)
     {
+      
         Arm_Daran_motor1();
         osDelay(1);
         Arm_Daran_motor2();

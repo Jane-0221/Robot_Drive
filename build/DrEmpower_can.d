@@ -1,5 +1,5 @@
-build/DrEmpower_can.o: User/Hardware/DrEmpower_can.c \
- User/Hardware/DrEmpower_can.h Core/Inc/fdcan.h Core/Inc/main.h \
+build/DrEmpower_can.o: User/Drive/DrEmpower_can.c \
+ User/Drive/DrEmpower_can.h Core/Inc/fdcan.h Core/Inc/main.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  Core/Inc/stm32h7xx_hal_conf.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -38,7 +38,7 @@ build/DrEmpower_can.o: User/Hardware/DrEmpower_can.c \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  User/BSP/can_receive_send.h
-User/Hardware/DrEmpower_can.h:
+User/Drive/DrEmpower_can.h:
 Core/Inc/fdcan.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:

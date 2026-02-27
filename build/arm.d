@@ -37,11 +37,11 @@ build/arm.o: User/Hardware/arm.c User/Hardware/arm.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
- User/Hardware/dm4310_drv.h Core/Inc/main.h User/Hardware/Robstride04.h \
- User/Hardware/Unitree/crc_ccitt.h User/Hardware/DrEmpower_can.h \
+ User/Drive/dm4310_drv.h Core/Inc/main.h User/Drive/Robstride04.h \
+ User/Drive/Unitree/crc_ccitt.h User/Drive/DrEmpower_can.h \
  Algorithm/pid.h User/Software/remote_control.h Core/Inc/gpio.h \
- User/Hardware/Unitree/gom_protocol.h User/Hardware/Unitree/crc_ccitt.h \
- Core/Inc/usart.h User/Hardware/LZ_motor_driver.h \
+ User/Drive/Unitree/gom_protocol.h User/Drive/Unitree/crc_ccitt.h \
+ Core/Inc/usart.h User/Drive/LZ_motor_driver.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  Core/Inc/FreeRTOSConfig.h \
  Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -94,18 +94,18 @@ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
-User/Hardware/dm4310_drv.h:
+User/Drive/dm4310_drv.h:
 Core/Inc/main.h:
-User/Hardware/Robstride04.h:
-User/Hardware/Unitree/crc_ccitt.h:
-User/Hardware/DrEmpower_can.h:
+User/Drive/Robstride04.h:
+User/Drive/Unitree/crc_ccitt.h:
+User/Drive/DrEmpower_can.h:
 Algorithm/pid.h:
 User/Software/remote_control.h:
 Core/Inc/gpio.h:
-User/Hardware/Unitree/gom_protocol.h:
-User/Hardware/Unitree/crc_ccitt.h:
+User/Drive/Unitree/gom_protocol.h:
+User/Drive/Unitree/crc_ccitt.h:
 Core/Inc/usart.h:
-User/Hardware/LZ_motor_driver.h:
+User/Drive/LZ_motor_driver.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 Core/Inc/FreeRTOSConfig.h:
 Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:

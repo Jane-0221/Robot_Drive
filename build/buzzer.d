@@ -1,6 +1,5 @@
-build/buzzer.o: User/Hardware/buzzer.c User/Hardware/buzzer.h \
- Core/Inc/tim.h Core/Inc/main.h \
- Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
+build/buzzer.o: User/Drive/buzzer.c User/Drive/buzzer.h Core/Inc/tim.h \
+ Core/Inc/main.h Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  Core/Inc/stm32h7xx_hal_conf.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h \
@@ -38,7 +37,7 @@ build/buzzer.o: User/Hardware/buzzer.c User/Hardware/buzzer.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h Core/Inc/gpio.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
-User/Hardware/buzzer.h:
+User/Drive/buzzer.h:
 Core/Inc/tim.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:

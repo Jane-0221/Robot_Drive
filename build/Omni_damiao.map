@@ -2800,8 +2800,8 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x80 build/LZ_motor_driver.o
  .debug_ranges  0x00000000       0x70 build/LZ_motor_driver.o
- .debug_line    0x00000000      0x370 build/LZ_motor_driver.o
- .debug_str     0x00000000      0x854 build/LZ_motor_driver.o
+ .debug_line    0x00000000      0x36d build/LZ_motor_driver.o
+ .debug_str     0x00000000      0x851 build/LZ_motor_driver.o
  .comment       0x00000000       0x45 build/LZ_motor_driver.o
  .debug_frame   0x00000000      0x1e8 build/LZ_motor_driver.o
  .ARM.attributes
@@ -2989,8 +2989,8 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x28 build/crc_ccitt.o
  .debug_ranges  0x00000000       0x18 build/crc_ccitt.o
- .debug_line    0x00000000      0x161 build/crc_ccitt.o
- .debug_str     0x00000000      0x1d3 build/crc_ccitt.o
+ .debug_line    0x00000000      0x15e build/crc_ccitt.o
+ .debug_str     0x00000000      0x1d0 build/crc_ccitt.o
  .comment       0x00000000       0x45 build/crc_ccitt.o
  .debug_frame   0x00000000       0x5c build/crc_ccitt.o
  .ARM.attributes
@@ -3008,12 +3008,41 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x28 build/gom_protocol.o
  .debug_ranges  0x00000000       0x18 build/gom_protocol.o
- .debug_line    0x00000000      0x308 build/gom_protocol.o
- .debug_str     0x00000000      0x34c build/gom_protocol.o
+ .debug_line    0x00000000      0x305 build/gom_protocol.o
+ .debug_str     0x00000000      0x349 build/gom_protocol.o
  .comment       0x00000000       0x45 build/gom_protocol.o
  .debug_frame   0x00000000       0x5c build/gom_protocol.o
  .ARM.attributes
                 0x00000000       0x32 build/gom_protocol.o
+ .text          0x00000000        0x0 build/pca9685.o
+ .data          0x00000000        0x0 build/pca9685.o
+ .bss           0x00000000        0x0 build/pca9685.o
+ .text.PCA9685_Write8
+                0x00000000       0x3e build/pca9685.o
+ .text.PCA9685_Read8
+                0x00000000       0x3c build/pca9685.o
+ .text.PCA9685_Init
+                0x00000000       0x28 build/pca9685.o
+ .text.PCA9685_Reset
+                0x00000000       0x1a build/pca9685.o
+ .text.PCA9685_SetPWMFreq
+                0x00000000       0xd8 build/pca9685.o
+ .text.PCA9685_SetPWM
+                0x00000000       0x72 build/pca9685.o
+ .text.PCA9685_SetPin
+                0x00000000       0xb8 build/pca9685.o
+ .debug_info    0x00000000      0xace build/pca9685.o
+ .debug_abbrev  0x00000000      0x1ce build/pca9685.o
+ .debug_loc     0x00000000      0x230 build/pca9685.o
+ .debug_aranges
+                0x00000000       0x50 build/pca9685.o
+ .debug_ranges  0x00000000       0x40 build/pca9685.o
+ .debug_line    0x00000000      0x2a1 build/pca9685.o
+ .debug_str     0x00000000      0x86f build/pca9685.o
+ .comment       0x00000000       0x45 build/pca9685.o
+ .debug_frame   0x00000000      0x10c build/pca9685.o
+ .ARM.attributes
+                0x00000000       0x32 build/pca9685.o
  .text          0x00000000        0x0 build/remote_control.o
  .data          0x00000000        0x0 build/remote_control.o
  .bss           0x00000000        0x0 build/remote_control.o
@@ -3602,6 +3631,7 @@ LOAD build/LED.o
 LOAD build/buzzer.o
 LOAD build/crc_ccitt.o
 LOAD build/gom_protocol.o
+LOAD build/pca9685.o
 LOAD build/remote_control.o
 LOAD build/USB_VirCom.o
 LOAD build/music.o
@@ -7300,7 +7330,7 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .debug_ranges  0x00003290       0x20 build/i2c.o
  .debug_ranges  0x000032b0       0x20 build/startup_stm32h723xx.o
 
-.debug_line     0x00000000    0x2c2ac
+.debug_line     0x00000000    0x2c2d3
  .debug_line    0x00000000      0x487 build/main.o
  .debug_line    0x00000487      0x192 build/iwdg.o
  .debug_line    0x00000619      0x506 build/stm32h7xx_it.o
@@ -7334,148 +7364,148 @@ LOAD C:/Users/Godwin/13.2 Rel1/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v7e-m+d
  .debug_line    0x0001b747      0x8ea build/usbd_ctlreq.o
  .debug_line    0x0001c031      0x20b build/usbd_ioreq.o
  .debug_line    0x0001c23c      0x7b5 build/usbd_cdc.o
- .debug_line    0x0001c9f1      0x38f build/freertos.o
- .debug_line    0x0001cd80      0x27a build/list.o
- .debug_line    0x0001cffa     0x125c build/queue.o
- .debug_line    0x0001e256     0x17e0 build/tasks.o
- .debug_line    0x0001fa36      0x92f build/timers.o
- .debug_line    0x00020365     0x1e21 build/cmsis_os2.o
- .debug_line    0x00022186      0x4e0 build/heap_4.o
- .debug_line    0x00022666      0x476 build/port.o
- .debug_line    0x00022adc      0x158 build/sysmem.o
- .debug_line    0x00022c34      0x333 build/syscalls.o
- .debug_line    0x00022f67      0x211 build/gpio.o
- .debug_line    0x00023178      0x160 build/dma.o
- .debug_line    0x000232d8      0x49d build/fdcan.o
- .debug_line    0x00023775      0x3ae build/spi.o
- .debug_line    0x00023b23      0x51b build/tim.o
- .debug_line    0x0002403e      0x744 build/usart.o
- .debug_line    0x00024782      0x415 build/BMI088driver.o
- .debug_line    0x00024b97      0x278 build/BMI088Middleware.o
- .debug_line    0x00024e0f      0x237 build/ws2812.o
- .debug_line    0x00025046      0x185 build/AHRS_middleware.o
- .debug_line    0x000251cb      0xb52 build/fifo.o
- .debug_line    0x00025d1d      0x112 build/pid.o
- .debug_line    0x00025e2f      0x57c build/UART_data_txrx.o
- .debug_line    0x000263ab      0x3cd build/CAN_receive_send.o
- .debug_line    0x00026778      0x15a build/Stm32_time.o
- .debug_line    0x000268d2      0x713 build/dm4310_drv.o
- .debug_line    0x00026fe5      0x7c9 build/ktech_motor.o
- .debug_line    0x000277ae      0xd11 build/Robstride04.o
- .debug_line    0x000284bf     0x1321 build/DrEmpower_can.o
- .debug_line    0x000297e0      0x3e5 build/arm.o
- .debug_line    0x00029bc5      0x2b2 build/lift_control.o
- .debug_line    0x00029e77      0x1f5 build/pump_control.o
- .debug_line    0x0002a06c      0x297 build/head.o
- .debug_line    0x0002a303      0x78f build/IMU_updata.o
- .debug_line    0x0002aa92      0x213 build/Sbus.o
- .debug_line    0x0002aca5      0x364 build/stp23l.o
- .debug_line    0x0002b009      0x118 build/LED.o
- .debug_line    0x0002b121      0x1fc build/buzzer.o
- .debug_line    0x0002b31d      0x179 build/remote_control.o
- .debug_line    0x0002b496      0x144 build/USB_VirCom.o
- .debug_line    0x0002b5da      0x182 build/music.o
- .debug_line    0x0002b75c      0x281 build/i2c.o
- .debug_line    0x0002b9dd       0x73 build/startup_stm32h723xx.o
- .debug_line    0x0002ba50       0x38 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002ba88       0x84 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002bb0c      0x10c Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002bc18       0x6c Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002bc84       0x7c Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002bd00       0x64 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002bd64       0xe4 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002be48       0xbc Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002bf04       0xf0 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002bff4       0x54 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002c048       0x54 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002c09c       0x54 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002c0f0       0x74 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002c164       0x50 Algorithm/AHRS.lib(ahrs.o)
- .debug_line    0x0002c1b4       0x44 Algorithm/AHRS.lib(ahrs.o)
-                0x0002c1b4                __ARM_grp..debug_line$AHRS_MiddleWare.h$.2_oB0000_gdKo08fjhf0_300000
- .debug_line    0x0002c1f8       0x50 Algorithm/AHRS.lib(ahrs.o)
-                0x0002c1f8                __ARM_grp..debug_line$AHRS.h$.2_As0000_PieY4wFFo66_300000
- .debug_line    0x0002c248       0x64 Algorithm/AHRS.lib(ahrs.o)
-                0x0002c248                __ARM_grp..debug_line$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
+ .debug_line    0x0001c9f1      0x39a build/freertos.o
+ .debug_line    0x0001cd8b      0x27a build/list.o
+ .debug_line    0x0001d005     0x125c build/queue.o
+ .debug_line    0x0001e261     0x17e0 build/tasks.o
+ .debug_line    0x0001fa41      0x92f build/timers.o
+ .debug_line    0x00020370     0x1e21 build/cmsis_os2.o
+ .debug_line    0x00022191      0x4e0 build/heap_4.o
+ .debug_line    0x00022671      0x476 build/port.o
+ .debug_line    0x00022ae7      0x158 build/sysmem.o
+ .debug_line    0x00022c3f      0x333 build/syscalls.o
+ .debug_line    0x00022f72      0x211 build/gpio.o
+ .debug_line    0x00023183      0x160 build/dma.o
+ .debug_line    0x000232e3      0x49d build/fdcan.o
+ .debug_line    0x00023780      0x3ae build/spi.o
+ .debug_line    0x00023b2e      0x51b build/tim.o
+ .debug_line    0x00024049      0x744 build/usart.o
+ .debug_line    0x0002478d      0x415 build/BMI088driver.o
+ .debug_line    0x00024ba2      0x278 build/BMI088Middleware.o
+ .debug_line    0x00024e1a      0x237 build/ws2812.o
+ .debug_line    0x00025051      0x185 build/AHRS_middleware.o
+ .debug_line    0x000251d6      0xb52 build/fifo.o
+ .debug_line    0x00025d28      0x112 build/pid.o
+ .debug_line    0x00025e3a      0x579 build/UART_data_txrx.o
+ .debug_line    0x000263b3      0x3d8 build/CAN_receive_send.o
+ .debug_line    0x0002678b      0x15a build/Stm32_time.o
+ .debug_line    0x000268e5      0x710 build/dm4310_drv.o
+ .debug_line    0x00026ff5      0x7c6 build/ktech_motor.o
+ .debug_line    0x000277bb      0xd0e build/Robstride04.o
+ .debug_line    0x000284c9     0x131e build/DrEmpower_can.o
+ .debug_line    0x000297e7      0x3f0 build/arm.o
+ .debug_line    0x00029bd7      0x2bd build/lift_control.o
+ .debug_line    0x00029e94      0x1f5 build/pump_control.o
+ .debug_line    0x0002a089      0x2a2 build/head.o
+ .debug_line    0x0002a32b      0x78f build/IMU_updata.o
+ .debug_line    0x0002aaba      0x210 build/Sbus.o
+ .debug_line    0x0002acca      0x361 build/stp23l.o
+ .debug_line    0x0002b02b      0x118 build/LED.o
+ .debug_line    0x0002b143      0x1f9 build/buzzer.o
+ .debug_line    0x0002b33c      0x184 build/remote_control.o
+ .debug_line    0x0002b4c0      0x144 build/USB_VirCom.o
+ .debug_line    0x0002b604      0x17f build/music.o
+ .debug_line    0x0002b783      0x281 build/i2c.o
+ .debug_line    0x0002ba04       0x73 build/startup_stm32h723xx.o
+ .debug_line    0x0002ba77       0x38 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002baaf       0x84 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002bb33      0x10c Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002bc3f       0x6c Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002bcab       0x7c Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002bd27       0x64 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002bd8b       0xe4 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002be6f       0xbc Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002bf2b       0xf0 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002c01b       0x54 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002c06f       0x54 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002c0c3       0x54 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002c117       0x74 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002c18b       0x50 Algorithm/AHRS.lib(ahrs.o)
+ .debug_line    0x0002c1db       0x44 Algorithm/AHRS.lib(ahrs.o)
+                0x0002c1db                __ARM_grp..debug_line$AHRS_MiddleWare.h$.2_oB0000_gdKo08fjhf0_300000
+ .debug_line    0x0002c21f       0x50 Algorithm/AHRS.lib(ahrs.o)
+                0x0002c21f                __ARM_grp..debug_line$AHRS.h$.2_As0000_PieY4wFFo66_300000
+ .debug_line    0x0002c26f       0x64 Algorithm/AHRS.lib(ahrs.o)
+                0x0002c26f                __ARM_grp..debug_line$AHRS.c$.2_kR0000_yWR2zUbHmB7_800000
 
-.debug_str      0x00000000    0x10fa4
- .debug_str     0x00000000    0x10fa4 build/main.o
+.debug_str      0x00000000    0x10f8f
+ .debug_str     0x00000000    0x10f8f build/main.o
                                 0xdfd (size before relaxing)
- .debug_str     0x00010fa4      0x24a build/iwdg.o
- .debug_str     0x00010fa4     0x196d build/stm32h7xx_it.o
- .debug_str     0x00010fa4      0xbc5 build/stm32h7xx_hal_msp.o
- .debug_str     0x00010fa4     0x1392 build/stm32h7xx_hal_timebase_tim.o
- .debug_str     0x00010fa4      0x6da build/usb_device.o
- .debug_str     0x00010fa4      0x47a build/usbd_desc.o
- .debug_str     0x00010fa4      0x819 build/usbd_cdc_if.o
- .debug_str     0x00010fa4     0x1dd4 build/usbd_conf.o
- .debug_str     0x00010fa4      0xe22 build/stm32h7xx_hal_pcd.o
- .debug_str     0x00010fa4      0x80e build/stm32h7xx_hal_pcd_ex.o
- .debug_str     0x00010fa4      0xd6a build/stm32h7xx_ll_usb.o
- .debug_str     0x00010fa4      0x991 build/stm32h7xx_hal_rcc.o
- .debug_str     0x00010fa4      0xed3 build/stm32h7xx_hal_rcc_ex.o
- .debug_str     0x00010fa4      0x6ac build/stm32h7xx_hal_gpio.o
- .debug_str     0x00010fa4      0x92f build/stm32h7xx_hal_dma.o
- .debug_str     0x00010fa4      0x98a build/stm32h7xx_hal_pwr_ex.o
- .debug_str     0x00010fa4     0x1017 build/stm32h7xx_hal_cortex.o
- .debug_str     0x00010fa4     0x1572 build/stm32h7xx_hal.o
- .debug_str     0x00010fa4     0x115c build/stm32h7xx_hal_i2c.o
- .debug_str     0x00010fa4      0xb03 build/stm32h7xx_hal_i2c_ex.o
- .debug_str     0x00010fa4     0x1d6a build/stm32h7xx_hal_fdcan.o
- .debug_str     0x00010fa4      0xdaa build/stm32h7xx_hal_spi.o
- .debug_str     0x00010fa4     0x183f build/stm32h7xx_hal_tim.o
- .debug_str     0x00010fa4     0x11cb build/stm32h7xx_hal_tim_ex.o
- .debug_str     0x00010fa4     0x1478 build/stm32h7xx_hal_uart.o
- .debug_str     0x00010fa4      0xb7d build/stm32h7xx_hal_uart_ex.o
- .debug_str     0x00010fa4      0x27a build/stm32h7xx_hal_iwdg.o
- .debug_str     0x00010fa4      0x673 build/system_stm32h7xx.o
- .debug_str     0x00010fa4      0x9c9 build/usbd_core.o
- .debug_str     0x00010fa4      0x7f4 build/usbd_ctlreq.o
- .debug_str     0x00010fa4      0x6c9 build/usbd_ioreq.o
- .debug_str     0x00010fa4      0xdc3 build/usbd_cdc.o
- .debug_str     0x00010fa4      0xa4c build/freertos.o
- .debug_str     0x00010fa4      0x2d6 build/list.o
- .debug_str     0x00010fa4      0xcdb build/queue.o
- .debug_str     0x00010fa4     0x12d0 build/tasks.o
- .debug_str     0x00010fa4      0xc1c build/timers.o
- .debug_str     0x00010fa4     0x2566 build/cmsis_os2.o
- .debug_str     0x00010fa4      0x4ef build/heap_4.o
- .debug_str     0x00010fa4      0x456 build/port.o
- .debug_str     0x00010fa4      0x1f9 build/sysmem.o
- .debug_str     0x00010fa4      0x3cd build/syscalls.o
- .debug_str     0x00010fa4      0x4b7 build/gpio.o
- .debug_str     0x00010fa4      0xbca build/dma.o
- .debug_str     0x00010fa4     0x162c build/fdcan.o
- .debug_str     0x00010fa4     0x1698 build/spi.o
- .debug_str     0x00010fa4     0x167a build/tim.o
- .debug_str     0x00010fa4     0x1771 build/usart.o
- .debug_str     0x00010fa4      0x53a build/BMI088driver.o
- .debug_str     0x00010fa4      0x923 build/BMI088Middleware.o
- .debug_str     0x00010fa4      0x7ff build/ws2812.o
- .debug_str     0x00010fa4      0x223 build/AHRS_middleware.o
- .debug_str     0x00010fa4      0x469 build/fifo.o
- .debug_str     0x00010fa4      0x1fd build/pid.o
- .debug_str     0x00010fa4      0x9f4 build/UART_data_txrx.o
- .debug_str     0x00010fa4     0x100d build/CAN_receive_send.o
- .debug_str     0x00010fa4      0x1d7 build/Stm32_time.o
- .debug_str     0x00010fa4      0xc4c build/dm4310_drv.o
- .debug_str     0x00010fa4      0xa7c build/ktech_motor.o
- .debug_str     0x00010fa4      0xe70 build/Robstride04.o
- .debug_str     0x00010fa4      0xd55 build/DrEmpower_can.o
- .debug_str     0x00010fa4      0xeb3 build/arm.o
- .debug_str     0x00010fa4      0x3ed build/lift_control.o
- .debug_str     0x00010fa4      0x284 build/pump_control.o
- .debug_str     0x00010fa4      0x925 build/head.o
- .debug_str     0x00010fa4      0xb48 build/IMU_updata.o
- .debug_str     0x00010fa4      0x1ec build/Sbus.o
- .debug_str     0x00010fa4      0x32f build/stp23l.o
- .debug_str     0x00010fa4      0x1c3 build/LED.o
- .debug_str     0x00010fa4      0x862 build/buzzer.o
- .debug_str     0x00010fa4      0x2c5 build/remote_control.o
- .debug_str     0x00010fa4      0x23c build/USB_VirCom.o
- .debug_str     0x00010fa4      0x27d build/music.o
- .debug_str     0x00010fa4      0xe08 build/i2c.o
- .debug_str     0x00010fa4       0x56 build/startup_stm32h723xx.o
+ .debug_str     0x00010f8f      0x24a build/iwdg.o
+ .debug_str     0x00010f8f     0x196d build/stm32h7xx_it.o
+ .debug_str     0x00010f8f      0xbc5 build/stm32h7xx_hal_msp.o
+ .debug_str     0x00010f8f     0x1392 build/stm32h7xx_hal_timebase_tim.o
+ .debug_str     0x00010f8f      0x6da build/usb_device.o
+ .debug_str     0x00010f8f      0x47a build/usbd_desc.o
+ .debug_str     0x00010f8f      0x819 build/usbd_cdc_if.o
+ .debug_str     0x00010f8f     0x1dd4 build/usbd_conf.o
+ .debug_str     0x00010f8f      0xe22 build/stm32h7xx_hal_pcd.o
+ .debug_str     0x00010f8f      0x80e build/stm32h7xx_hal_pcd_ex.o
+ .debug_str     0x00010f8f      0xd6a build/stm32h7xx_ll_usb.o
+ .debug_str     0x00010f8f      0x991 build/stm32h7xx_hal_rcc.o
+ .debug_str     0x00010f8f      0xed3 build/stm32h7xx_hal_rcc_ex.o
+ .debug_str     0x00010f8f      0x6ac build/stm32h7xx_hal_gpio.o
+ .debug_str     0x00010f8f      0x92f build/stm32h7xx_hal_dma.o
+ .debug_str     0x00010f8f      0x98a build/stm32h7xx_hal_pwr_ex.o
+ .debug_str     0x00010f8f     0x1017 build/stm32h7xx_hal_cortex.o
+ .debug_str     0x00010f8f     0x1572 build/stm32h7xx_hal.o
+ .debug_str     0x00010f8f     0x115c build/stm32h7xx_hal_i2c.o
+ .debug_str     0x00010f8f      0xb03 build/stm32h7xx_hal_i2c_ex.o
+ .debug_str     0x00010f8f     0x1d6a build/stm32h7xx_hal_fdcan.o
+ .debug_str     0x00010f8f      0xdaa build/stm32h7xx_hal_spi.o
+ .debug_str     0x00010f8f     0x183f build/stm32h7xx_hal_tim.o
+ .debug_str     0x00010f8f     0x11cb build/stm32h7xx_hal_tim_ex.o
+ .debug_str     0x00010f8f     0x1478 build/stm32h7xx_hal_uart.o
+ .debug_str     0x00010f8f      0xb7d build/stm32h7xx_hal_uart_ex.o
+ .debug_str     0x00010f8f      0x27a build/stm32h7xx_hal_iwdg.o
+ .debug_str     0x00010f8f      0x673 build/system_stm32h7xx.o
+ .debug_str     0x00010f8f      0x9c9 build/usbd_core.o
+ .debug_str     0x00010f8f      0x7f4 build/usbd_ctlreq.o
+ .debug_str     0x00010f8f      0x6c9 build/usbd_ioreq.o
+ .debug_str     0x00010f8f      0xdc3 build/usbd_cdc.o
+ .debug_str     0x00010f8f      0xa4c build/freertos.o
+ .debug_str     0x00010f8f      0x2d6 build/list.o
+ .debug_str     0x00010f8f      0xcdb build/queue.o
+ .debug_str     0x00010f8f     0x12d0 build/tasks.o
+ .debug_str     0x00010f8f      0xc1c build/timers.o
+ .debug_str     0x00010f8f     0x2566 build/cmsis_os2.o
+ .debug_str     0x00010f8f      0x4ef build/heap_4.o
+ .debug_str     0x00010f8f      0x456 build/port.o
+ .debug_str     0x00010f8f      0x1f9 build/sysmem.o
+ .debug_str     0x00010f8f      0x3cd build/syscalls.o
+ .debug_str     0x00010f8f      0x4b7 build/gpio.o
+ .debug_str     0x00010f8f      0xbca build/dma.o
+ .debug_str     0x00010f8f     0x162c build/fdcan.o
+ .debug_str     0x00010f8f     0x1698 build/spi.o
+ .debug_str     0x00010f8f     0x167a build/tim.o
+ .debug_str     0x00010f8f     0x1771 build/usart.o
+ .debug_str     0x00010f8f      0x53a build/BMI088driver.o
+ .debug_str     0x00010f8f      0x923 build/BMI088Middleware.o
+ .debug_str     0x00010f8f      0x7ff build/ws2812.o
+ .debug_str     0x00010f8f      0x223 build/AHRS_middleware.o
+ .debug_str     0x00010f8f      0x469 build/fifo.o
+ .debug_str     0x00010f8f      0x1fd build/pid.o
+ .debug_str     0x00010f8f      0x9f4 build/UART_data_txrx.o
+ .debug_str     0x00010f8f     0x100d build/CAN_receive_send.o
+ .debug_str     0x00010f8f      0x1d7 build/Stm32_time.o
+ .debug_str     0x00010f8f      0xc49 build/dm4310_drv.o
+ .debug_str     0x00010f8f      0xa79 build/ktech_motor.o
+ .debug_str     0x00010f8f      0xe6d build/Robstride04.o
+ .debug_str     0x00010f8f      0xd52 build/DrEmpower_can.o
+ .debug_str     0x00010f8f      0xeb3 build/arm.o
+ .debug_str     0x00010f8f      0x3ed build/lift_control.o
+ .debug_str     0x00010f8f      0x284 build/pump_control.o
+ .debug_str     0x00010f8f      0x925 build/head.o
+ .debug_str     0x00010f8f      0xb48 build/IMU_updata.o
+ .debug_str     0x00010f8f      0x1e9 build/Sbus.o
+ .debug_str     0x00010f8f      0x32c build/stp23l.o
+ .debug_str     0x00010f8f      0x1c3 build/LED.o
+ .debug_str     0x00010f8f      0x85f build/buzzer.o
+ .debug_str     0x00010f8f      0x2c5 build/remote_control.o
+ .debug_str     0x00010f8f      0x23c build/USB_VirCom.o
+ .debug_str     0x00010f8f      0x27d build/music.o
+ .debug_str     0x00010f8f      0xe08 build/i2c.o
+ .debug_str     0x00010f8f       0x56 build/startup_stm32h723xx.o
 
 .debug_frame    0x00000000     0xf9ec
  .debug_frame   0x00000000       0xb0 build/main.o
@@ -7923,6 +7953,7 @@ HAL_DMA_Start_IT                                  build/stm32h7xx_hal_dma.o
 HAL_DMA_UnRegisterCallback                        build/stm32h7xx_hal_dma.o
 HAL_DeInit                                        build/stm32h7xx_hal.o
 HAL_Delay                                         build/stm32h7xx_hal.o
+                                                  build/pca9685.o
                                                   build/head.o
                                                   build/arm.o
                                                   build/DrEmpower_can.o
@@ -8188,9 +8219,11 @@ HAL_I2C_Master_Transmit_IT                        build/stm32h7xx_hal_i2c.o
 HAL_I2C_MemRxCpltCallback                         build/stm32h7xx_hal_i2c.o
 HAL_I2C_MemTxCpltCallback                         build/stm32h7xx_hal_i2c.o
 HAL_I2C_Mem_Read                                  build/stm32h7xx_hal_i2c.o
+                                                  build/pca9685.o
 HAL_I2C_Mem_Read_DMA                              build/stm32h7xx_hal_i2c.o
 HAL_I2C_Mem_Read_IT                               build/stm32h7xx_hal_i2c.o
 HAL_I2C_Mem_Write                                 build/stm32h7xx_hal_i2c.o
+                                                  build/pca9685.o
 HAL_I2C_Mem_Write_DMA                             build/stm32h7xx_hal_i2c.o
 HAL_I2C_Mem_Write_IT                              build/stm32h7xx_hal_i2c.o
 HAL_I2C_MspDeInit                                 build/i2c.o
@@ -8897,6 +8930,11 @@ OTG_HS_EP1_IN_IRQHandler                          build/startup_stm32h723xx.o
 OTG_HS_EP1_OUT_IRQHandler                         build/startup_stm32h723xx.o
 OTG_HS_IRQHandler                                 build/stm32h7xx_it.o
 OTG_HS_WKUP_IRQHandler                            build/startup_stm32h723xx.o
+PCA9685_Init                                      build/pca9685.o
+PCA9685_Reset                                     build/pca9685.o
+PCA9685_SetPWM                                    build/pca9685.o
+PCA9685_SetPWMFreq                                build/pca9685.o
+PCA9685_SetPin                                    build/pca9685.o
 PC_CommHandle                                     build/freertos.o
 PC_Comm_Task                                      build/freertos.o
 PC_Comm_attributes                                build/freertos.o

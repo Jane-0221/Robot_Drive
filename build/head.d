@@ -37,7 +37,7 @@ build/head.o: User/Hardware/head.c User/Hardware/head.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
- User/Hardware/ktech_motor.h
+ User/Drive/ktech_motor.h
 User/Hardware/head.h:
 User/BSP/can_receive_send.h:
 Core/Inc/fdcan.h:
@@ -81,4 +81,4 @@ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
-User/Hardware/ktech_motor.h:
+User/Drive/ktech_motor.h:

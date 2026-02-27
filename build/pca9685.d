@@ -1,5 +1,4 @@
-build/ui_g_MODE_0.o: Drivers/UI/ui_g_MODE_0.c Drivers/UI/ui_g_MODE_0.h \
- Drivers/UI/ui_interface.h Core/Inc/usart.h Core/Inc/main.h \
+build/pca9685.o: User/Drive/pca9685.c User/Drive/pca9685.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  Core/Inc/stm32h7xx_hal_conf.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -26,7 +25,6 @@ build/ui_g_MODE_0.o: Drivers/UI/ui_g_MODE_0.c Drivers/UI/ui_g_MODE_0.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_iwdg.h \
- Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ospi.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h \
@@ -37,12 +35,8 @@ build/ui_g_MODE_0.o: Drivers/UI/ui_g_MODE_0.c Drivers/UI/ui_g_MODE_0.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
- Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
- Drivers/UI/ui_types.h
-Drivers/UI/ui_g_MODE_0.h:
-Drivers/UI/ui_interface.h:
-Core/Inc/usart.h:
-Core/Inc/main.h:
+ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h
+User/Drive/pca9685.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 Core/Inc/stm32h7xx_hal_conf.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h:
@@ -71,7 +65,6 @@ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_iwdg.h:
-Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ospi.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi.h:
@@ -83,4 +76,3 @@ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
-Drivers/UI/ui_types.h:

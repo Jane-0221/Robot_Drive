@@ -1,4 +1,4 @@
-build/dm4310_drv.o: User/Hardware/dm4310_drv.c Core/Inc/fdcan.h \
+build/dm4310_drv.o: User/Drive/dm4310_drv.c Core/Inc/fdcan.h \
  Core/Inc/main.h Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  Core/Inc/stm32h7xx_hal_conf.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -36,7 +36,7 @@ build/dm4310_drv.o: User/Hardware/dm4310_drv.c Core/Inc/fdcan.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
- User/Hardware/dm4310_drv.h Core/Inc/main.h User/BSP/can_receive_send.h \
+ User/Drive/dm4310_drv.h Core/Inc/main.h User/BSP/can_receive_send.h \
  Algorithm/Include/arm_math.h Drivers/CMSIS/Include/core_cm4.h
 Core/Inc/fdcan.h:
 Core/Inc/main.h:
@@ -79,7 +79,7 @@ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
-User/Hardware/dm4310_drv.h:
+User/Drive/dm4310_drv.h:
 Core/Inc/main.h:
 User/BSP/can_receive_send.h:
 Algorithm/Include/arm_math.h:

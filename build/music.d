@@ -1,5 +1,5 @@
 build/music.o: User/Software/music.c User/Software/music.h \
- User/Hardware/buzzer.h Core/Inc/tim.h Core/Inc/main.h \
+ User/Drive/buzzer.h Core/Inc/tim.h Core/Inc/main.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  Core/Inc/stm32h7xx_hal_conf.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -39,7 +39,7 @@ build/music.o: User/Software/music.c User/Software/music.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h Core/Inc/gpio.h \
  Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 User/Software/music.h:
-User/Hardware/buzzer.h:
+User/Drive/buzzer.h:
 Core/Inc/tim.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
