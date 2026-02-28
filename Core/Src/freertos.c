@@ -236,6 +236,8 @@ void Remote_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
+    Pump_Control_Updata();
+    osDelay(1);
     Head_Motor_Control_Updata();
     osDelay(1);
   }
@@ -274,7 +276,7 @@ void Lift_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    Lift_RefreshHeight();
+    // Lift_RefreshHeight();
     HAL_IWDG_Refresh(&hiwdg1);
     osDelay(1);
   }
@@ -295,7 +297,7 @@ void Motor_control_Task(void *argument)
   for (;;)
   {
     // Pump_Update();
-    Pump_Control_Updata();
+
     osDelay(1);
   }
   /* USER CODE END Motor_control_Task */
@@ -361,14 +363,8 @@ void Log_and_debug_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    LEDshowcolor(RED);
-    osDelay(50);
-    LEDshowcolor(BLUE);
-    osDelay(50);
-    LEDshowcolor(GREEN);
-    osDelay(50);
     // Music_play(melody);
-    //  printf("hello\n");
+    printf("hello\n");
     osDelay(1);
   }
   /* USER CODE END Log_and_debug_Task */
