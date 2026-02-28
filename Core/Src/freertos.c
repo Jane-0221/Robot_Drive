@@ -238,7 +238,6 @@ void Remote_control_Task(void *argument)
   {
     Head_Motor_Control_Updata();
     osDelay(1);
-    osDelay(1);
   }
   /* USER CODE END Remote_control_Task */
 }
@@ -295,6 +294,9 @@ void Motor_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
+    // Pump_Update();
+    Pump_Control_Updata();
+    osDelay(1);
   }
   /* USER CODE END Motor_control_Task */
 }
@@ -351,15 +353,20 @@ void Log_and_debug_Task(void *argument)
 {
   /* USER CODE BEGIN Log_and_debug_Task */
   LEDshowcolor(RED);
-  osDelay(500);
+  osDelay(50);
   LEDshowcolor(BLUE);
-  osDelay(500);
+  osDelay(50);
   LEDshowcolor(GREEN);
-  osDelay(500);
+  osDelay(50);
   /* Infinite loop */
   for (;;)
   {
-
+    LEDshowcolor(RED);
+    osDelay(50);
+    LEDshowcolor(BLUE);
+    osDelay(50);
+    LEDshowcolor(GREEN);
+    osDelay(50);
     // Music_play(melody);
     //  printf("hello\n");
     osDelay(1);

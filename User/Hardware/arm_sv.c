@@ -93,15 +93,15 @@ void ARM_SV_Tx_Rx()
     duties_rx = ARM_SV_GetAllDuties();
 
 
-    printf("===== Current PWM Duties =====\n");
-    printf("Servo 0: %.2f%%\n", duties_rx.duty0 * 100);
-    printf("Servo 1: %.2f%%\n", duties_rx.duty1 * 100);
+    // printf("===== Current PWM Duties =====\n");
+    // printf("Servo 0: %.2f%%\n", duties_rx.duty0 * 100);
+    // printf("Servo 1: %.2f%%\n", duties_rx.duty1 * 100);
 
-    printf("Servo 2: %.2f%%\n", duties_rx.duty2 * 100);
+    // printf("Servo 2: %.2f%%\n", duties_rx.duty2 * 100);
 
-    printf("Servo 3: %.2f%%\n", duties_rx.duty3 * 100);
+    // printf("Servo 3: %.2f%%\n", duties_rx.duty3 * 100);
 
-    printf("Servo 4: %.2f%%\n", duties_rx.duty4 * 100);
+    // printf("Servo 4: %.2f%%\n", duties_rx.duty4 * 100);
 
-    printf("Servo 5: %.2f%%\n", duties_rx.duty5 * 100);
+    // printf("Servo 5: %.2f%%\n", duties_rx.duty5 * 100);
 }

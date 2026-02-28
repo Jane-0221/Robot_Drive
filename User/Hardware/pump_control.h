@@ -2,8 +2,8 @@
 #define __PUMP_CONTROL_H
 
 // 气泵继电器引脚定义（请根据实际硬件修改）
-#define PUMP_RELAY_PIN      GPIO_PIN_3   // 示例：PB3
-#define PUMP_RELAY_PORT     GPIOB
+#define PUMP_RELAY_PIN      GPIO_PIN_13   // 示例：PB3
+#define PUMP_RELAY_PORT     GPIOE
 
 // 继电器电平定义：低电平吸合，高电平断开（与之前定义一致）
 #define RELAY_ON            GPIO_PIN_RESET
