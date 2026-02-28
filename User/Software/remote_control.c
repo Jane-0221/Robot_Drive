@@ -10,6 +10,7 @@
 #include "arm.h"
 #include "lift_control.h"
 #include "pump_control.h"
+#include "arm_sv.h"
 // Ò£¿ØÆ÷Öµ
 #define LOW_VALUE 353
 #define MID_VALUE 1024
@@ -26,16 +27,37 @@ void Head_Motor_Control_Updata(void)
     {
         Daran_motor_data[0].target_angle = 0;
         Daran_motor_data[1].target_angle = 0;
+
+        duties_tx.duty0 = 0.125;
+        duties_tx.duty1 = 0.125;
+        duties_tx.duty2 = 0.125;
+        duties_tx.duty3 = 0.125;
+        duties_tx.duty4 = 0.125;
+        duties_tx.duty5 = 0.125;
     }
     else if (SBUS_CH.CH6 == MID_VALUE)
     {
         Daran_motor_data[0].target_angle = 90;
         Daran_motor_data[1].target_angle = 90;
+
+        duties_tx.duty0 = 0.075;
+        duties_tx.duty1 = 0.075;
+        duties_tx.duty2 = 0.075;
+        duties_tx.duty3 = 0.075;
+        duties_tx.duty4 = 0.075;
+        duties_tx.duty5 = 0.075;
     }
     else if (SBUS_CH.CH6 == LOW_VALUE)
     {
         Daran_motor_data[0].target_angle = 180;
         Daran_motor_data[1].target_angle = 180;
+
+        duties_tx.duty0 = 0.025;
+        duties_tx.duty1 = 0.025;
+        duties_tx.duty2 = 0.025;
+        duties_tx.duty3 = 0.025;
+        duties_tx.duty4 = 0.025;
+        duties_tx.duty5 = 0.025;
     }
 }
 

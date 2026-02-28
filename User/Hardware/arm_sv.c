@@ -4,6 +4,8 @@
 // 记录每个舵机的当前占空比
 static float current_duties[ARM_SV_COUNT];
 ARM_SV_Duties_t duties_rx;
+
+ARM_SV_Duties_t duties_tx;
 // 内部通用设置函数
 static void set_sv_duty(uint8_t id, float duty)
 {
@@ -15,6 +17,12 @@ static void set_sv_duty(uint8_t id, float duty)
 
 void ARM_SV_Init(float freq)
 {
+    duties_tx.duty0 = 0;
+    duties_tx.duty1 = 0;
+    duties_tx.duty2 = 0;
+    duties_tx.duty3 = 0;
+    duties_tx.duty4 = 0;
+    duties_tx.duty5 = 0;
     // 初始化PCA9685底层，设置频率，所有通道占空比为0
     PCA9685_Init(freq);
 
@@ -74,14 +82,26 @@ ARM_SV_Duties_t ARM_SV_GetAllDuties(void)
 }
 void ARM_SV_Tx_Rx()
 {
-    float duties[6] = {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f};
-    ARM_SV_SetAllDuties(duties);
+
+    ARM_SV_SetDuty0(duties_tx.duty0); // 舵机0：
+    ARM_SV_SetDuty1(duties_tx.duty1); // 舵机1：
+    ARM_SV_SetDuty2(duties_tx.duty2); // 舵机2
+    ARM_SV_SetDuty3(duties_tx.duty3); // 舵机3：
+    ARM_SV_SetDuty4(duties_tx.duty4); // 舵机4：
+    ARM_SV_SetDuty5(duties_tx.duty5); // 舵机5：
+    
     duties_rx = ARM_SV_GetAllDuties();
-        printf("===== Current PWM Duties =====\n");
+
+
+    printf("===== Current PWM Duties =====\n");
     printf("Servo 0: %.2f%%\n", duties_rx.duty0 * 100);
     printf("Servo 1: %.2f%%\n", duties_rx.duty1 * 100);
+
     printf("Servo 2: %.2f%%\n", duties_rx.duty2 * 100);
+
     printf("Servo 3: %.2f%%\n", duties_rx.duty3 * 100);
+
     printf("Servo 4: %.2f%%\n", duties_rx.duty4 * 100);
+
     printf("Servo 5: %.2f%%\n", duties_rx.duty5 * 100);
 }

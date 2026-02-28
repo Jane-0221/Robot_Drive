@@ -16,6 +16,7 @@ typedef struct {
     float duty5;   // 舵机5占空比
 } ARM_SV_Duties_t;
 
+extern ARM_SV_Duties_t duties_tx;
 // 初始化机械臂舵机控制（设置PWM频率）
 // freq : PWM频率（Hz），通常为50
 void ARM_SV_Init(float freq);
@@ -47,7 +48,7 @@ float ARM_SV_GetDuty5(void);
 // 批量设置所有舵机占空比
 // duties : 长度为ARM_SV_COUNT的数组，包含每个舵机的占空比
 void ARM_SV_SetAllDuties(const float *duties);
-extern void ARM_SV_Tx_Rx(void);
 // 获取所有舵机占空比，返回结构体
 ARM_SV_Duties_t ARM_SV_GetAllDuties(void);
+extern void ARM_SV_Tx_Rx(void);
 #endif

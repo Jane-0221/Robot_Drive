@@ -138,7 +138,7 @@ int main(void)
   remote_control_init();
   Pump_Init();
   Lift_Init();
-ARM_SV_Init(50.0f); 
+  ARM_SV_Init(50.0f);
   /* USER CODE END 2 */
 
   /* Init scheduler */
