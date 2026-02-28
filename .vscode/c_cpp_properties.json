@@ -3,23 +3,39 @@
         {
     "name": "windows-gcc-x64",
     "includePath": [
-        // 第一个路径：项目根目录（递归搜索所有子文件夹）
-        "C:/Users/Godwin/Desktop/Energy/final_engineer-main/**",
-        // 第二个路径：指定的核心头文件目录
-        "C:/Users/Godwin/Desktop/Energy/final_engineer-main/User/Software"
+        // 项目根目录（递归搜索所有子文件夹）
+        "${workspaceFolder}/**",
+        // 核心头文件目录
+        "${workspaceFolder}/Core/Inc",
+        "${workspaceFolder}/Drivers/CMSIS/Core/Include",
+        "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32H7xx/Include",
+        "${workspaceFolder}/Drivers/STM32H7xx_HAL_Driver/Inc",
+        "${workspaceFolder}/Algorithm/Include",
+        "${workspaceFolder}/Algorithm",
+        // STM32H7xx specific paths
+        "${workspaceFolder}/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
     ],
     "compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
     "intelliSenseMode": "windows-gcc-x64",
     "compilerArgs": [
-        ""
+        "-DSTM32H723xx",
+        "-DUSE_HAL_DRIVER",
+        "-DUSE_HAL_DRIVER",
+        "-DCORE_CM7"
     ],
     "mergeConfigurations": false,
     "browse": {
         "path": [
             // 同步更新 browse 路径（保持和 includePath 一致）
-            "C:/Users/Godwin/Desktop/Energy/final_engineer-main/**",
-            "C:/Users/Godwin/Desktop/Energy/final_engineer-main/User/Software",
-            "${workspaceFolder}"
+            "${workspaceFolder}/**",
+            "${workspaceFolder}/Core/Inc",
+            "${workspaceFolder}/Drivers/CMSIS/Core/Include",
+            "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32H7xx/Include",
+            "${workspaceFolder}/Drivers/STM32H7xx_HAL_Driver/Inc",
+            "${workspaceFolder}/Algorithm/Include",
+            "${workspaceFolder}/Algorithm",
+            // STM32H7xx specific paths
+            "${workspaceFolder}/Drivers/STM32H7xx_HAL_Driver/Inc/Legacy"
         ],
         "limitSymbolsToIncludedHeaders": true
     },
@@ -36,7 +52,8 @@
             "defines": [
                 "USE_HAL_DRIVER",
                 "STM32H723xx",
-                "YOUNG_OMNI"
+                "YOUNG_OMNI",
+                "CORE_CM7"
             ],
             "compilerPath": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
             "cStandard": "c17",
