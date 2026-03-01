@@ -276,8 +276,9 @@ void Lift_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    // Lift_RefreshHeight();
-    HAL_IWDG_Refresh(&hiwdg1);
+     Lift_RefreshHeight();
+
+    Pump_Update();
     osDelay(1);
   }
   /* USER CODE END Lift_control_Task */
@@ -296,7 +297,6 @@ void Motor_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    // Pump_Update();
 
     osDelay(1);
   }
@@ -404,6 +404,7 @@ void PC_Comm_Task(void *argument)
   for (;;)
   {
     osDelay(1);
+    HAL_IWDG_Refresh(&hiwdg1);
   }
   /* USER CODE END PC_Comm_Task */
 }

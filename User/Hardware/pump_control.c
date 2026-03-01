@@ -2,7 +2,7 @@
 #include "gpio.h"
 #include "stm32h7xx_hal.h"
 // 定义全局变量
-PUMP_State pump_state = PUMP_OFF;   // 初始为关闭
+PUMP_State pump_state = PUMP_OFF; // 初始为关闭
 
 /**
  * @brief  初始化气泵控制
@@ -29,7 +29,7 @@ void Pump_Init(void)
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_10, GPIO_PIN_RESET); // PC10 气泵
 
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_RESET); // PC11，右储矿
-    Pump_Off();                     // 关闭气泵
+                                                           // 关闭气泵
     pump_state = PUMP_OFF;
 }
 
@@ -39,43 +39,6 @@ void Pump_Init(void)
  * @param  无
  * @retval 无
  */
-void Pump_On(void)
-{
-    pump_state = PUMP_ON;
-    // 立即执行动作，确保响应迅速
-    HAL_GPIO_WritePin(PUMP_RELAY_PORT, PUMP_RELAY_PIN, RELAY_ON);
-}
-
-/**
- * @brief  关闭气泵
- * @param  无
- * @retval 无
- */
-void Pump_Off(void)
-{
-    pump_state = PUMP_OFF;
-    HAL_GPIO_WritePin(PUMP_RELAY_PORT, PUMP_RELAY_PIN, RELAY_OFF);
-}
-
-/**
- * @brief  设置指定状态
- * @note   仅修改状态，不立即执行；需配合 Pump_Update 使用以实现统一刷新
- * @param  state 要设置的状态（PUMP_ON / PUMP_OFF）
- * @retval 无
- */
-void Pump_SetState(PUMP_State state)
-{
-    pump_state = state;
-}
-
-/**
- * @brief  获取当前状态
- * @retval 当前状态
- */
-PUMP_State Pump_GetState(void)
-{
-    return pump_state;
-}
 
 /**
  * @brief  根据当前状态更新继电器
@@ -89,11 +52,14 @@ void Pump_Update(void)
     switch (pump_state)
     {
     case PUMP_ON:
-        HAL_GPIO_WritePin(PUMP_RELAY_PORT, PUMP_RELAY_PIN, RELAY_ON);
+        HAL_GPIO_WritePin(PUMP_RELAY_PORT, PUMP_RELAY_PIN, RELAY_OFF);
+        HAL_GPIO_WritePin(SOLENOID_VALVE_PORT, SOLENOID_VALVE_PIN, RELAY_OFF);
         break;
     case PUMP_OFF:
     default:
-        HAL_GPIO_WritePin(PUMP_RELAY_PORT, PUMP_RELAY_PIN, RELAY_OFF);
+        HAL_GPIO_WritePin(PUMP_RELAY_PORT, PUMP_RELAY_PIN, RELAY_ON);
+        HAL_GPIO_WritePin(SOLENOID_VALVE_PORT, SOLENOID_VALVE_PIN, RELAY_ON);
+
         break;
     }
 }

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 1
   35              		.cfi_def_cfa_offset 4
   36              		.cfi_offset 7, -4
   37 0002 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s 			page 2
 
 
   38              	.LCFI1:
@@ -92,155 +92,161 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 1
   64              		.cfi_startproc
   65              		@ args = 0, pretend = 0, frame = 0
   66              		@ frame_needed = 1, uses_anonymous_args = 0
-  67 0000 80B5     		push	{r7, lr}
-  68              	.LCFI4:
-  69              		.cfi_def_cfa_offset 8
-  70              		.cfi_offset 7, -8
-  71              		.cfi_offset 14, -4
+  67              		@ link register save eliminated.
+  68 0000 80B4     		push	{r7}
+  69              	.LCFI4:
+  70              		.cfi_def_cfa_offset 4
+  71              		.cfi_offset 7, -4
   72 0002 00AF     		add	r7, sp, #0
   73              	.LCFI5:
   74              		.cfi_def_cfa_register 7
   26:User/Software/remote_control.c ****     if (SBUS_CH.CH8 == HIGH_VALUE)
   75              		.loc 1 26 16
-  76 0004 0D4B     		ldr	r3, .L6
+  76 0004 0B4B     		ldr	r3, .L6
   77 0006 DB89     		ldrh	r3, [r3, #14]
   78              		.loc 1 26 8
   79 0008 40F29E62 		movw	r2, #1694
   80 000c 9342     		cmp	r3, r2
-  81 000e 06D1     		bne	.L3
+  81 000e 03D1     		bne	.L3
   27:User/Software/remote_control.c ****     {
-  28:User/Software/remote_control.c ****         // pump_state = PUMP_ON;
-  29:User/Software/remote_control.c ****         HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET); // PD14//气泵1
-  82              		.loc 1 29 9
-  83 0010 0022     		movs	r2, #0
-  84 0012 4FF40051 		mov	r1, #8192
-  85 0016 0A48     		ldr	r0, .L6+4
-  86 0018 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  28:User/Software/remote_control.c ****          pump_state = PUMP_ON;
+  82              		.loc 1 28 21
+  83 0010 094B     		ldr	r3, .L6+4
+  84 0012 0122     		movs	r2, #1
+  85 0014 1A70     		strb	r2, [r3]
+  29:User/Software/remote_control.c ****         //HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET); // PD14//气泵1
   30:User/Software/remote_control.c ****     }
   31:User/Software/remote_control.c ****     else if (SBUS_CH.CH8 == LOW_VALUE)
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 3
-
-
   32:User/Software/remote_control.c ****     {
-  33:User/Software/remote_control.c ****         // pump_state = PUMP_OFF;
-  34:User/Software/remote_control.c ****         HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET); // PD14//气泵1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s 			page 3
+
+
+  33:User/Software/remote_control.c ****          pump_state = PUMP_OFF;
+  34:User/Software/remote_control.c ****         //HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET); // PD14//气泵1
   35:User/Software/remote_control.c ****     }
   36:User/Software/remote_control.c **** }
-  87              		.loc 1 36 1
-  88 001c 0BE0     		b	.L5
-  89              	.L3:
+  86              		.loc 1 36 1
+  87 0016 08E0     		b	.L5
+  88              	.L3:
   31:User/Software/remote_control.c ****     {
-  90              		.loc 1 31 21
-  91 001e 074B     		ldr	r3, .L6
-  92 0020 DB89     		ldrh	r3, [r3, #14]
+  89              		.loc 1 31 21
+  90 0018 064B     		ldr	r3, .L6
+  91 001a DB89     		ldrh	r3, [r3, #14]
   31:User/Software/remote_control.c ****     {
-  93              		.loc 1 31 13
-  94 0022 40F26112 		movw	r2, #353
-  95 0026 9342     		cmp	r3, r2
-  96 0028 05D1     		bne	.L5
-  34:User/Software/remote_control.c ****     }
-  97              		.loc 1 34 9
-  98 002a 0122     		movs	r2, #1
-  99 002c 4FF40051 		mov	r1, #8192
- 100 0030 0348     		ldr	r0, .L6+4
- 101 0032 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 102              	.L5:
- 103              		.loc 1 36 1
- 104 0036 00BF     		nop
- 105 0038 80BD     		pop	{r7, pc}
- 106              	.L7:
- 107 003a 00BF     		.align	2
- 108              	.L6:
- 109 003c 00000000 		.word	SBUS_CH
- 110 0040 00100258 		.word	1476530176
- 111              		.cfi_endproc
- 112              	.LFE148:
- 114              		.section	.text.Head_Motor_Control_Updata,"ax",%progbits
- 115              		.align	1
- 116              		.global	Head_Motor_Control_Updata
- 117              		.syntax unified
- 118              		.thumb
- 119              		.thumb_func
- 121              	Head_Motor_Control_Updata:
- 122              	.LFB149:
+  92              		.loc 1 31 13
+  93 001c 40F26112 		movw	r2, #353
+  94 0020 9342     		cmp	r3, r2
+  95 0022 02D1     		bne	.L5
+  33:User/Software/remote_control.c ****         //HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET); // PD14//气泵1
+  96              		.loc 1 33 21
+  97 0024 044B     		ldr	r3, .L6+4
+  98 0026 0022     		movs	r2, #0
+  99 0028 1A70     		strb	r2, [r3]
+ 100              	.L5:
+ 101              		.loc 1 36 1
+ 102 002a 00BF     		nop
+ 103 002c BD46     		mov	sp, r7
+ 104              	.LCFI6:
+ 105              		.cfi_def_cfa_register 13
+ 106              		@ sp needed
+ 107 002e 5DF8047B 		ldr	r7, [sp], #4
+ 108              	.LCFI7:
+ 109              		.cfi_restore 7
+ 110              		.cfi_def_cfa_offset 0
+ 111 0032 7047     		bx	lr
+ 112              	.L7:
+ 113              		.align	2
+ 114              	.L6:
+ 115 0034 00000000 		.word	SBUS_CH
+ 116 0038 00000000 		.word	pump_state
+ 117              		.cfi_endproc
+ 118              	.LFE148:
+ 120              		.section	.text.Head_Motor_Control_Updata,"ax",%progbits
+ 121              		.align	1
+ 122              		.global	Head_Motor_Control_Updata
+ 123              		.syntax unified
+ 124              		.thumb
+ 125              		.thumb_func
+ 127              	Head_Motor_Control_Updata:
+ 128              	.LFB149:
   37:User/Software/remote_control.c **** void Head_Motor_Control_Updata(void)
   38:User/Software/remote_control.c **** {
- 123              		.loc 1 38 1
- 124              		.cfi_startproc
- 125              		@ args = 0, pretend = 0, frame = 0
- 126              		@ frame_needed = 1, uses_anonymous_args = 0
- 127              		@ link register save eliminated.
- 128 0000 80B4     		push	{r7}
- 129              	.LCFI6:
- 130              		.cfi_def_cfa_offset 4
- 131              		.cfi_offset 7, -4
- 132 0002 00AF     		add	r7, sp, #0
- 133              	.LCFI7:
- 134              		.cfi_def_cfa_register 7
+ 129              		.loc 1 38 1
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 1, uses_anonymous_args = 0
+ 133              		@ link register save eliminated.
+ 134 0000 80B4     		push	{r7}
+ 135              	.LCFI8:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s 			page 4
+
+
+ 136              		.cfi_def_cfa_offset 4
+ 137              		.cfi_offset 7, -4
+ 138 0002 00AF     		add	r7, sp, #0
+ 139              	.LCFI9:
+ 140              		.cfi_def_cfa_register 7
   39:User/Software/remote_control.c ****     if (SBUS_CH.CH6 == HIGH_VALUE)
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 4
-
-
- 135              		.loc 1 39 16
- 136 0004 334B     		ldr	r3, .L13
- 137 0006 5B89     		ldrh	r3, [r3, #10]
- 138              		.loc 1 39 8
- 139 0008 40F29E62 		movw	r2, #1694
- 140 000c 9342     		cmp	r3, r2
- 141 000e 20D1     		bne	.L9
+ 141              		.loc 1 39 16
+ 142 0004 334B     		ldr	r3, .L13
+ 143 0006 5B89     		ldrh	r3, [r3, #10]
+ 144              		.loc 1 39 8
+ 145 0008 40F29E62 		movw	r2, #1694
+ 146 000c 9342     		cmp	r3, r2
+ 147 000e 20D1     		bne	.L9
   40:User/Software/remote_control.c ****     {
   41:User/Software/remote_control.c ****         Daran_motor_data[0].target_angle = 0;
- 142              		.loc 1 41 42
- 143 0010 314B     		ldr	r3, .L13+4
- 144 0012 4FF00002 		mov	r2, #0
- 145 0016 9A60     		str	r2, [r3, #8]	@ float
+ 148              		.loc 1 41 42
+ 149 0010 314B     		ldr	r3, .L13+4
+ 150 0012 4FF00002 		mov	r2, #0
+ 151 0016 9A60     		str	r2, [r3, #8]	@ float
   42:User/Software/remote_control.c ****         Daran_motor_data[1].target_angle = 0;
- 146              		.loc 1 42 42
- 147 0018 2F4B     		ldr	r3, .L13+4
- 148 001a 4FF00002 		mov	r2, #0
- 149 001e 9A61     		str	r2, [r3, #24]	@ float
+ 152              		.loc 1 42 42
+ 153 0018 2F4B     		ldr	r3, .L13+4
+ 154 001a 4FF00002 		mov	r2, #0
+ 155 001e 9A61     		str	r2, [r3, #24]	@ float
   43:User/Software/remote_control.c **** 
   44:User/Software/remote_control.c ****         duties_tx.duty0 = 0.125;
- 150              		.loc 1 44 25
- 151 0020 2E4B     		ldr	r3, .L13+8
- 152 0022 4FF07852 		mov	r2, #1040187392
- 153 0026 1A60     		str	r2, [r3]	@ float
+ 156              		.loc 1 44 25
+ 157 0020 2E4B     		ldr	r3, .L13+8
+ 158 0022 4FF07852 		mov	r2, #1040187392
+ 159 0026 1A60     		str	r2, [r3]	@ float
   45:User/Software/remote_control.c ****         duties_tx.duty1 = 0.125;
- 154              		.loc 1 45 25
- 155 0028 2C4B     		ldr	r3, .L13+8
- 156 002a 4FF07852 		mov	r2, #1040187392
- 157 002e 5A60     		str	r2, [r3, #4]	@ float
+ 160              		.loc 1 45 25
+ 161 0028 2C4B     		ldr	r3, .L13+8
+ 162 002a 4FF07852 		mov	r2, #1040187392
+ 163 002e 5A60     		str	r2, [r3, #4]	@ float
   46:User/Software/remote_control.c ****         duties_tx.duty2 = 0.125;
- 158              		.loc 1 46 25
- 159 0030 2A4B     		ldr	r3, .L13+8
- 160 0032 4FF07852 		mov	r2, #1040187392
- 161 0036 9A60     		str	r2, [r3, #8]	@ float
+ 164              		.loc 1 46 25
+ 165 0030 2A4B     		ldr	r3, .L13+8
+ 166 0032 4FF07852 		mov	r2, #1040187392
+ 167 0036 9A60     		str	r2, [r3, #8]	@ float
   47:User/Software/remote_control.c ****         duties_tx.duty3 = 0.125;
- 162              		.loc 1 47 25
- 163 0038 284B     		ldr	r3, .L13+8
- 164 003a 4FF07852 		mov	r2, #1040187392
- 165 003e DA60     		str	r2, [r3, #12]	@ float
+ 168              		.loc 1 47 25
+ 169 0038 284B     		ldr	r3, .L13+8
+ 170 003a 4FF07852 		mov	r2, #1040187392
+ 171 003e DA60     		str	r2, [r3, #12]	@ float
   48:User/Software/remote_control.c ****         duties_tx.duty4 = 0.125;
- 166              		.loc 1 48 25
- 167 0040 264B     		ldr	r3, .L13+8
- 168 0042 4FF07852 		mov	r2, #1040187392
- 169 0046 1A61     		str	r2, [r3, #16]	@ float
+ 172              		.loc 1 48 25
+ 173 0040 264B     		ldr	r3, .L13+8
+ 174 0042 4FF07852 		mov	r2, #1040187392
+ 175 0046 1A61     		str	r2, [r3, #16]	@ float
   49:User/Software/remote_control.c ****         duties_tx.duty5 = 0.125;
- 170              		.loc 1 49 25
- 171 0048 244B     		ldr	r3, .L13+8
- 172 004a 4FF07852 		mov	r2, #1040187392
- 173 004e 5A61     		str	r2, [r3, #20]	@ float
+ 176              		.loc 1 49 25
+ 177 0048 244B     		ldr	r3, .L13+8
+ 178 004a 4FF07852 		mov	r2, #1040187392
+ 179 004e 5A61     		str	r2, [r3, #20]	@ float
   50:User/Software/remote_control.c ****     }
   51:User/Software/remote_control.c ****     else if (SBUS_CH.CH6 == MID_VALUE)
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s 			page 5
+
+
   52:User/Software/remote_control.c ****     {
   53:User/Software/remote_control.c ****         Daran_motor_data[0].target_angle = 90;
   54:User/Software/remote_control.c ****         Daran_motor_data[1].target_angle = 90;
   55:User/Software/remote_control.c **** 
   56:User/Software/remote_control.c ****         duties_tx.duty0 = 0.075;
   57:User/Software/remote_control.c ****         duties_tx.duty1 = 0.075;
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 5
-
-
   58:User/Software/remote_control.c ****         duties_tx.duty2 = 0.075;
   59:User/Software/remote_control.c ****         duties_tx.duty3 = 0.075;
   60:User/Software/remote_control.c ****         duties_tx.duty4 = 0.075;
@@ -259,262 +265,261 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 1
   73:User/Software/remote_control.c ****         duties_tx.duty5 = 0.025;
   74:User/Software/remote_control.c ****     }
   75:User/Software/remote_control.c **** }
- 174              		.loc 1 75 1
- 175 0050 3BE0     		b	.L12
- 176              	.L9:
+ 180              		.loc 1 75 1
+ 181 0050 3BE0     		b	.L12
+ 182              	.L9:
   51:User/Software/remote_control.c ****     {
- 177              		.loc 1 51 21
- 178 0052 204B     		ldr	r3, .L13
- 179 0054 5B89     		ldrh	r3, [r3, #10]
+ 183              		.loc 1 51 21
+ 184 0052 204B     		ldr	r3, .L13
+ 185 0054 5B89     		ldrh	r3, [r3, #10]
   51:User/Software/remote_control.c ****     {
- 180              		.loc 1 51 13
- 181 0056 B3F5806F 		cmp	r3, #1024
- 182 005a 18D1     		bne	.L11
+ 186              		.loc 1 51 13
+ 187 0056 B3F5806F 		cmp	r3, #1024
+ 188 005a 18D1     		bne	.L11
   53:User/Software/remote_control.c ****         Daran_motor_data[1].target_angle = 90;
- 183              		.loc 1 53 42
- 184 005c 1E4B     		ldr	r3, .L13+4
- 185 005e 204A     		ldr	r2, .L13+12
- 186 0060 9A60     		str	r2, [r3, #8]	@ float
+ 189              		.loc 1 53 42
+ 190 005c 1E4B     		ldr	r3, .L13+4
+ 191 005e 204A     		ldr	r2, .L13+12
+ 192 0060 9A60     		str	r2, [r3, #8]	@ float
   54:User/Software/remote_control.c **** 
- 187              		.loc 1 54 42
- 188 0062 1D4B     		ldr	r3, .L13+4
- 189 0064 1E4A     		ldr	r2, .L13+12
- 190 0066 9A61     		str	r2, [r3, #24]	@ float
+ 193              		.loc 1 54 42
+ 194 0062 1D4B     		ldr	r3, .L13+4
+ 195 0064 1E4A     		ldr	r2, .L13+12
+ 196 0066 9A61     		str	r2, [r3, #24]	@ float
   56:User/Software/remote_control.c ****         duties_tx.duty1 = 0.075;
- 191              		.loc 1 56 25
- 192 0068 1C4B     		ldr	r3, .L13+8
- 193 006a 1E4A     		ldr	r2, .L13+16
- 194 006c 1A60     		str	r2, [r3]	@ float
+ 197              		.loc 1 56 25
+ 198 0068 1C4B     		ldr	r3, .L13+8
+ 199 006a 1E4A     		ldr	r2, .L13+16
+ 200 006c 1A60     		str	r2, [r3]	@ float
   57:User/Software/remote_control.c ****         duties_tx.duty2 = 0.075;
- 195              		.loc 1 57 25
- 196 006e 1B4B     		ldr	r3, .L13+8
- 197 0070 1C4A     		ldr	r2, .L13+16
- 198 0072 5A60     		str	r2, [r3, #4]	@ float
+ 201              		.loc 1 57 25
+ 202 006e 1B4B     		ldr	r3, .L13+8
+ 203 0070 1C4A     		ldr	r2, .L13+16
+ 204 0072 5A60     		str	r2, [r3, #4]	@ float
   58:User/Software/remote_control.c ****         duties_tx.duty3 = 0.075;
- 199              		.loc 1 58 25
- 200 0074 194B     		ldr	r3, .L13+8
- 201 0076 1B4A     		ldr	r2, .L13+16
- 202 0078 9A60     		str	r2, [r3, #8]	@ float
+ 205              		.loc 1 58 25
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s 			page 6
+
+
+ 206 0074 194B     		ldr	r3, .L13+8
+ 207 0076 1B4A     		ldr	r2, .L13+16
+ 208 0078 9A60     		str	r2, [r3, #8]	@ float
   59:User/Software/remote_control.c ****         duties_tx.duty4 = 0.075;
- 203              		.loc 1 59 25
- 204 007a 184B     		ldr	r3, .L13+8
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 6
-
-
- 205 007c 194A     		ldr	r2, .L13+16
- 206 007e DA60     		str	r2, [r3, #12]	@ float
+ 209              		.loc 1 59 25
+ 210 007a 184B     		ldr	r3, .L13+8
+ 211 007c 194A     		ldr	r2, .L13+16
+ 212 007e DA60     		str	r2, [r3, #12]	@ float
   60:User/Software/remote_control.c ****         duties_tx.duty5 = 0.075;
- 207              		.loc 1 60 25
- 208 0080 164B     		ldr	r3, .L13+8
- 209 0082 184A     		ldr	r2, .L13+16
- 210 0084 1A61     		str	r2, [r3, #16]	@ float
+ 213              		.loc 1 60 25
+ 214 0080 164B     		ldr	r3, .L13+8
+ 215 0082 184A     		ldr	r2, .L13+16
+ 216 0084 1A61     		str	r2, [r3, #16]	@ float
   61:User/Software/remote_control.c ****     }
- 211              		.loc 1 61 25
- 212 0086 154B     		ldr	r3, .L13+8
- 213 0088 164A     		ldr	r2, .L13+16
- 214 008a 5A61     		str	r2, [r3, #20]	@ float
- 215              		.loc 1 75 1
- 216 008c 1DE0     		b	.L12
- 217              	.L11:
+ 217              		.loc 1 61 25
+ 218 0086 154B     		ldr	r3, .L13+8
+ 219 0088 164A     		ldr	r2, .L13+16
+ 220 008a 5A61     		str	r2, [r3, #20]	@ float
+ 221              		.loc 1 75 1
+ 222 008c 1DE0     		b	.L12
+ 223              	.L11:
   63:User/Software/remote_control.c ****     {
- 218              		.loc 1 63 21
- 219 008e 114B     		ldr	r3, .L13
- 220 0090 5B89     		ldrh	r3, [r3, #10]
+ 224              		.loc 1 63 21
+ 225 008e 114B     		ldr	r3, .L13
+ 226 0090 5B89     		ldrh	r3, [r3, #10]
   63:User/Software/remote_control.c ****     {
- 221              		.loc 1 63 13
- 222 0092 40F26112 		movw	r2, #353
- 223 0096 9342     		cmp	r3, r2
- 224 0098 17D1     		bne	.L12
+ 227              		.loc 1 63 13
+ 228 0092 40F26112 		movw	r2, #353
+ 229 0096 9342     		cmp	r3, r2
+ 230 0098 17D1     		bne	.L12
   65:User/Software/remote_control.c ****         Daran_motor_data[1].target_angle = 180;
- 225              		.loc 1 65 42
- 226 009a 0F4B     		ldr	r3, .L13+4
- 227 009c 124A     		ldr	r2, .L13+20
- 228 009e 9A60     		str	r2, [r3, #8]	@ float
+ 231              		.loc 1 65 42
+ 232 009a 0F4B     		ldr	r3, .L13+4
+ 233 009c 124A     		ldr	r2, .L13+20
+ 234 009e 9A60     		str	r2, [r3, #8]	@ float
   66:User/Software/remote_control.c **** 
- 229              		.loc 1 66 42
- 230 00a0 0D4B     		ldr	r3, .L13+4
- 231 00a2 114A     		ldr	r2, .L13+20
- 232 00a4 9A61     		str	r2, [r3, #24]	@ float
+ 235              		.loc 1 66 42
+ 236 00a0 0D4B     		ldr	r3, .L13+4
+ 237 00a2 114A     		ldr	r2, .L13+20
+ 238 00a4 9A61     		str	r2, [r3, #24]	@ float
   68:User/Software/remote_control.c ****         duties_tx.duty1 = 0.025;
- 233              		.loc 1 68 25
- 234 00a6 0D4B     		ldr	r3, .L13+8
- 235 00a8 104A     		ldr	r2, .L13+24
- 236 00aa 1A60     		str	r2, [r3]	@ float
+ 239              		.loc 1 68 25
+ 240 00a6 0D4B     		ldr	r3, .L13+8
+ 241 00a8 104A     		ldr	r2, .L13+24
+ 242 00aa 1A60     		str	r2, [r3]	@ float
   69:User/Software/remote_control.c ****         duties_tx.duty2 = 0.025;
- 237              		.loc 1 69 25
- 238 00ac 0B4B     		ldr	r3, .L13+8
- 239 00ae 0F4A     		ldr	r2, .L13+24
- 240 00b0 5A60     		str	r2, [r3, #4]	@ float
+ 243              		.loc 1 69 25
+ 244 00ac 0B4B     		ldr	r3, .L13+8
+ 245 00ae 0F4A     		ldr	r2, .L13+24
+ 246 00b0 5A60     		str	r2, [r3, #4]	@ float
   70:User/Software/remote_control.c ****         duties_tx.duty3 = 0.025;
- 241              		.loc 1 70 25
- 242 00b2 0A4B     		ldr	r3, .L13+8
- 243 00b4 0D4A     		ldr	r2, .L13+24
- 244 00b6 9A60     		str	r2, [r3, #8]	@ float
+ 247              		.loc 1 70 25
+ 248 00b2 0A4B     		ldr	r3, .L13+8
+ 249 00b4 0D4A     		ldr	r2, .L13+24
+ 250 00b6 9A60     		str	r2, [r3, #8]	@ float
   71:User/Software/remote_control.c ****         duties_tx.duty4 = 0.025;
- 245              		.loc 1 71 25
- 246 00b8 084B     		ldr	r3, .L13+8
- 247 00ba 0C4A     		ldr	r2, .L13+24
- 248 00bc DA60     		str	r2, [r3, #12]	@ float
+ 251              		.loc 1 71 25
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s 			page 7
+
+
+ 252 00b8 084B     		ldr	r3, .L13+8
+ 253 00ba 0C4A     		ldr	r2, .L13+24
+ 254 00bc DA60     		str	r2, [r3, #12]	@ float
   72:User/Software/remote_control.c ****         duties_tx.duty5 = 0.025;
- 249              		.loc 1 72 25
- 250 00be 074B     		ldr	r3, .L13+8
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 7
-
-
- 251 00c0 0A4A     		ldr	r2, .L13+24
- 252 00c2 1A61     		str	r2, [r3, #16]	@ float
+ 255              		.loc 1 72 25
+ 256 00be 074B     		ldr	r3, .L13+8
+ 257 00c0 0A4A     		ldr	r2, .L13+24
+ 258 00c2 1A61     		str	r2, [r3, #16]	@ float
   73:User/Software/remote_control.c ****     }
- 253              		.loc 1 73 25
- 254 00c4 054B     		ldr	r3, .L13+8
- 255 00c6 094A     		ldr	r2, .L13+24
- 256 00c8 5A61     		str	r2, [r3, #20]	@ float
- 257              	.L12:
- 258              		.loc 1 75 1
- 259 00ca 00BF     		nop
- 260 00cc BD46     		mov	sp, r7
- 261              	.LCFI8:
- 262              		.cfi_def_cfa_register 13
- 263              		@ sp needed
- 264 00ce 5DF8047B 		ldr	r7, [sp], #4
- 265              	.LCFI9:
- 266              		.cfi_restore 7
- 267              		.cfi_def_cfa_offset 0
- 268 00d2 7047     		bx	lr
- 269              	.L14:
- 270              		.align	2
- 271              	.L13:
- 272 00d4 00000000 		.word	SBUS_CH
- 273 00d8 00000000 		.word	Daran_motor_data
- 274 00dc 00000000 		.word	duties_tx
- 275 00e0 0000B442 		.word	1119092736
- 276 00e4 9A99993D 		.word	1033476506
- 277 00e8 00003443 		.word	1127481344
- 278 00ec CDCCCC3C 		.word	1020054733
- 279              		.cfi_endproc
- 280              	.LFE149:
- 282              		.section	.text.Up_Down_Motor_Control,"ax",%progbits
- 283              		.align	1
- 284              		.global	Up_Down_Motor_Control
- 285              		.syntax unified
- 286              		.thumb
- 287              		.thumb_func
- 289              	Up_Down_Motor_Control:
- 290              	.LFB150:
+ 259              		.loc 1 73 25
+ 260 00c4 054B     		ldr	r3, .L13+8
+ 261 00c6 094A     		ldr	r2, .L13+24
+ 262 00c8 5A61     		str	r2, [r3, #20]	@ float
+ 263              	.L12:
+ 264              		.loc 1 75 1
+ 265 00ca 00BF     		nop
+ 266 00cc BD46     		mov	sp, r7
+ 267              	.LCFI10:
+ 268              		.cfi_def_cfa_register 13
+ 269              		@ sp needed
+ 270 00ce 5DF8047B 		ldr	r7, [sp], #4
+ 271              	.LCFI11:
+ 272              		.cfi_restore 7
+ 273              		.cfi_def_cfa_offset 0
+ 274 00d2 7047     		bx	lr
+ 275              	.L14:
+ 276              		.align	2
+ 277              	.L13:
+ 278 00d4 00000000 		.word	SBUS_CH
+ 279 00d8 00000000 		.word	Daran_motor_data
+ 280 00dc 00000000 		.word	duties_tx
+ 281 00e0 0000B442 		.word	1119092736
+ 282 00e4 9A99993D 		.word	1033476506
+ 283 00e8 00003443 		.word	1127481344
+ 284 00ec CDCCCC3C 		.word	1020054733
+ 285              		.cfi_endproc
+ 286              	.LFE149:
+ 288              		.section	.text.Up_Down_Motor_Control,"ax",%progbits
+ 289              		.align	1
+ 290              		.global	Up_Down_Motor_Control
+ 291              		.syntax unified
+ 292              		.thumb
+ 293              		.thumb_func
+ 295              	Up_Down_Motor_Control:
+ 296              	.LFB150:
   76:User/Software/remote_control.c **** 
   77:User/Software/remote_control.c **** void Up_Down_Motor_Control(void)
   78:User/Software/remote_control.c **** {
- 291              		.loc 1 78 1
- 292              		.cfi_startproc
- 293              		@ args = 0, pretend = 0, frame = 0
- 294              		@ frame_needed = 1, uses_anonymous_args = 0
- 295              		@ link register save eliminated.
- 296 0000 80B4     		push	{r7}
- 297              	.LCFI10:
- 298              		.cfi_def_cfa_offset 4
- 299              		.cfi_offset 7, -4
- 300 0002 00AF     		add	r7, sp, #0
- 301              	.LCFI11:
- 302              		.cfi_def_cfa_register 7
+ 297              		.loc 1 78 1
+ 298              		.cfi_startproc
+ 299              		@ args = 0, pretend = 0, frame = 0
+ 300              		@ frame_needed = 1, uses_anonymous_args = 0
+ 301              		@ link register save eliminated.
+ 302 0000 80B4     		push	{r7}
+ 303              	.LCFI12:
+ 304              		.cfi_def_cfa_offset 4
+ 305              		.cfi_offset 7, -4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s 			page 8
+
+
+ 306 0002 00AF     		add	r7, sp, #0
+ 307              	.LCFI13:
+ 308              		.cfi_def_cfa_register 7
   79:User/Software/remote_control.c **** 
   80:User/Software/remote_control.c ****     switch (SBUS_CH.CH7)
- 303              		.loc 1 80 20
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 8
-
-
- 304 0004 0D4B     		ldr	r3, .L19
- 305 0006 9B89     		ldrh	r3, [r3, #12]
- 306              		.loc 1 80 5
- 307 0008 40F26112 		movw	r2, #353
- 308 000c 9342     		cmp	r3, r2
- 309 000e 07D0     		beq	.L16
- 310 0010 40F29E62 		movw	r2, #1694
- 311 0014 9342     		cmp	r3, r2
- 312 0016 07D1     		bne	.L17
+ 309              		.loc 1 80 20
+ 310 0004 0D4B     		ldr	r3, .L19
+ 311 0006 9B89     		ldrh	r3, [r3, #12]
+ 312              		.loc 1 80 5
+ 313 0008 40F26112 		movw	r2, #353
+ 314 000c 9342     		cmp	r3, r2
+ 315 000e 07D0     		beq	.L16
+ 316 0010 40F29E62 		movw	r2, #1694
+ 317 0014 9342     		cmp	r3, r2
+ 318 0016 07D1     		bne	.L17
   81:User/Software/remote_control.c ****     {
   82:User/Software/remote_control.c ****     case HIGH_VALUE:
   83:User/Software/remote_control.c ****         lift_state = LIFT_UP;
- 313              		.loc 1 83 20
- 314 0018 094B     		ldr	r3, .L19+4
- 315 001a 0022     		movs	r2, #0
- 316 001c 1A70     		strb	r2, [r3]
+ 319              		.loc 1 83 20
+ 320 0018 094B     		ldr	r3, .L19+4
+ 321 001a 0022     		movs	r2, #0
+ 322 001c 1A70     		strb	r2, [r3]
   84:User/Software/remote_control.c ****         break;
- 317              		.loc 1 84 9
- 318 001e 07E0     		b	.L18
- 319              	.L16:
+ 323              		.loc 1 84 9
+ 324 001e 07E0     		b	.L18
+ 325              	.L16:
   85:User/Software/remote_control.c ****     case LOW_VALUE:
   86:User/Software/remote_control.c ****         lift_state = LIFT_DOWN;
- 320              		.loc 1 86 20
- 321 0020 074B     		ldr	r3, .L19+4
- 322 0022 0122     		movs	r2, #1
- 323 0024 1A70     		strb	r2, [r3]
+ 326              		.loc 1 86 20
+ 327 0020 074B     		ldr	r3, .L19+4
+ 328 0022 0122     		movs	r2, #1
+ 329 0024 1A70     		strb	r2, [r3]
   87:User/Software/remote_control.c ****         break;
- 324              		.loc 1 87 9
- 325 0026 03E0     		b	.L18
- 326              	.L17:
+ 330              		.loc 1 87 9
+ 331 0026 03E0     		b	.L18
+ 332              	.L17:
   88:User/Software/remote_control.c ****     case MID_VALUE:
   89:User/Software/remote_control.c ****     default: // 兜底，确保任何情况都有处理
   90:User/Software/remote_control.c ****         lift_state = LIFT_STOP;
- 327              		.loc 1 90 20
- 328 0028 054B     		ldr	r3, .L19+4
- 329 002a 0222     		movs	r2, #2
- 330 002c 1A70     		strb	r2, [r3]
+ 333              		.loc 1 90 20
+ 334 0028 054B     		ldr	r3, .L19+4
+ 335 002a 0222     		movs	r2, #2
+ 336 002c 1A70     		strb	r2, [r3]
   91:User/Software/remote_control.c ****         break;
- 331              		.loc 1 91 9
- 332 002e 00BF     		nop
- 333              	.L18:
+ 337              		.loc 1 91 9
+ 338 002e 00BF     		nop
+ 339              	.L18:
   92:User/Software/remote_control.c ****     }
   93:User/Software/remote_control.c **** }
- 334              		.loc 1 93 1
- 335 0030 00BF     		nop
- 336 0032 BD46     		mov	sp, r7
- 337              	.LCFI12:
- 338              		.cfi_def_cfa_register 13
- 339              		@ sp needed
- 340 0034 5DF8047B 		ldr	r7, [sp], #4
- 341              	.LCFI13:
- 342              		.cfi_restore 7
- 343              		.cfi_def_cfa_offset 0
- 344 0038 7047     		bx	lr
- 345              	.L20:
- 346 003a 00BF     		.align	2
- 347              	.L19:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 9
+ 340              		.loc 1 93 1
+ 341 0030 00BF     		nop
+ 342 0032 BD46     		mov	sp, r7
+ 343              	.LCFI14:
+ 344              		.cfi_def_cfa_register 13
+ 345              		@ sp needed
+ 346 0034 5DF8047B 		ldr	r7, [sp], #4
+ 347              	.LCFI15:
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s 			page 9
 
 
- 348 003c 00000000 		.word	SBUS_CH
- 349 0040 00000000 		.word	lift_state
- 350              		.cfi_endproc
- 351              	.LFE150:
- 353              		.text
- 354              	.Letext0:
- 355              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
- 356              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
- 357              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
- 358              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
- 359              		.file 6 "User/Drive/Sbus.h"
- 360              		.file 7 "User/Hardware/arm.h"
- 361              		.file 8 "User/Hardware/lift_control.h"
- 362              		.file 9 "User/Hardware/arm_sv.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s 			page 10
+ 348              		.cfi_restore 7
+ 349              		.cfi_def_cfa_offset 0
+ 350 0038 7047     		bx	lr
+ 351              	.L20:
+ 352 003a 00BF     		.align	2
+ 353              	.L19:
+ 354 003c 00000000 		.word	SBUS_CH
+ 355 0040 00000000 		.word	lift_state
+ 356              		.cfi_endproc
+ 357              	.LFE150:
+ 359              		.text
+ 360              	.Letext0:
+ 361              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
+ 362              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
+ 363              		.file 4 "User/Drive/Sbus.h"
+ 364              		.file 5 "User/Hardware/arm.h"
+ 365              		.file 6 "User/Hardware/lift_control.h"
+ 366              		.file 7 "User/Hardware/pump_control.h"
+ 367              		.file 8 "User/Hardware/arm_sv.h"
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 remote_control.c
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:20     .text.remote_control_init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:26     .text.remote_control_init:00000000 remote_control_init
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:55     .text.Pump_Control_Updata:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:61     .text.Pump_Control_Updata:00000000 Pump_Control_Updata
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:109    .text.Pump_Control_Updata:0000003c $d
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:115    .text.Head_Motor_Control_Updata:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:121    .text.Head_Motor_Control_Updata:00000000 Head_Motor_Control_Updata
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:272    .text.Head_Motor_Control_Updata:000000d4 $d
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:283    .text.Up_Down_Motor_Control:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:289    .text.Up_Down_Motor_Control:00000000 Up_Down_Motor_Control
-C:\Users\Godwin\AppData\Local\Temp\ccnyj6sX.s:348    .text.Up_Down_Motor_Control:0000003c $d
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:20     .text.remote_control_init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:26     .text.remote_control_init:00000000 remote_control_init
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:55     .text.Pump_Control_Updata:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:61     .text.Pump_Control_Updata:00000000 Pump_Control_Updata
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:115    .text.Pump_Control_Updata:00000034 $d
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:121    .text.Head_Motor_Control_Updata:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:127    .text.Head_Motor_Control_Updata:00000000 Head_Motor_Control_Updata
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:278    .text.Head_Motor_Control_Updata:000000d4 $d
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:289    .text.Up_Down_Motor_Control:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:295    .text.Up_Down_Motor_Control:00000000 Up_Down_Motor_Control
+C:\Users\Godwin\AppData\Local\Temp\cc5xUCLc.s:354    .text.Up_Down_Motor_Control:0000003c $d
 
 UNDEFINED SYMBOLS
-HAL_GPIO_WritePin
 SBUS_CH
+pump_state
 Daran_motor_data
 duties_tx
 lift_state
