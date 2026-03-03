@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
   29:User/Drive/stp23l.h **** /************************* ²âµã½á¹¹Ìå£¨ÑÏ¸ñÆ¥ÅäÊÖ²á£© *************************/
   30:User/Drive/stp23l.h **** typedef struct
   31:User/Drive/stp23l.h **** {
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 2
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 2
 
 
   32:User/Drive/stp23l.h ****     int16_t  distance;   // ¾àÀë(mm) 2BÐ¡¶Ë
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
   54 0012 7047     		bx	lr
   55              	.L3:
   56              		.align	2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 3
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 3
 
 
   57              	.L2:
@@ -152,22 +152,22 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
    3:User/Hardware/lift_control.c **** #include "usart.h"
    4:User/Hardware/lift_control.c **** #include "UART_data_txrx.h"
    5:User/Hardware/lift_control.c **** #include "stp23l.h"
-   6:User/Hardware/lift_control.c **** // ¶¨ÒåÈ«¾Ö±äÁ¿
-   7:User/Hardware/lift_control.c **** LIFT_State lift_state = LIFT_STOP;      // ³õÊ¼ÎªÍ£Ö¹
-   8:User/Hardware/lift_control.c **** uint16_t lift_current_height = 0;       // ³õÊ¼¸ß¶È0
+   6:User/Hardware/lift_control.c **** // ï¿½ï¿½ï¿½ï¿½È«ï¿½Ö±ï¿½ï¿½ï¿½
+   7:User/Hardware/lift_control.c **** LIFT_State lift_state = LIFT_STOP;      // ï¿½ï¿½Ê¼ÎªÍ£Ö¹
+   8:User/Hardware/lift_control.c **** uint16_t lift_current_height = 0;       // ï¿½ï¿½Ê¼ï¿½ß¶ï¿½0
    9:User/Hardware/lift_control.c **** 
-  10:User/Hardware/lift_control.c **** //¶¨Òå¾Ö²¿±äÁ¿
-  11:User/Hardware/lift_control.c **** int16_t lift_height_final = 0; // Éý½µ¸Ë×îÖÕ¸ß¶ÈÖµ£¨Ã¿Ö¡¸üÐÂÒ»´Î£©
-  12:User/Hardware/lift_control.c **** // µ×²ãµç»ú¿ØÖÆº¯Êý£¨ÄÚ²¿Ê¹ÓÃ£©
+  10:User/Hardware/lift_control.c **** //ï¿½ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ï¿½
+  11:User/Hardware/lift_control.c **** int16_t lift_height_final = 0; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¸ß¶ï¿½Öµï¿½ï¿½Ã¿Ö¡ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Î£
+  12:User/Hardware/lift_control.c **** // ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½Ê¹ï¿½Ã£ï¿½
   13:User/Hardware/lift_control.c **** static void Motor_Forward(void);
   14:User/Hardware/lift_control.c **** static void Motor_Reverse(void);
   15:User/Hardware/lift_control.c **** static void Motor_Stop(void);
   16:User/Hardware/lift_control.c **** 
   17:User/Hardware/lift_control.c **** /**
-  18:User/Hardware/lift_control.c ****  * @brief  ³õÊ¼»¯Éý½µ¸Ë¿ØÖÆ
-  19:User/Hardware/lift_control.c ****  * @note   È·±£µç»úÍ£Ö¹£¬×´Ì¬¸´Î»£»Òý½Å³õÊ¼»¯Í¨³£ÔÚÓ²¼þ³õÊ¼»¯ÖÐÍê³É
-  20:User/Hardware/lift_control.c ****  * @param  ÎÞ
-  21:User/Hardware/lift_control.c ****  * @retval ÎÞ
+  18:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½
+  19:User/Hardware/lift_control.c ****  * @note   È·ï¿½ï¿½ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½×´Ì¬ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½Å³ï¿½Ê¼ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿
+  20:User/Hardware/lift_control.c ****  * @param  ï¿½ï¿½
+  21:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½
   22:User/Hardware/lift_control.c ****  */
   23:User/Hardware/lift_control.c **** void Lift_Init(void)
   24:User/Hardware/lift_control.c **** {
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
   95 0000 80B5     		push	{r7, lr}
   96              	.LCFI4:
   97              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 4
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 4
 
 
   98              		.cfi_offset 7, -8
@@ -220,9 +220,9 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  132              	.LFB146:
   29:User/Hardware/lift_control.c **** 
   30:User/Hardware/lift_control.c **** /**
-  31:User/Hardware/lift_control.c ****  * @brief  ÉèÖÃÉÏÉý×´Ì¬
-  32:User/Hardware/lift_control.c ****  * @param  ÎÞ
-  33:User/Hardware/lift_control.c ****  * @retval ÎÞ
+  31:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
+  32:User/Hardware/lift_control.c ****  * @param  ï¿½ï¿½
+  33:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½
   34:User/Hardware/lift_control.c ****  */
   35:User/Hardware/lift_control.c **** void Lift_Up(void)
   36:User/Hardware/lift_control.c **** {
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  142 0002 00AF     		add	r7, sp, #0
  143              	.LCFI7:
  144              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 5
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 5
 
 
   37:User/Hardware/lift_control.c ****     lift_state = LIFT_UP;
@@ -274,9 +274,9 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  175              	.LFB147:
   39:User/Hardware/lift_control.c **** 
   40:User/Hardware/lift_control.c **** /**
-  41:User/Hardware/lift_control.c ****  * @brief  ÉèÖÃÏÂ½µ×´Ì¬
-  42:User/Hardware/lift_control.c ****  * @param  ÎÞ
-  43:User/Hardware/lift_control.c ****  * @retval ÎÞ
+  41:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½×´Ì¬
+  42:User/Hardware/lift_control.c ****  * @param  ï¿½ï¿½
+  43:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½
   44:User/Hardware/lift_control.c ****  */
   45:User/Hardware/lift_control.c **** void Lift_Down(void)
   46:User/Hardware/lift_control.c **** {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  190 0006 0122     		movs	r2, #1
  191 0008 1A70     		strb	r2, [r3]
   48:User/Hardware/lift_control.c **** }
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 6
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 6
 
 
  192              		.loc 1 48 1
@@ -328,9 +328,9 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  218              	.LFB148:
   49:User/Hardware/lift_control.c **** 
   50:User/Hardware/lift_control.c **** /**
-  51:User/Hardware/lift_control.c ****  * @brief  ÉèÖÃÍ£Ö¹×´Ì¬
-  52:User/Hardware/lift_control.c ****  * @param  ÎÞ
-  53:User/Hardware/lift_control.c ****  * @retval ÎÞ
+  51:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½ï¿½ï¿½Í£Ö¹×´Ì¬
+  52:User/Hardware/lift_control.c ****  * @param  ï¿½ï¿½
+  53:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½
   54:User/Hardware/lift_control.c ****  */
   55:User/Hardware/lift_control.c **** void Lift_Stop(void)
   56:User/Hardware/lift_control.c **** {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  238              	.LCFI16:
  239              		.cfi_def_cfa_register 13
  240              		@ sp needed
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 7
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 7
 
 
  241 000e 5DF8047B 		ldr	r7, [sp], #4
@@ -382,9 +382,9 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  261              	.LFB149:
   59:User/Hardware/lift_control.c **** 
   60:User/Hardware/lift_control.c **** /**
-  61:User/Hardware/lift_control.c ****  * @brief  ÉèÖÃÖ¸¶¨×´Ì¬
-  62:User/Hardware/lift_control.c ****  * @param  state ÒªÉèÖÃµÄ×´Ì¬
-  63:User/Hardware/lift_control.c ****  * @retval ÎÞ
+  61:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½×´Ì¬
+  62:User/Hardware/lift_control.c ****  * @param  state Òªï¿½ï¿½ï¿½Ãµï¿½×´Ì¬
+  63:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½
   64:User/Hardware/lift_control.c ****  */
   65:User/Hardware/lift_control.c **** void Lift_SetState(LIFT_State state)
   66:User/Hardware/lift_control.c **** {
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  287              		.cfi_def_cfa_offset 4
  288 0014 BD46     		mov	sp, r7
  289              	.LCFI22:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 8
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 8
 
 
  290              		.cfi_def_cfa_register 13
@@ -444,8 +444,8 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  312              	.LFB150:
   69:User/Hardware/lift_control.c **** 
   70:User/Hardware/lift_control.c **** /**
-  71:User/Hardware/lift_control.c ****  * @brief  »ñÈ¡µ±Ç°×´Ì¬
-  72:User/Hardware/lift_control.c ****  * @retval µ±Ç°×´Ì¬
+  71:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½È¡ï¿½ï¿½Ç°×´Ì¬
+  72:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½Ç°×´Ì¬
   73:User/Hardware/lift_control.c ****  */
   74:User/Hardware/lift_control.c **** LIFT_State Lift_GetState(void)
   75:User/Hardware/lift_control.c **** {
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  337              		.cfi_def_cfa_offset 0
  338 0010 7047     		bx	lr
  339              	.L22:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 9
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 9
 
 
  340 0012 00BF     		.align	2
@@ -496,10 +496,10 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  354              	.LFB151:
   78:User/Hardware/lift_control.c **** 
   79:User/Hardware/lift_control.c **** /**
-  80:User/Hardware/lift_control.c ****  * @brief  ¸ù¾Ýµ±Ç°×´Ì¬¸üÐÂµç»ú¿ØÖÆ
-  81:User/Hardware/lift_control.c ****  * @note   ´Ëº¯ÊýÐèÖÜÆÚÐÔµ÷ÓÃ£¨ÀýÈçÃ¿10ms£©£¬ÒÔÖ´ÐÐÊµ¼Ê¿ØÖÆ
-  82:User/Hardware/lift_control.c ****  * @param  ÎÞ
-  83:User/Hardware/lift_control.c ****  * @retval ÎÞ
+  80:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½ï¿½Ýµï¿½Ç°×´Ì¬ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  81:User/Hardware/lift_control.c ****  * @note   ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿10msï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿
+  82:User/Hardware/lift_control.c ****  * @param  ï¿½ï¿½
+  83:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½
   84:User/Hardware/lift_control.c ****  */
   85:User/Hardware/lift_control.c **** void Lift_UpdateMotor(void)
   86:User/Hardware/lift_control.c **** {
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
   93:User/Hardware/lift_control.c ****         Motor_Reverse();
  381              		.loc 1 93 9
  382 0018 FFF7FEFF 		bl	Motor_Reverse
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 10
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 10
 
 
   94:User/Hardware/lift_control.c ****         break;
@@ -575,10 +575,10 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  409              	.LFB152:
  101:User/Hardware/lift_control.c **** 
  102:User/Hardware/lift_control.c **** /**
- 103:User/Hardware/lift_control.c ****  * @brief  Ë¢ÐÂ¸ß¶ÈÖµ£¨´Ó´«¸ÐÆ÷¶ÁÈ¡£©
- 104:User/Hardware/lift_control.c ****  * @note   ÓÃ»§Ðè¸ù¾ÝÊµ¼ÊÓ²¼þÔÚ´ËÌí¼Ó¶ÁÈ¡´úÂë£¬ÀýÈçADC»ò±àÂëÆ÷
- 105:User/Hardware/lift_control.c ****  * @param  ÎÞ
- 106:User/Hardware/lift_control.c ****  * @retval ÎÞ
+ 103:User/Hardware/lift_control.c ****  * @brief  Ë¢ï¿½Â¸ß¶ï¿½Öµï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½
+ 104:User/Hardware/lift_control.c ****  * @note   ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ó²ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½È¡ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½A
+ 105:User/Hardware/lift_control.c ****  * @param  ï¿½ï¿½
+ 106:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½
  107:User/Hardware/lift_control.c ****  */
  108:User/Hardware/lift_control.c **** void Lift_RefreshHeight(void)
  109:User/Hardware/lift_control.c **** {
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  111:User/Hardware/lift_control.c ****             if(stp23l_data.parse_ok == 1)
  422              		.loc 1 111 27
  423 0004 064B     		ldr	r3, .L34
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 11
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 11
 
 
  424 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -606,7 +606,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  426 0008 012B     		cmp	r3, #1
  427 000a 07D1     		bne	.L33
  112:User/Hardware/lift_control.c ****         {
- 113:User/Hardware/lift_control.c ****             lift_height_final = STP23L_GetFinalDistPerFrame(); // ºËÐÄµ÷ÓÃ
+ 113:User/Hardware/lift_control.c ****             lift_height_final = STP23L_GetFinalDistPerFrame(); // ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½
  428              		.loc 1 113 33
  429 000c FFF7FEFF 		bl	STP23L_GetFinalDistPerFrame
  430 0010 0346     		mov	r3, r0
@@ -614,14 +614,14 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  432              		.loc 1 113 31 discriminator 1
  433 0014 034B     		ldr	r3, .L34+4
  434 0016 1A80     		strh	r2, [r3]	@ movhi
- 114:User/Hardware/lift_control.c ****             STP23L_ClearOkFlag(); // Çå³ý±êÖ¾£¬×¼±¸ÏÂÒ»Ö¡½âÎö
+ 114:User/Hardware/lift_control.c ****             STP23L_ClearOkFlag(); // ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½Ò»Ö¡ï¿½ï¿½ï¿½ï¿½
  435              		.loc 1 114 13
  436 0018 FFF7FEFF 		bl	STP23L_ClearOkFlag
  437              	.L33:
  115:User/Hardware/lift_control.c ****         }
- 116:User/Hardware/lift_control.c ****     // Ê¾Àý£º¼ÙÉè¸ß¶ÈÓÉADC²É¼¯£¬Í¨µÀ1
+ 116:User/Hardware/lift_control.c ****     // Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ï¿½ADCï¿½É¼ï¿½ï¿½ï¿½Í¨ï¿½ï¿½1
  117:User/Hardware/lift_control.c ****     // lift_current_height = HAL_ADC_GetValue(&hadc1);
- 118:User/Hardware/lift_control.c ****     // ´Ë´¦Áô¿Õ£¬Çë¸ù¾ÝÊµ¼ÊÓ²¼þÊµÏÖ
+ 118:User/Hardware/lift_control.c ****     // ï¿½Ë´ï¿½ï¿½ï¿½ï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ó²ï¿½ï¿½Êµï¿½ï¿½
  119:User/Hardware/lift_control.c **** }
  438              		.loc 1 119 1
  439 001c 00BF     		nop
@@ -643,8 +643,8 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  457              	.LFB153:
  120:User/Hardware/lift_control.c **** 
  121:User/Hardware/lift_control.c **** /**
- 122:User/Hardware/lift_control.c ****  * @brief  »ñÈ¡µ±Ç°¸ß¶È
- 123:User/Hardware/lift_control.c ****  * @retval µ±Ç°¸ß¶ÈÖµ
+ 122:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ß¶ï¿½
+ 123:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½Ç°ï¿½ß¶ï¿½Öµ
  124:User/Hardware/lift_control.c ****  */
  125:User/Hardware/lift_control.c **** uint16_t Lift_GetHeight(void)
  126:User/Hardware/lift_control.c **** {
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  465              		.cfi_def_cfa_offset 4
  466              		.cfi_offset 7, -4
  467 0002 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 12
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 12
 
 
  468              	.LCFI33:
@@ -693,13 +693,13 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  497              	Motor_Forward:
  498              	.LFB154:
  129:User/Hardware/lift_control.c **** 
- 130:User/Hardware/lift_control.c **** /* **************** µ×²ãµç»ú¿ØÖÆ£¨ÓëÄúÌá¹©µÄ´úÂëÒ»ÖÂ£© **************** */
+ 130:User/Hardware/lift_control.c **** /* **************** ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½Ä´ï¿½ï¿½ï¿½Ò»ï¿½Â£ï¿½ ********
  131:User/Hardware/lift_control.c **** 
  132:User/Hardware/lift_control.c **** /**
- 133:User/Hardware/lift_control.c ****  * @brief  µç»úÕý×ª£¨ÉÏÉý£©
- 134:User/Hardware/lift_control.c ****  * @note   IN1(PA0)=µÍµçÆ½ÎüºÏ£¬IN2(PA2)=¸ßµçÆ½¶Ï¿ª ¡ú µç»úÕý×ª
- 135:User/Hardware/lift_control.c ****  * @param  ÎÞ
- 136:User/Hardware/lift_control.c ****  * @retval ÎÞ
+ 133:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ 134:User/Hardware/lift_control.c ****  * @note   IN1(PA0)=ï¿½Íµï¿½Æ½ï¿½ï¿½ï¿½Ï£ï¿½IN2(PA2)=ï¿½ßµï¿½Æ½ï¿½Ï¿ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½×ª
+ 135:User/Hardware/lift_control.c ****  * @param  ï¿½ï¿½
+ 136:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½
  137:User/Hardware/lift_control.c ****  */
  138:User/Hardware/lift_control.c **** static void Motor_Forward(void)
  139:User/Hardware/lift_control.c **** {
@@ -717,8 +717,8 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  510              		.cfi_def_cfa_register 7
  140:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_ON);
  511              		.loc 1 140 5
- 512 0004 0022     		movs	r2, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 13
+ 512 0004 0122     		movs	r2, #1
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 13
 
 
  513 0006 0121     		movs	r1, #1
@@ -726,7 +726,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  515 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
  141:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
  516              		.loc 1 141 5
- 517 000e 0122     		movs	r2, #1
+ 517 000e 0022     		movs	r2, #0
  518 0010 0421     		movs	r1, #4
  519 0012 0248     		ldr	r0, .L41
  520 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
@@ -749,10 +749,10 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  538              	.LFB155:
  143:User/Hardware/lift_control.c **** 
  144:User/Hardware/lift_control.c **** /**
- 145:User/Hardware/lift_control.c ****  * @brief  µç»ú·´×ª£¨ÏÂ½µ£©
- 146:User/Hardware/lift_control.c ****  * @note   IN1(PA0)=¸ßµçÆ½¶Ï¿ª£¬IN2(PA2)=µÍµçÆ½ÎüºÏ ¡ú µç»ú·´×ª
- 147:User/Hardware/lift_control.c ****  * @param  ÎÞ
- 148:User/Hardware/lift_control.c ****  * @retval ÎÞ
+ 145:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½
+ 146:User/Hardware/lift_control.c ****  * @note   IN1(PA0)=ï¿½ßµï¿½Æ½ï¿½Ï¿ï¿½ï¿½ï¿½IN2(PA2)=ï¿½Íµï¿½Æ½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½×
+ 147:User/Hardware/lift_control.c ****  * @param  ï¿½ï¿½
+ 148:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½
  149:User/Hardware/lift_control.c ****  */
  150:User/Hardware/lift_control.c **** static void Motor_Reverse(void)
  151:User/Hardware/lift_control.c **** {
@@ -770,15 +770,15 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  550              		.cfi_def_cfa_register 7
  152:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
  551              		.loc 1 152 5
- 552 0004 0122     		movs	r2, #1
+ 552 0004 0022     		movs	r2, #0
  553 0006 0121     		movs	r1, #1
  554 0008 0448     		ldr	r0, .L44
  555 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
  153:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_ON);
  556              		.loc 1 153 5
- 557 000e 0022     		movs	r2, #0
+ 557 000e 0122     		movs	r2, #1
  558 0010 0421     		movs	r1, #4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 14
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 14
 
 
  559 0012 0248     		ldr	r0, .L44
@@ -802,10 +802,10 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  578              	.LFB156:
  155:User/Hardware/lift_control.c **** 
  156:User/Hardware/lift_control.c **** /**
- 157:User/Hardware/lift_control.c ****  * @brief  µç»úÍ£Ö¹
- 158:User/Hardware/lift_control.c ****  * @note   Á½Â·¼ÌµçÆ÷¾ù¶Ï¿ª£¨¸ßµçÆ½£©£¬µç»úÁ½¶ËÐü¿Õ
- 159:User/Hardware/lift_control.c ****  * @param  ÎÞ
- 160:User/Hardware/lift_control.c ****  * @retval ÎÞ
+ 157:User/Hardware/lift_control.c ****  * @brief  ï¿½ï¿½ï¿½Í£Ö¹
+ 158:User/Hardware/lift_control.c ****  * @note   ï¿½ï¿½Â·ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ï¿½ßµï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ 159:User/Hardware/lift_control.c ****  * @param  ï¿½ï¿½
+ 160:User/Hardware/lift_control.c ****  * @retval ï¿½ï¿½
  161:User/Hardware/lift_control.c ****  */
  162:User/Hardware/lift_control.c **** static void Motor_Stop(void)
  163:User/Hardware/lift_control.c **** {
@@ -821,13 +821,13 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  588 0002 00AF     		add	r7, sp, #0
  589              	.LCFI41:
  590              		.cfi_def_cfa_register 7
- 164:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
+ 164:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_ON);
  591              		.loc 1 164 5
  592 0004 0122     		movs	r2, #1
  593 0006 0121     		movs	r1, #1
  594 0008 0448     		ldr	r0, .L47
  595 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 165:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_OFF);
+ 165:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY2_PORT, RELAY2_PIN, RELAY_ON);
  596              		.loc 1 165 5
  597 000e 0122     		movs	r2, #1
  598 0010 0421     		movs	r1, #4
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  602 0018 00BF     		nop
  603 001a 80BD     		pop	{r7, pc}
  604              	.L48:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 15
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 15
 
 
  605              		.align	2
@@ -853,55 +853,55 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 1
  615              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
  616              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
  617              		.file 7 "User/Hardware/lift_control.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s 			page 16
+ARM GAS  C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 lift_control.c
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:20     .text.STP23L_ClearOkFlag:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:25     .text.STP23L_ClearOkFlag:00000000 STP23L_ClearOkFlag
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:58     .text.STP23L_ClearOkFlag:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:66     .data.lift_state:00000000 lift_state
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:73     .bss.lift_current_height:00000000 lift_current_height
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:70     .bss.lift_current_height:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:80     .bss.lift_height_final:00000000 lift_height_final
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:77     .bss.lift_height_final:00000000 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:83     .text.Lift_Init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:89     .text.Lift_Init:00000000 Lift_Init
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:577    .text.Motor_Stop:00000000 Motor_Stop
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:119    .text.Lift_Init:00000018 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:125    .text.Lift_Up:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:131    .text.Lift_Up:00000000 Lift_Up
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:163    .text.Lift_Up:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:168    .text.Lift_Down:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:174    .text.Lift_Down:00000000 Lift_Down
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:206    .text.Lift_Down:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:211    .text.Lift_Stop:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:217    .text.Lift_Stop:00000000 Lift_Stop
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:249    .text.Lift_Stop:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:254    .text.Lift_SetState:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:260    .text.Lift_SetState:00000000 Lift_SetState
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:300    .text.Lift_SetState:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:305    .text.Lift_GetState:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:311    .text.Lift_GetState:00000000 Lift_GetState
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:342    .text.Lift_GetState:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:347    .text.Lift_UpdateMotor:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:353    .text.Lift_UpdateMotor:00000000 Lift_UpdateMotor
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:497    .text.Motor_Forward:00000000 Motor_Forward
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:537    .text.Motor_Reverse:00000000 Motor_Reverse
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:397    .text.Lift_UpdateMotor:00000028 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:402    .text.Lift_RefreshHeight:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:408    .text.Lift_RefreshHeight:00000000 Lift_RefreshHeight
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:444    .text.Lift_RefreshHeight:00000020 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:450    .text.Lift_GetHeight:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:456    .text.Lift_GetHeight:00000000 Lift_GetHeight
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:487    .text.Lift_GetHeight:00000014 $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:492    .text.Motor_Forward:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:527    .text.Motor_Forward:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:532    .text.Motor_Reverse:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:567    .text.Motor_Reverse:0000001c $d
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:572    .text.Motor_Stop:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\ccRRfNoH.s:607    .text.Motor_Stop:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:20     .text.STP23L_ClearOkFlag:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:25     .text.STP23L_ClearOkFlag:00000000 STP23L_ClearOkFlag
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:58     .text.STP23L_ClearOkFlag:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:66     .data.lift_state:00000000 lift_state
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:73     .bss.lift_current_height:00000000 lift_current_height
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:70     .bss.lift_current_height:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:80     .bss.lift_height_final:00000000 lift_height_final
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:77     .bss.lift_height_final:00000000 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:83     .text.Lift_Init:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:89     .text.Lift_Init:00000000 Lift_Init
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:577    .text.Motor_Stop:00000000 Motor_Stop
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:119    .text.Lift_Init:00000018 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:125    .text.Lift_Up:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:131    .text.Lift_Up:00000000 Lift_Up
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:163    .text.Lift_Up:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:168    .text.Lift_Down:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:174    .text.Lift_Down:00000000 Lift_Down
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:206    .text.Lift_Down:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:211    .text.Lift_Stop:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:217    .text.Lift_Stop:00000000 Lift_Stop
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:249    .text.Lift_Stop:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:254    .text.Lift_SetState:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:260    .text.Lift_SetState:00000000 Lift_SetState
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:300    .text.Lift_SetState:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:305    .text.Lift_GetState:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:311    .text.Lift_GetState:00000000 Lift_GetState
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:342    .text.Lift_GetState:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:347    .text.Lift_UpdateMotor:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:353    .text.Lift_UpdateMotor:00000000 Lift_UpdateMotor
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:497    .text.Motor_Forward:00000000 Motor_Forward
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:537    .text.Motor_Reverse:00000000 Motor_Reverse
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:397    .text.Lift_UpdateMotor:00000028 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:402    .text.Lift_RefreshHeight:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:408    .text.Lift_RefreshHeight:00000000 Lift_RefreshHeight
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:444    .text.Lift_RefreshHeight:00000020 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:450    .text.Lift_GetHeight:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:456    .text.Lift_GetHeight:00000000 Lift_GetHeight
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:487    .text.Lift_GetHeight:00000014 $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:492    .text.Motor_Forward:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:527    .text.Motor_Forward:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:532    .text.Motor_Reverse:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:567    .text.Motor_Reverse:0000001c $d
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:572    .text.Motor_Stop:00000000 $t
+C:\Users\Godwin\AppData\Local\Temp\ccW0F5sE.s:607    .text.Motor_Stop:0000001c $d
 
 UNDEFINED SYMBOLS
 stp23l_data

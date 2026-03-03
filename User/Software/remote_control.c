@@ -74,7 +74,7 @@ void Head_Motor_Control_Updata(void)
     }
 }
 
-void Up_Down_Motor_Control(void)
+void Up_Down_Motor_Control_Updata(void)
 {
 
     switch (SBUS_CH.CH7)
@@ -86,7 +86,6 @@ void Up_Down_Motor_Control(void)
         lift_state = LIFT_DOWN;
         break;
     case MID_VALUE:
-    default: // 兜底，确保任何情况都有处理
         lift_state = LIFT_STOP;
         break;
     }

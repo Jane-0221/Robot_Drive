@@ -240,6 +240,7 @@ void Remote_control_Task(void *argument)
     osDelay(1);
     Head_Motor_Control_Updata();
     osDelay(1);
+    Up_Down_Motor_Control_Updata();
   }
   /* USER CODE END Remote_control_Task */
 }
@@ -280,6 +281,7 @@ void Lift_control_Task(void *argument)
     osDelay(1);
     Pump_Update();
     osDelay(1);
+    Lift_UpdateMotor();
   }
   /* USER CODE END Lift_control_Task */
 }
