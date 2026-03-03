@@ -62,63 +62,63 @@ osThreadId_t Remote_controlHandle;
 const osThreadAttr_t Remote_control_attributes = {
     .name = "Remote_control",
     .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityNormal1,
+    .priority = (osPriority_t)osPriorityRealtime,
 };
 /* Definitions for Arm_MT */
 osThreadId_t Arm_MTHandle;
 const osThreadAttr_t Arm_MT_attributes = {
     .name = "Arm_MT",
     .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityNormal,
+    .priority = (osPriority_t)osPriorityHigh1,
 };
 /* Definitions for Lift_control */
 osThreadId_t Lift_controlHandle;
 const osThreadAttr_t Lift_control_attributes = {
     .name = "Lift_control",
     .stack_size = 128 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+    .priority = (osPriority_t)osPriorityHigh2,
 };
 /* Definitions for Motor_control */
 osThreadId_t Motor_controlHandle;
 const osThreadAttr_t Motor_control_attributes = {
     .name = "Motor_control",
     .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+    .priority = (osPriority_t)osPriorityLow1,
 };
 /* Definitions for Head */
 osThreadId_t HeadHandle;
 const osThreadAttr_t Head_attributes = {
     .name = "Head",
     .stack_size = 128 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+    .priority = (osPriority_t)osPriorityHigh3,
 };
 /* Definitions for Arm_update */
 osThreadId_t Arm_updateHandle;
 const osThreadAttr_t Arm_update_attributes = {
     .name = "Arm_update",
     .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+    .priority = (osPriority_t)osPriorityHigh2,
 };
 /* Definitions for Log_and_debug */
 osThreadId_t Log_and_debugHandle;
 const osThreadAttr_t Log_and_debug_attributes = {
     .name = "Log_and_debug",
     .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityLow,
+    .priority = (osPriority_t)osPriorityLow3,
 };
 /* Definitions for Arm_SV */
 osThreadId_t Arm_SVHandle;
 const osThreadAttr_t Arm_SV_attributes = {
     .name = "Arm_SV",
     .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityNormal3,
+    .priority = (osPriority_t)osPriorityLow2,
 };
 /* Definitions for PC_Comm */
 osThreadId_t PC_CommHandle;
 const osThreadAttr_t PC_Comm_attributes = {
     .name = "PC_Comm",
     .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityHigh,
+    .priority = (osPriority_t)osPriorityRealtime,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -276,8 +276,8 @@ void Lift_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-     Lift_RefreshHeight();
-
+    Lift_RefreshHeight();
+    osDelay(1);
     Pump_Update();
     osDelay(1);
   }
