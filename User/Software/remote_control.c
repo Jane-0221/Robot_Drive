@@ -25,13 +25,13 @@ void Pump_Control_Updata(void)
 {
     if (SBUS_CH.CH8 == HIGH_VALUE)
     {
-         pump_state = PUMP_ON;
-        //HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET); // PD14//气泵1
+        pump_state = PUMP_ON;
+        // HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET); // PD14//气泵1
     }
     else if (SBUS_CH.CH8 == LOW_VALUE)
     {
-         pump_state = PUMP_OFF;
-        //HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET); // PD14//气泵1
+        pump_state = PUMP_OFF;
+        // HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET); // PD14//气泵1
     }
 }
 void Head_Motor_Control_Updata(void)
@@ -81,16 +81,18 @@ void Up_Down_Motor_Control_Updata(void)
     {
     case HIGH_VALUE:
 
-        //lift_state = LIFT_UP;
+        // lift_state = LIFT_UP;
         Lift_GoToTarget(100);
         break;
     case LOW_VALUE:
-        //lift_state = LIFT_DOWN;
+        // lift_state = LIFT_DOWN;
         Lift_GoToTarget(700);
         break;
     case MID_VALUE:
-        //lift_state = LIFT_STOP;
+        // lift_state = LIFT_STOP;
         Lift_GoToTarget(400);
+        break;
+    default:
         break;
     }
 }

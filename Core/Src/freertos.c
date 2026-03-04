@@ -62,65 +62,65 @@ uint32_t color = 0;
 /* Definitions for Remote_control */
 osThreadId_t Remote_controlHandle;
 const osThreadAttr_t Remote_control_attributes = {
-    .name = "Remote_control",
-    .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityRealtime,
+  .name = "Remote_control",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for Arm_MT */
 osThreadId_t Arm_MTHandle;
 const osThreadAttr_t Arm_MT_attributes = {
-    .name = "Arm_MT",
-    .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityHigh1,
+  .name = "Arm_MT",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityHigh1,
 };
 /* Definitions for Lift_control */
 osThreadId_t Lift_controlHandle;
 const osThreadAttr_t Lift_control_attributes = {
-    .name = "Lift_control",
-    .stack_size = 128 * 4,
-    .priority = (osPriority_t)osPriorityHigh2,
+  .name = "Lift_control",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityHigh2,
 };
 /* Definitions for Motor_control */
 osThreadId_t Motor_controlHandle;
 const osThreadAttr_t Motor_control_attributes = {
-    .name = "Motor_control",
-    .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityLow1,
+  .name = "Motor_control",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityLow1,
 };
 /* Definitions for Head */
 osThreadId_t HeadHandle;
 const osThreadAttr_t Head_attributes = {
-    .name = "Head",
-    .stack_size = 128 * 4,
-    .priority = (osPriority_t)osPriorityHigh3,
+  .name = "Head",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityHigh3,
 };
 /* Definitions for Arm_update */
 osThreadId_t Arm_updateHandle;
 const osThreadAttr_t Arm_update_attributes = {
-    .name = "Arm_update",
-    .stack_size = 512 * 4,
-    .priority = (osPriority_t)osPriorityHigh2,
+  .name = "Arm_update",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityHigh2,
 };
 /* Definitions for Log_and_debug */
 osThreadId_t Log_and_debugHandle;
 const osThreadAttr_t Log_and_debug_attributes = {
-    .name = "Log_and_debug",
-    .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityLow3,
+  .name = "Log_and_debug",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityLow3,
 };
 /* Definitions for Arm_SV */
 osThreadId_t Arm_SVHandle;
 const osThreadAttr_t Arm_SV_attributes = {
-    .name = "Arm_SV",
-    .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityLow2,
+  .name = "Arm_SV",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow2,
 };
 /* Definitions for PC_Comm */
 osThreadId_t PC_CommHandle;
 const osThreadAttr_t PC_Comm_attributes = {
-    .name = "PC_Comm",
-    .stack_size = 256 * 4,
-    .priority = (osPriority_t)osPriorityRealtime,
+  .name = "PC_Comm",
+  .stack_size = 256 * 4,
+  .priority = (osPriority_t) osPriorityRealtime,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -160,12 +160,11 @@ void vApplicationIdleHook(void)
 /* USER CODE END 2 */
 
 /**
- * @brief  FreeRTOS initialization
- * @param  None
- * @retval None
- */
-void MX_FREERTOS_Init(void)
-{
+  * @brief  FreeRTOS initialization
+  * @param  None
+  * @retval None
+  */
+void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
@@ -221,6 +220,7 @@ void MX_FREERTOS_Init(void)
   /* USER CODE BEGIN RTOS_EVENTS */
   /* add events, ... */
   /* USER CODE END RTOS_EVENTS */
+
 }
 
 /* USER CODE BEGIN Header_Remote_control_Task */
@@ -238,7 +238,7 @@ void Remote_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    update_sbus(sbus_data_buffer, &SBUS_CH);//Ò£¿ØÆ÷Êý¾Ý¸üÐÂ
+    update_sbus(sbus_data_buffer, &SBUS_CH);//Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½
     osDelay(1);
     Pump_Control_Updata();
     osDelay(1);
@@ -420,3 +420,4 @@ void PC_Comm_Task(void *argument)
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
+

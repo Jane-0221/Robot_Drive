@@ -4,10 +4,10 @@
 #include "UART_data_txrx.h"
 #include "stp23l.h"
 // 锟斤拷锟斤拷全锟街憋拷锟斤拷
-LIFT_State lift_state = LIFT_STOP;      // 锟斤拷始为停止
-uint16_t lift_current_height = 0;       // 锟斤拷始锟竭讹拷0
+LIFT_State lift_state = LIFT_STOP; // 锟斤拷始为停止
+uint16_t lift_current_height = 0;  // 锟斤拷始锟竭讹拷0
 
-//锟斤拷锟斤拷植锟斤拷锟斤拷锟�
+// 锟斤拷锟斤拷植锟斤拷锟斤拷锟�
 int16_t lift_height_final = 0; // 锟斤拷锟斤拷锟斤拷锟斤拷锟秸高讹拷值锟斤拷每帧锟斤拷锟斤拷一锟轿ｏ拷
 // 锟阶诧拷锟斤拷锟斤拷锟狡猴拷锟斤拷锟斤拷锟节诧拷使锟矫ｏ拷
 static void Motor_Forward(void);
@@ -108,11 +108,11 @@ void Lift_UpdateMotor(void)
 void Lift_RefreshHeight(void)
 {
 
-            if(stp23l_data.parse_ok == 1)
-        {
-            lift_height_final = STP23L_GetFinalDistPerFrame(); // 锟斤拷锟侥碉拷锟斤拷
-            STP23L_ClearOkFlag(); // 锟斤拷锟斤拷锟街撅拷锟阶硷拷锟斤拷锟揭恢★拷锟斤拷锟�
-        }
+    if (stp23l_data.parse_ok == 1)
+    {
+        lift_height_final = STP23L_GetFinalDistPerFrame(); // 锟斤拷锟侥碉拷锟斤拷
+        STP23L_ClearOkFlag();                              // 锟斤拷锟斤拷锟街撅拷锟阶硷拷锟斤拷锟揭恢★拷锟斤拷锟�
+    }
     // 示锟斤拷锟斤拷锟斤拷锟斤拷叨锟斤拷锟紸DC锟缴硷拷锟斤拷通锟斤拷1
     // lift_current_height = HAL_ADC_GetValue(&hadc1);
     // 锟剿达拷锟斤拷锟秸ｏ拷锟斤拷锟斤拷锟绞碉拷锟接诧拷锟绞碉拷锟�
@@ -174,25 +174,30 @@ static void Motor_Stop(void)
 void Lift_GoToTarget(int16_t target_height)
 {
     // 刷新高度值
-    Lift_RefreshHeight();
-    
+    Lift_RefreshHeight();//防止未刷新，错误执行升降命令
+    if (lift_height_final == 0)
+    {
+        return;
+    }
     // 计算目标高度和当前高度的差值
     int16_t height_diff = target_height - lift_height_final;
-    
+
     // 根据差值设置升降机运动状态
-    if (height_diff > 5)
+    switch ((height_diff > 5) ? 1 : (height_diff < -5) ? 2
+                                                       : 0)
     {
+    case 1:
         // 目标高度高于当前高度，向上升
         lift_state = LIFT_UP;
-    }
-    else if (height_diff < -5)
-    {
+        break;
+    case 2:
         // 目标高度低于当前高度，向下降
         lift_state = LIFT_DOWN;
-    }
-    else
-    {
+        break;
+    default:
         // 已经达到目标高度，停止
         lift_state = LIFT_STOP;
+        break;
     }
+    return;
 }
