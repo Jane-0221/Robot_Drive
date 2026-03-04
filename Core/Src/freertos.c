@@ -37,6 +37,8 @@
 #include "head.h"
 #include "lift_control.h"
 #include "arm_sv.h"
+#include "Sbus.h"
+#include "stp23l.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -236,6 +238,8 @@ void Remote_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
+    update_sbus(sbus_data_buffer, &SBUS_CH);//遥控器数据更新
+    osDelay(1);
     Pump_Control_Updata();
     osDelay(1);
     Head_Motor_Control_Updata();
@@ -277,6 +281,7 @@ void Lift_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
+    STP23L_ParseData(stp23l_raw_data, sizeof(stp23l_raw_data));
     Lift_RefreshHeight();
     osDelay(1);
     Pump_Update();
@@ -299,7 +304,7 @@ void Motor_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-
+    
     osDelay(1);
   }
   /* USER CODE END Motor_control_Task */

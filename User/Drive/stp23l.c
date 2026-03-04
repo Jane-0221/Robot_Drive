@@ -1,8 +1,9 @@
 #include "stp23l.h"
 #include <stddef.h>
+#include <string.h>
 /************************* 全局解析数据实例化 *************************/
 STP23L_DataDef stp23l_data = {0};
-
+uint8_t stp23l_raw_data[256];
 /************************* 静态辅助函数：查找4AA包头 *************************/
 static uint16_t STP23L_FindHeader(uint8_t *buf, uint16_t size)
 {
@@ -16,7 +17,23 @@ static uint16_t STP23L_FindHeader(uint8_t *buf, uint16_t size)
     }
     return 0xFFFF; // 未找到包头
 }
-
+void store_stp23l_data(const uint8_t *data, uint16_t size)
+{
+    if (data == NULL || size == 0) {
+        return;
+    }
+    
+    // 确保不会超出缓冲区大小
+    uint16_t copy_size = (size > 256) ? 256 : size;
+    
+    // 使用memcpy安全地复制数据
+    memcpy(stp23l_raw_data, data, copy_size);
+    
+    // 如果数据小于256字节，剩余部分填充0
+    if (copy_size < 256) {
+        memset(stp23l_raw_data + copy_size, 0, 256 - copy_size);
+    }
+}
 /************************* 解析复位函数 *************************/
 void STP23L_Reset(void)
 {

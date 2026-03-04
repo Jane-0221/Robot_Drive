@@ -1,5 +1,41 @@
 #include "Sbus.h"
+#include <string.h>
+
 SBUS_CH_Struct SBUS_CH;
+
+// 定义256字节的数据缓冲区
+ uint8_t sbus_data_buffer[256];
+
+// 存储256字节数据的函数
+void store_sbus_data(const uint8_t *data, uint16_t size)
+{
+    if (data == NULL || size == 0) {
+        return;
+    }
+    
+    // 确保不会超出缓冲区大小
+    uint16_t copy_size = (size > 256) ? 256 : size;
+    
+    // 使用memcpy安全地复制数据
+    memcpy(sbus_data_buffer, data, copy_size);
+    
+    // 如果数据小于256字节，剩余部分填充0
+    if (copy_size < 256) {
+        memset(sbus_data_buffer + copy_size, 0, 256 - copy_size);
+    }
+}
+
+// 获取存储的数据缓冲区指针
+uint8_t* get_sbus_data_buffer(void)
+{
+    return sbus_data_buffer;
+}
+
+// 获取缓冲区大小
+uint16_t get_sbus_buffer_size(void)
+{
+    return 256;
+}
 
 void update_sbus(volatile const uint8_t *sbus_buf,SBUS_CH_Struct *SBUS_CH)
 {
