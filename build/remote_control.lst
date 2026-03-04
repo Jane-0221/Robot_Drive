@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 1
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 1
   35              		.cfi_def_cfa_offset 4
   36              		.cfi_offset 7, -4
   37 0002 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 2
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s 			page 2
 
 
   38              	.LCFI1:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 1
   30:User/Software/remote_control.c ****     }
   31:User/Software/remote_control.c ****     else if (SBUS_CH.CH8 == LOW_VALUE)
   32:User/Software/remote_control.c ****     {
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 3
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s 			page 3
 
 
   33:User/Software/remote_control.c ****          pump_state = PUMP_OFF;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 1
  133              		@ link register save eliminated.
  134 0000 80B4     		push	{r7}
  135              	.LCFI8:
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 4
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s 			page 4
 
 
  136              		.cfi_def_cfa_offset 4
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 1
  179 004e 5A61     		str	r2, [r3, #20]	@ float
   50:User/Software/remote_control.c ****     }
   51:User/Software/remote_control.c ****     else if (SBUS_CH.CH6 == MID_VALUE)
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 5
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s 			page 5
 
 
   52:User/Software/remote_control.c ****     {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 1
  204 0072 5A60     		str	r2, [r3, #4]	@ float
   58:User/Software/remote_control.c ****         duties_tx.duty3 = 0.075;
  205              		.loc 1 58 25
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 6
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s 			page 6
 
 
  206 0074 194B     		ldr	r3, .L13+8
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 1
  250 00b6 9A60     		str	r2, [r3, #8]	@ float
   71:User/Software/remote_control.c ****         duties_tx.duty4 = 0.025;
  251              		.loc 1 71 25
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 7
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s 			page 7
 
 
  252 00b8 084B     		ldr	r3, .L13+8
@@ -413,12 +413,12 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 1
  298              		.cfi_startproc
  299              		@ args = 0, pretend = 0, frame = 0
  300              		@ frame_needed = 1, uses_anonymous_args = 0
- 301              		@ link register save eliminated.
- 302 0000 80B4     		push	{r7}
- 303              	.LCFI12:
- 304              		.cfi_def_cfa_offset 4
- 305              		.cfi_offset 7, -4
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 8
+ 301 0000 80B5     		push	{r7, lr}
+ 302              	.LCFI12:
+ 303              		.cfi_def_cfa_offset 8
+ 304              		.cfi_offset 7, -8
+ 305              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s 			page 8
 
 
  306 0002 00AF     		add	r7, sp, #0
@@ -427,7 +427,7 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 1
   79:User/Software/remote_control.c **** 
   80:User/Software/remote_control.c ****     switch (SBUS_CH.CH7)
  309              		.loc 1 80 20
- 310 0004 114B     		ldr	r3, .L21
+ 310 0004 104B     		ldr	r3, .L21
  311 0006 9B89     		ldrh	r3, [r3, #12]
  312              		.loc 1 80 5
  313 0008 40F29E62 		movw	r2, #1694
@@ -435,105 +435,97 @@ ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 1
  315 000e 0BD0     		beq	.L16
  316 0010 40F29E62 		movw	r2, #1694
  317 0014 9342     		cmp	r3, r2
- 318 0016 13DC     		bgt	.L20
+ 318 0016 15DC     		bgt	.L20
  319 0018 40F26112 		movw	r2, #353
  320 001c 9342     		cmp	r3, r2
  321 001e 07D0     		beq	.L18
  322 0020 B3F5806F 		cmp	r3, #1024
- 323 0024 08D0     		beq	.L19
+ 323 0024 09D0     		beq	.L19
   81:User/Software/remote_control.c ****     {
   82:User/Software/remote_control.c ****     case HIGH_VALUE:
-  83:User/Software/remote_control.c ****         lift_state = LIFT_UP;
-  84:User/Software/remote_control.c ****         break;
-  85:User/Software/remote_control.c ****     case LOW_VALUE:
-  86:User/Software/remote_control.c ****         lift_state = LIFT_DOWN;
-  87:User/Software/remote_control.c ****         break;
-  88:User/Software/remote_control.c ****     case MID_VALUE:
-  89:User/Software/remote_control.c ****         lift_state = LIFT_STOP;
-  90:User/Software/remote_control.c ****         break;
-  91:User/Software/remote_control.c ****     }
-  92:User/Software/remote_control.c **** }
- 324              		.loc 1 92 1
- 325 0026 0BE0     		b	.L20
- 326              	.L16:
-  83:User/Software/remote_control.c ****         break;
- 327              		.loc 1 83 20
- 328 0028 094B     		ldr	r3, .L21+4
- 329 002a 0022     		movs	r2, #0
- 330 002c 1A70     		strb	r2, [r3]
-  84:User/Software/remote_control.c ****     case LOW_VALUE:
- 331              		.loc 1 84 9
- 332 002e 07E0     		b	.L17
- 333              	.L18:
+  83:User/Software/remote_control.c **** 
+  84:User/Software/remote_control.c ****         //lift_state = LIFT_UP;
+  85:User/Software/remote_control.c ****         Lift_GoToTarget(100);
   86:User/Software/remote_control.c ****         break;
- 334              		.loc 1 86 20
- 335 0030 074B     		ldr	r3, .L21+4
- 336 0032 0122     		movs	r2, #1
- 337 0034 1A70     		strb	r2, [r3]
-  87:User/Software/remote_control.c ****     case MID_VALUE:
- 338              		.loc 1 87 9
- 339 0036 03E0     		b	.L17
- 340              	.L19:
+  87:User/Software/remote_control.c ****     case LOW_VALUE:
+  88:User/Software/remote_control.c ****         //lift_state = LIFT_DOWN;
+  89:User/Software/remote_control.c ****         Lift_GoToTarget(400);
+  90:User/Software/remote_control.c ****         break;
+  91:User/Software/remote_control.c ****     case MID_VALUE:
+  92:User/Software/remote_control.c ****         //lift_state = LIFT_STOP;
+  93:User/Software/remote_control.c ****         Lift_GoToTarget(700);
+  94:User/Software/remote_control.c ****         break;
+  95:User/Software/remote_control.c ****     }
+  96:User/Software/remote_control.c **** }
+ 324              		.loc 1 96 1
+ 325 0026 0DE0     		b	.L20
+ 326              	.L16:
+  85:User/Software/remote_control.c ****         break;
+ 327              		.loc 1 85 9
+ 328 0028 6420     		movs	r0, #100
+ 329 002a FFF7FEFF 		bl	Lift_GoToTarget
+  86:User/Software/remote_control.c ****     case LOW_VALUE:
+ 330              		.loc 1 86 9
+ 331 002e 09E0     		b	.L17
+ 332              	.L18:
   89:User/Software/remote_control.c ****         break;
- 341              		.loc 1 89 20
- 342 0038 054B     		ldr	r3, .L21+4
- 343 003a 0222     		movs	r2, #2
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 9
+ 333              		.loc 1 89 9
+ 334 0030 4FF4C870 		mov	r0, #400
+ 335 0034 FFF7FEFF 		bl	Lift_GoToTarget
+  90:User/Software/remote_control.c ****     case MID_VALUE:
+ 336              		.loc 1 90 9
+ 337 0038 04E0     		b	.L17
+ 338              	.L19:
+  93:User/Software/remote_control.c ****         break;
+ 339              		.loc 1 93 9
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s 			page 9
 
 
- 344 003c 1A70     		strb	r2, [r3]
-  90:User/Software/remote_control.c ****     }
- 345              		.loc 1 90 9
- 346 003e 00BF     		nop
- 347              	.L17:
- 348              	.L20:
- 349              		.loc 1 92 1
- 350 0040 00BF     		nop
- 351 0042 BD46     		mov	sp, r7
- 352              	.LCFI14:
- 353              		.cfi_def_cfa_register 13
- 354              		@ sp needed
- 355 0044 5DF8047B 		ldr	r7, [sp], #4
- 356              	.LCFI15:
- 357              		.cfi_restore 7
- 358              		.cfi_def_cfa_offset 0
- 359 0048 7047     		bx	lr
- 360              	.L22:
- 361 004a 00BF     		.align	2
- 362              	.L21:
- 363 004c 00000000 		.word	SBUS_CH
- 364 0050 00000000 		.word	lift_state
- 365              		.cfi_endproc
- 366              	.LFE150:
- 368              		.text
- 369              	.Letext0:
- 370              		.file 2 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/machine/_default_types.h"
- 371              		.file 3 "C:/Users/Godwin/13.2 Rel1/arm-none-eabi/include/sys/_stdint.h"
- 372              		.file 4 "User/Drive/Sbus.h"
- 373              		.file 5 "User/Hardware/arm.h"
- 374              		.file 6 "User/Hardware/lift_control.h"
- 375              		.file 7 "User/Hardware/pump_control.h"
- 376              		.file 8 "User/Hardware/arm_sv.h"
-ARM GAS  C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s 			page 10
+ 340 003a 4FF42F70 		mov	r0, #700
+ 341 003e FFF7FEFF 		bl	Lift_GoToTarget
+  94:User/Software/remote_control.c ****     }
+ 342              		.loc 1 94 9
+ 343 0042 00BF     		nop
+ 344              	.L17:
+ 345              	.L20:
+ 346              		.loc 1 96 1
+ 347 0044 00BF     		nop
+ 348 0046 80BD     		pop	{r7, pc}
+ 349              	.L22:
+ 350              		.align	2
+ 351              	.L21:
+ 352 0048 00000000 		.word	SBUS_CH
+ 353              		.cfi_endproc
+ 354              	.LFE150:
+ 356              		.text
+ 357              	.Letext0:
+ 358              		.file 2 "C:/arm-toolchain/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/i
+ 359              		.file 3 "C:/arm-toolchain/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/i
+ 360              		.file 4 "User/Drive/Sbus.h"
+ 361              		.file 5 "User/Hardware/arm.h"
+ 362              		.file 6 "User/Hardware/pump_control.h"
+ 363              		.file 7 "User/Hardware/arm_sv.h"
+ 364              		.file 8 "User/Hardware/lift_control.h"
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 remote_control.c
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:20     .text.remote_control_init:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:26     .text.remote_control_init:00000000 remote_control_init
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:55     .text.Pump_Control_Updata:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:61     .text.Pump_Control_Updata:00000000 Pump_Control_Updata
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:115    .text.Pump_Control_Updata:00000034 $d
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:121    .text.Head_Motor_Control_Updata:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:127    .text.Head_Motor_Control_Updata:00000000 Head_Motor_Control_Updata
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:278    .text.Head_Motor_Control_Updata:000000d4 $d
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:289    .text.Up_Down_Motor_Control_Updata:00000000 $t
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:295    .text.Up_Down_Motor_Control_Updata:00000000 Up_Down_Motor_Control_Updata
-C:\Users\Godwin\AppData\Local\Temp\cccL5wTE.s:363    .text.Up_Down_Motor_Control_Updata:0000004c $d
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:20     .text.remote_control_init:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:26     .text.remote_control_init:00000000 remote_control_init
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:55     .text.Pump_Control_Updata:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:61     .text.Pump_Control_Updata:00000000 Pump_Control_Updata
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:115    .text.Pump_Control_Updata:00000034 $d
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:121    .text.Head_Motor_Control_Updata:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:127    .text.Head_Motor_Control_Updata:00000000 Head_Motor_Control_Updata
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:278    .text.Head_Motor_Control_Updata:000000d4 $d
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:289    .text.Up_Down_Motor_Control_Updata:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:295    .text.Up_Down_Motor_Control_Updata:00000000 Up_Down_Motor_Control_Updata
+C:\Users\Administrator\AppData\Local\Temp\ccC3lyiD.s:352    .text.Up_Down_Motor_Control_Updata:00000048 $d
 
 UNDEFINED SYMBOLS
 SBUS_CH
 pump_state
 Daran_motor_data
 duties_tx
-lift_state
+Lift_GoToTarget

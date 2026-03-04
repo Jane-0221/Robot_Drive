@@ -20,7 +20,8 @@
       },
       "runToEntryPoint": "main",
       "rtos": "FreeRTOS",
-      "preLaunchTask": "build task"
+      "preLaunchTask": "build task",
+      "gdbPath": "C:\\arm-toolchain\\arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi\\bin\\arm-none-eabi-gdb.exe"
     },
     {
       "name": "DAPlink",
@@ -29,7 +30,6 @@
       "request": "launch",
       "type": "cortex-debug",
       "device": "${workspaceRoot}\\debug\\STM32H723VGTx",
-      
       "svdFile": "${workspaceRoot}\\debug\\STM32H723.svd",
       "servertype": "openocd",
       "configFiles": [
@@ -41,26 +41,9 @@
       },
       "runToEntryPoint": "main",
       "rtos": "FreeRTOS",
-      "preLaunchTask": "build task"
-    },
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [],
-      "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "d:/RM/code/25-EE-code/Core/Src",
-      "program": "d:/RM/code/25-EE-code/Core/Src/build/Debug/outDebug",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
+      "preLaunchTask": "build task",
+      "gdbPath": "C:\\arm-toolchain\\arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi\\bin\\arm-none-eabi-gdb.exe"
+
     }
   ]
 }

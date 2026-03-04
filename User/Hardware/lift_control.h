@@ -31,9 +31,10 @@ void Lift_Down(void);                           // �����½�״̬
 void Lift_Stop(void);                           // ����ֹͣ״̬
 void Lift_SetState(LIFT_State state);           // ����ָ��״̬
 LIFT_State Lift_GetState(void);                  // ��ȡ��ǰ״̬
-void Lift_UpdateMotor(void);                     // ����״̬���µ�����������Ե��ã�
+void Lift_UpdateMotor(void);                     // ����״̬���µ�����������Ե��ã�?
 void Lift_RefreshHeight(void);                   // ˢ�¸߶ȣ��Ӵ�������ȡ��
 uint16_t Lift_GetHeight(void);                    // ��ȡ��ǰ�߶�
+void Lift_GoToTarget(int16_t target_height);    // ���Ƶ�Ŀ��߶�
 
 
 #endif /* __LIFT_CONTROL_H */

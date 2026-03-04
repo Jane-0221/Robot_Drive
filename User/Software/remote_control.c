@@ -80,13 +80,17 @@ void Up_Down_Motor_Control_Updata(void)
     switch (SBUS_CH.CH7)
     {
     case HIGH_VALUE:
-        lift_state = LIFT_UP;
+
+        //lift_state = LIFT_UP;
+        Lift_GoToTarget(100);
         break;
     case LOW_VALUE:
-        lift_state = LIFT_DOWN;
+        //lift_state = LIFT_DOWN;
+        Lift_GoToTarget(700);
         break;
     case MID_VALUE:
-        lift_state = LIFT_STOP;
+        //lift_state = LIFT_STOP;
+        Lift_GoToTarget(400);
         break;
     }
 }
