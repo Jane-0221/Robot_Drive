@@ -122,6 +122,7 @@ User/Hardware/head.c \
 User/Hardware/IMU_updata.c \
 User/Hardware/arm_sv.c \
 User/Hardware/LED.c \
+User/Hardware/uart_protocol.c \
 User/Drive/Sbus.c \
 User/Drive/stp23l.c \
 User/Drive/buzzer.c \

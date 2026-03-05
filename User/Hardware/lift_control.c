@@ -174,30 +174,28 @@ static void Motor_Stop(void)
 void Lift_GoToTarget(int16_t target_height)
 {
     // 刷新高度值
-    Lift_RefreshHeight();//防止未刷新，错误执行升降命令
-    if (lift_height_final == 0)
-    {
-        return;
-    }
+    Lift_RefreshHeight();
+
     // 计算目标高度和当前高度的差值
     int16_t height_diff = target_height - lift_height_final;
 
     // 根据差值设置升降机运动状态
-    switch ((height_diff > 5) ? 1 : (height_diff < -5) ? 2
-                                                       : 0)
+    if (height_diff > 5)
     {
-    case 1:
         // 目标高度高于当前高度，向上升
         lift_state = LIFT_UP;
-        break;
-    case 2:
+        return;
+    }
+    else if (height_diff < -5)
+    {
         // 目标高度低于当前高度，向下降
         lift_state = LIFT_DOWN;
-        break;
-    default:
+        return;
+    }
+    else
+    {
         // 已经达到目标高度，停止
         lift_state = LIFT_STOP;
-        break;
+        return;
     }
-    return;
 }

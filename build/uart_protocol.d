@@ -1,13 +1,5 @@
-build/freertos.o: Core/Src/freertos.c \
- Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
- Core/Inc/FreeRTOSConfig.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
- Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
- Middlewares/Third_Party/FreeRTOS/Source/include/list.h Core/Inc/main.h \
+build/uart_protocol.o: User/Hardware/uart_protocol.c \
+ User/Hardware/uart_protocol.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  Core/Inc/stm32h7xx_hal_conf.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -44,28 +36,8 @@ build/freertos.o: Core/Src/freertos.c \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
  Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
- Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
- Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
- Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- User/Software/remote_control.h User/Software/music.h User/Drive/buzzer.h \
- Core/Inc/tim.h Core/Inc/main.h Core/Inc/gpio.h \
- Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
- User/Hardware/LED.h Core/Inc/iwdg.h User/Hardware/arm.h \
- User/BSP/can_receive_send.h Core/Inc/fdcan.h User/Drive/dm4310_drv.h \
- User/Drive/Robstride04.h User/Drive/Unitree/crc_ccitt.h \
- User/Drive/DrEmpower_can.h User/Hardware/head.h User/Drive/ktech_motor.h \
- User/Hardware/lift_control.h User/Hardware/arm_sv.h User/Drive/Sbus.h \
- User/Drive/stp23l.h User/Hardware/uart_protocol.h
-Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
-Core/Inc/FreeRTOSConfig.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
-Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
-Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-Core/Inc/main.h:
+ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h
+User/Hardware/uart_protocol.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 Core/Inc/stm32h7xx_hal_conf.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h:
@@ -105,28 +77,3 @@ Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
-Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
-Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
-User/Software/remote_control.h:
-User/Software/music.h:
-User/Drive/buzzer.h:
-Core/Inc/tim.h:
-Core/Inc/main.h:
-Core/Inc/gpio.h:
-Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
-User/Hardware/LED.h:
-Core/Inc/iwdg.h:
-User/Hardware/arm.h:
-User/BSP/can_receive_send.h:
-Core/Inc/fdcan.h:
-User/Drive/dm4310_drv.h:
-User/Drive/Robstride04.h:
-User/Drive/Unitree/crc_ccitt.h:
-User/Drive/DrEmpower_can.h:
-User/Hardware/head.h:
-User/Drive/ktech_motor.h:
-User/Hardware/lift_control.h:
-User/Hardware/arm_sv.h:
-User/Drive/Sbus.h:
-User/Drive/stp23l.h:
-User/Hardware/uart_protocol.h:

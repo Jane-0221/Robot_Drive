@@ -39,6 +39,7 @@
 #include "arm_sv.h"
 #include "Sbus.h"
 #include "stp23l.h"
+#include "uart_protocol.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -371,7 +372,7 @@ void Log_and_debug_Task(void *argument)
   for (;;)
   {
     // Music_play(melody);
-    printf("hello\n");
+    //printf("hello\n");
     osDelay(1);
   }
   /* USER CODE END Log_and_debug_Task */
@@ -410,6 +411,8 @@ void PC_Comm_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
+    // �����������͵�����
+    unpack_dn_frame(uart_protocol_raw_data, &pc_dn_data);
     osDelay(1);
     HAL_IWDG_Refresh(&hiwdg1);
   }

@@ -104,21 +104,23 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
   if (huart == &huart5) // 遥控器
   {
     // DT7_decode_data(UART5_data.rev_data);
-    //update_sbus(UART5_data.rev_data, &SBUS_CH);//直接解析数据
-    store_sbus_data(UART5_data.rev_data, Size);//收到数据进行储存
+    // update_sbus(UART5_data.rev_data, &SBUS_CH);//直接解析数据
+    store_sbus_data(UART5_data.rev_data, Size); // 收到数据进行储存
     HAL_UARTEx_ReceiveToIdle_DMA(huart, UART5_data.rev_data, UART_BUFFER_SIZE);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
   else if (huart == &huart7) // 升降杆高度读取
   {
-    //STP23L_ParseData(UART7_data.rev_data, Size);
+    // STP23L_ParseData(UART7_data.rev_data, Size);
     store_stp23l_data(UART7_data.rev_data, Size); // 只存储，不解析
     HAL_UARTEx_ReceiveToIdle_DMA(huart, UART7_data.rev_data, UART_BUFFER_SIZE);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
-  else if (huart == &huart10) // 图传链路裁判系统
+  else if (huart == &huart10) // 和主机间通信
   {
-    
+    store_uart_protocol_data(UART10_data.rev_data, Size); // 存储数据
+    HAL_UARTEx_ReceiveToIdle_DMA(huart, UART10_data.rev_data, UART_BUFFER_SIZE);
+    __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
   else if (huart == &huart1)
   {
