@@ -175,7 +175,10 @@ void Lift_GoToTarget(int16_t target_height)
 {
     // 刷新高度值
     Lift_RefreshHeight();
-
+    if (lift_height_final == 0)
+    {
+        return;
+    }
     // 计算目标高度和当前高度的差值
     int16_t height_diff = target_height - lift_height_final;
 

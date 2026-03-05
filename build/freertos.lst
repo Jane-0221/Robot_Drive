@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
   56              		.section	.rodata
   57 000f 00       		.align	2
   58              	.LC1:
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 2
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 2
 
 
   59 0010 41726D5F 		.ascii	"Arm_MT\000"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  108              	Motor_control_attributes:
  109 0000 28000000 		.word	.LC3
  110 0004 00000000 		.space	16
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 3
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 3
 
 
  110      00000000 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  158              		.global	Log_and_debugHandle
  159              		.section	.bss.Log_and_debugHandle,"aw",%nobits
  160              		.align	2
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 4
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 4
 
 
  163              	Log_and_debugHandle:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  213 0064 50435F43 		.ascii	"PC_Comm\000"
  213      6F6D6D00 
  214              		.section	.rodata.PC_Comm_attributes,"a"
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 5
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 5
 
 
  215              		.align	2
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
   36:Core/Src/freertos.c **** #include "arm.h"
   37:Core/Src/freertos.c **** #include "head.h"
   38:Core/Src/freertos.c **** #include "lift_control.h"
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 6
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 6
 
 
   39:Core/Src/freertos.c **** #include "arm_sv.h"
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
   93:Core/Src/freertos.c **** const osThreadAttr_t Head_attributes = {
   94:Core/Src/freertos.c ****   .name = "Head",
   95:Core/Src/freertos.c ****   .stack_size = 128 * 4,
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 7
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 7
 
 
   96:Core/Src/freertos.c ****   .priority = (osPriority_t) osPriorityHigh3,
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  150:Core/Src/freertos.c **** {
  233              		.loc 1 150 1
  234              		.cfi_startproc
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 8
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 8
 
 
  235              		@ args = 0, pretend = 0, frame = 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  273              	.LCFI4:
  274              		.cfi_def_cfa_offset 8
  275              		.cfi_offset 7, -8
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 9
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 9
 
 
  276              		.cfi_offset 14, -4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  301 0028 2248     		ldr	r0, .L3+28
  302 002a FFF7FEFF 		bl	osThreadNew
  303 002e 0346     		mov	r3, r0
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 10
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 10
 
 
  304              		.loc 1 197 22 discriminator 1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  343              		.loc 1 212 18
  344 0074 1D4A     		ldr	r2, .L3+84
  345 0076 0021     		movs	r1, #0
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 11
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 11
 
 
  346 0078 1D48     		ldr	r0, .L3+88
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  387 00e8 00000000 		.word	Log_and_debugHandle
  388 00ec 00000000 		.word	Arm_SV_attributes
  389 00f0 00000000 		.word	Arm_SV_Task
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 12
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 12
 
 
  390 00f4 00000000 		.word	Arm_SVHandle
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  243:Core/Src/freertos.c ****     osDelay(1);
  429              		.loc 1 243 5
  430 0014 0120     		movs	r0, #1
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 13
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 13
 
 
  431 0016 FFF7FEFF 		bl	osDelay
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  468 0000 80B5     		push	{r7, lr}
  469              	.LCFI9:
  470              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 14
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 14
 
 
  471              		.cfi_offset 7, -8
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  507              		.cfi_def_cfa_offset 8
  508              		.cfi_offset 7, -8
  509              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 15
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 15
 
 
  510 0002 82B0     		sub	sp, sp, #8
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  291:Core/Src/freertos.c ****   }
  292:Core/Src/freertos.c ****   /* USER CODE END Lift_control_Task */
  293:Core/Src/freertos.c **** }
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 16
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 16
 
 
  294:Core/Src/freertos.c **** 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  317:Core/Src/freertos.c ****  * @param argument: Not used
  318:Core/Src/freertos.c ****  * @retval None
  319:Core/Src/freertos.c ****  */
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 17
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 17
 
 
  320:Core/Src/freertos.c **** /* USER CODE END Header_Head_Task */
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  336:Core/Src/freertos.c **** /* USER CODE BEGIN Header_Arm_update_Task */
  337:Core/Src/freertos.c **** /**
  338:Core/Src/freertos.c ****  * @brief Function implementing the Arm_update thread.
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 18
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 18
 
 
  339:Core/Src/freertos.c ****  * @param argument: Not used
@@ -1061,110 +1061,95 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  651 0014 F8E7     		b	.L20
  652              		.cfi_endproc
  653              	.LFE159:
- 655              		.section	.rodata
- 656              		.align	2
- 657              	.LC9:
- 658 006c 68656C6C 		.ascii	"hello\000"
- 658      6F00
- 659              		.section	.text.Log_and_debug_Task,"ax",%progbits
- 660              		.align	1
- 661              		.global	Log_and_debug_Task
- 662              		.syntax unified
- 663              		.thumb
- 664              		.thumb_func
- 666              	Log_and_debug_Task:
- 667              	.LFB160:
+ 655              		.section	.text.Log_and_debug_Task,"ax",%progbits
+ 656              		.align	1
+ 657              		.global	Log_and_debug_Task
+ 658              		.syntax unified
+ 659              		.thumb
+ 660              		.thumb_func
+ 662              	Log_and_debug_Task:
+ 663              	.LFB160:
  351:Core/Src/freertos.c ****   }
  352:Core/Src/freertos.c ****   /* USER CODE END Arm_update_Task */
  353:Core/Src/freertos.c **** }
  354:Core/Src/freertos.c **** 
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 19
-
-
  355:Core/Src/freertos.c **** /* USER CODE BEGIN Header_Log_and_debug_Task */
  356:Core/Src/freertos.c **** /**
  357:Core/Src/freertos.c ****  * @brief Function implementing the Log_and_debug thread.
  358:Core/Src/freertos.c ****  * @param argument: Not used
  359:Core/Src/freertos.c ****  * @retval None
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 19
+
+
  360:Core/Src/freertos.c ****  */
  361:Core/Src/freertos.c **** /* USER CODE END Header_Log_and_debug_Task */
  362:Core/Src/freertos.c **** void Log_and_debug_Task(void *argument)
  363:Core/Src/freertos.c **** {
- 668              		.loc 1 363 1
- 669              		.cfi_startproc
- 670              		@ args = 0, pretend = 0, frame = 8
- 671              		@ frame_needed = 1, uses_anonymous_args = 0
- 672 0000 80B5     		push	{r7, lr}
- 673              	.LCFI24:
- 674              		.cfi_def_cfa_offset 8
- 675              		.cfi_offset 7, -8
- 676              		.cfi_offset 14, -4
- 677 0002 82B0     		sub	sp, sp, #8
- 678              	.LCFI25:
- 679              		.cfi_def_cfa_offset 16
- 680 0004 00AF     		add	r7, sp, #0
- 681              	.LCFI26:
- 682              		.cfi_def_cfa_register 7
- 683 0006 7860     		str	r0, [r7, #4]
+ 664              		.loc 1 363 1
+ 665              		.cfi_startproc
+ 666              		@ args = 0, pretend = 0, frame = 8
+ 667              		@ frame_needed = 1, uses_anonymous_args = 0
+ 668 0000 80B5     		push	{r7, lr}
+ 669              	.LCFI24:
+ 670              		.cfi_def_cfa_offset 8
+ 671              		.cfi_offset 7, -8
+ 672              		.cfi_offset 14, -4
+ 673 0002 82B0     		sub	sp, sp, #8
+ 674              	.LCFI25:
+ 675              		.cfi_def_cfa_offset 16
+ 676 0004 00AF     		add	r7, sp, #0
+ 677              	.LCFI26:
+ 678              		.cfi_def_cfa_register 7
+ 679 0006 7860     		str	r0, [r7, #4]
  364:Core/Src/freertos.c ****   /* USER CODE BEGIN Log_and_debug_Task */
  365:Core/Src/freertos.c ****   LEDshowcolor(RED);
- 684              		.loc 1 365 3
- 685 0008 4FF47F00 		mov	r0, #16711680
- 686 000c FFF7FEFF 		bl	LEDshowcolor
+ 680              		.loc 1 365 3
+ 681 0008 4FF47F00 		mov	r0, #16711680
+ 682 000c FFF7FEFF 		bl	LEDshowcolor
  366:Core/Src/freertos.c ****   osDelay(50);
- 687              		.loc 1 366 3
- 688 0010 3220     		movs	r0, #50
- 689 0012 FFF7FEFF 		bl	osDelay
+ 683              		.loc 1 366 3
+ 684 0010 3220     		movs	r0, #50
+ 685 0012 FFF7FEFF 		bl	osDelay
  367:Core/Src/freertos.c ****   LEDshowcolor(BLUE);
- 690              		.loc 1 367 3
- 691 0016 FF20     		movs	r0, #255
- 692 0018 FFF7FEFF 		bl	LEDshowcolor
+ 686              		.loc 1 367 3
+ 687 0016 FF20     		movs	r0, #255
+ 688 0018 FFF7FEFF 		bl	LEDshowcolor
  368:Core/Src/freertos.c ****   osDelay(50);
- 693              		.loc 1 368 3
- 694 001c 3220     		movs	r0, #50
- 695 001e FFF7FEFF 		bl	osDelay
+ 689              		.loc 1 368 3
+ 690 001c 3220     		movs	r0, #50
+ 691 001e FFF7FEFF 		bl	osDelay
  369:Core/Src/freertos.c ****   LEDshowcolor(GREEN);
- 696              		.loc 1 369 3
- 697 0022 4FF47F40 		mov	r0, #65280
- 698 0026 FFF7FEFF 		bl	LEDshowcolor
+ 692              		.loc 1 369 3
+ 693 0022 4FF47F40 		mov	r0, #65280
+ 694 0026 FFF7FEFF 		bl	LEDshowcolor
  370:Core/Src/freertos.c ****   osDelay(50);
- 699              		.loc 1 370 3
- 700 002a 3220     		movs	r0, #50
- 701 002c FFF7FEFF 		bl	osDelay
- 702              	.L22:
+ 695              		.loc 1 370 3
+ 696 002a 3220     		movs	r0, #50
+ 697 002c FFF7FEFF 		bl	osDelay
+ 698              	.L22:
  371:Core/Src/freertos.c ****   /* Infinite loop */
  372:Core/Src/freertos.c ****   for (;;)
  373:Core/Src/freertos.c ****   {
  374:Core/Src/freertos.c ****     // Music_play(melody);
- 375:Core/Src/freertos.c ****     printf("hello\n");
- 703              		.loc 1 375 5
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 20
-
-
- 704 0030 0348     		ldr	r0, .L23
- 705 0032 FFF7FEFF 		bl	puts
+ 375:Core/Src/freertos.c ****     //printf("hello\n");
  376:Core/Src/freertos.c ****     osDelay(1);
- 706              		.loc 1 376 5 discriminator 1
- 707 0036 0120     		movs	r0, #1
- 708 0038 FFF7FEFF 		bl	osDelay
- 375:Core/Src/freertos.c ****     osDelay(1);
- 709              		.loc 1 375 5
- 710 003c 00BF     		nop
- 711 003e F7E7     		b	.L22
- 712              	.L24:
- 713              		.align	2
- 714              	.L23:
- 715 0040 6C000000 		.word	.LC9
- 716              		.cfi_endproc
- 717              	.LFE160:
- 719              		.section	.text.Arm_SV_Task,"ax",%progbits
- 720              		.align	1
- 721              		.global	Arm_SV_Task
- 722              		.syntax unified
- 723              		.thumb
- 724              		.thumb_func
- 726              	Arm_SV_Task:
- 727              	.LFB161:
+ 699              		.loc 1 376 5 discriminator 1
+ 700 0030 0120     		movs	r0, #1
+ 701 0032 FFF7FEFF 		bl	osDelay
+ 702 0036 FBE7     		b	.L22
+ 703              		.cfi_endproc
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 20
+
+
+ 704              	.LFE160:
+ 706              		.section	.text.Arm_SV_Task,"ax",%progbits
+ 707              		.align	1
+ 708              		.global	Arm_SV_Task
+ 709              		.syntax unified
+ 710              		.thumb
+ 711              		.thumb_func
+ 713              	Arm_SV_Task:
+ 714              	.LFB161:
  377:Core/Src/freertos.c ****   }
  378:Core/Src/freertos.c ****   /* USER CODE END Log_and_debug_Task */
  379:Core/Src/freertos.c **** }
@@ -1178,52 +1163,52 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  387:Core/Src/freertos.c **** /* USER CODE END Header_Arm_SV_Task */
  388:Core/Src/freertos.c **** void Arm_SV_Task(void *argument)
  389:Core/Src/freertos.c **** {
- 728              		.loc 1 389 1
- 729              		.cfi_startproc
- 730              		@ args = 0, pretend = 0, frame = 8
- 731              		@ frame_needed = 1, uses_anonymous_args = 0
- 732 0000 80B5     		push	{r7, lr}
- 733              	.LCFI27:
- 734              		.cfi_def_cfa_offset 8
- 735              		.cfi_offset 7, -8
- 736              		.cfi_offset 14, -4
- 737 0002 82B0     		sub	sp, sp, #8
- 738              	.LCFI28:
- 739              		.cfi_def_cfa_offset 16
- 740 0004 00AF     		add	r7, sp, #0
- 741              	.LCFI29:
- 742              		.cfi_def_cfa_register 7
- 743 0006 7860     		str	r0, [r7, #4]
- 744              	.L26:
+ 715              		.loc 1 389 1
+ 716              		.cfi_startproc
+ 717              		@ args = 0, pretend = 0, frame = 8
+ 718              		@ frame_needed = 1, uses_anonymous_args = 0
+ 719 0000 80B5     		push	{r7, lr}
+ 720              	.LCFI27:
+ 721              		.cfi_def_cfa_offset 8
+ 722              		.cfi_offset 7, -8
+ 723              		.cfi_offset 14, -4
+ 724 0002 82B0     		sub	sp, sp, #8
+ 725              	.LCFI28:
+ 726              		.cfi_def_cfa_offset 16
+ 727 0004 00AF     		add	r7, sp, #0
+ 728              	.LCFI29:
+ 729              		.cfi_def_cfa_register 7
+ 730 0006 7860     		str	r0, [r7, #4]
+ 731              	.L24:
  390:Core/Src/freertos.c ****   /* USER CODE BEGIN Arm_SV_Task */
  391:Core/Src/freertos.c ****   /* Infinite loop */
  392:Core/Src/freertos.c **** 
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 21
-
-
  393:Core/Src/freertos.c ****   for (;;)
  394:Core/Src/freertos.c ****   {
  395:Core/Src/freertos.c ****     ARM_SV_Tx_Rx();
- 745              		.loc 1 395 5
- 746 0008 FFF7FEFF 		bl	ARM_SV_Tx_Rx
+ 732              		.loc 1 395 5
+ 733 0008 FFF7FEFF 		bl	ARM_SV_Tx_Rx
  396:Core/Src/freertos.c ****     osDelay(1);
- 747              		.loc 1 396 5 discriminator 1
- 748 000c 0120     		movs	r0, #1
- 749 000e FFF7FEFF 		bl	osDelay
+ 734              		.loc 1 396 5 discriminator 1
+ 735 000c 0120     		movs	r0, #1
+ 736 000e FFF7FEFF 		bl	osDelay
  395:Core/Src/freertos.c ****     osDelay(1);
- 750              		.loc 1 395 5
- 751 0012 00BF     		nop
- 752 0014 F8E7     		b	.L26
- 753              		.cfi_endproc
- 754              	.LFE161:
- 756              		.section	.text.PC_Comm_Task,"ax",%progbits
- 757              		.align	1
- 758              		.global	PC_Comm_Task
- 759              		.syntax unified
- 760              		.thumb
- 761              		.thumb_func
- 763              	PC_Comm_Task:
- 764              	.LFB162:
+ 737              		.loc 1 395 5
+ 738 0012 00BF     		nop
+ 739 0014 F8E7     		b	.L24
+ 740              		.cfi_endproc
+ 741              	.LFE161:
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 21
+
+
+ 743              		.section	.text.PC_Comm_Task,"ax",%progbits
+ 744              		.align	1
+ 745              		.global	PC_Comm_Task
+ 746              		.syntax unified
+ 747              		.thumb
+ 748              		.thumb_func
+ 750              	PC_Comm_Task:
+ 751              	.LFB162:
  397:Core/Src/freertos.c ****   }
  398:Core/Src/freertos.c ****   /* USER CODE END Arm_SV_Task */
  399:Core/Src/freertos.c **** }
@@ -1237,149 +1222,148 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 1
  407:Core/Src/freertos.c **** /* USER CODE END Header_PC_Comm_Task */
  408:Core/Src/freertos.c **** void PC_Comm_Task(void *argument)
  409:Core/Src/freertos.c **** {
- 765              		.loc 1 409 1
- 766              		.cfi_startproc
- 767              		@ args = 0, pretend = 0, frame = 8
- 768              		@ frame_needed = 1, uses_anonymous_args = 0
- 769 0000 80B5     		push	{r7, lr}
- 770              	.LCFI30:
- 771              		.cfi_def_cfa_offset 8
- 772              		.cfi_offset 7, -8
- 773              		.cfi_offset 14, -4
- 774 0002 82B0     		sub	sp, sp, #8
- 775              	.LCFI31:
- 776              		.cfi_def_cfa_offset 16
- 777 0004 00AF     		add	r7, sp, #0
- 778              	.LCFI32:
- 779              		.cfi_def_cfa_register 7
- 780 0006 7860     		str	r0, [r7, #4]
- 781              	.L28:
+ 752              		.loc 1 409 1
+ 753              		.cfi_startproc
+ 754              		@ args = 0, pretend = 0, frame = 8
+ 755              		@ frame_needed = 1, uses_anonymous_args = 0
+ 756 0000 80B5     		push	{r7, lr}
+ 757              	.LCFI30:
+ 758              		.cfi_def_cfa_offset 8
+ 759              		.cfi_offset 7, -8
+ 760              		.cfi_offset 14, -4
+ 761 0002 82B0     		sub	sp, sp, #8
+ 762              	.LCFI31:
+ 763              		.cfi_def_cfa_offset 16
+ 764 0004 00AF     		add	r7, sp, #0
+ 765              	.LCFI32:
+ 766              		.cfi_def_cfa_register 7
+ 767 0006 7860     		str	r0, [r7, #4]
+ 768              	.L26:
  410:Core/Src/freertos.c ****   /* USER CODE BEGIN PC_Comm_Task */
  411:Core/Src/freertos.c ****   /* Infinite loop */
  412:Core/Src/freertos.c ****   for (;;)
  413:Core/Src/freertos.c ****   {
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 22
-
-
  414:Core/Src/freertos.c ****     // �����������͵�����
  415:Core/Src/freertos.c ****     unpack_dn_frame(uart_protocol_raw_data, &pc_dn_data);
- 782              		.loc 1 415 5
- 783 0008 0549     		ldr	r1, .L29
- 784 000a 0648     		ldr	r0, .L29+4
- 785 000c FFF7FEFF 		bl	unpack_dn_frame
+ 769              		.loc 1 415 5
+ 770 0008 0549     		ldr	r1, .L27
+ 771 000a 0648     		ldr	r0, .L27+4
+ 772 000c FFF7FEFF 		bl	unpack_dn_frame
  416:Core/Src/freertos.c ****     osDelay(1);
- 786              		.loc 1 416 5
- 787 0010 0120     		movs	r0, #1
- 788 0012 FFF7FEFF 		bl	osDelay
+ 773              		.loc 1 416 5
+ 774 0010 0120     		movs	r0, #1
+ 775 0012 FFF7FEFF 		bl	osDelay
  417:Core/Src/freertos.c ****     HAL_IWDG_Refresh(&hiwdg1);
- 789              		.loc 1 417 5 discriminator 1
- 790 0016 0448     		ldr	r0, .L29+8
- 791 0018 FFF7FEFF 		bl	HAL_IWDG_Refresh
+ 776              		.loc 1 417 5 discriminator 1
+ 777 0016 0448     		ldr	r0, .L27+8
+ 778 0018 FFF7FEFF 		bl	HAL_IWDG_Refresh
  415:Core/Src/freertos.c ****     osDelay(1);
- 792              		.loc 1 415 5
- 793 001c 00BF     		nop
- 794 001e F3E7     		b	.L28
- 795              	.L30:
- 796              		.align	2
- 797              	.L29:
- 798 0020 00000000 		.word	pc_dn_data
- 799 0024 00000000 		.word	uart_protocol_raw_data
- 800 0028 00000000 		.word	hiwdg1
- 801              		.cfi_endproc
- 802              	.LFE162:
- 804              		.text
- 805              	.Letext0:
- 806              		.file 2 "C:/arm-toolchain/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/i
- 807              		.file 3 "C:/arm-toolchain/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/i
- 808              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
- 809              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 810              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_iwdg.h"
- 811              		.file 7 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
- 812              		.file 8 "User/Hardware/LED.h"
- 813              		.file 9 "User/Drive/dm4310_drv.h"
- 814              		.file 10 "User/Drive/Sbus.h"
- 815              		.file 11 "Core/Inc/iwdg.h"
- 816              		.file 12 "User/Drive/stp23l.h"
- 817              		.file 13 "User/Hardware/uart_protocol.h"
- 818              		.file 14 "User/Hardware/arm_sv.h"
- 819              		.file 15 "User/Hardware/arm.h"
- 820              		.file 16 "User/Hardware/head.h"
- 821              		.file 17 "User/Hardware/lift_control.h"
- 822              		.file 18 "User/Software/remote_control.h"
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 23
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 22
+
+
+ 779              		.loc 1 415 5
+ 780 001c 00BF     		nop
+ 781 001e F3E7     		b	.L26
+ 782              	.L28:
+ 783              		.align	2
+ 784              	.L27:
+ 785 0020 00000000 		.word	pc_dn_data
+ 786 0024 00000000 		.word	uart_protocol_raw_data
+ 787 0028 00000000 		.word	hiwdg1
+ 788              		.cfi_endproc
+ 789              	.LFE162:
+ 791              		.text
+ 792              	.Letext0:
+ 793              		.file 2 "C:/arm-toolchain/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/i
+ 794              		.file 3 "C:/arm-toolchain/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/i
+ 795              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
+ 796              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 797              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_iwdg.h"
+ 798              		.file 7 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ 799              		.file 8 "User/Hardware/LED.h"
+ 800              		.file 9 "User/Drive/dm4310_drv.h"
+ 801              		.file 10 "User/Drive/Sbus.h"
+ 802              		.file 11 "Core/Inc/iwdg.h"
+ 803              		.file 12 "User/Drive/stp23l.h"
+ 804              		.file 13 "User/Hardware/uart_protocol.h"
+ 805              		.file 14 "User/Hardware/arm_sv.h"
+ 806              		.file 15 "User/Hardware/arm.h"
+ 807              		.file 16 "User/Hardware/head.h"
+ 808              		.file 17 "User/Hardware/lift_control.h"
+ 809              		.file 18 "User/Software/remote_control.h"
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 freertos.c
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:24     .bss.color:00000000 color
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:21     .bss.color:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:31     .bss.Remote_controlHandle:00000000 Remote_controlHandle
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:28     .bss.Remote_controlHandle:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:42     .rodata.Remote_control_attributes:00000000 Remote_control_attributes
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:35     .rodata:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:39     .rodata.Remote_control_attributes:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:53     .bss.Arm_MTHandle:00000000 Arm_MTHandle
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:50     .bss.Arm_MTHandle:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:64     .rodata.Arm_MT_attributes:00000000 Arm_MT_attributes
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:61     .rodata.Arm_MT_attributes:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:75     .bss.Lift_controlHandle:00000000 Lift_controlHandle
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:72     .bss.Lift_controlHandle:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:86     .rodata.Lift_control_attributes:00000000 Lift_control_attributes
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:83     .rodata.Lift_control_attributes:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:97     .bss.Motor_controlHandle:00000000 Motor_controlHandle
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:94     .bss.Motor_controlHandle:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:108    .rodata.Motor_control_attributes:00000000 Motor_control_attributes
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:105    .rodata.Motor_control_attributes:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:119    .bss.HeadHandle:00000000 HeadHandle
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:116    .bss.HeadHandle:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:130    .rodata.Head_attributes:00000000 Head_attributes
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:127    .rodata.Head_attributes:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:141    .bss.Arm_updateHandle:00000000 Arm_updateHandle
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:138    .bss.Arm_updateHandle:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:152    .rodata.Arm_update_attributes:00000000 Arm_update_attributes
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:149    .rodata.Arm_update_attributes:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:163    .bss.Log_and_debugHandle:00000000 Log_and_debugHandle
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:160    .bss.Log_and_debugHandle:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:174    .rodata.Log_and_debug_attributes:00000000 Log_and_debug_attributes
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:171    .rodata.Log_and_debug_attributes:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:185    .bss.Arm_SVHandle:00000000 Arm_SVHandle
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:182    .bss.Arm_SVHandle:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:196    .rodata.Arm_SV_attributes:00000000 Arm_SV_attributes
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:193    .rodata.Arm_SV_attributes:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:207    .bss.PC_CommHandle:00000000 PC_CommHandle
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:204    .bss.PC_CommHandle:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:218    .rodata.PC_Comm_attributes:00000000 PC_Comm_attributes
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:215    .rodata.PC_Comm_attributes:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:225    .text.vApplicationIdleHook:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:231    .text.vApplicationIdleHook:00000000 vApplicationIdleHook
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:260    .text.MX_FREERTOS_Init:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:266    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:367    .text.MX_FREERTOS_Init:00000098 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:404    .text.Remote_control_Task:00000000 Remote_control_Task
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:462    .text.Arm_MT_Task:00000000 Arm_MT_Task
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:499    .text.Lift_control_Task:00000000 Lift_control_Task
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:553    .text.Motor_control_Task:00000000 Motor_control_Task
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:586    .text.Head_Task:00000000 Head_Task
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:625    .text.Arm_update_Task:00000000 Arm_update_Task
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:666    .text.Log_and_debug_Task:00000000 Log_and_debug_Task
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:726    .text.Arm_SV_Task:00000000 Arm_SV_Task
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:763    .text.PC_Comm_Task:00000000 PC_Comm_Task
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:398    .text.Remote_control_Task:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:450    .text.Remote_control_Task:00000038 $d
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s 			page 24
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:24     .bss.color:00000000 color
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:21     .bss.color:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:31     .bss.Remote_controlHandle:00000000 Remote_controlHandle
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:28     .bss.Remote_controlHandle:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:42     .rodata.Remote_control_attributes:00000000 Remote_control_attributes
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:35     .rodata:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:39     .rodata.Remote_control_attributes:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:53     .bss.Arm_MTHandle:00000000 Arm_MTHandle
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:50     .bss.Arm_MTHandle:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:64     .rodata.Arm_MT_attributes:00000000 Arm_MT_attributes
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:61     .rodata.Arm_MT_attributes:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:75     .bss.Lift_controlHandle:00000000 Lift_controlHandle
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:72     .bss.Lift_controlHandle:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:86     .rodata.Lift_control_attributes:00000000 Lift_control_attributes
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:83     .rodata.Lift_control_attributes:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:97     .bss.Motor_controlHandle:00000000 Motor_controlHandle
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:94     .bss.Motor_controlHandle:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:108    .rodata.Motor_control_attributes:00000000 Motor_control_attributes
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:105    .rodata.Motor_control_attributes:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:119    .bss.HeadHandle:00000000 HeadHandle
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:116    .bss.HeadHandle:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:130    .rodata.Head_attributes:00000000 Head_attributes
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:127    .rodata.Head_attributes:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:141    .bss.Arm_updateHandle:00000000 Arm_updateHandle
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:138    .bss.Arm_updateHandle:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:152    .rodata.Arm_update_attributes:00000000 Arm_update_attributes
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:149    .rodata.Arm_update_attributes:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:163    .bss.Log_and_debugHandle:00000000 Log_and_debugHandle
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:160    .bss.Log_and_debugHandle:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:174    .rodata.Log_and_debug_attributes:00000000 Log_and_debug_attributes
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:171    .rodata.Log_and_debug_attributes:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:185    .bss.Arm_SVHandle:00000000 Arm_SVHandle
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:182    .bss.Arm_SVHandle:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:196    .rodata.Arm_SV_attributes:00000000 Arm_SV_attributes
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:193    .rodata.Arm_SV_attributes:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:207    .bss.PC_CommHandle:00000000 PC_CommHandle
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:204    .bss.PC_CommHandle:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:218    .rodata.PC_Comm_attributes:00000000 PC_Comm_attributes
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:215    .rodata.PC_Comm_attributes:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:225    .text.vApplicationIdleHook:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:231    .text.vApplicationIdleHook:00000000 vApplicationIdleHook
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:260    .text.MX_FREERTOS_Init:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:266    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:367    .text.MX_FREERTOS_Init:00000098 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:404    .text.Remote_control_Task:00000000 Remote_control_Task
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:462    .text.Arm_MT_Task:00000000 Arm_MT_Task
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:499    .text.Lift_control_Task:00000000 Lift_control_Task
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:553    .text.Motor_control_Task:00000000 Motor_control_Task
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:586    .text.Head_Task:00000000 Head_Task
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:625    .text.Arm_update_Task:00000000 Arm_update_Task
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:662    .text.Log_and_debug_Task:00000000 Log_and_debug_Task
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:713    .text.Arm_SV_Task:00000000 Arm_SV_Task
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:750    .text.PC_Comm_Task:00000000 PC_Comm_Task
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:398    .text.Remote_control_Task:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:450    .text.Remote_control_Task:00000038 $d
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s 			page 24
 
 
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:456    .text.Arm_MT_Task:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:493    .text.Lift_control_Task:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:542    .text.Lift_control_Task:00000030 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:547    .text.Motor_control_Task:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:580    .text.Head_Task:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:619    .text.Arm_update_Task:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:660    .text.Log_and_debug_Task:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:715    .text.Log_and_debug_Task:00000040 $d
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:720    .text.Arm_SV_Task:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:757    .text.PC_Comm_Task:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccon0FsH.s:798    .text.PC_Comm_Task:00000020 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:456    .text.Arm_MT_Task:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:493    .text.Lift_control_Task:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:542    .text.Lift_control_Task:00000030 $d
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:547    .text.Motor_control_Task:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:580    .text.Head_Task:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:619    .text.Arm_update_Task:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:656    .text.Log_and_debug_Task:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:707    .text.Arm_SV_Task:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:744    .text.PC_Comm_Task:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccyB27r8.s:785    .text.PC_Comm_Task:00000020 $d
 
 UNDEFINED SYMBOLS
 osThreadNew
@@ -1401,7 +1385,6 @@ Head_all_tx
 Head_Lk_Data_update
 Arm_All_Data_update
 LEDshowcolor
-puts
 ARM_SV_Tx_Rx
 unpack_dn_frame
 HAL_IWDG_Refresh
