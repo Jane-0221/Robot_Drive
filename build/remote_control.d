@@ -45,7 +45,8 @@ build/remote_control.o: User/Software/remote_control.c \
  User/Drive/ktech_motor.h User/Hardware/arm.h User/Drive/dm4310_drv.h \
  User/Drive/Robstride04.h User/Drive/Unitree/crc_ccitt.h \
  User/Drive/DrEmpower_can.h User/Hardware/lift_control.h \
- User/Hardware/pump_control.h User/Hardware/arm_sv.h
+ User/Hardware/pump_control.h User/Hardware/arm_sv.h \
+ User/Hardware/uart_protocol.h
 User/Software/remote_control.h:
 Core/Inc/main.h:
 Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
@@ -110,3 +111,4 @@ User/Drive/DrEmpower_can.h:
 User/Hardware/lift_control.h:
 User/Hardware/pump_control.h:
 User/Hardware/arm_sv.h:
+User/Hardware/uart_protocol.h:

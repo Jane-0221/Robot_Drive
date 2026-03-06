@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
   52      00000000 
   52      00000000 
   52      00000000 
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 2
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 2
 
 
   52      00000000 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
    5:User/Hardware/arm.c **** #include "remote_control.h"
    6:User/Hardware/arm.c **** #include "gpio.h"
    7:User/Hardware/arm.c **** #include "gom_protocol.h"
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 3
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 3
 
 
    8:User/Hardware/arm.c **** #include "usart.h"
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  119 0014 47F20502 		movw	r2, #28677
  120 0018 8149     		ldr	r1, .L2+8
  121 001a 8048     		ldr	r0, .L2+4
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 4
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 4
 
 
  122 001c FFF7FEFF 		bl	Get_RobStride_Motor_parameter
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  165              		.loc 1 50 5
  166 007e 6A23     		movs	r3, #106
  167 0080 B1EE040A 		vmov.f32	s0, #5.0e+0
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 5
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 5
 
 
  168 0084 47F20502 		movw	r2, #28677
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  212 00e8 4D49     		ldr	r1, .L2+8
  213 00ea 4F48     		ldr	r0, .L2+16
  214 00ec FFF7FEFF 		bl	Enable_Motor
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 6
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 6
 
 
   61:User/Hardware/arm.c ****     Set_RobStride_Motor_parameter(&motor3, CAN_HANDLE_2, 0X7017, 1.0f, 'p');
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
   75:User/Hardware/arm.c ****     write_property(CAN_HANDLE_2, MOTOR_DARAN_2_ID, 22001, 3, 1.0f);
  255              		.loc 1 75 5
  256 0148 B7EE000A 		vmov.f32	s0, #1.0e+0
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 7
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 7
 
 
  257 014c 0323     		movs	r3, #3
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  299 01ae 4FF48072 		mov	r2, #256
  300 01b2 0521     		movs	r1, #5
  301 01b4 1A48     		ldr	r0, .L2+8
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 8
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 8
 
 
  302 01b6 FFF7FEFF 		bl	enable_motor_mode
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  100:User/Hardware/arm.c **** 
  101:User/Hardware/arm.c ****     Daran_motor_data[0].target_velocity = 90.0f;
  344              		.loc 1 101 41
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 9
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 9
 
 
  345 0202 0F4B     		ldr	r3, .L2+40
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  395              		.cfi_offset 14, -4
  396 0002 00AF     		add	r7, sp, #0
  397              	.LCFI3:
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 10
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 10
 
 
  398              		.cfi_def_cfa_register 7
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  448 0014 B0EE670A 		vmov.f32	s0, s15
  449 0018 0349     		ldr	r1, .L8+4
  450 001a 0448     		ldr	r0, .L8+8
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 11
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 11
 
 
  451 001c FFF7FEFF 		bl	RobStride_Motor_CSP_control
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  500              	.L11:
  501 0024 00000000 		.word	Linzu_motor_data
  502 0028 00000000 		.word	hfdcan2
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 12
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 12
 
 
  503 002c 00000000 		.word	motor3
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  554              		.section	.text.Arm_Daran_motor2,"ax",%progbits
  555              		.align	1
  556              		.global	Arm_Daran_motor2
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 13
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 13
 
 
  557              		.syntax unified
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  609              	.LFB157:
  132:User/Hardware/arm.c **** 
  133:User/Hardware/arm.c **** void Arm_Daran_motor3()
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 14
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 14
 
 
  134:User/Hardware/arm.c **** {
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  659              		@ args = 0, pretend = 0, frame = 0
  660              		@ frame_needed = 1, uses_anonymous_args = 0
  661 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 15
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 15
 
 
  662              	.LCFI14:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  713              	.LFB159:
  146:User/Hardware/arm.c **** 
  147:User/Hardware/arm.c **** void Arm_Damiao_motor5()
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 16
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 16
 
 
  148:User/Hardware/arm.c **** {
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  765              	.LFB160:
  153:User/Hardware/arm.c **** 
  154:User/Hardware/arm.c **** void Arm_Damiao_motor6()
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 17
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 17
 
 
  155:User/Hardware/arm.c **** {
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  814 005c 00000000 		.word	hfdcan2
  815              		.cfi_endproc
  816              	.LFE160:
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 18
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 18
 
 
  818              		.section	.text.Arm_Linzu_Data_update,"ax",%progbits
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  865 0026 1B6D     		ldr	r3, [r3, #80]	@ float
  866              		.loc 1 168 42
  867 0028 064A     		ldr	r2, .L32+4
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 19
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 19
 
 
  868 002a 5361     		str	r3, [r2, #20]	@ float
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  176:User/Hardware/arm.c ****     Daran_motor_data[0].current_angle = daran_motor_state[0].angle;
  917              		.loc 1 176 61
  918 0004 0E4B     		ldr	r3, .L35
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 20
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 20
 
 
  919 0006 1B68     		ldr	r3, [r3]	@ float
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  967 0040 00000000 		.word	daran_motor_state
  968 0044 00000000 		.word	Daran_motor_data
  969              		.cfi_endproc
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 21
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 21
 
 
  970              	.LFE162:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  1017              		@ args = 0, pretend = 0, frame = 0
  1018              		@ frame_needed = 1, uses_anonymous_args = 0
  1019 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 22
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 22
 
 
  1020              	.LCFI30:
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  218:User/Hardware/arm.c ****     // osDelay(1);
  219:User/Hardware/arm.c ****     // Arm_Damiao_motor6();
  220:User/Hardware/arm.c ****     // osDelay(1);
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 23
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 23
 
 
  221:User/Hardware/arm.c **** }...
@@ -1378,81 +1378,81 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 1
  1096              		.file 9 "User/Drive/dm4310_drv.h"
  1097              		.file 10 "Core/Inc/fdcan.h"
  1098              		.file 11 "User/Drive/Robstride04.h"
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 24
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 24
 
 
  1099              		.file 12 "User/Drive/DrEmpower_can.h"
  1100              		.file 13 "User/Hardware/arm.h"
  1101              		.file 14 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 25
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 25
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 arm.c
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:23     .bss.g_ShoulderType:00000000 g_ShoulderType
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:24     .bss.g_ShoulderType:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:30     .bss.servo_state_daran:00000000 servo_state_daran
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:27     .bss.servo_state_daran:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:37     .bss.servo_volcur_daran:00000000 servo_volcur_daran
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:34     .bss.servo_volcur_daran:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:44     .bss.motor1:00000000 motor1
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:41     .bss.motor1:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:51     .bss.motor2:00000000 motor2
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:48     .bss.motor2:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:58     .bss.motor3:00000000 motor3
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:55     .bss.motor3:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:65     .bss.Linzu_motor_data:00000000 Linzu_motor_data
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:62     .bss.Linzu_motor_data:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:72     .bss.Daran_motor_data:00000000 Daran_motor_data
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:69     .bss.Daran_motor_data:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:79     .bss.Damiao_motor_data:00000000 Damiao_motor_data
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:76     .bss.Damiao_motor_data:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:86     .bss.reply_enable:00000000 reply_enable
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:83     .bss.reply_enable:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:89     .text.Arm_Init:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:95     .text.Arm_Init:00000000 Arm_Init
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:362    .text.Arm_Init:00000218 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:379    .text.Arm_Linzu_motor1:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:385    .text.Arm_Linzu_motor1:00000000 Arm_Linzu_motor1
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:415    .text.Arm_Linzu_motor1:00000024 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:422    .text.Arm_Linzu_motor2:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:428    .text.Arm_Linzu_motor2:00000000 Arm_Linzu_motor2
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:458    .text.Arm_Linzu_motor2:00000024 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:465    .text.Arm_Linzu_motor3:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:471    .text.Arm_Linzu_motor3:00000000 Arm_Linzu_motor3
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:501    .text.Arm_Linzu_motor3:00000024 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:508    .text.Arm_Daran_motor1:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:514    .text.Arm_Daran_motor1:00000000 Arm_Daran_motor1
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:549    .text.Arm_Daran_motor1:00000030 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:555    .text.Arm_Daran_motor2:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:561    .text.Arm_Daran_motor2:00000000 Arm_Daran_motor2
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:596    .text.Arm_Daran_motor2:00000030 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:602    .text.Arm_Daran_motor3:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:608    .text.Arm_Daran_motor3:00000000 Arm_Daran_motor3
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:643    .text.Arm_Daran_motor3:00000030 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:649    .text.Arm_Damiao_motor4:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:655    .text.Arm_Damiao_motor4:00000000 Arm_Damiao_motor4
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:698    .text.Arm_Damiao_motor4:00000044 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:706    .text.Arm_Damiao_motor5:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:712    .text.Arm_Damiao_motor5:00000000 Arm_Damiao_motor5
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:751    .text.Arm_Damiao_motor5:0000003c $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:758    .text.Arm_Damiao_motor6:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:764    .text.Arm_Damiao_motor6:00000000 Arm_Damiao_motor6
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:810    .text.Arm_Damiao_motor6:0000004c $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:819    .text.Arm_Linzu_Data_update:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:825    .text.Arm_Linzu_Data_update:00000000 Arm_Linzu_Data_update
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:889    .text.Arm_Linzu_Data_update:00000040 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:897    .text.Arm_Daran_Data_update:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:903    .text.Arm_Daran_Data_update:00000000 Arm_Daran_Data_update
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s 			page 26
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:23     .bss.g_ShoulderType:00000000 g_ShoulderType
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:24     .bss.g_ShoulderType:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:30     .bss.servo_state_daran:00000000 servo_state_daran
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:27     .bss.servo_state_daran:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:37     .bss.servo_volcur_daran:00000000 servo_volcur_daran
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:34     .bss.servo_volcur_daran:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:44     .bss.motor1:00000000 motor1
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:41     .bss.motor1:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:51     .bss.motor2:00000000 motor2
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:48     .bss.motor2:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:58     .bss.motor3:00000000 motor3
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:55     .bss.motor3:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:65     .bss.Linzu_motor_data:00000000 Linzu_motor_data
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:62     .bss.Linzu_motor_data:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:72     .bss.Daran_motor_data:00000000 Daran_motor_data
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:69     .bss.Daran_motor_data:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:79     .bss.Damiao_motor_data:00000000 Damiao_motor_data
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:76     .bss.Damiao_motor_data:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:86     .bss.reply_enable:00000000 reply_enable
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:83     .bss.reply_enable:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:89     .text.Arm_Init:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:95     .text.Arm_Init:00000000 Arm_Init
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:362    .text.Arm_Init:00000218 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:379    .text.Arm_Linzu_motor1:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:385    .text.Arm_Linzu_motor1:00000000 Arm_Linzu_motor1
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:415    .text.Arm_Linzu_motor1:00000024 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:422    .text.Arm_Linzu_motor2:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:428    .text.Arm_Linzu_motor2:00000000 Arm_Linzu_motor2
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:458    .text.Arm_Linzu_motor2:00000024 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:465    .text.Arm_Linzu_motor3:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:471    .text.Arm_Linzu_motor3:00000000 Arm_Linzu_motor3
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:501    .text.Arm_Linzu_motor3:00000024 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:508    .text.Arm_Daran_motor1:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:514    .text.Arm_Daran_motor1:00000000 Arm_Daran_motor1
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:549    .text.Arm_Daran_motor1:00000030 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:555    .text.Arm_Daran_motor2:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:561    .text.Arm_Daran_motor2:00000000 Arm_Daran_motor2
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:596    .text.Arm_Daran_motor2:00000030 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:602    .text.Arm_Daran_motor3:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:608    .text.Arm_Daran_motor3:00000000 Arm_Daran_motor3
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:643    .text.Arm_Daran_motor3:00000030 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:649    .text.Arm_Damiao_motor4:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:655    .text.Arm_Damiao_motor4:00000000 Arm_Damiao_motor4
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:698    .text.Arm_Damiao_motor4:00000044 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:706    .text.Arm_Damiao_motor5:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:712    .text.Arm_Damiao_motor5:00000000 Arm_Damiao_motor5
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:751    .text.Arm_Damiao_motor5:0000003c $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:758    .text.Arm_Damiao_motor6:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:764    .text.Arm_Damiao_motor6:00000000 Arm_Damiao_motor6
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:810    .text.Arm_Damiao_motor6:0000004c $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:819    .text.Arm_Linzu_Data_update:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:825    .text.Arm_Linzu_Data_update:00000000 Arm_Linzu_Data_update
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:889    .text.Arm_Linzu_Data_update:00000040 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:897    .text.Arm_Daran_Data_update:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:903    .text.Arm_Daran_Data_update:00000000 Arm_Daran_Data_update
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s 			page 26
 
 
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:967    .text.Arm_Daran_Data_update:00000040 $d
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:973    .text.Arm_All_Data_update:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:979    .text.Arm_All_Data_update:00000000 Arm_All_Data_update
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:1007   .text.Arm_all_tx:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:1013   .text.Arm_all_tx:00000000 Arm_all_tx
-C:\Users\Administrator\AppData\Local\Temp\cc6frO5q.s:1083   .text.Arm_all_tx:00000058 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:967    .text.Arm_Daran_Data_update:00000040 $d
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:973    .text.Arm_All_Data_update:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:979    .text.Arm_All_Data_update:00000000 Arm_All_Data_update
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:1007   .text.Arm_all_tx:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:1013   .text.Arm_all_tx:00000000 Arm_all_tx
+C:\Users\Administrator\AppData\Local\Temp\ccwb86C6.s:1083   .text.Arm_all_tx:00000058 $d
 
 UNDEFINED SYMBOLS
 RobStride_Motor_Init

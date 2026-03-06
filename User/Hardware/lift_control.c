@@ -1,25 +1,26 @@
-#include "lift_control.h"
-#include "remote_control.h"
-#include "usart.h"
-#include "UART_data_txrx.h"
-#include "stp23l.h"
-// 锟斤拷锟斤拷全锟街憋拷锟斤拷
-LIFT_State lift_state = LIFT_STOP; // 锟斤拷始为停止
-uint16_t lift_current_height = 0;  // 锟斤拷始锟竭讹拷0
+#include "lift_control.h" 
+ #include "remote_control.h" 
+ #include "usart.h" 
+ #include "UART_data_txrx.h" 
+ #include "stp23l.h" 
+ int16_t aim_tx_height = 0; // 目标高度值，每帧更新 
+ // 全局变量定义 
+ LIFT_State lift_state = LIFT_STOP; // 初始状态为停止 
+ uint16_t lift_current_height = 0;  // 初始高度为0
 
-// 锟斤拷锟斤拷植锟斤拷锟斤拷锟�
-int16_t lift_height_final = 0; // 锟斤拷锟斤拷锟斤拷锟斤拷锟秸高讹拷值锟斤拷每帧锟斤拷锟斤拷一锟轿ｏ拷
-// 锟阶诧拷锟斤拷锟斤拷锟狡猴拷锟斤拷锟斤拷锟节诧拷使锟矫ｏ拷
-static void Motor_Forward(void);
-static void Motor_Reverse(void);
-static void Motor_Stop(void);
+// 高度跟踪变量 
+ int16_t lift_height_final = 0; // 每帧最终高度值，每帧更新 
+ // 私有电机控制函数 
+ static void Motor_Forward(void); 
+ static void Motor_Reverse(void); 
+ static void Motor_Stop(void);
 
-/**
- * @brief  锟斤拷始锟斤拷锟斤拷锟斤拷锟剿匡拷锟斤拷
- * @note   确锟斤拷锟斤拷锟酵Ｖ癸拷锟阶刺拷锟轿伙拷锟斤拷锟斤拷懦锟绞硷拷锟酵拷锟斤拷锟接诧拷锟斤拷锟绞硷拷锟斤拷锟斤拷锟斤拷
- * @param  锟斤拷
- * @retval 锟斤拷
- */
+/** 
+  * @brief  初始化升降控制系统 
+  * @note   确保升降机处于安全状态，初始化状态机并清除之前的状态 
+  * @param  无 
+  * @retval 无 
+  */
 void Lift_Init(void)
 {
     Motor_Stop();
@@ -27,61 +28,61 @@ void Lift_Init(void)
     lift_current_height = 0;
 }
 
-/**
- * @brief  锟斤拷锟斤拷锟斤拷锟斤拷状态
- * @param  锟斤拷
- * @retval 锟斤拷
- */
+/** 
+  * @brief  设置升降机上升状态 
+  * @param  无 
+  * @retval 无 
+  */
 void Lift_Up(void)
 {
     lift_state = LIFT_UP;
 }
 
-/**
- * @brief  锟斤拷锟斤拷锟铰斤拷状态
- * @param  锟斤拷
- * @retval 锟斤拷
- */
+/** 
+  * @brief  设置升降机下降状态 
+  * @param  无 
+  * @retval 无 
+  */
 void Lift_Down(void)
 {
     lift_state = LIFT_DOWN;
 }
 
-/**
- * @brief  锟斤拷锟斤拷停止状态
- * @param  锟斤拷
- * @retval 锟斤拷
- */
+/** 
+  * @brief  设置升降机停止状态 
+  * @param  无 
+  * @retval 无 
+  */
 void Lift_Stop(void)
 {
     lift_state = LIFT_STOP;
 }
 
-/**
- * @brief  锟斤拷锟斤拷指锟斤拷状态
- * @param  state 要锟斤拷锟矫碉拷状态
- * @retval 锟斤拷
- */
+/** 
+  * @brief  设置升降机指定状态 
+  * @param  state 要设置的状态 
+  * @retval 无 
+  */
 void Lift_SetState(LIFT_State state)
 {
     lift_state = state;
 }
 
-/**
- * @brief  锟斤拷取锟斤拷前状态
- * @retval 锟斤拷前状态
- */
+/** 
+  * @brief  获取当前状态 
+  * @retval 当前状态 
+  */
 LIFT_State Lift_GetState(void)
 {
     return lift_state;
 }
 
-/**
- * @brief  锟斤拷锟捷碉拷前状态锟斤拷锟铰碉拷锟斤拷锟斤拷锟�
- * @note   锟剿猴拷锟斤拷锟斤拷锟斤拷锟斤拷锟皆碉拷锟矫ｏ拷锟斤拷锟斤拷每10ms锟斤拷锟斤拷锟斤拷执锟斤拷实锟绞匡拷锟斤拷
- * @param  锟斤拷
- * @retval 锟斤拷
- */
+/** 
+  * @brief  根据当前状态更新电机控制 
+  * @note   周期性调用（每10ms）来执行实际的电机控制 
+  * @param  无 
+  * @retval 无 
+  */
 void Lift_UpdateMotor(void)
 {
     switch (lift_state)
@@ -99,23 +100,23 @@ void Lift_UpdateMotor(void)
     }
 }
 
-/**
- * @brief  刷锟铰高讹拷值锟斤拷锟接达拷锟斤拷锟斤拷锟斤拷取锟斤拷
- * @note   锟矫伙拷锟斤拷锟斤拷锟绞碉拷锟接诧拷锟斤拷诖锟斤拷锟斤拷佣锟饺★拷锟斤拷耄拷锟斤拷锟紸DC锟斤拷锟斤拷锟斤拷锟�
- * @param  锟斤拷
- * @retval 锟斤拷
- */
+/** 
+  * @brief  从传感器刷新高度值 
+  * @note   周期性调用以从传感器更新高度，使用STP23L传感器数据 
+  * @param  无 
+  * @retval 无 
+  */
 void Lift_RefreshHeight(void)
 {
 
-    if (stp23l_data.parse_ok == 1)
-    {
-        lift_height_final = STP23L_GetFinalDistPerFrame(); // 锟斤拷锟侥碉拷锟斤拷
-        STP23L_ClearOkFlag();                              // 锟斤拷锟斤拷锟街撅拷锟阶硷拷锟斤拷锟揭恢★拷锟斤拷锟�
-    }
-    // 示锟斤拷锟斤拷锟斤拷锟斤拷叨锟斤拷锟紸DC锟缴硷拷锟斤拷通锟斤拷1
-    // lift_current_height = HAL_ADC_GetValue(&hadc1);
-    // 锟剿达拷锟斤拷锟秸ｏ拷锟斤拷锟斤拷锟绞碉拷锟接诧拷锟绞碉拷锟�
+    if (stp23l_data.parse_ok == 1) 
+     { 
+         lift_height_final = STP23L_GetFinalDistPerFrame(); // Get height from sensor 
+         STP23L_ClearOkFlag();                              // Clear flag to maintain consistency 
+     } 
+     // Example code for ADC height measurement (commented out) 
+     // lift_current_height = HAL_ADC_GetValue(&hadc1); 
+     // Currently using STP23L sensor for height measurement
 }
 
 /**

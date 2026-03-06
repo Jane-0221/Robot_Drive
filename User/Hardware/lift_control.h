@@ -23,7 +23,7 @@ extern LIFT_State lift_state;
 
 
 extern uint16_t lift_current_height;   // ï¿½ï¿½Ç°ï¿½ß¶È£ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½å£©
-
+extern int16_t aim_tx_height; // Ä¿±ê¸ß¶ÈÖµ£¬Ã¿Ö¡¸üÐÂ 
 // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void Lift_Init(void);                          // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 void Lift_Up(void);                             // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬

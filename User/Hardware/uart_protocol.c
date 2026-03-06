@@ -68,7 +68,7 @@ void unpack_dn_frame(uint8_t *frame_buf, DnData_t *data)
     // 气泵状态
     data->pc_pump_state = frame_buf[idx++];
     // 升降杆目标高度
-    data->pc_target_lift_height = (uint16_t)(frame_buf[idx] | (frame_buf[idx + 1] << 8));
+    data->pc_target_lift_height = (uint16_t)((frame_buf[idx] | (frame_buf[idx + 1] << 8))/10);
 }
 
 // 发送帧（带超时）
