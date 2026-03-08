@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
   29:User/Drive/stp23l.h **** /************************* ���ṹ�壨�ϸ�ƥ���ֲᣩ *************************/
   30:User/Drive/stp23l.h **** typedef struct
   31:User/Drive/stp23l.h **** {
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 2
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 2
 
 
   32:User/Drive/stp23l.h ****     int16_t  distance;   // ����(mm) 2BС��
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
   53              		.cfi_def_cfa_offset 0
   54 0012 7047     		bx	lr
   55              	.L3:
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 3
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 3
 
 
   56              		.align	2
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
   23:User/Hardware/lift_control.c ****   */
   24:User/Hardware/lift_control.c **** void Lift_Init(void)
   25:User/Hardware/lift_control.c **** {
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 4
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 4
 
 
   98              		.loc 1 25 1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  142              		@ args = 0, pretend = 0, frame = 0
  143              		@ frame_needed = 1, uses_anonymous_args = 0
  144              		@ link register save eliminated.
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 5
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 5
 
 
  145 0000 80B4     		push	{r7}
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  191              		.cfi_offset 7, -4
  192 0002 00AF     		add	r7, sp, #0
  193              	.LCFI11:
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 6
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 6
 
 
  194              		.cfi_def_cfa_register 7
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  239 0004 034B     		ldr	r3, .L14
  240 0006 0222     		movs	r2, #2
  241 0008 1A70     		strb	r2, [r3]
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 7
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 7
 
 
   59:User/Hardware/lift_control.c **** }
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  288 000c FB79     		ldrb	r3, [r7, #7]
  289 000e 1370     		strb	r3, [r2]
   69:User/Hardware/lift_control.c **** }
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 8
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 8
 
 
  290              		.loc 1 69 1
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  337 000a BD46     		mov	sp, r7
  338              	.LCFI26:
  339              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 9
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 9
 
 
  340              		@ sp needed
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  383              		.loc 1 91 9
  384 0012 FFF7FEFF 		bl	Motor_Forward
   92:User/Hardware/lift_control.c ****         break;
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 10
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 10
 
 
  385              		.loc 1 92 9
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  423              		.cfi_def_cfa_offset 8
  424              		.cfi_offset 7, -8
  425              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 11
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 11
 
 
  426 0002 00AF     		add	r7, sp, #0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  465              		.loc 1 127 1
  466              		.cfi_startproc
  467              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 12
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 12
 
 
  468              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  511              	.LCFI36:
  512              		.cfi_def_cfa_offset 8
  513              		.cfi_offset 7, -8
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 13
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 13
 
 
  514              		.cfi_offset 14, -4
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  153:User/Hardware/lift_control.c ****     HAL_GPIO_WritePin(RELAY1_PORT, RELAY1_PIN, RELAY_OFF);
  558              		.loc 1 153 5
  559 0004 0022     		movs	r2, #0
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 14
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 14
 
 
  560 0006 0121     		movs	r1, #1
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  603              		.loc 1 166 5
  604 000e 0122     		movs	r2, #1
  605 0010 0421     		movs	r1, #4
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 15
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 15
 
 
  606 0012 0248     		ldr	r0, .L47
@@ -891,164 +891,168 @@ ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 1
  178:User/Hardware/lift_control.c ****     Lift_RefreshHeight();
  644              		.loc 1 178 5
  645 000a FFF7FEFF 		bl	Lift_RefreshHeight
- 179:User/Hardware/lift_control.c ****     if (lift_height_final == 0)
+ 179:User/Hardware/lift_control.c ****     if (lift_height_final == 0||target_height == 0)
  646              		.loc 1 179 27
- 647 000e 134B     		ldr	r3, .L55
+ 647 000e 154B     		ldr	r3, .L56
  648 0010 B3F90030 		ldrsh	r3, [r3]
  649              		.loc 1 179 8
  650 0014 002B     		cmp	r3, #0
- 651 0016 1CD0     		beq	.L54
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 16
+ 651 0016 20D0     		beq	.L55
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 16
 
 
+ 652              		.loc 1 179 31 discriminator 1
+ 653 0018 B7F90630 		ldrsh	r3, [r7, #6]
+ 654 001c 002B     		cmp	r3, #0
+ 655 001e 1CD0     		beq	.L55
  180:User/Hardware/lift_control.c ****     {
  181:User/Hardware/lift_control.c ****         return;
  182:User/Hardware/lift_control.c ****     }
  183:User/Hardware/lift_control.c ****     // 计算目标高度和当前高度的差值
  184:User/Hardware/lift_control.c ****     int16_t height_diff = target_height - lift_height_final;
- 652              		.loc 1 184 41
- 653 0018 FA88     		ldrh	r2, [r7, #6]
- 654 001a 104B     		ldr	r3, .L55
- 655 001c B3F90030 		ldrsh	r3, [r3]
- 656 0020 9BB2     		uxth	r3, r3
- 657 0022 D31A     		subs	r3, r2, r3
- 658 0024 9BB2     		uxth	r3, r3
- 659              		.loc 1 184 13
- 660 0026 FB81     		strh	r3, [r7, #14]	@ movhi
+ 656              		.loc 1 184 41
+ 657 0020 FA88     		ldrh	r2, [r7, #6]
+ 658 0022 104B     		ldr	r3, .L56
+ 659 0024 B3F90030 		ldrsh	r3, [r3]
+ 660 0028 9BB2     		uxth	r3, r3
+ 661 002a D31A     		subs	r3, r2, r3
+ 662 002c 9BB2     		uxth	r3, r3
+ 663              		.loc 1 184 13
+ 664 002e FB81     		strh	r3, [r7, #14]	@ movhi
  185:User/Hardware/lift_control.c **** 
  186:User/Hardware/lift_control.c ****     // 根据差值设置升降机运动状态
  187:User/Hardware/lift_control.c ****     if (height_diff > 5)
- 661              		.loc 1 187 8
- 662 0028 B7F90E30 		ldrsh	r3, [r7, #14]
- 663 002c 052B     		cmp	r3, #5
- 664 002e 03DD     		ble	.L52
+ 665              		.loc 1 187 8
+ 666 0030 B7F90E30 		ldrsh	r3, [r7, #14]
+ 667 0034 052B     		cmp	r3, #5
+ 668 0036 03DD     		ble	.L53
  188:User/Hardware/lift_control.c ****     {
  189:User/Hardware/lift_control.c ****         // 目标高度高于当前高度，向上升
  190:User/Hardware/lift_control.c ****         lift_state = LIFT_UP;
- 665              		.loc 1 190 20
- 666 0030 0B4B     		ldr	r3, .L55+4
- 667 0032 0022     		movs	r2, #0
- 668 0034 1A70     		strb	r2, [r3]
+ 669              		.loc 1 190 20
+ 670 0038 0B4B     		ldr	r3, .L56+4
+ 671 003a 0022     		movs	r2, #0
+ 672 003c 1A70     		strb	r2, [r3]
  191:User/Hardware/lift_control.c ****         return;
- 669              		.loc 1 191 9
- 670 0036 0DE0     		b	.L49
- 671              	.L52:
+ 673              		.loc 1 191 9
+ 674 003e 0DE0     		b	.L49
+ 675              	.L53:
  192:User/Hardware/lift_control.c ****     }
  193:User/Hardware/lift_control.c ****     else if (height_diff < -5)
- 672              		.loc 1 193 13
- 673 0038 B7F90E30 		ldrsh	r3, [r7, #14]
- 674 003c 13F1050F 		cmn	r3, #5
- 675 0040 03DA     		bge	.L53
+ 676              		.loc 1 193 13
+ 677 0040 B7F90E30 		ldrsh	r3, [r7, #14]
+ 678 0044 13F1050F 		cmn	r3, #5
+ 679 0048 03DA     		bge	.L54
  194:User/Hardware/lift_control.c ****     {
  195:User/Hardware/lift_control.c ****         // 目标高度低于当前高度，向下降
  196:User/Hardware/lift_control.c ****         lift_state = LIFT_DOWN;
- 676              		.loc 1 196 20
- 677 0042 074B     		ldr	r3, .L55+4
- 678 0044 0122     		movs	r2, #1
- 679 0046 1A70     		strb	r2, [r3]
+ 680              		.loc 1 196 20
+ 681 004a 074B     		ldr	r3, .L56+4
+ 682 004c 0122     		movs	r2, #1
+ 683 004e 1A70     		strb	r2, [r3]
  197:User/Hardware/lift_control.c ****         return;
- 680              		.loc 1 197 9
- 681 0048 04E0     		b	.L49
- 682              	.L53:
+ 684              		.loc 1 197 9
+ 685 0050 04E0     		b	.L49
+ 686              	.L54:
  198:User/Hardware/lift_control.c ****     }
  199:User/Hardware/lift_control.c ****     else
  200:User/Hardware/lift_control.c ****     {
  201:User/Hardware/lift_control.c ****         // 已经达到目标高度，停止
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 17
+
+
  202:User/Hardware/lift_control.c ****         lift_state = LIFT_STOP;
- 683              		.loc 1 202 20
- 684 004a 054B     		ldr	r3, .L55+4
- 685 004c 0222     		movs	r2, #2
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 17
-
-
- 686 004e 1A70     		strb	r2, [r3]
+ 687              		.loc 1 202 20
+ 688 0052 054B     		ldr	r3, .L56+4
+ 689 0054 0222     		movs	r2, #2
+ 690 0056 1A70     		strb	r2, [r3]
  203:User/Hardware/lift_control.c ****         return;
- 687              		.loc 1 203 9
- 688 0050 00E0     		b	.L49
- 689              	.L54:
+ 691              		.loc 1 203 9
+ 692 0058 00E0     		b	.L49
+ 693              	.L55:
  181:User/Hardware/lift_control.c ****     }
- 690              		.loc 1 181 9
- 691 0052 00BF     		nop
- 692              	.L49:
+ 694              		.loc 1 181 9
+ 695 005a 00BF     		nop
+ 696              	.L49:
  204:User/Hardware/lift_control.c ****     }
  205:User/Hardware/lift_control.c **** }...
- 693              		.loc 1 205 1
- 694 0054 1037     		adds	r7, r7, #16
- 695              	.LCFI45:
- 696              		.cfi_def_cfa_offset 8
- 697 0056 BD46     		mov	sp, r7
- 698              	.LCFI46:
- 699              		.cfi_def_cfa_register 13
- 700              		@ sp needed
- 701 0058 80BD     		pop	{r7, pc}
- 702              	.L56:
- 703 005a 00BF     		.align	2
- 704              	.L55:
- 705 005c 00000000 		.word	lift_height_final
- 706 0060 00000000 		.word	lift_state
- 707              		.cfi_endproc
- 708              	.LFE157:
- 710              		.text
- 711              	.Letext0:
- 712              		.file 3 "C:/arm-toolchain/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/i
- 713              		.file 4 "C:/arm-toolchain/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/i
- 714              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
- 715              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
- 716              		.file 7 "User/Hardware/lift_control.h"
-ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s 			page 18
+ 697              		.loc 1 205 1
+ 698 005c 1037     		adds	r7, r7, #16
+ 699              	.LCFI45:
+ 700              		.cfi_def_cfa_offset 8
+ 701 005e BD46     		mov	sp, r7
+ 702              	.LCFI46:
+ 703              		.cfi_def_cfa_register 13
+ 704              		@ sp needed
+ 705 0060 80BD     		pop	{r7, pc}
+ 706              	.L57:
+ 707 0062 00BF     		.align	2
+ 708              	.L56:
+ 709 0064 00000000 		.word	lift_height_final
+ 710 0068 00000000 		.word	lift_state
+ 711              		.cfi_endproc
+ 712              	.LFE157:
+ 714              		.text
+ 715              	.Letext0:
+ 716              		.file 3 "C:/arm-toolchain/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/i
+ 717              		.file 4 "C:/arm-toolchain/arm-gnu-toolchain-13.3.rel1-mingw-w64-i686-arm-none-eabi/arm-none-eabi/i
+ 718              		.file 5 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h723xx.h"
+ 719              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ 720              		.file 7 "User/Hardware/lift_control.h"
+ARM GAS  C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 lift_control.c
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:20     .text.STP23L_ClearOkFlag:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:25     .text.STP23L_ClearOkFlag:00000000 STP23L_ClearOkFlag
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:58     .text.STP23L_ClearOkFlag:00000014 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:67     .bss.aim_tx_height:00000000 aim_tx_height
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:64     .bss.aim_tx_height:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:73     .data.lift_state:00000000 lift_state
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:80     .bss.lift_current_height:00000000 lift_current_height
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:77     .bss.lift_current_height:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:87     .bss.lift_height_final:00000000 lift_height_final
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:84     .bss.lift_height_final:00000000 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:90     .text.Lift_Init:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:96     .text.Lift_Init:00000000 Lift_Init
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:584    .text.Motor_Stop:00000000 Motor_Stop
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:126    .text.Lift_Init:00000018 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:132    .text.Lift_Up:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:138    .text.Lift_Up:00000000 Lift_Up
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:170    .text.Lift_Up:00000014 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:175    .text.Lift_Down:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:181    .text.Lift_Down:00000000 Lift_Down
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:213    .text.Lift_Down:00000014 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:218    .text.Lift_Stop:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:224    .text.Lift_Stop:00000000 Lift_Stop
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:256    .text.Lift_Stop:00000014 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:261    .text.Lift_SetState:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:267    .text.Lift_SetState:00000000 Lift_SetState
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:307    .text.Lift_SetState:0000001c $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:312    .text.Lift_GetState:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:318    .text.Lift_GetState:00000000 Lift_GetState
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:349    .text.Lift_GetState:00000014 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:354    .text.Lift_UpdateMotor:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:360    .text.Lift_UpdateMotor:00000000 Lift_UpdateMotor
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:504    .text.Motor_Forward:00000000 Motor_Forward
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:544    .text.Motor_Reverse:00000000 Motor_Reverse
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:404    .text.Lift_UpdateMotor:00000028 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:409    .text.Lift_RefreshHeight:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:415    .text.Lift_RefreshHeight:00000000 Lift_RefreshHeight
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:451    .text.Lift_RefreshHeight:00000020 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:457    .text.Lift_GetHeight:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:463    .text.Lift_GetHeight:00000000 Lift_GetHeight
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:494    .text.Lift_GetHeight:00000014 $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:499    .text.Motor_Forward:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:534    .text.Motor_Forward:0000001c $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:539    .text.Motor_Reverse:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:574    .text.Motor_Reverse:0000001c $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:579    .text.Motor_Stop:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:614    .text.Motor_Stop:0000001c $d
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:619    .text.Lift_GoToTarget:00000000 $t
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:625    .text.Lift_GoToTarget:00000000 Lift_GoToTarget
-C:\Users\Administrator\AppData\Local\Temp\ccquBhf5.s:705    .text.Lift_GoToTarget:0000005c $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:20     .text.STP23L_ClearOkFlag:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:25     .text.STP23L_ClearOkFlag:00000000 STP23L_ClearOkFlag
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:58     .text.STP23L_ClearOkFlag:00000014 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:67     .bss.aim_tx_height:00000000 aim_tx_height
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:64     .bss.aim_tx_height:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:73     .data.lift_state:00000000 lift_state
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:80     .bss.lift_current_height:00000000 lift_current_height
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:77     .bss.lift_current_height:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:87     .bss.lift_height_final:00000000 lift_height_final
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:84     .bss.lift_height_final:00000000 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:90     .text.Lift_Init:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:96     .text.Lift_Init:00000000 Lift_Init
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:584    .text.Motor_Stop:00000000 Motor_Stop
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:126    .text.Lift_Init:00000018 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:132    .text.Lift_Up:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:138    .text.Lift_Up:00000000 Lift_Up
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:170    .text.Lift_Up:00000014 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:175    .text.Lift_Down:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:181    .text.Lift_Down:00000000 Lift_Down
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:213    .text.Lift_Down:00000014 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:218    .text.Lift_Stop:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:224    .text.Lift_Stop:00000000 Lift_Stop
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:256    .text.Lift_Stop:00000014 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:261    .text.Lift_SetState:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:267    .text.Lift_SetState:00000000 Lift_SetState
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:307    .text.Lift_SetState:0000001c $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:312    .text.Lift_GetState:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:318    .text.Lift_GetState:00000000 Lift_GetState
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:349    .text.Lift_GetState:00000014 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:354    .text.Lift_UpdateMotor:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:360    .text.Lift_UpdateMotor:00000000 Lift_UpdateMotor
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:504    .text.Motor_Forward:00000000 Motor_Forward
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:544    .text.Motor_Reverse:00000000 Motor_Reverse
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:404    .text.Lift_UpdateMotor:00000028 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:409    .text.Lift_RefreshHeight:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:415    .text.Lift_RefreshHeight:00000000 Lift_RefreshHeight
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:451    .text.Lift_RefreshHeight:00000020 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:457    .text.Lift_GetHeight:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:463    .text.Lift_GetHeight:00000000 Lift_GetHeight
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:494    .text.Lift_GetHeight:00000014 $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:499    .text.Motor_Forward:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:534    .text.Motor_Forward:0000001c $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:539    .text.Motor_Reverse:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:574    .text.Motor_Reverse:0000001c $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:579    .text.Motor_Stop:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:614    .text.Motor_Stop:0000001c $d
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:619    .text.Lift_GoToTarget:00000000 $t
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:625    .text.Lift_GoToTarget:00000000 Lift_GoToTarget
+C:\Users\Administrator\AppData\Local\Temp\ccJkWz3h.s:709    .text.Lift_GoToTarget:00000064 $d
 
 UNDEFINED SYMBOLS
 stp23l_data

@@ -176,7 +176,7 @@ void Lift_GoToTarget(int16_t target_height)
 {
     // 刷新高度值
     Lift_RefreshHeight();
-    if (lift_height_final == 0)
+    if (lift_height_final == 0||target_height == 0)
     {
         return;
     }
