@@ -115,5 +115,6 @@
     "debug.chatOverrideProxyUrl": "https://copilot.637274.xyz/chat/completions",
     "authProvider": "github-enterprise"
   },
+  "editor.codeActionsOnSave": {"source.fixAll": "always"},
   "github-enterprise.uri": "https://copilot.637274.xyz"
 }
