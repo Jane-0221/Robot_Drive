@@ -1,23 +1,24 @@
 #include "lift_control.h" 
- #include "remote_control.h" 
- #include "usart.h" 
- #include "UART_data_txrx.h" 
- #include "stp23l.h" 
- int16_t aim_tx_height = 0; // 目标高度值，每帧更新 
- // 全局变量定义 
- LIFT_State lift_state = LIFT_STOP; // 初始状态为停止 
- uint16_t lift_current_height = 0;  // 初始高度为0
+#include "remote_control.h" 
+#include "usart.h" 
+#include "UART_data_txrx.h" 
+#include "stp23l.h" 
+int16_t aim_tx_height = 0; // 目标高度（每帧更新）
+// 全局变量定义 
+LIFT_State lift_state = LIFT_STOP; // 初始状态：停止 
+uint16_t lift_current_height = 0;  // 初始高度 = 0
 
 // 高度跟踪变量 
- int16_t lift_height_final = 0; // 每帧最终高度值，每帧更新 
- // 私有电机控制函数 
- static void Motor_Forward(void); 
- static void Motor_Reverse(void); 
- static void Motor_Stop(void);
+int16_t lift_height_final = 0; // 每帧最终高度
+
+// 私有电机控制函数 
+static void Motor_Forward(void); 
+static void Motor_Reverse(void); 
+static void Motor_Stop(void);
 
 /** 
-  * @brief  初始化升降控制系统 
-  * @note   确保升降机处于安全状态，初始化状态机并清除之前的状态 
+  * @brief  初始化升降控制系统
+  * @note   初始化为安全就绪，清空旧状态
   * @param  无 
   * @retval 无 
   */
@@ -111,30 +112,30 @@ void Lift_RefreshHeight(void)
 
     if (stp23l_data.parse_ok == 1) 
      { 
-         lift_height_final = STP23L_GetFinalDistPerFrame(); // Get height from sensor 
-         STP23L_ClearOkFlag();                              // Clear flag to maintain consistency 
+         lift_height_final = STP23L_GetFinalDistPerFrame(); // 从传感器获取高度
+         STP23L_ClearOkFlag();                              // 清除标志位以保持一致性 
      } 
-     // Example code for ADC height measurement (commented out) 
+     // 使用ADC高度测量的示例（已注释）
      // lift_current_height = HAL_ADC_GetValue(&hadc1); 
-     // Currently using STP23L sensor for height measurement
+     // 目前使用 STP23L 传感器进行高度测量
 }
 
 /**
- * @brief  锟斤拷取锟斤拷前锟竭讹拷
- * @retval 锟斤拷前锟竭讹拷值
+ * @brief  获取前一帧高度
+ * @retval 前一帧高度值
  */
 uint16_t Lift_GetHeight(void)
 {
     return lift_current_height;
 }
 
-/* **************** 锟阶诧拷锟斤拷锟斤拷锟狡ｏ拷锟斤拷锟斤拷锟结供锟侥达拷锟斤拷一锟铰ｏ拷 **************** */
+/* 高度控制相关的函数实现 (简化注释) */
 
 /**
- * @brief  锟斤拷锟斤拷锟阶拷锟斤拷锟斤拷锟斤拷锟�
- * @note   IN1(PA0)=锟酵碉拷平锟斤拷锟较ｏ拷IN2(PA2)=锟竭碉拷平锟较匡拷 锟斤拷 锟斤拷锟斤拷锟阶�
- * @param  锟斤拷
- * @retval 锟斤拷
+ * @brief  电机正转控制
+ * @note   IN1 = 高，IN2 = 低
+ * @param  无
+ * @retval 无
  */
 static void Motor_Forward(void)
 {
@@ -143,10 +144,10 @@ static void Motor_Forward(void)
 }
 
 /**
- * @brief  锟斤拷锟斤拷锟阶拷锟斤拷陆锟斤拷锟�
- * @note   IN1(PA0)=锟竭碉拷平锟较匡拷锟斤拷IN2(PA2)=锟酵碉拷平锟斤拷锟斤拷 锟斤拷 锟斤拷锟斤拷锟阶�
- * @param  锟斤拷
- * @retval 锟斤拷
+ * @brief  电机反转控制
+ * @note   IN1 = 低，IN2 = 高
+ * @param  无
+ * @retval 无
  */
 static void Motor_Reverse(void)
 {
@@ -155,10 +156,10 @@ static void Motor_Reverse(void)
 }
 
 /**
- * @brief  锟斤拷锟酵Ｖ�
- * @note   锟斤拷路锟教碉拷锟斤拷锟斤拷锟较匡拷锟斤拷锟竭碉拷平锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟�
- * @param  锟斤拷
- * @retval 锟斤拷
+ * @brief  电机停止
+ * @note   两继电器同相输出，电机停止
+ * @param  无
+ * @retval 无
  */
 static void Motor_Stop(void)
 {
@@ -168,7 +169,7 @@ static void Motor_Stop(void)
 
 /**
  * @brief  控制到目标高度
- * @note   通过遥控器设置lift_height_final达到目标位置，误差5以内停止
+ * @note   通过遥控设置 lift_height_final 达到目标位置，误差约5内停止
  * @param  target_height 目标高度值
  * @retval 无
  */
@@ -176,7 +177,7 @@ void Lift_GoToTarget(int16_t target_height)
 {
     // 刷新高度值
     Lift_RefreshHeight();
-    if (lift_height_final == 0||target_height == 0)
+    if (lift_height_final == 0 || target_height == 0)
     {
         return;
     }

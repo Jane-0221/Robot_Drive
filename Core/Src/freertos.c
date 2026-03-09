@@ -307,7 +307,8 @@ void Lift_control_Task(void *argument)
   for (;;)
   {
     STP23L_ParseData(stp23l_raw_data, sizeof(stp23l_raw_data)); // 解析升降数据包
-
+    PT_ParsePressureToGlobal(pt_raw_buf, sizeof(pt_raw_buf));
+    
     Lift_RefreshHeight();           // 高度数据处理，得到当前高度
     Lift_GoToTarget(aim_tx_height); // 根据目标高度，控制电机运动
     osDelay(1);
@@ -331,8 +332,6 @@ void Motor_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-   // PT_ParsePressureToGlobal(pt_raw_buf, sizeof(pt_raw_buf));
-   PT_ParsePressureToGlobal(pt_raw_buf, sizeof(pt_raw_buf));
     osDelay(1);
   }
   /* USER CODE END Motor_control_Task */

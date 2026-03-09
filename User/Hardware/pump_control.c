@@ -1,9 +1,13 @@
 #include "pump_control.h"
 #include "gpio.h"
 #include "stm32h7xx_hal.h"
+#include "pt_sensor.h"
 // 定义全局变量
 PUMP_State pump_state = PUMP_OFF; // 初始为关闭
-
+LIQUID_State liquid_state = LIQUID_NOT_SUCKED; // 初始为未吸到药品
+// 压力阈值定义
+#define PRESSURE_THRESHOLD_LOW  10.0f  // 压力低阈值
+#define PRESSURE_THRESHOLD_HIGH 70.0f  // 压力高阈值
 /**
  * @brief  初始化气泵控制
  * @note   确保气泵关闭，引脚初始化通常在硬件初始化中完成
@@ -62,4 +66,24 @@ void Pump_Update(void)
 
         break;
     }
+}
+/**
+ * @brief  检查是否吸到药品
+ * @note   根据压力值判断是否吸到药品，压力值在10-70kPa范围内表示已吸到
+ * @param  无
+ * @retval LIQUID_State 吸液状态
+ */
+LIQUID_State Check_Liquid_Sucked(void)
+{
+    // 检查压力值是否在有效范围内
+    if (g_pressure_value > PRESSURE_THRESHOLD_LOW && g_pressure_value < PRESSURE_THRESHOLD_HIGH)
+    {
+        liquid_state = LIQUID_SUCKED; // 已吸到药品
+    }
+    else
+    {
+        liquid_state = LIQUID_NOT_SUCKED; // 未吸到药品
+    }
+    
+    return liquid_state;
 }
