@@ -41,6 +41,7 @@
 #include "stp23l.h"
 #include "uart_protocol.h"
 #include "pt_sensor.h"
+#include "usart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -238,12 +239,15 @@ void Remote_control_Task(void *argument)
 
   /* USER CODE BEGIN Remote_control_Task */
   MX_USB_DEVICE_Init();
-  int control_mode = 1; // 0: 遥控模式, 1: pc模式
-
+  int control_mode = 0; // 0: 遥控模式, 1: pc模式
+  PT_Send_ReadTemp_Cmd(&huart1);
   /* Infinite loop */
   for (;;)
   {
-    update_sbus(sbus_data_buffer, &SBUS_CH); // 遥锟斤拷锟斤拷锟斤拷锟捷革拷锟斤拷
+    PT_Send_ReadPress_Cmd(&huart1);
+    osDelay(1);
+    update_sbus(sbus_data_buffer, &SBUS_CH); //
+
     if (control_mode == 0)
     {
       // 遥控模式
@@ -303,9 +307,9 @@ void Lift_control_Task(void *argument)
   for (;;)
   {
     STP23L_ParseData(stp23l_raw_data, sizeof(stp23l_raw_data)); // 解析升降数据包
-    pt_store_raw_data(pt_raw_buf, sizeof(stp23l_raw_data));     // 解析pt传感器数据
-    Lift_RefreshHeight();                                       // 高度数据处理，得到当前高度
-    Lift_GoToTarget(aim_tx_height);                             // 根据目标高度，控制电机运动
+
+    Lift_RefreshHeight();           // 高度数据处理，得到当前高度
+    Lift_GoToTarget(aim_tx_height); // 根据目标高度，控制电机运动
     osDelay(1);
     Pump_Update(); // 更新气泵状态
     osDelay(1);
@@ -327,7 +331,8 @@ void Motor_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-
+   // PT_ParsePressureToGlobal(pt_raw_buf, sizeof(pt_raw_buf));
+   PT_ParsePressureToGlobal(pt_raw_buf, sizeof(pt_raw_buf));
     osDelay(1);
   }
   /* USER CODE END Motor_control_Task */

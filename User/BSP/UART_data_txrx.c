@@ -60,6 +60,8 @@ void uart_init(void)
   UART_DMA_rxtx_start(&UART5_data, &huart5, &hdma_uart5_rx, &hdma_uart5_rx);
   UART_DMA_rxtx_start(&UART7_data, &huart7, &hdma_uart7_rx, &hdma_uart7_tx);
   UART_DMA_rxtx_start(&UART10_data, &huart10, &hdma_usart10_rx, &hdma_usart10_tx);
+
+
 }
 
 /**
@@ -100,9 +102,14 @@ void UART_send_data(transmit_data uart, uint8_t data[], uint16_t size)
  */
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-  if (huart == &huart1)
+  if (huart == &huart1)//气路气压
   {
-
+    printf("总帧: ");
+    for(uint16_t j = 0; j <Size; j++)
+    {
+        printf("%02X ", UART1_data.rev_data[j]);
+    }
+    printf("\n");
     pt_store_raw_data(UART1_data.rev_data, Size); // 存储数据
     HAL_UARTEx_ReceiveToIdle_DMA(huart, UART1_data.rev_data, UART_BUFFER_SIZE);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);

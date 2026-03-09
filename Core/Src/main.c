@@ -307,7 +307,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     static uint8_t i;
     IMU_updata();
     if (i >= 5)
-    { // 降频�????????200hz
+    { 
 
       i = 0;
     }
