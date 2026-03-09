@@ -40,6 +40,7 @@
 #include "Sbus.h"
 #include "stp23l.h"
 #include "uart_protocol.h"
+#include "pt_sensor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -234,9 +235,11 @@ void MX_FREERTOS_Init(void)
 void Remote_control_Task(void *argument)
 {
   /* init code for USB_DEVICE */
+
+  /* USER CODE BEGIN Remote_control_Task */
   MX_USB_DEVICE_Init();
   int control_mode = 1; // 0: 遥控模式, 1: pc模式
-  /* USER CODE BEGIN Remote_control_Task */
+
   /* Infinite loop */
   for (;;)
   {
@@ -299,7 +302,8 @@ void Lift_control_Task(void *argument)
   /* Infinite loop */
   for (;;)
   {
-    STP23L_ParseData(stp23l_raw_data, sizeof(stp23l_raw_data)); // 解析数据包
+    STP23L_ParseData(stp23l_raw_data, sizeof(stp23l_raw_data)); // 解析升降数据包
+    pt_store_raw_data(pt_raw_buf, sizeof(stp23l_raw_data));     // 解析pt传感器数据
     Lift_RefreshHeight();                                       // 高度数据处理，得到当前高度
     Lift_GoToTarget(aim_tx_height);                             // 根据目标高度，控制电机运动
     osDelay(1);

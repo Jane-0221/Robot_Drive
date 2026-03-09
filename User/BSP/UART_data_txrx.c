@@ -17,8 +17,7 @@
 #include "gom_protocol.h"
 #include "Sbus.h"
 #include "stp23l.h"
-uint32_t Flag_T13 = 0;
-
+#include "pt_sensor.h"
 // DMA控制变量
 extern DMA_HandleTypeDef hdma_uart5_rx; // 遥控器，仅用接受
 extern DMA_HandleTypeDef hdma_uart7_rx; // 串口7
@@ -101,17 +100,21 @@ void UART_send_data(transmit_data uart, uint8_t data[], uint16_t size)
  */
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
-  if (huart == &huart5) // 遥控器
+  if (huart == &huart1)
   {
-    // DT7_decode_data(UART5_data.rev_data);
-    // update_sbus(UART5_data.rev_data, &SBUS_CH);//直接解析数据
+
+    pt_store_raw_data(UART1_data.rev_data, Size); // 存储数据
+    HAL_UARTEx_ReceiveToIdle_DMA(huart, UART1_data.rev_data, UART_BUFFER_SIZE);
+    __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
+  }
+  else if (huart == &huart5) // 遥控器
+  {
     store_sbus_data(UART5_data.rev_data, Size); // 收到数据进行储存
     HAL_UARTEx_ReceiveToIdle_DMA(huart, UART5_data.rev_data, UART_BUFFER_SIZE);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
   else if (huart == &huart7) // 升降杆高度读取
   {
-    // STP23L_ParseData(UART7_data.rev_data, Size);
     store_stp23l_data(UART7_data.rev_data, Size); // 只存储，不解析
     HAL_UARTEx_ReceiveToIdle_DMA(huart, UART7_data.rev_data, UART_BUFFER_SIZE);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
@@ -122,19 +125,6 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
     HAL_UARTEx_ReceiveToIdle_DMA(huart, UART10_data.rev_data, UART_BUFFER_SIZE);
     __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }
-  else if (huart == &huart1)
-  {
-    if (UART1_data.rev_data[0] == 0xA5)
-    {
-    }
-    HAL_UARTEx_ReceiveToIdle_DMA(huart, UART1_data.rev_data, UART_BUFFER_SIZE);
-    __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
-  }
-  // else if (huart == &huart2)
-  // {
-  //   HAL_UARTEx_ReceiveToIdle_DMA(huart, UART2_data.rev_data, UART_BUFFER_SIZE);
-  //   __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
-  // }
   else if (huart == &huart3)
   {
     //  HAL_UART_Receive(&huart1, (uint8_t *)&data.motor_recv_data, sizeof(data.motor_recv_data), 1);
