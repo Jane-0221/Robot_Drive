@@ -134,6 +134,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
   }
   else if (huart == &huart3)
   {
+    //ÓîÊ÷µç»ú
     //  HAL_UART_Receive(&huart1, (uint8_t *)&data.motor_recv_data, sizeof(data.motor_recv_data), 1);
     //      __HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
   }

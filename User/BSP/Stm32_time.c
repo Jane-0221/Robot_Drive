@@ -1,13 +1,3 @@
-/**
- * @file time.c
- * @author sethome
- * @brief STM32F4的开机时间计算
- * @version 0.1
- * @date 2022-11-20
- * 
- * @copyright Copyright (c) 2022
- * 
- */
 #include "Stm32_time.h"
 #include "stm32h7xx_hal.h"
 
