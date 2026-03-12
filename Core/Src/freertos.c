@@ -258,7 +258,7 @@ void Remote_control_Task(void *argument)
       osDelay(1);
       Up_Down_Motor_Control_Updata();
     }
-    else
+    else if(control_mode==1)
     {
       // pc模式
       osDelay(1);
@@ -268,7 +268,7 @@ void Remote_control_Task(void *argument)
       osDelay(1);
       PC_Up_Down_Motor_Control_Updata();
     }
-
+    ARM_SV_Tx_Rx();
     osDelay(1);
   }
   /* USER CODE END Remote_control_Task */
@@ -289,7 +289,6 @@ void Arm_MT_Task(void *argument)
   {
     osDelay(1);
     Arm_all_tx();
-
   }
   /* USER CODE END Arm_MT_Task */
 }
@@ -309,7 +308,7 @@ void Lift_control_Task(void *argument)
   {
     STP23L_ParseData(stp23l_raw_data, sizeof(stp23l_raw_data)); // 解析升降数据包
     PT_ParsePressureToGlobal(pt_raw_buf, sizeof(pt_raw_buf));
-    
+
     Lift_RefreshHeight();           // 高度数据处理，得到当前高度
     Lift_GoToTarget(aim_tx_height); // 根据目标高度，控制电机运动
     osDelay(1);
@@ -420,7 +419,7 @@ void Arm_SV_Task(void *argument)
 
   for (;;)
   {
-    ARM_SV_Tx_Rx();
+    // ARM_SV_Tx_Rx();
     osDelay(1);
   }
   /* USER CODE END Arm_SV_Task */
