@@ -289,6 +289,7 @@ void Arm_MT_Task(void *argument)
   {
     osDelay(1);
     Arm_all_tx();
+
   }
   /* USER CODE END Arm_MT_Task */
 }

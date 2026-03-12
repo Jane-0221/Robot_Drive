@@ -42,12 +42,19 @@ void Head_Motor_Control_Updata(void)
         Daran_motor_data[0].target_angle = 0;
         Daran_motor_data[1].target_angle = 0;
 
-        duties_tx.duty0 = 0.125;
-        duties_tx.duty1 = 0.125;
-        duties_tx.duty2 = 0.125;
-        duties_tx.duty3 = 0.125;
-        duties_tx.duty4 = 0.125;
-        duties_tx.duty5 = 0.125;
+        // duties_tx.duty0 = 0.125;
+        // duties_tx.duty1 = 0.125;
+        // duties_tx.duty2 = 0.125;
+        // duties_tx.duty3 = 0.125;
+        // duties_tx.duty4 = 0.125;
+        // duties_tx.duty5 = 0.125;
+        duties_tx.duty0 = 1;
+        duties_tx.duty1 = 1;
+        duties_tx.duty2 = 1;
+        duties_tx.duty3 = 1;
+        duties_tx.duty4 = 1;
+        duties_tx.duty5 = 1;
+        return;
     }
     else if (SBUS_CH.CH6 == MID_VALUE)
     {
@@ -60,6 +67,7 @@ void Head_Motor_Control_Updata(void)
         duties_tx.duty3 = 0.075;
         duties_tx.duty4 = 0.075;
         duties_tx.duty5 = 0.075;
+        return;
     }
     else if (SBUS_CH.CH6 == LOW_VALUE)
     {
@@ -72,6 +80,7 @@ void Head_Motor_Control_Updata(void)
         duties_tx.duty3 = 0.025;
         duties_tx.duty4 = 0.025;
         duties_tx.duty5 = 0.025;
+        return;
     }
 }
 
@@ -125,7 +134,7 @@ void PC_Head_Motor_Control_Updata(void)
 
     // 根据角度设置占空比（示例逻辑，可根据实际需求调整）
     float duty_base = 0.025f + (Daran_motor_data[0].target_angle / 180.0f) * 0.1f;
-    
+
     duties_tx.duty0 = duty_base;
     duties_tx.duty1 = duty_base;
     duties_tx.duty2 = duty_base;
