@@ -12,77 +12,16 @@
 #include "pump_control.h"
 #include "arm_sv.h"
 #include "uart_protocol.h" // 添加PC通信协议头文件
+#include "arm_sv.h"
 // 遥控器值
 #define LOW_VALUE 353
 #define MID_VALUE 1024
 #define HIGH_VALUE 1694
 #define RANGE 50
-#define PI 3.14159265358979323846f
-#define THREE_PI_OVER_FOUR (PI * 3.0f / 4.0f)
-float motor_radians[6] = {0.0f};
 void remote_control_init()
 {
 }
-/**
- * @brief 270°模式下弧度转占空比函数
- * @param radian 输入弧度值（范围：-3π/4 ~ +3π/4，即-135°~+135°）
- * @return 对应的占空比值（范围：0.025 ~ 0.125）
- * @note 占空比0.075对应弧度0，线性映射关系
- */
-float radian_to_duty_270(float radian)
-{
-    // 角度范围：-135° ~ +135°（-3π/4 ~ +3π/4 弧度）
-    // 占空比范围：0.025 ~ 0.125
-    // 中点：弧度0对应占空比0.075
 
-    // 限制弧度范围
-    if (radian < -THREE_PI_OVER_FOUR)
-    {
-        radian = -THREE_PI_OVER_FOUR;
-    }
-    else if (radian > THREE_PI_OVER_FOUR)
-    {
-        radian = THREE_PI_OVER_FOUR;
-    }
-
-    // 线性映射公式：duty = 0.075 + (radian / (3π/4)) * 0.05
-    float duty = 0.075f + (radian / THREE_PI_OVER_FOUR) * 0.05f;
-
-    return duty;
-}
-/**
- * @brief 设置6个电机的弧度值
- * @param radians 包含6个弧度值的数组
- * @note 每个弧度值范围：-3π/4 ~ +3π/4
- */
-void set_motor_radians_270(float radians[6])
-{
-    for (int i = 0; i < 6; i++)
-    {
-        // 将弧度转换为占空比并设置
-        switch (i)
-        {
-        case 0:
-            duties_tx.duty0 = radian_to_duty_270(radians[i] / 2);
-            break;
-        case 1:
-            duties_tx.duty1 = radian_to_duty_270(radians[i] / 2);
-            break;
-        case 2:
-            duties_tx.duty2 = radian_to_duty_270(radians[i]);
-            break;
-        case 3:
-            duties_tx.duty3 = radian_to_duty_270(radians[i]);
-            break;
-        case 4:
-            duties_tx.duty4 = radian_to_duty_270(radians[i]);
-            break;
-        case 5:
-            duties_tx.duty5 = radian_to_duty_270(radians[i]);
-            break;
-        }
-    }
-}
 void Pump_Control_Updata(void)
 {
     if (SBUS_CH.CH8 == HIGH_VALUE)
@@ -136,7 +75,7 @@ void Head_Motor_Control_Updata(void)
             motor_radians[1] -= 0.003f;
         }
 
-        set_motor_radians_270(motor_radians);
+         
         break;
 
     case MID_VALUE:
@@ -172,7 +111,7 @@ void Head_Motor_Control_Updata(void)
         {
             motor_radians[3] -= 0.003f;
         }
-        set_motor_radians_270(motor_radians);
+         
         break;
 
     case LOW_VALUE:
@@ -208,7 +147,7 @@ void Head_Motor_Control_Updata(void)
         {
             motor_radians[5] -= 0.003f;
         }
-        set_motor_radians_270(motor_radians);
+         
         break;
 
     default:
@@ -259,7 +198,7 @@ case LOW_VALUE:   // 挥手到右边（第一张图的弧度值）
 
     }
 
-    set_motor_radians_270(motor_radians);
+     
 }
 
 }

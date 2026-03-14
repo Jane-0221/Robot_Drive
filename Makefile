@@ -107,6 +107,7 @@ Algorithm/madgwick.c \
 Algorithm/MahonyAHRS.c \
 Algorithm/pid.c \
 Algorithm/ramp_generator.c \
+Algorithm/ramp.c \
 User/BSP/UART_data_txrx.c \
 User/BSP/CAN_receive_send.c \
 User/BSP/Stm32_time.c \

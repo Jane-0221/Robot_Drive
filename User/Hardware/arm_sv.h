@@ -9,7 +9,7 @@
  * @note  固定为6路（对应0~5号舵机），与ARM_SV_Duties_t结构体成员一一对应
  */
 #define ARM_SV_COUNT        6
-
+ extern float motor_radians[6];
 // ===================== 数据结构体定义 =====================
 /**
  * @brief 机械臂6路舵机PWM占空比存储结构体
@@ -32,6 +32,8 @@ typedef struct {
 extern ARM_SV_Duties_t duties_tx;
 
 // ===================== 函数声明 =====================
+float radian_to_duty_270(float radian);
+void set_motor_radians_270(float radians[6]);
 /**
  * @brief 机械臂舵机初始化函数
  * @param  freq  PWM输出频率（单位：Hz）

@@ -2,6 +2,70 @@
 #include "bsp_pca9685.h"
 #include "stdio.h"
 
+#define PI 3.14159265358979323846f
+#define THREE_PI_OVER_FOUR (PI * 3.0f / 4.0f)
+float motor_radians[6] = {0.0f};
+
+/**
+ * @brief 270°模式下弧度转占空比函数
+ * @param radian 输入弧度值（范围：-3π/4 ~ +3π/4，即-135°~+135°）
+ * @return 对应的占空比值（范围：0.025 ~ 0.125）
+ * @note 占空比0.075对应弧度0，线性映射关系
+ */
+float radian_to_duty_270(float radian)
+{
+    // 角度范围：-135° ~ +135°（-3π/4 ~ +3π/4 弧度）
+    // 占空比范围：0.025 ~ 0.125
+    // 中点：弧度0对应占空比0.075
+
+    // 限制弧度范围
+    if (radian < -THREE_PI_OVER_FOUR)
+    {
+        radian = -THREE_PI_OVER_FOUR;
+    }
+    else if (radian > THREE_PI_OVER_FOUR)
+    {
+        radian = THREE_PI_OVER_FOUR;
+    }
+
+    // 线性映射公式：duty = 0.075 + (radian / (3π/4)) * 0.05
+    float duty = 0.075f + (radian / THREE_PI_OVER_FOUR) * 0.05f;
+
+    return duty;
+}
+/**
+ * @brief 设置6个电机的弧度值
+ * @param radians 包含6个弧度值的数组
+ * @note 每个弧度值范围：-3π/4 ~ +3π/4
+ */
+void set_motor_radians_270(float radians[6])
+{
+    for (int i = 0; i < 6; i++)
+    {
+        // 将弧度转换为占空比并设置
+        switch (i)
+        {
+        case 0:
+            duties_tx.duty0 = radian_to_duty_270(radians[i] / 2);
+            break;
+        case 1:
+            duties_tx.duty1 = radian_to_duty_270(radians[i] / 2);
+            break;
+        case 2:
+            duties_tx.duty2 = radian_to_duty_270(radians[i]);
+            break;
+        case 3:
+            duties_tx.duty3 = radian_to_duty_270(radians[i]);
+            break;
+        case 4:
+            duties_tx.duty4 = radian_to_duty_270(radians[i]);
+            break;
+        case 5:
+            duties_tx.duty5 = radian_to_duty_270(radians[i]);
+            break;
+        }
+    }
+}
 // ===================== 全局变量定义 =====================
 /**
  * @brief 静态数组：存储每个舵机当前的PWM占空比（0~1.0对应0%~100%）
@@ -33,10 +97,10 @@ ARM_SV_Duties_t duties_tx;
  */
 static void set_sv_duty(uint8_t id, float duty)
 {
-    if (id >= ARM_SV_COUNT)  // 舵机编号越界检查
+    if (id >= ARM_SV_COUNT) // 舵机编号越界检查
         return;
     PCA9685_SetDuty(id, duty); // 调用PCA9685驱动设置指定舵机的PWM占空比
-    current_duties[id] = duty;  // 更新当前占空比缓存
+    current_duties[id] = duty; // 更新当前占空比缓存
 }
 
 // ===================== 对外接口函数定义 =====================
@@ -57,9 +121,9 @@ void ARM_SV_Init(float freq)
     duties_tx.duty3 = 0;
     duties_tx.duty4 = 0;
     duties_tx.duty5 = 0;
-    
+
     PCA9685_Init(freq); // 初始化PCA9685 PWM驱动芯片
-    
+
     // 初始化当前占空比缓存数组，所有元素置0
     for (uint8_t i = 0; i < ARM_SV_COUNT; i++)
     {
@@ -129,7 +193,7 @@ void ARM_SV_SetDuty5(float duty) { set_sv_duty(5, duty); }
  */
 float ARM_SV_GetDuty(uint8_t sv_id)
 {
-    if (sv_id >= ARM_SV_COUNT)  // 舵机编号越界检查
+    if (sv_id >= ARM_SV_COUNT) // 舵机编号越界检查
         return 0.0f;
     return current_duties[sv_id]; // 返回缓存的当前占空比
 }
@@ -213,6 +277,9 @@ ARM_SV_Duties_t ARM_SV_GetAllDuties(void)
  */
 void ARM_SV_Tx_Rx()
 {
+
+    
+    set_motor_radians_270(motor_radians);
     // 发送：将duties_tx的目标占空比设置到对应舵机
     ARM_SV_SetDuty0(duties_tx.duty0); // 设置0号舵机占空比
     ARM_SV_SetDuty1(duties_tx.duty1); // 设置1号舵机占空比
@@ -220,7 +287,7 @@ void ARM_SV_Tx_Rx()
     ARM_SV_SetDuty3(duties_tx.duty3); // 设置3号舵机占空比
     ARM_SV_SetDuty4(duties_tx.duty4); // 设置4号舵机占空比
     ARM_SV_SetDuty5(duties_tx.duty5); // 设置5号舵机占空比
-    
+
     // 接收：获取所有舵机当前占空比，存入duties_rx结构体
     duties_rx = ARM_SV_GetAllDuties();
 
