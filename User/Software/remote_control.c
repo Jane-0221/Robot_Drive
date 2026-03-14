@@ -12,17 +12,77 @@
 #include "pump_control.h"
 #include "arm_sv.h"
 #include "uart_protocol.h" // 添加PC通信协议头文件
-
 // 遥控器值
 #define LOW_VALUE 353
 #define MID_VALUE 1024
 #define HIGH_VALUE 1694
 #define RANGE 50
-
+#define PI 3.14159265358979323846f
+#define THREE_PI_OVER_FOUR (PI * 3.0f / 4.0f)
+float motor_radians[6] = {0.0f};
 void remote_control_init()
 {
 }
+/**
+ * @brief 270°模式下弧度转占空比函数
+ * @param radian 输入弧度值（范围：-3π/4 ~ +3π/4，即-135°~+135°）
+ * @return 对应的占空比值（范围：0.025 ~ 0.125）
+ * @note 占空比0.075对应弧度0，线性映射关系
+ */
+float radian_to_duty_270(float radian)
+{
+    // 角度范围：-135° ~ +135°（-3π/4 ~ +3π/4 弧度）
+    // 占空比范围：0.025 ~ 0.125
+    // 中点：弧度0对应占空比0.075
 
+    // 限制弧度范围
+    if (radian < -THREE_PI_OVER_FOUR)
+    {
+        radian = -THREE_PI_OVER_FOUR;
+    }
+    else if (radian > THREE_PI_OVER_FOUR)
+    {
+        radian = THREE_PI_OVER_FOUR;
+    }
+
+    // 线性映射公式：duty = 0.075 + (radian / (3π/4)) * 0.05
+    float duty = 0.075f + (radian / THREE_PI_OVER_FOUR) * 0.05f;
+
+    return duty;
+}
+/**
+ * @brief 设置6个电机的弧度值
+ * @param radians 包含6个弧度值的数组
+ * @note 每个弧度值范围：-3π/4 ~ +3π/4
+ */
+void set_motor_radians_270(float radians[6])
+{
+    for (int i = 0; i < 6; i++)
+    {
+        // 将弧度转换为占空比并设置
+        switch (i)
+        {
+        case 0:
+            duties_tx.duty0 = radian_to_duty_270(radians[i] / 2);
+            break;
+        case 1:
+            duties_tx.duty1 = radian_to_duty_270(radians[i] / 2);
+            break;
+        case 2:
+            duties_tx.duty2 = radian_to_duty_270(radians[i]);
+            break;
+        case 3:
+            duties_tx.duty3 = radian_to_duty_270(radians[i]);
+            break;
+        case 4:
+            duties_tx.duty4 = radian_to_duty_270(radians[i]);
+            break;
+        case 5:
+            duties_tx.duty5 = radian_to_duty_270(radians[i]);
+            break;
+        }
+    }
+}
 void Pump_Control_Updata(void)
 {
     if (SBUS_CH.CH8 == HIGH_VALUE)
@@ -37,51 +97,171 @@ void Pump_Control_Updata(void)
 
 void Head_Motor_Control_Updata(void)
 {
-    if (SBUS_CH.CH6 == HIGH_VALUE)
+    // 替换原有if-else if结构为switch语句
+    if(SBUS_CH.CH8==HIGH_VALUE)
     {
+    switch (SBUS_CH.CH6)
+    {
+    case HIGH_VALUE:
         Daran_motor_data[0].target_angle = 0;
         Daran_motor_data[1].target_angle = 0;
 
-        // duties_tx.duty0 = 0.125;
-        // duties_tx.duty1 = 0.125;
-        // duties_tx.duty2 = 0.125;
-        // duties_tx.duty3 = 0.125;
-        // duties_tx.duty4 = 0.125;
-        // duties_tx.duty5 = 0.125;
-        duties_tx.duty0 = 1;
-        duties_tx.duty1 = 1;
-        duties_tx.duty2 = 1;
-        duties_tx.duty3 = 1;
-        duties_tx.duty4 = 1;
-        duties_tx.duty5 = 1;
-        return;
-    }
-    else if (SBUS_CH.CH6 == MID_VALUE)
-    {
+        // duties_tx.duty0 = 0.12;
+        //  duties_tx.duty1 = 0.12;
+        //  duties_tx.duty2 = 0.12;
+        //  duties_tx.duty3 = 0.12;
+        //  duties_tx.duty4 = 0.12;
+        //  duties_tx.duty5 = 0.12;
+        // motor_radians[0] = PI / 4;
+        // motor_radians[1] = PI / 3;
+        // motor_radians[2] = PI / 2;
+        // motor_radians[3] = PI / 2;
+        // motor_radians[4] = PI / 2;
+        // motor_radians[5] = PI / 2;
+        if (SBUS_CH.CH1 > (MID_VALUE + RANGE))
+        {
+            motor_radians[0] += 0.003f;
+        }
+        else if (SBUS_CH.CH1 < (MID_VALUE - RANGE))
+        {
+            motor_radians[0] -= 0.003f;
+        }
+
+        if (SBUS_CH.CH2 > (MID_VALUE + RANGE))
+        {
+            motor_radians[1] += 0.003f;
+        }
+        else if (SBUS_CH.CH2 < (MID_VALUE - RANGE))
+        {
+            motor_radians[1] -= 0.003f;
+        }
+
+        set_motor_radians_270(motor_radians);
+        break;
+
+    case MID_VALUE:
         Daran_motor_data[0].target_angle = 90;
         Daran_motor_data[1].target_angle = 90;
 
-        duties_tx.duty0 = 0.075;
-        duties_tx.duty1 = 0.075;
-        duties_tx.duty2 = 0.075;
-        duties_tx.duty3 = 0.075;
-        duties_tx.duty4 = 0.075;
-        duties_tx.duty5 = 0.075;
-        return;
-    }
-    else if (SBUS_CH.CH6 == LOW_VALUE)
-    {
+        // duties_tx.duty0 = 0.075;
+        // duties_tx.duty1 = 0.075;
+        // duties_tx.duty2 = 0.075;
+        // duties_tx.duty3 = 0.075;
+        // duties_tx.duty4 = 0.075;
+        // duties_tx.duty5 = 0.075;
+        // motor_radians[0] = 0.0f;
+        // motor_radians[1] = 0.0f;
+        // motor_radians[2] = 0.0f;
+        // motor_radians[3] = 0.0f;
+        // motor_radians[4] = 0.0f;
+        // motor_radians[5] = 0.0f;
+        if (SBUS_CH.CH1 > (MID_VALUE + RANGE))
+        {
+            motor_radians[2] += 0.003f;
+        }
+        else if (SBUS_CH.CH1 < (MID_VALUE - RANGE))
+        {
+            motor_radians[2] -= 0.003f;
+        }
+
+        if (SBUS_CH.CH2 > (MID_VALUE + RANGE))
+        {
+            motor_radians[3] += 0.003f;
+        }
+        else if (SBUS_CH.CH2 < (MID_VALUE - RANGE))
+        {
+            motor_radians[3] -= 0.003f;
+        }
+        set_motor_radians_270(motor_radians);
+        break;
+
+    case LOW_VALUE:
         Daran_motor_data[0].target_angle = 180;
         Daran_motor_data[1].target_angle = 180;
 
-        duties_tx.duty0 = 0.025;
-        duties_tx.duty1 = 0.025;
-        duties_tx.duty2 = 0.025;
-        duties_tx.duty3 = 0.025;
-        duties_tx.duty4 = 0.025;
-        duties_tx.duty5 = 0.025;
-        return;
+        // duties_tx.duty0 = 0.03;
+        // duties_tx.duty1 = 0.03;
+        // duties_tx.duty2 = 0.03;
+        // duties_tx.duty3 = 0.03;
+        // duties_tx.duty4 = 0.03;
+        // duties_tx.duty5 = 0.03;
+        // motor_radians[0] = -PI / 4;
+        // motor_radians[1] = -PI / 3;
+        // motor_radians[2] = -PI / 2;
+        // motor_radians[3] = -PI / 2;
+        // motor_radians[4] = -PI / 4;
+        // motor_radians[5] = -PI / 4;
+        if (SBUS_CH.CH1 > (MID_VALUE + RANGE))
+        {
+            motor_radians[4] += 0.003f;
+        }
+        else if (SBUS_CH.CH1 < (MID_VALUE - RANGE))
+        {
+            motor_radians[4] -= 0.003f;
+        }
+
+        if (SBUS_CH.CH2 > (MID_VALUE + RANGE))
+        {
+            motor_radians[5] += 0.003f;
+        }
+        else if (SBUS_CH.CH2 < (MID_VALUE - RANGE))
+        {
+            motor_radians[5] -= 0.003f;
+        }
+        set_motor_radians_270(motor_radians);
+        break;
+
+    default:
+        // 可选：处理SBUS_CH.CH6不是上述三个值的情况
+        // 如果不需要特殊处理，这里可以留空
+        break;
     }
+}
+else if(SBUS_CH.CH8==LOW_VALUE)
+{
+    switch (SBUS_CH.CH6)
+    {
+case HIGH_VALUE:  // 挥手到左边（第三张图的弧度值）
+    motor_radians[0] = -0.101999983;
+    motor_radians[1] = -0.29700008;
+    motor_radians[2] = 1.80600858;
+    motor_radians[3] = 2.40001273;
+    motor_radians[4] = 0.0119999889;
+    motor_radians[5] = -0.0150000118;
+    break;
+
+case MID_VALUE:   // 举手（中间姿态，第二张图的弧度值）
+    motor_radians[0] = -0.101999983;
+    motor_radians[1] = -0.29700008;
+    motor_radians[2] = 1.79100847;
+    motor_radians[3] = 1.88400912;
+    motor_radians[4] = 0.0119999889;
+    motor_radians[5] = -0.0150000118;
+    break;
+
+case LOW_VALUE:   // 挥手到右边（第一张图的弧度值）
+    motor_radians[0] = -0.101999983;
+    motor_radians[1] = -0.29700008;
+    motor_radians[2] = 1.88700914;
+    motor_radians[3] = 1.30800509;
+    motor_radians[4] = 0.0119999889;
+    motor_radians[5] = -0.0150000118;
+    break;
+
+
+
+    // 默认情况：保持当前关节角度（避免无操作时数组值异常）
+    default:
+        // 可选：如果需要默认姿态，可赋值为举手姿态
+        // motor_radians[0] = -0.0450000018f;
+        // ... 其他关节赋值
+        break;
+
+    }
+
+    set_motor_radians_270(motor_radians);
+}
+
 }
 
 void Up_Down_Motor_Control_Updata(void)
@@ -100,6 +280,7 @@ void Up_Down_Motor_Control_Updata(void)
     default:
         break;
     }
+
 }
 
 // PC控制函数实现

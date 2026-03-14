@@ -4,8 +4,11 @@
 #include "stdint.h"
 #include "main.h"
 
+ extern float motor_radians[6];
 
 void remote_control_init(void);
+float radian_to_duty_270(float radian);
+void set_motor_radians_270(float radians[6]);
 extern void Pump_Control_Updata(void);
 extern void Head_Motor_Control_Updata(void);
 void Up_Down_Motor_Control_Updata(void);
