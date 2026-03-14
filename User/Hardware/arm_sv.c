@@ -6,6 +6,37 @@
 #define THREE_PI_OVER_FOUR (PI * 3.0f / 4.0f)
 float motor_radians[6] = {0.0f};
 
+// ===================== 斜坡相关变量 =====================
+/**
+ * @brief 斜坡结构体数组：每个舵机对应一个斜坡发生器
+ * @note  用于实现舵机角度的平滑过渡
+ */
+static ramp_t servo_ramps[ARM_SV_COUNT];
+
+/**
+ * @brief 斜坡使能标志数组
+ * @note  true表示启用斜坡功能，false表示直接设置（瞬时）
+ */
+static uint8_t ramp_enabled[ARM_SV_COUNT] = {0};
+
+/**
+ * @brief 初始化所有舵机的斜坡发生器
+ * @retval 无
+ */
+static void init_servo_ramps(void)
+{
+    // 弧度范围：-3π/4 ~ +3π/4
+    float max_radian = THREE_PI_OVER_FOUR;
+    float min_radian = -THREE_PI_OVER_FOUR;
+    
+    for (int i = 0; i < ARM_SV_COUNT; i++)
+    {
+        ramp_init(&servo_ramps[i], ARM_SV_RAMP_SPEED, max_radian, min_radian);
+        ramp_set_current(&servo_ramps[i], 0.0f);
+        ramp_enabled[i] = 1;  // 默认启用斜坡
+    }
+}
+
 /**
  * @brief 270°模式下弧度转占空比函数
  * @param radian 输入弧度值（范围：-3π/4 ~ +3π/4，即-135°~+135°）
@@ -33,39 +64,45 @@ float radian_to_duty_270(float radian)
 
     return duty;
 }
+
 /**
- * @brief 设置6个电机的弧度值
+ * @brief 设置6个电机的弧度值（带斜坡处理）
  * @param radians 包含6个弧度值的数组
  * @note 每个弧度值范围：-3π/4 ~ +3π/4
+ *       对所有舵机启用斜坡处理，使其平滑过渡
  */
 void set_motor_radians_270(float radians[6])
 {
     for (int i = 0; i < 6; i++)
     {
+        // 设置斜坡目标值
+        ramp_set_target(&servo_ramps[i], radians[i]);
+        
         // 将弧度转换为占空比并设置
         switch (i)
         {
         case 0:
-            duties_tx.duty0 = radian_to_duty_270(radians[i] / 2);
+            duties_tx.duty0 = radian_to_duty_270(ramp_get_current(&servo_ramps[0]) / 2);
             break;
         case 1:
-            duties_tx.duty1 = radian_to_duty_270(radians[i] / 2);
+            duties_tx.duty1 = radian_to_duty_270(ramp_get_current(&servo_ramps[1]) / 2);
             break;
         case 2:
-            duties_tx.duty2 = radian_to_duty_270(radians[i]);
+            duties_tx.duty2 = radian_to_duty_270(ramp_get_current(&servo_ramps[2]));
             break;
         case 3:
-            duties_tx.duty3 = radian_to_duty_270(radians[i]);
+            duties_tx.duty3 = radian_to_duty_270(ramp_get_current(&servo_ramps[3]));
             break;
         case 4:
-            duties_tx.duty4 = radian_to_duty_270(radians[i]);
+            duties_tx.duty4 = radian_to_duty_270(ramp_get_current(&servo_ramps[4]));
             break;
         case 5:
-            duties_tx.duty5 = radian_to_duty_270(radians[i]);
+            duties_tx.duty5 = radian_to_duty_270(ramp_get_current(&servo_ramps[5]));
             break;
         }
     }
 }
+
 // ===================== 全局变量定义 =====================
 /**
  * @brief 静态数组：存储每个舵机当前的PWM占空比（0~1.0对应0%~100%）
@@ -129,6 +166,9 @@ void ARM_SV_Init(float freq)
     {
         current_duties[i] = 0.0f;
     }
+    
+    // 初始化斜坡发生器
+    init_servo_ramps();
 }
 
 /**
@@ -269,6 +309,54 @@ ARM_SV_Duties_t ARM_SV_GetAllDuties(void)
 }
 
 /**
+ * @brief 设置指定舵机的斜坡目标值
+ * @param  sv_id 舵机编号（0~5）
+ * @param  target_radian 目标弧度值
+ * @retval 无
+ * @note   使用斜坡函数使舵机平滑移动到目标角度
+ */
+void ARM_SV_SetRampTarget(uint8_t sv_id, float target_radian)
+{
+    if (sv_id >= ARM_SV_COUNT)
+        return;
+    
+    ramp_enabled[sv_id] = 1;  // 启用斜坡
+    ramp_set_target(&servo_ramps[sv_id], target_radian);
+}
+
+/**
+ * @brief 设置所有舵机的斜坡目标值
+ * @param  radians 包含6个目标弧度值的数组
+ * @retval 无
+ * @note   批量设置所有舵机的目标角度，使用斜坡函数平滑过渡
+ */
+void ARM_SV_SetAllRampTargets(const float *radians)
+{
+    for (int i = 0; i < ARM_SV_COUNT; i++)
+    {
+        ramp_enabled[i] = 1;  // 启用斜坡
+        ramp_set_target(&servo_ramps[i], radians[i]);
+    }
+}
+
+/**
+ * @brief 斜坡计算更新（需要在周期循环中调用）
+ * @param  dt 时间步长（秒），通常为控制周期
+ * @retval 无
+ * @note   更新所有启用斜坡的舵机位置
+ */
+void ARM_SV_RampUpdate(float dt)
+{
+    for (int i = 0; i < ARM_SV_COUNT; i++)
+    {
+        if (ramp_enabled[i])
+        {
+            ramp_calculate(&servo_ramps[i], dt);
+        }
+    }
+}
+
+/**
  * @brief 舵机占空比收发核心函数
  * @retval 无
  * @note   1. 发送（Tx）：将duties_tx结构体中的目标占空比设置到对应舵机；
@@ -277,9 +365,11 @@ ARM_SV_Duties_t ARM_SV_GetAllDuties(void)
  */
 void ARM_SV_Tx_Rx()
 {
-
+    // 更新斜坡计算（1ms = 0.001秒）
+    ARM_SV_RampUpdate(0.001f);
     
     set_motor_radians_270(motor_radians);
+    
     // 发送：将duties_tx的目标占空比设置到对应舵机
     ARM_SV_SetDuty0(duties_tx.duty0); // 设置0号舵机占空比
     ARM_SV_SetDuty1(duties_tx.duty1); // 设置1号舵机占空比

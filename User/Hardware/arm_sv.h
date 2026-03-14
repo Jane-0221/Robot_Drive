@@ -2,6 +2,7 @@
 #define __ARM_SV_H
 
 #include <stdint.h>
+#include "ramp.h"
 
 // ===================== 宏定义 =====================
 /**
@@ -9,7 +10,15 @@
  * @note  固定为6路（对应0~5号舵机），与ARM_SV_Duties_t结构体成员一一对应
  */
 #define ARM_SV_COUNT        6
- extern float motor_radians[6];
+
+/**
+ * @brief 斜坡变化速度（单位：弧度/秒）
+ * @note  值越大，舵机响应越快；值越小，舵机运动越平滑
+ */
+#define ARM_SV_RAMP_SPEED   20.0f
+
+extern float motor_radians[6];
+
 // ===================== 数据结构体定义 =====================
 /**
  * @brief 机械臂6路舵机PWM占空比存储结构体
@@ -162,5 +171,30 @@ ARM_SV_Duties_t ARM_SV_GetAllDuties(void);
  *         3. 建议在主循环中周期性调用，保证舵机状态实时更新。
  */
 extern void ARM_SV_Tx_Rx(void);
+
+/**
+ * @brief 设置指定舵机的斜坡目标值
+ * @param  sv_id 舵机编号（0~5）
+ * @param  target_radian 目标弧度值
+ * @retval 无
+ * @note   使用斜坡函数使舵机平滑移动到目标角度
+ */
+void ARM_SV_SetRampTarget(uint8_t sv_id, float target_radian);
+
+/**
+ * @brief 设置所有舵机的斜坡目标值
+ * @param  radians 包含6个目标弧度值的数组
+ * @retval 无
+ * @note   批量设置所有舵机的目标角度，使用斜坡函数平滑过渡
+ */
+void ARM_SV_SetAllRampTargets(const float *radians);
+
+/**
+ * @brief 斜坡计算更新（需要在周期循环中调用）
+ * @param  dt 时间步长（秒），通常为控制周期
+ * @retval 无
+ * @note   更新所有启用斜坡的舵机位置
+ */
+void ARM_SV_RampUpdate(float dt);
 
 #endif
