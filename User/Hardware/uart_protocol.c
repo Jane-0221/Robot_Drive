@@ -73,21 +73,45 @@ void pack_up_frame(UpData_t *data, uint8_t *frame_buf)
 }
 
 /**
- * @brief  解析下行数据帧（PC→STM32）
+ * @brief 解析下行数据帧（PC→STM32）
  * @param  frame_buf 接收到的完整下行帧数据缓冲区
  * @param  data      存储解析后数据的结构体指针
  * @retval 无
  * @note   跳过帧头(2)+帧类型(1)+数据长度(1)，从第5字节（索引4）开始解析数据
+ *         float类型占用4字节，6路舵机 + 6路电机 = 48字节
  */
 void unpack_dn_frame(uint8_t *frame_buf, DnData_t *data)
 {
     uint8_t idx = 4; // 数据起始索引：跳过前4字节（帧头2+帧类型1+数据长度1）
-    // 解析12路目标角度（每路2字节，小端存储，拼接为16位整型）
-    for (int i = 0; i < 12; i++)
+    
+    // 解析6路舵机目标角度（每路4字节，float类型，小端存储）
+    for (int i = 0; i < 6; i++)
     {
-        data->pc_target_angles[i] = (int16_t)(frame_buf[idx] | (frame_buf[idx + 1] << 8));
-        idx += 2; // 索引偏移2字节，处理下一路角度
+        // 将4个字节拼接为float类型
+        float value;
+        uint8_t *p = (uint8_t *)&value;
+        p[0] = frame_buf[idx];
+        p[1] = frame_buf[idx + 1];
+        p[2] = frame_buf[idx + 2];
+        p[3] = frame_buf[idx + 3];
+        data->pc_target_servo_angles[i] = value;
+        idx += 4; // 索引偏移4字节，处理下一路舵机
     }
+    
+    // 解析6路电机目标角度（每路4字节，float类型，小端存储）
+    for (int i = 0; i < 6; i++)
+    {
+        // 将4个字节拼接为float类型
+        float value;
+        uint8_t *p = (uint8_t *)&value;
+        p[0] = frame_buf[idx];
+        p[1] = frame_buf[idx + 1];
+        p[2] = frame_buf[idx + 2];
+        p[3] = frame_buf[idx + 3];
+        data->pc_target_motor_angles[i] = value;
+        idx += 4; // 索引偏移4字节，处理下一路电机
+    }
+    
     // 解析泵控制状态（1字节）
     data->pc_pump_state = frame_buf[idx++];
     // 解析升降机构目标高度（2字节，小端存储，值除以10为实际高度）
